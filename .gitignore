@@ -1,0 +1,27 @@
+/*
+
+# theme
+!/wp-content/
+/wp-content/*
+/wp-content/.htaccess
+!/wp-content/themes/
+/wp-content/themes/*
+!/wp-content/themes/dorango-farm/
+!/wp-content/themes/dorango-farm-custom/
+
+# .htaccess
+!.htaccess
+
+# gulp
+!/src
+!gulpfile.js
+!package.json
+
+# editor
+!.editorconfig
+
+# ignore
+!.gitignore
+
+# docker
+!docker-compose.yml
