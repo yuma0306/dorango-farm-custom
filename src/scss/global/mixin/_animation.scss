@@ -1,0 +1,13 @@
+@use '../../config/import' as *;
+
+@mixin flowTxt(){
+    animation: rightToLeft 20s linear infinite;
+	@keyframes rightToLeft {
+		0% {
+			transform: translateX(0);
+		}
+		100% {
+			transform: translateX(-100%);
+		}
+	}
+}

@@ -1,0 +1,31 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+@include pc {
+	.gnav {
+		&__list {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			border-right: 1px dashed $white01;
+		}
+		&__item {
+			flex: 1;
+			border-left: 1px dashed $white01;
+			text-align: center;
+		}
+		&__link {
+			display: block;
+			text-align: center;
+			font-weight: $fwMedimu;
+			color: $white01;
+			@include hoverOpacity();
+		}
+	}
+}
+
+@include sp {
+	.gnav {
+		padding: vw(60) 0;
+	}
+}

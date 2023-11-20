@@ -1,29 +1,41 @@
 @use '../global/import' as *;
 
-.none {
+.none:not(#_) {
 	display: none;
 }
 
+.none-before:not(#_) {
+	&::before {
+		content: none;
+	}
+}
+
+.none-after:not(#_) {
+	&::after {
+		content: none;
+	}
+}
+
 @include pc {
-    .block-pc {
+    .block-pc:not(#_) {
 		display: block;
 	}
-	.i-block-pc {
+	.i-block-pc:not(#_) {
 		display: inline-block;
 	}
-    .none-sp {
+    .none-sp:not(#_) {
 		display: none;
 	}
 }
 
 @include sp {
-	.block-sp {
+	.block-sp:not(#_) {
 		display: block;
 	}
-	.i-block-sp {
+	.i-block-sp:not(#_) {
 		display: inline-block;
 	}
-	.none-pc {
+	.none-pc:not(#_) {
 		display: none;
 	}
 }

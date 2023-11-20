@@ -1,0 +1,17 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+@include pc {
+	.header {
+		background-color: $primary01;
+		&__block {
+			padding: 20px 0;
+		}
+	}
+}
+
+@include sp {
+	.header {
+		padding: vw(60) 0;
+	}
+}

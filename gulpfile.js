@@ -16,10 +16,8 @@ const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
 // webp
 const webp = require('gulp-webp');
-// 削除np
-const del = require('del');
 // localhost
-const localhost = 'www.mysite.local';
+const localhost = 'https://dorango-farm.com';
 
 // gulp実行前パス
 const srcBase = './src/'
@@ -30,7 +28,7 @@ const srcPath = {
 };
 
 // gulp実行後パス
-const destBase = `./html/wp-content/themes/wp-template/assets/`;
+const destBase = `./wp-content/themes/dorango-farm-custom/assets/`;
 const destPath = {
     css: `${destBase}css/`,
     js: `${destBase}js/`,
@@ -54,7 +52,7 @@ const compSass = () => {
         )
         // 保存先のファイルの指定
         .pipe(gulp.dest(destPath.css))
-        // .pipe(browserSync.stream());
+        .pipe(browserSync.stream());
 };
 
 // jsファイルの圧縮

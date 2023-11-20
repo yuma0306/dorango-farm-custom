@@ -2,43 +2,41 @@
 @use "../config/import" as *;
 
 // font-face
-// @font-face {
-// 	src: url(/assets/font/NotoSansJP-Regular.woff) format('woff');
-// 	font-family: "Noto Sans JP";
-// 	font-weight: 400;
-// 	font-display: swap;
-// }
-// @font-face {
-// 	src: url(/assets/font/NotoSansJP-Medium.woff) format('woff');
-// 	font-family: "Noto Sans JP";
-// 	font-weight: 500;
-// 	font-display: swap;
-// }
-// @font-face {
-// 	src: url(/assets/font/NotoSansJP-Bold.woff) format('woff');
-// 	font-family: "Noto Sans JP";
-// 	font-weight: 700;
-// 	font-display: swap;
-// }
+@font-face {
+	src: url(#{$fontPath}/NotoSansJP-Regular.ttf) format('truetype');
+	font-family: "Noto Sans JP";
+	font-weight: 400;
+	font-display: swap;
+}
+@font-face {
+	src: url(#{$fontPath}/NotoSansJP-Medium.ttf) format('truetype');
+	font-family: "Noto Sans JP";
+	font-weight: 500;
+	font-display: swap;
+}
+@font-face {
+	src: url(#{$fontPath}/NotoSansJP-Bold.ttf) format('truetype');
+	font-family: "Noto Sans JP";
+	font-weight: 700;
+	font-display: swap;
+}
 
-// body {
-// 	font-family: "Noto Sans JP", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", Verdana, sans-serif;
-// 	&.js-fixed {
-// 		width: 100%;
-// 		height: 100%;
-// 		position: fixed;
-// 	}
-// }
+body {
+	font-family: "Noto Sans JP", sans-serif;
+	&.js-fixed {
+		width: 100%;
+		height: 100%;
+		position: fixed;
+	}
+}
 
 // pc・sp
 body {
 	color: $black01;
 }
-body {
-	background-color: $primary01;
-}
-p,li,dt {
-	line-height: 1.8;
+p,li,dt,a {
+	line-height: $lhBase;
+	letter-spacing: $lsBase;
 }
 
 // pc
@@ -50,8 +48,8 @@ p,li,dt {
 	picture {
 		display: inline-block;
 	}
-	p,li,dt {
-		font-size: vwMin(16);
+	p,li,dt,a {
+		font-size: $fzBasePC;
 	}
 }
 
@@ -64,7 +62,7 @@ p,li,dt {
 	picture {
 		display: inline-block;
 	}
-	p,li,dt {
+	p,li,dt,a {
 		font-size: vw(16);
 	}
 }
