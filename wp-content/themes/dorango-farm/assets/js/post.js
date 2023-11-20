@@ -1,1 +1,0 @@
-const createIndex=()=>{let a=[],e=[];const n=$("#js-article-content h2");$(n).each(function(c){c=n.eq(c);a.push(c)}),a.forEach(function(c,a){var n=c.text();e.push(n),c.attr("id","anchor"+(a+1))}),e.forEach(function(c,a){a=`<li class="p-acc__index"><a class="p-acc__anchor" href="#anchor${a+1}">${c}</a></li>`;$("#js-indexes").append(a)})};createIndex();

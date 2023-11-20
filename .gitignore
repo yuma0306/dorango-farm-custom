@@ -6,7 +6,6 @@
 /wp-content/.htaccess
 !/wp-content/themes/
 /wp-content/themes/*
-!/wp-content/themes/dorango-farm/
 !/wp-content/themes/dorango-farm-custom/
 
 # .htaccess
@@ -22,6 +21,9 @@
 
 # ignore
 !.gitignore
+
+# robots.txt
+!robots.txt
 
 # docker
 !docker-compose.yml
