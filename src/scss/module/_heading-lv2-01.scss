@@ -1,0 +1,17 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+@include pc {
+	.heading-lv2-01 {
+		margin-bottom: 20px;
+		font-size: $fzXLPC;
+		font-weight: $fwBold;
+		letter-spacing: $lsMedium;
+		&__deco {
+			color: $primary02;
+		}
+	}
+}
+
+@include sp {
+}

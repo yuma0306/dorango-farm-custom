@@ -17,7 +17,8 @@
 		&__link {
 			display: block;
 			text-align: center;
-			font-weight: $fwMedimu;
+			font-weight: $fwMedium;
+			font-size: $fzMediumPC;
 			color: $white01;
 			@include hoverOpacity();
 		}

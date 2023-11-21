@@ -28,6 +28,8 @@
 	<!-- /ogp -->
 	<!-- style -->
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/style.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide-core.min.css">
+	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/front-page.css">
 	<!-- /style -->
 	<!-- schema -->
 	<script type="application/ld+json">
