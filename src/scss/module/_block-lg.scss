@@ -2,12 +2,12 @@
 
 @include pc {
 	.block-lg {
-		padding: 50px 0;
+		padding: 80px 0;
 	}
 }
 
 @include sp {
 	.block-lg {
-		padding: vw(50) 0;
+		padding: vw(40) 0;
 	}
 }

@@ -51,14 +51,14 @@ function addCustomPostType() {
 		'menu_position' => 5,
 	]);
 
-	register_post_type('cook', [
+	register_post_type('food', [
 		'label' => '昆虫食',
 		'hierarchical' => false,
 		'public' => true,
 		'has_archive' => true,
 		'rewrite' => [
 			'with_front' => false,
-			'slug' => 'cook'
+			'slug' => 'food'
 		],
 		'supports' => [
 			'title',

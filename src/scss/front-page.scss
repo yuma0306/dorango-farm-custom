@@ -3,21 +3,30 @@
 
 @include pc {
 	.kv {
-		padding: 188px 0 50px;
+		padding: 174px 0 45px;
 		background-color: $primary01;
 	}
 	.kv-slider {
 		&__track {
-
-		}
-		&__list {
-
+			margin-bottom: 30px;
 		}
 	}
 	.kv-slide {
+		$this: &;
 		&__link {
 			display: block;
-			gap: 20px;
+			&:hover {
+				#{$this}__img {
+					scale: $scale;
+				}
+				#{$this}__text {
+					text-decoration: none;
+					opacity: $opacity;
+				}
+				#{$this}__date {
+					opacity: $opacity;
+				}
+			}
 		}
 		&__thumb {
 			width: 100%;
@@ -27,6 +36,7 @@
 		&__img {
 			width: 100%;
 			height: 100%;
+			transition: scale $transition;
 		}
 		&__block {
 			padding: 5px;
@@ -41,39 +51,55 @@
 			color: $white01;
 			font-weight: $fwMedium;
 			font-size: $fzMediumPC;
+			text-decoration: underline;
 		}
 	}
 	.blogs-wrap {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
-		gap: 50px;
+		gap: 80px 50px;
+	}
+	.blogs-block {
+		display: grid;
+		grid-template-rows: auto auto 1fr;
 	}
 	.blogs-list {
 		display: grid;
 		gap: 20px;
+		margin-bottom: 25px;
 	}
 	.blogs-item {
 		$this: &;
+		height: 160px;
 		background: $white01;
 		box-shadow: $primary03 0 0 1px 0px;
+		overflow: hidden;
 		&__link {
-			display: flex;
-			justify-content: space-between;
-			@include hoverOpacity();
+			display: grid;
+			grid-template-columns: 45% 1fr;
+			height: 100%;
 			&:hover {
+				#{$this}__img {
+					scale: $scale;
+				}
 				#{$this}__text {
 					text-decoration: none;
+					opacity: $opacity;
+				}
+				#{$this}__date {
+					opacity: $opacity;
 				}
 			}
 		}
 		&__block {
-			flex: 1;
 			padding: 15px;
 		}
 		&__thumb {
-			width: 240px;
-			aspect-ratio: 16/9;
 			overflow: hidden;
+		}
+		&__img {
+			transition: scale $transition;
+			height: 100%;
 		}
 		&__date {
 			display: block;
@@ -84,6 +110,28 @@
 		&__text {
 			text-decoration: underline;
 			font-weight: $fwMedium;
+		}
+	}
+	.kv-arrow {
+		$this: &;
+		position: absolute;
+		right: 20px;
+		bottom: 5px;
+		transform: translate(0, 100%);
+		display: flex;
+		gap: 10px;
+		&__btn {
+			position: relative;
+			width: 28px;
+			height: 32px;
+			background: url(#{$imgPath}/arrow-white.svg) no-repeat center / contain;
+			transition: $transition;
+			&:hover {
+				scale: $scale;
+			}
+			&--prev {
+				transform: rotate(180deg);
+			}
 		}
 	}
 }

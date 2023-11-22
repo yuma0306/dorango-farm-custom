@@ -17,7 +17,7 @@
 				<a class="gnav__link" href="/shop/">ショップ</a>
 			</li>
 			<li class="gnav__item">
-				<a class="gnav__link" href="/cook/">昆虫食</a>
+				<a class="gnav__link" href="/food/">昆虫食</a>
 			</li>
 			<li class="gnav__item">
 				<a class="gnav__link" href="/trivia/">動物雑学</a>

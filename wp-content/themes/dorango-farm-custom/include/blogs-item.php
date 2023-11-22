@@ -7,7 +7,7 @@
 <li class="blogs-item">
 	<a class="blogs-item__link" href="<?php echo esc_url($permalink); ?>">
 		<picture class="blogs-item__thumb">
-			<img src="<?php echo esc_url($thumb); ?>" alt="">
+			<img class="blogs-item__img" src="<?php echo esc_url($thumb); ?>" alt="">
 		</picture>
 		<div class="blogs-item__block">
 			<time class="blogs-item__date" datetime="2021-06-13"><?php echo esc_html($modifiedDate); ?></time>

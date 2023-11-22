@@ -3,12 +3,48 @@
 
 @include pc {
 	.heading-lv2-01 {
+		position: relative;
 		margin-bottom: 20px;
 		font-size: $fzXLPC;
 		font-weight: $fwBold;
 		letter-spacing: $lsMedium;
+		width: fit-content;
 		&__deco {
 			color: $primary02;
+		}
+		&::after {
+			position: absolute;
+			top: 50%;
+			right: -5px;
+			transform: translate(100%, -50%);
+			width: 28px;
+			height: 28px;
+			content: "";
+		}
+		&--breed {
+			&::after {
+				background: url(#{$imgPath}/icon-breed.svg) no-repeat center / contain;
+			}
+		}
+		&--zoo {
+			&::after {
+				background: url(#{$imgPath}/icon-zoo.svg) no-repeat center / contain;
+			}
+		}
+		&--shop {
+			&::after {
+				background: url(#{$imgPath}/icon-shop.svg) no-repeat center / contain;
+			}
+		}
+		&--food {
+			&::after {
+				background: url(#{$imgPath}/icon-food.svg) no-repeat center / contain;
+			}
+		}
+		&--trivia {
+			&::after {
+				background: url(#{$imgPath}/icon-book.svg) no-repeat center / contain;
+			}
 		}
 	}
 }
