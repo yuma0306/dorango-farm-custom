@@ -4,19 +4,19 @@
 @include pc {
 	.toc {
 		display: block;
-		width: min(800px, 100%);
+		width: min(500px, 100%);
 		margin: 50px auto 0;
-		border: 2px solid $primary04;
-		background-color: $white01;
-		cursor: pointer;
+		border: 1px solid $primary04;
+		background-color: $primary03;
 		&__summary {
 			padding: 20px;
 			text-align: center;
+			cursor: pointer;
 			@include hoverOpacity();
 		}
 		&__content {
 			padding: 20px 20px 30px;
-			border-top: 2px dashed $primary04;
+			border-top: 1px dashed $primary04;
 			font-weight: $fwMedium;
 		}
 		&__list {
@@ -28,7 +28,7 @@
 		&__link {
 			text-decoration: underline;
 			position: relative;
-			transition: $transition;
+			@include hoverOpacity;
 			&::before {
 				position: absolute;
 				top: 0.75em;
@@ -37,14 +37,8 @@
 				width: 10px;
 				height: 10px;
 				border-radius: 50%;
-				background-color: $brown01;
+				background-color: $primary04;
 				content: "";
-			}
-			&:hover {
-				color: $primary02;
-				&::before {
-					background-color: $primary02;
-				}
 			}
 		}
 	}
