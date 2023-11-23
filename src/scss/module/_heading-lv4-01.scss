@@ -3,7 +3,11 @@
 
 @include pc {
 	.heading-lv4-01 {
-
+		margin-top: 30px;
+		padding-bottom: 5px;
+		border-bottom: 2px solid $primary01;
+		font-size: $fzMediumPC;
+		font-weight: $fwMedium;
 	}
 }
 

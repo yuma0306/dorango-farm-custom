@@ -1,0 +1,88 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+@include pc {
+	.wysiwyg {
+		$this: &;
+		margin-top: 20px;
+		& > * {
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+		p {
+			margin-top: 20px;
+		}
+		a {
+			position: relative;
+			color: $blue01;
+			text-decoration: underline;
+			font-weight: $fwMedium;
+			@include hoverOpacity();
+			&[target="_blank"]::after {
+				display: inline-block;
+				margin: 0 5px;
+				margin-bottom: -1px;
+				width: 15px;
+				height: 15px;
+				background: url(#{$imgPath}/icon-blank-blue.svg) no-repeat center / contain;
+				content: "";
+			}
+		}
+		ul {
+			display: grid;
+			gap: 10px;
+			margin-top: 20px;
+			padding: 15px 20px;
+			background-color: $primary03;
+			li {
+				position: relative;
+				font-weight: $fwMedium;
+				padding-left: 1em;
+				&::before {
+					position: absolute;
+					top: .1em;
+					left: 0;
+					transform: translateY(50%);
+					width: 10px;
+					height: 10px;
+					background: $primary02;
+					border-radius: 50%;
+					content: "";
+				}
+			}
+		}
+		ol {
+			display: grid;
+			gap: 15px;
+			margin-top: 28px;
+			background-color: $primary03;
+			padding: 20px;
+			counter-reset: number 0;
+			li {
+				position: relative;
+				padding-left: 30px;
+				font-weight: $fwMedium;
+				&::before {
+					display: grid;
+					place-content: center;
+					position: absolute;
+					top: -1em;
+					left: 0;
+					transform: translateY(50%);
+					width: 25px;
+					height: 25px;
+					border-radius: 50%;
+					background: $primary02;
+					color: $white01;
+					font-weight: $fwMedium;
+					counter-increment: number 1;
+					content: counter(number);
+				}
+			}
+		}
+	}
+}
+
+@include sp {
+}

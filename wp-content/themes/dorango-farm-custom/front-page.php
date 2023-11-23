@@ -131,9 +131,9 @@
 		</main>
 		<?php get_template_part('include/footer'); ?>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 	<script src="<?php echo get_template_directory_uri() ?>/assets/js/common.js" defer></script>
+	<script src="<?php echo get_template_directory_uri() ?>/assets/js/front.js" defer></script>
     <?php wp_footer(); ?>
 </body>
 </html>

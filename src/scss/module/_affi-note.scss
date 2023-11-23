@@ -2,14 +2,10 @@
 @use '../config/import' as *;
 
 @include pc {
-	.article-content {
-		$this: &;
-		margin-top: 20px;
-		& > * {
-			&:first-child {
-				margin-top: 0;
-			}
-		}
+	.affi-note {
+		margin-top: 50px;
+		font-weight: $fwMedium;
+		text-decoration: underline;
 	}
 }
 

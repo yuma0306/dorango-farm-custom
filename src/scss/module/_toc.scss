@@ -1,0 +1,57 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+@include pc {
+	.toc {
+		display: block;
+		width: min(800px, 100%);
+		margin: 50px auto 0;
+		border: 2px solid $primary04;
+		background-color: $white01;
+		cursor: pointer;
+		&__summary {
+			padding: 20px;
+			text-align: center;
+			@include hoverOpacity();
+		}
+		&__content {
+			padding: 20px 20px 30px;
+			border-top: 2px dashed $primary04;
+			font-weight: $fwMedium;
+		}
+		&__list {
+			padding-left: 20px;
+		}
+		&__item {
+			margin-top: 10px;
+		}
+		&__link {
+			text-decoration: underline;
+			position: relative;
+			transition: $transition;
+			&::before {
+				position: absolute;
+				top: 0.75em;
+				left: -1.2em;
+				transform: translate(0, -50%);
+				width: 10px;
+				height: 10px;
+				border-radius: 50%;
+				background-color: $brown01;
+				content: "";
+			}
+			&:hover {
+				color: $primary02;
+				&::before {
+					background-color: $primary02;
+				}
+			}
+		}
+	}
+}
+
+@include sp {
+	.toc {
+
+	}
+}

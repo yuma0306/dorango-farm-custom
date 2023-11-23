@@ -44,13 +44,21 @@
 						<time class="article-date__text" datetime="<?php echo esc_html($modifiedDate); ?>"><?php echo esc_html($modifiedDate); ?></time>
 					</div>
 				</div>
-				<section class="article-content">
+				<details class="toc">
+					<summary class="toc__summary">目次</summary>
+					<div class="toc__content" id="js-toc"></div>
+				</details>
+				<p class="affi-note">当サイトはアフェリエイト広告を利用しています。</p>
+				<section class="article-content" id="js-article">
 					<?php getAcfArticle(); ?>
 				</section>
 			</div>
 		</main>
 		<?php get_template_part('include/footer'); ?>
 	</div>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+	<script src="<?php echo get_template_directory_uri() ?>/assets/js/common.js" defer></script>
     <?php wp_footer(); ?>
 </body>
 </html>
