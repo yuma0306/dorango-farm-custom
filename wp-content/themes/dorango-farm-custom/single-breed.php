@@ -48,6 +48,7 @@
 					<summary class="toc__summary">目次</summary>
 					<div class="toc__content" id="js-toc"></div>
 				</details>
+				<p class="affi-note">当サイトはアフェリエイト広告を利用しています。</p>
 				<section class="article-content" id="js-article">
 					<?php getAcfArticle(); ?>
 				</section>

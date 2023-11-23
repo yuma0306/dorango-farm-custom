@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				e.preventDefault();
 				const href = this.getAttribute('href');
 				const target = href === '#' || href === '' ? document.documentElement : document.querySelector(href);
-				const pos = target.offsetTop - headerHeight - 10;
+				const pos = target.offsetTop - headerHeight;
 				window.scrollTo({
 					top: pos,
 					behavior: 'smooth'
