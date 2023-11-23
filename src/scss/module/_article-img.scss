@@ -1,0 +1,20 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+@include pc {
+	.article-img {
+		&__picture {
+			width: min(600px, 100%);
+		}
+		&__caption {
+			display: block;
+			margin-top: 10px;
+			font-size: $fwMedium;
+			font-size: $fzSmallPC;
+		}
+	}
+}
+
+@include sp {
+
+}

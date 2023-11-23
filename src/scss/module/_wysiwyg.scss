@@ -4,7 +4,6 @@
 @include pc {
 	.wysiwyg {
 		$this: &;
-		margin-top: 20px;
 		& > * {
 			&:first-child {
 				margin-top: 0;
@@ -46,7 +45,7 @@
 					transform: translateY(50%);
 					width: 10px;
 					height: 10px;
-					background: $primary02;
+					background: $brown01;
 					border-radius: 50%;
 					content: "";
 				}
@@ -73,7 +72,7 @@
 					width: 25px;
 					height: 25px;
 					border-radius: 50%;
-					background: $primary02;
+					background: $brown01;
 					color: $white01;
 					font-weight: $fwMedium;
 					counter-increment: number 1;

@@ -6,7 +6,7 @@
 ?>
 <li class="splide__slide kv-slide">
 	<a class="kv-slide__link" href="<?php echo esc_url($permalink); ?>">
-		<?php if(isset($thumb)): ?>
+		<?php if(!empty($thumb)): ?>
 			<picture class="kv-slide__thumb">
 				<img class="kv-slide__img" src="<?php echo esc_url($thumb['url']); ?>" alt="<?php echo esc_html($thumb['alt']); ?>">
 			</picture>

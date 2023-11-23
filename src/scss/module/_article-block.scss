@@ -2,15 +2,13 @@
 @use '../config/import' as *;
 
 @include pc {
-	.embed {
-		$this: &;
+	.article-block {
 		margin-top: 20px;
 	}
 }
 
 @include sp {
-	.embed {
-		$this: &;
+	.article-content {
 		margin-top: vw(20);
 	}
 }

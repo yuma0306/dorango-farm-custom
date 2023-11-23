@@ -45,13 +45,14 @@ document.addEventListener('DOMContentLoaded', function() {
 	 * スムーズスクロール
 	 */
 	const scrollSmooth = () => {
+		const adjust = 10;
 		document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 			anchor.addEventListener('click', function (e) {
 				const headerHeight = document.getElementById(header).clientHeight;
 				e.preventDefault();
 				const href = this.getAttribute('href');
 				const target = href === '#' || href === '' ? document.documentElement : document.querySelector(href);
-				const pos = target.offsetTop - headerHeight;
+				const pos = target.offsetTop - (headerHeight + adjust);
 				window.scrollTo({
 					top: pos,
 					behavior: 'smooth'

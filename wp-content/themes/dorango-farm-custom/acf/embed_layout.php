@@ -1,9 +1,8 @@
 <?php
 	$embed = get_sub_field('embedfield');
-	// d($html);
 ?>
-<?php if(isset($embed)): ?>
-	<div class="embed">
+<?php if(!empty($embed)): ?>
+	<div class="article-block">
 		<?php echo $embed; ?>
 	</div>
 <?php endif; ?>

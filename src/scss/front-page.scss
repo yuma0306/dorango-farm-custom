@@ -64,50 +64,6 @@
 		gap: 20px;
 		margin-top: 30px;
 	}
-	.blogs-item {
-		$this: &;
-		height: 160px;
-		background: $white01;
-		box-shadow: $primary03 0 0 1px 0px;
-		overflow: hidden;
-		&__link {
-			display: grid;
-			grid-template-columns: 45% 1fr;
-			height: 100%;
-			&:hover {
-				#{$this}__img {
-					scale: $scale;
-				}
-				#{$this}__text {
-					text-decoration: none;
-					opacity: $opacity;
-				}
-				#{$this}__date {
-					opacity: $opacity;
-				}
-			}
-		}
-		&__block {
-			padding: 15px;
-		}
-		&__thumb {
-			overflow: hidden;
-		}
-		&__img {
-			transition: scale $transition;
-			height: 100%;
-		}
-		&__date {
-			display: block;
-			font-size: $fzSmallPC;
-			font-weight: $fwMedium;
-		}
-		&__text {
-			margin-top: 5px;
-			text-decoration: underline;
-			font-weight: $fwMedium;
-		}
-	}
 	.kv-arrow {
 		$this: &;
 		position: absolute;
@@ -209,51 +165,6 @@
 		display: grid;
 		gap: vw(20);
 		margin-top: vw(30);
-	}
-	.blogs-item {
-		$this: &;
-		width: 100%;
-		height: vw(160);
-		background: $white01;
-		box-shadow: $primary03 0 0 vw(2) 0;
-		overflow: hidden;
-		&__link {
-			display: grid;
-			grid-template-columns: 45% 1fr;
-			height: 100%;
-			&:hover {
-				#{$this}__img {
-					scale: $scale;
-				}
-				#{$this}__text {
-					text-decoration: none;
-					opacity: $opacity;
-				}
-				#{$this}__date {
-					opacity: $opacity;
-				}
-			}
-		}
-		&__block {
-			padding: vw(10);
-		}
-		&__thumb {
-			overflow: hidden;
-		}
-		&__img {
-			transition: scale $transition;
-			height: 100%;
-		}
-		&__date {
-			display: block;
-			font-size: $fzSmallSP;
-			font-weight: $fwMedium;
-		}
-		&__text {
-			margin-top: vw(5);
-			text-decoration: underline;
-			font-weight: $fwMedium;
-		}
 	}
 	.kv-arrow {
 		$this: &;

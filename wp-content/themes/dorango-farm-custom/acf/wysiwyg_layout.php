@@ -1,7 +1,11 @@
 <?php
 	$wysiwyg = get_sub_field('wysiwyg_field');
 ?>
-<div class="wysiwyg">
-	<?php echo $wysiwyg; ?>
-</div>
+<?php if(!empty($wysiwyg)): ?>
+	<div class="article-block">
+		<div class="wysiwyg">
+			<?php echo $wysiwyg; ?>
+		</div>
+	</div>
+<?php endif; ?>
 

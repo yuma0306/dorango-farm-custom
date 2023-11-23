@@ -1,0 +1,33 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+@include pc {
+	.article-dl {
+		$this: &;
+		border: 1px solid $brown01;
+		background-color: $primary03;
+		&__list {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			&:not(:first-of-type) {
+				#{$this}__term {
+					border-top: 1px solid $brown01;
+				}
+				#{$this}__desc {
+					border-top: 1px solid $brown01;
+				}
+			}
+		}
+		&__term {
+			font-weight: $fwMedium;
+			padding: 15px;
+			border-right: 1px solid $brown01;
+		}
+		&__desc {
+			padding: 15px;
+		}
+	}
+}
+
+@include sp {
+}

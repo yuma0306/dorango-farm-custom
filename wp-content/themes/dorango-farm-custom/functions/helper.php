@@ -4,7 +4,7 @@
  * デバック用関数
  */
 function d() {
-    echo '<pre style="background:#fff; color:#4f5b93; border:2px solid #7a86b8; margin:5px; padding:5px; font-size:14px; line-height:1.8;">';
+    echo '<pre style="position: relative; z-index: 10000; background:#fff; color:#4f5b93; border:2px solid #7a86b8; margin:5px; padding:5px; font-size:14px; line-height:1.8;">';
     // 関数に渡された引数を一つずつvar_dumpする
     foreach(func_get_args() as $item) {
         var_dump($item);
