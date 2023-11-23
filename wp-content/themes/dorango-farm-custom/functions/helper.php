@@ -4,7 +4,7 @@
  * デバック用関数
  */
 function d() {
-    echo '<pre style="background:#fff; color:#333; border:1px solid lightgray; margin:5px; padding:5px; font-size:12px; line-height:1.8;">';
+    echo '<pre style="background:#fff; color:#4f5b93; border:2px solid #7a86b8; margin:5px; padding:5px; font-size:14px; line-height:1.8;">';
     // 関数に渡された引数を一つずつvar_dumpする
     foreach(func_get_args() as $item) {
         var_dump($item);
@@ -150,7 +150,7 @@ function getMetaTitle () {
 	if(is_front_page()) {
 		return esc_html($blogTitle);
 	}
-	$metaTitle = esc_html(get_field('meta_title') . '|'  . $blogTitle);
+	$metaTitle = esc_html(get_field('meta_title_field') . '|'  . $blogTitle);
 	return $metaTitle;
 }
 
@@ -162,7 +162,7 @@ function getMetaDesc() {
 	if(is_front_page()) {
 		return esc_html($blogDesc);
 	}
-	$metaDesc = esc_html(get_field('meta_desc') . '|'  . $blogDesc);
+	$metaDesc = esc_html(get_field('meta_desc_field') . '|'  . $blogDesc);
 	return $metaDesc;
 }
 
@@ -171,7 +171,7 @@ function getMetaDesc() {
  */
 function getCanonical() {
 	$currentUri = getCurrentUri();
-	$canonical = get_field('canonical');
+	$canonical = get_field('canonical_field');
 	if(empty($canonical)) {
 		echo esc_url('https://dorango-farm.com' . $currentUri);
 	} else {
@@ -184,7 +184,7 @@ function getCanonical() {
  */
 function getOgUrl() {
 	$currentUri = getCurrentUri();
-	$ogUrl = get_field('og_url');
+	$ogUrl = get_field('og_url_field');
 	if(empty($ogUrl)) {
 		echo esc_url('https://dorango-farm.com' . $currentUri);
 	} else {
@@ -197,7 +197,7 @@ function getOgUrl() {
  */
 function getOgImage() {
 	$defaultImage = '/assets/ogp.webp';
-	$ogImage = get_field('og_Image');
+	$ogImage = get_field('og_image_field');
 	if(empty($ogImage)) {
 		echo esc_url('https://dorango-farm.com' . $defaultImage);
 	} else {
@@ -209,8 +209,8 @@ function getOgImage() {
  * noindex・nofollow
  */
 function isNoindex() {
-	$isNoindex = get_field('noindex');
-	$isNofollow = get_field('nofollow');
+	$isNoindex = get_field('noindex_field');
+	$isNofollow = get_field('nofollow_field');
 	if($isNoindex && $isNofollow) {
 		echo '<meta name="robots" content="none">';
 	} elseif($isNoindex && !$isNofollow) {
@@ -223,9 +223,10 @@ function isNoindex() {
 /**
  * adf component取得
  */
-function getAcfContent() {
-	if(have_rows('acf_contents') ) {
-		while( have_rows('acf_contents') ) {
+function getAcfArticle() {
+	$acfArticle = 'flexible_field';
+	if(have_rows($acfArticle) ) {
+		while(have_rows($acfArticle)) {
 			the_row();
 			$layout = get_row_layout();
 			$path = get_template_directory();

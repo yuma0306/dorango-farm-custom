@@ -4,14 +4,29 @@
 @include pc {
 	.header {
 		background-color: $primary01;
-		&__block {
-			padding: 20px 0;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		padding: 20px 0;
+		z-index: 100;
+		&.is-active {
+			box-shadow: $primary03 0 0 2px 2px;
 		}
 	}
 }
 
 @include sp {
 	.header {
-		padding: vw(60) 0;
+		background-color: $primary01;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		padding: vw(15) 0 0;
+		z-index: 100;
+		&.is-active {
+			box-shadow: $primary03 0 0 vw(2) vw(2);
+		}
 	}
 }

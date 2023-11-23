@@ -9,7 +9,7 @@
 	<title><?php echo $metaTitle; ?></title>
 	<meta name="description" content="<?php echo $metaDesc; ?>">
 	<link rel="canonical" href="<?php getCanonical(); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	<meta name="format-detection" content="telephone=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel="icon" href="">
@@ -28,6 +28,8 @@
 	<!-- /ogp -->
 	<!-- style -->
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/style.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide-core.min.css">
+	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/front-page.css">
 	<!-- /style -->
 	<!-- schema -->
 	<script type="application/ld+json">

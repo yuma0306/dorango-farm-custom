@@ -1,12 +1,21 @@
-// font-size
+
+// font-size PC
 $fzSmallPC: 12px;
 $fzBasePC: 14px;
-$fzMediumPC: 18px;
-$fzLargePC: 22px;
+$fzMediumPC: 16px;
+$fzLargePC: 18px;
+$fzXLPC: 20px;
+
+// font-size SP
+$fzSmallSP: calc(1vw * 12 / 390 * 100);
+$fzBaseSP: calc(1vw * 14 / 390 * 100);
+$fzMediumSP: calc(1vw * 16 / 390 * 100);
+$fzLargeSP: calc(1vw * 18 / 390 * 100);
+$fzXLSP: calc(1vw * 20 / 390 * 100);
 
 // font-weight
 $fwBold: 700;
-$fwMedimu: 500;
+$fwMedium: 500;
 $fwNormal: 400;
 
 // line-height
@@ -15,3 +24,4 @@ $lhBase: 1.5;
 
 // letter-speacing
 $lsBase: .04em;
+$lsMedium: .06em;

@@ -1,0 +1,21 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+@include pc {
+	.article-date {
+		$this: &;
+		display: flex;
+		align-items: flex-end;
+		gap: 10px;
+		&__img {
+			width: 24px;
+		}
+	}
+}
+
+@include sp {
+	.article-thumb {
+		$this: &;
+
+	}
+}

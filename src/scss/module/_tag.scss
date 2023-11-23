@@ -1,0 +1,39 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+@include pc {
+	.tag {
+		display: flex;
+		gap: 20px;
+		&__link {
+			display: block;
+			position: relative;
+			width: fit-content;
+			padding: 10px 10px 10px 28px;
+			border: 2px solid $brown01;
+			background-color: $white01;
+			border-radius: 100vh 0 0 100vh;
+			font-weight: $fwMedium;
+			font-size: $fzMediumPC;
+			line-height: $lhFlat;
+			@include hoverOpacity();
+			&::before {
+				position: absolute;
+				top: 50%;
+				left: 10px;
+				transform: translate(0, -50%);
+				width: 10px;
+				height: 10px;
+				content: '';
+				border-radius: 50%;
+				background: $brown01;
+			}
+		}
+	}
+}
+
+@include sp {
+	.tag {
+
+	}
+}

@@ -1,0 +1,80 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+@include pc {
+	.btn-link01 {
+		$this: &;
+		position: relative;
+		display: grid;
+		place-items: center;
+		width: 250px;
+		height: 50px;
+		padding: 0 30px;
+		margin: 25px auto 0;
+		background-color: $white01;
+		font-weight: $fwMedium;
+		border-radius: 30px;
+		border: 1px solid $brown01;
+		transition: $transition;
+		text-align: center;
+		&--end {
+			align-self: end;
+		}
+		&::after {
+			position: absolute;
+			top: 50%;
+			right: 15px;
+			transform: translate(0%, -50%);
+			width: 16px;
+			height: 18px;
+			background: url(#{$imgPath}/arrow-brown.svg) no-repeat center / contain;
+			transition: $transition;
+			content: "";
+		}
+		&:hover {
+			@include hoverOpacity();
+			&::after {
+				right: 10px;
+			}
+		}
+	}
+}
+
+@include sp {
+	.btn-link01 {
+		$this: &;
+		position: relative;
+		display: grid;
+		place-items: center;
+		width: vw(250);
+		height: vw(50);
+		padding: 0 vw(30);
+		margin: vw(25) auto 0;
+		background-color: $white01;
+		font-weight: $fwMedium;
+		border-radius: vw(30);
+		border: vw(2) solid $brown01;
+		transition: $transition;
+		text-align: center;
+		&--end {
+			align-self: end;
+		}
+		&::after {
+			position: absolute;
+			top: 50%;
+			right: vw(15);
+			transform: translate(0%, -50%);
+			width: vw(16);
+			height: vw(18);
+			background: url(#{$imgPath}/arrow-brown.svg) no-repeat center / contain;
+			transition: $transition;
+			content: "";
+		}
+		&:hover {
+			@include hoverOpacity();
+			&::after {
+				right: vw(10);
+			}
+		}
+	}
+}

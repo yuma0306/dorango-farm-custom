@@ -18,17 +18,19 @@ const rename = require('gulp-rename');
 const webp = require('gulp-webp');
 // localhost
 const localhost = 'https://dorango-farm.com';
+const theme = './wp-content/themes/dorango-farm-custom/'
 
 // gulp実行前パス
 const srcBase = './src/'
 const srcPath = {
     scss: `${srcBase}scss/**/*.scss`,
     js: `${srcBase}js/**/*.js`,
-    img: `${srcBase}img/**/*.{jpg,jpeg,png}`,
+    img: `${srcBase}img/**/*.{jpg,jpeg,png,svg}`,
+	php: `${theme}**/*.php`,
 };
 
+const destBase = `${theme}assets/`;
 // gulp実行後パス
-const destBase = `./wp-content/themes/dorango-farm-custom/assets/`;
 const destPath = {
     css: `${destBase}css/`,
     js: `${destBase}js/`,
@@ -100,6 +102,7 @@ const watchFiles = () => {
     gulp.watch(srcPath.img, gulp.series(changeWebp, browserSyncReload));
     gulp.watch(srcPath.js, gulp.series(minifyJs, browserSyncReload));
     gulp.watch(srcPath.scss, gulp.series(compSass, browserSyncReload));
+    gulp.watch(srcPath.php, gulp.series(browserSyncReload));
 };
 
 // 開発時

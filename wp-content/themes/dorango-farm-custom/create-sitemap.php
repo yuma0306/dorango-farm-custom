@@ -12,7 +12,7 @@ function getPostPage() {
 			'breed',
 			'zoo',
 			'shop',
-			'cook',
+			'food',
 			'trivia',
 		],
 		'post_status' => 'publish',

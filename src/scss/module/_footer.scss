@@ -1,0 +1,52 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+@include pc {
+	.footer {
+		padding: 50px 0;
+		background-color: $white01;
+		&__inner {
+			position: relative;
+		}
+		&__copy {
+			font-size: $fzSmallPC;
+			text-align: center;
+			margin-top: 30px;
+		}
+		&__list {
+			display: flex;
+			gap: 20px;
+			margin-top: 20px;
+		}
+		&__link {
+			display: block;
+			text-decoration: underline;
+			@include hoverOpacity();
+		}
+	}
+}
+
+@include sp {
+	.footer {
+		padding: vw(40) 0;
+		background-color: $white01;
+		&__inner {
+			position: relative;
+		}
+		&__copy {
+			font-size: $fzSmallSP;
+			text-align: center;
+			margin-top: vw(25);
+		}
+		&__list {
+			display: flex;
+			gap: vw(20);
+			margin-top: vw(20);
+		}
+		&__link {
+			display: block;
+			text-decoration: underline;
+			@include hoverOpacity();
+		}
+	}
+}

@@ -9,16 +9,30 @@
 		color: $white01;
 		text-align: center;
 		font-weight: $fwBold;
-		font-size: $fzMediumPC;
+		font-size: $fzXLPC;
+		line-height: $lhFlat;
 		@include hoverOpacity();
-		&--header {
-			margin-bottom: 18px;
+		&--footer {
+			color: $brown01;
+			margin: 0 auto 0 0;
 		}
 	}
 }
 
 @include sp {
 	.logo {
-
+		display: block;
+		width: fit-content;
+		margin: 0 auto;
+		color: $white01;
+		text-align: center;
+		font-weight: $fwBold;
+		font-size: $fzXLSP;
+		line-height: $lhFlat;
+		@include hoverOpacity();
+		&--footer {
+			color: $brown01;
+			margin: 0 auto 0 0;
+		}
 	}
 }

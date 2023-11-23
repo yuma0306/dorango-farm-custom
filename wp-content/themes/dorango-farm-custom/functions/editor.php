@@ -1,26 +1,21 @@
 <?php
 
 /**
- * remove block patterns
+ * エディター画面のカスタマイズ
  * https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-support/#disabling-the-default-block-patterns
  */
 function initEditor() {
-    // Remove block patterns
     remove_theme_support('core-block-patterns');
-    // Remove comment
     remove_post_type_support('page', 'comments');
-    // Remove author
     remove_post_type_support('page', 'author');
-    // Determine if ID is present
     $postId = $_GET['post'] ?? $_POST['post_ID'] ?? null;
     if(!isset($postId)) return;
-    // Determine what template file
     $templateFile = get_post_meta($postId, '_wp_page_template', true);
     $templates = [
-        'page-hoge.php',
-        'page-huga.php',
+        'page-tag.php',
+		'default',
+		'',
     ];
-    // Delete editor only for specific templates
     if(in_array($templateFile, $templates)) {
         remove_post_type_support('page', 'editor');
     }
@@ -28,7 +23,7 @@ function initEditor() {
 add_action('init', 'initEditor');
 
 /**
- * remove gutenberg block types
+ * グーテンベルクの制御
  * https://developer.wordpress.org/block-editor/reference-guides/filters/block-filters/#hiding-blocks-from-the-inserter
  */
 function customBlockTypes($allowed_blocks, $post) {
@@ -48,11 +43,11 @@ function customBlockTypes($allowed_blocks, $post) {
 add_filter('allowed_block_types_all', 'customBlockTypes', 10, 10);
 
 /**
- * Add rich text
+ * リッチエディターへの機能追加
  * https://celtislab.net/archives/20200319/wordpress-richtext-toolbar-button/
  * https://ja.wordpress.org/team/handbook/block-editor/reference-guides/richtext/
  * https://ja.wordpress.org/team/handbook/block-editor/how-to-guides/format-api/
- * ▼Execute the following in the console
+ * ▼devツールのconsoleから実行
  * wp.data.select( 'core/rich-text' ).getFormatTypes();
  */
 function customRichtext() {
@@ -61,7 +56,7 @@ function customRichtext() {
             'gutenberg-richtext-style',
             get_stylesheet_directory_uri() . '/gutenberg/gutenberg.css',
         );
-        wp_enqueue_script( 
+        wp_enqueue_script(
             'gutenberg-richtext-js',
             get_stylesheet_directory_uri() . '/gutenberg/gutenberg.js',
             array('lodash', 'wp-rich-text', 'wp-element', 'wp-components', 'wp-blocks', 'wp-block-editor', 'wp-keycodes'),

@@ -3,6 +3,8 @@
 
 @include pc {
 	.gnav {
+		margin: 15px auto 0;
+		width: $innerWidthPC;
 		&__list {
 			display: flex;
 			align-items: center;
@@ -17,15 +19,48 @@
 		&__link {
 			display: block;
 			text-align: center;
-			font-weight: $fwMedimu;
+			font-weight: $fwMedium;
+			font-size: $fzMediumPC;
 			color: $white01;
 			@include hoverOpacity();
+		}
+	}
+	.is-active {
+		.gnav {
+			margin-top: 0;
 		}
 	}
 }
 
 @include sp {
 	.gnav {
-		padding: vw(60) 0;
+		margin: vw(15) auto 0;
+		overflow-x: auto;
+		white-space: nowrap;
+		&__list {
+			display: flex;
+			align-items: center;
+			padding-bottom: vw(15);
+		}
+		&__item {
+			min-width: vw(110);
+			text-align: center;
+			&:not(:first-of-type) {
+				border-left: vw(2) dashed $white01;
+			}
+		}
+		&__link {
+			display: block;
+			text-align: center;
+			font-weight: $fwMedium;
+			font-size: $fzMediumSP;
+			color: $white01;
+			@include hoverOpacity();
+		}
+	}
+	.is-active {
+		.gnav {
+			margin-top: 0;
+		}
 	}
 }
