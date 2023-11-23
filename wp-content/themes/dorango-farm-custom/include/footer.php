@@ -11,7 +11,6 @@
 		</ul>
 		<p class="footer__copy">&copy;ヘビ牧場どらんごファーム</p>
 		<a href="#" class="btn-top">
-			<p class="btn-top__text">TOP</p>
 			<img class="btn-top__manbou" src="<?php echo get_template_directory_uri(); ?>/assets/img/icon-manbou.svg" alt="">
 		</a>
 	</div>

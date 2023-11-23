@@ -61,6 +61,6 @@ picture {
 // sp
 @include sp {
 	p,li,dt,a {
-		font-size: vw(16);
+		font-size: $fzBaseSP;
 	}
 }

@@ -1,0 +1,20 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+@include pc {
+	.article-thumb {
+		$this: &;
+		display: block;
+		width: 100%;
+		margin: 5px auto 0;
+		aspect-ratio: 16 / 9;
+		overflow: hidden;
+	}
+}
+
+@include sp {
+	.article-thumb {
+		$this: &;
+
+	}
+}

@@ -37,7 +37,7 @@
 <body>
 	<div class="wrapper">
 		<?php get_template_part('include/header'); ?>
-		<main>
+		<main class="main u-p0">
 			<?php if($kvPosts->have_posts()): ?>
 				<div class="kv">
 					<div class="splide kv-slider" id="js-kv-slider">
@@ -52,19 +52,23 @@
 							<button class="splide__arrow splide__arrow--prev kv-arrow__btn kv-arrow__btn--prev"></button>
 							<button class="splide__arrow splide__arrow--next kv-arrow__btn kv-arrow__btn--next"></button>
 						</div>
-						<ul class="splide__pagination pagination"></ul>
+						<ul class="splide__pagination kv-pagination"></ul>
 					</div>
 				</div>
 			<?php wp_reset_postdata(); endif; ?>
-			<div class="block-lg">
+			<div class="block-large">
 				<div class="inner">
-					<!-- <form class="" action="https://www.ko2jiko.com" method="get">
-						<input class="" type="search" id="s" name="s" placeholder="例）ボールパイソン">
-						<<input type="hidden" name="post_type" value="breed">
-						<button class="">
-							<img width="11" height="11" class="" src="" alt="検索">
+					<form class="search-form" action="<?php echo home_url(); ?>" method="get">
+						<input class="search-form__input" type="text" name="s" value="<?php the_search_query(); ?>" placeholder="キーワード検索">
+						<input type="hidden" name="post_type[]" value="breed">
+						<input type="hidden" name="post_type[]" value="zoo">
+						<input type="hidden" name="post_type[]" value="shop">
+						<input type="hidden" name="post_type[]" value="food">
+						<input type="hidden" name="post_type[]" value="trivia">
+						<button class="search-form__btn">
+							<img class="search-form__icon" src="<?php echo get_template_directory_uri(); ?>/assets/img/icon-search.svg" alt="">
 						</button>
-					</form> -->
+					</form>
 					<div class="blogs-wrap">
 						<?php if($breedPosts->have_posts()): ?>
 							<section class="blogs-block">

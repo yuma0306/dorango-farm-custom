@@ -3,13 +3,8 @@
 
 @include pc {
 	.kv {
-		padding: 174px 0 45px;
+		padding: calc(144px + 30px) 0 45px;
 		background-color: $primary01;
-	}
-	.kv-slider {
-		&__track {
-			margin-bottom: 30px;
-		}
 	}
 	.kv-slide {
 		$this: &;
@@ -30,7 +25,7 @@
 		}
 		&__thumb {
 			width: 100%;
-			aspect-ratio: 16/9;
+			aspect-ratio: 16 / 9;
 			overflow: hidden;
 		}
 		&__img {
@@ -45,9 +40,9 @@
 			display: block;
 			color: $white01;
 			font-weight: $fwMedium;
-			margin-bottom: 5px;
 		}
 		&__text {
+			margin-top: 5px;
 			color: $white01;
 			font-weight: $fwMedium;
 			font-size: $fzMediumPC;
@@ -58,6 +53,7 @@
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		gap: 80px 50px;
+		margin-top: 50px;
 	}
 	.blogs-block {
 		display: grid;
@@ -66,7 +62,7 @@
 	.blogs-list {
 		display: grid;
 		gap: 20px;
-		margin-bottom: 25px;
+		margin-top: 30px;
 	}
 	.blogs-item {
 		$this: &;
@@ -103,11 +99,11 @@
 		}
 		&__date {
 			display: block;
-			margin-bottom: 10px;
 			font-size: $fzSmallPC;
 			font-weight: $fwMedium;
 		}
 		&__text {
+			margin-top: 5px;
 			text-decoration: underline;
 			font-weight: $fwMedium;
 		}
@@ -134,8 +130,176 @@
 			}
 		}
 	}
+	.kv-pagination {
+		gap: 14px;
+		margin-top: 30px;
+		&__item {
+			display: block;
+			width: 14px;
+			height: 14px;
+			border-radius: 50%;
+			border: 1px solid $white01;
+			background-color: $white01;
+			&.is-active {
+				scale: (1.1);
+				background-color: $primary02;
+			}
+		}
+	}
 }
 
 @include sp {
-
+	.kv {
+		padding: calc(vw(144) + vw(15)) 0 vw(40);
+		background-color: $primary01;
+	}
+	.kv-slide {
+		$this: &;
+		&__link {
+			display: block;
+			&:hover {
+				#{$this}__img {
+					scale: $scale;
+				}
+				#{$this}__text {
+					text-decoration: none;
+					opacity: $opacity;
+				}
+				#{$this}__date {
+					opacity: $opacity;
+				}
+			}
+		}
+		&__thumb {
+			width: 100%;
+			aspect-ratio: 16 / 9;
+			overflow: hidden;
+		}
+		&__img {
+			width: 100%;
+			height: 100%;
+			transition: scale $transition;
+		}
+		&__block {
+			padding: vw(5);
+		}
+		&__date {
+			display: block;
+			color: $white01;
+			font-weight: $fwMedium;
+		}
+		&__text {
+			margin-top: vw(5);
+			color: $white01;
+			font-weight: $fwMedium;
+			font-size: $fzMediumSP;
+			text-decoration: underline;
+		}
+	}
+	.blogs-wrap {
+		display: grid;
+		row-gap: vw(50);
+		margin-top: vw(40);
+	}
+	.blogs-block {
+		display: grid;
+		grid-template-rows: auto auto 1fr;
+	}
+	.blogs-list {
+		display: grid;
+		gap: vw(20);
+		margin-top: vw(30);
+	}
+	.blogs-item {
+		$this: &;
+		width: 100%;
+		height: vw(160);
+		background: $white01;
+		box-shadow: $primary03 0 0 vw(2) 0;
+		overflow: hidden;
+		&__link {
+			display: grid;
+			grid-template-columns: 45% 1fr;
+			height: 100%;
+			&:hover {
+				#{$this}__img {
+					scale: $scale;
+				}
+				#{$this}__text {
+					text-decoration: none;
+					opacity: $opacity;
+				}
+				#{$this}__date {
+					opacity: $opacity;
+				}
+			}
+		}
+		&__block {
+			padding: vw(10);
+		}
+		&__thumb {
+			overflow: hidden;
+		}
+		&__img {
+			transition: scale $transition;
+			height: 100%;
+		}
+		&__date {
+			display: block;
+			font-size: $fzSmallSP;
+			font-weight: $fwMedium;
+		}
+		&__text {
+			margin-top: vw(5);
+			text-decoration: underline;
+			font-weight: $fwMedium;
+		}
+	}
+	.kv-arrow {
+		$this: &;
+		&__btn {
+			position: absolute;
+			top: vw(100);
+			right: 2%;
+			transform: translate(0, -50%);
+			width: vw(40);
+			height: vw(40);
+			background: $primary02;
+			transition: $transition;
+			border-radius: 50%;
+			@include hoverOpacity();
+			&::before {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 70%;
+				height: 70%;
+				background: url(#{$imgPath}/arrow-white.svg) no-repeat center / contain;
+				content: "";
+			}
+			&--prev {
+				top: vw(100);
+				left: 2%;
+				right: auto;
+				transform: rotate(180deg) translate(0, 50%);
+			}
+		}
+	}
+	.kv-pagination {
+		gap: vw(14);
+		margin-top: vw(10);
+		&__item {
+			display: block;
+			width: vw(14);
+			height: vw(14);
+			border-radius: 50%;
+			border: vw(2) solid $white01;
+			background-color: $white01;
+			&.is-active {
+				scale: (1.1);
+				background-color: $primary02;
+			}
+		}
+	}
 }

@@ -1,0 +1,16 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+@include pc {
+	.article-content {
+		$this: &;
+		padding: 20px 0;
+	}
+}
+
+@include sp {
+	.article-head {
+		$this: &;
+
+	}
+}

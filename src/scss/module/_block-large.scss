@@ -1,13 +1,13 @@
 @use '../global/import' as *;
 
 @include pc {
-	.block-lg {
+	.block-large {
 		padding: 80px 0;
 	}
 }
 
 @include sp {
-	.block-lg {
-		padding: vw(40) 0;
+	.block-large {
+		padding: vw(50) 0;
 	}
 }

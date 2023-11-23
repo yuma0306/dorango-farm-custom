@@ -63,68 +63,7 @@ $(function() {
 				return;
 			}
 			vw = $(window).width();
-			resizeAccSp(vw)
-			resizeBurger(vw);
-		});
-	}
-
-	/**
-	 * SPのみアコーディオン。
-	 */
-	const createAccSp = () => {
-		$(`.${spAccTriger}`).on('click', function(){
-			if($(window).width() <= media) {
-				let targetParent = $(this).closest(`.${spAccParent}`)
-				let target = targetParent.find(`.${spAccContent}`);
-				target.slideToggle();
-				targetParent.toggleClass(activeFlag);
-			}
-		});
-	}
-
-	/**
-	 * SPのみアコーディオンリサイズ
-	 */
-	const resizeAccSp = (vw) => {
-		if(vw > media) {
-			$(`.${spAccContent}`).show();
-		} else {
-			$(`.${spAccContent}`).hide();
-			$(`.${spAccParent}`).removeClass(activeFlag);
-		}
-	}
-
-	/**
-	 * ハンバーガー用リサイズ
-	 */
-	const resizeBurger = (vw) => {
-		if(vw > media) {
-			$(`#${burgerBtn}`).hide();
-			$(`#${burgerMenu}`).hide();
-			$('body').removeClass(fixedClass).css({ 'top': 0 });
-		} else {
-			$(`#${burgerBtn}`).show();
-			$(`#${burgerMenu}`).hide();
-		}
-	}
-
-	/**
-	 * ハンバーガーメニュー
-	 */
-	const createBurger = () => {
-		const animationSpeed = 200;
-		let pos;
-		$(`#${burgerBtn}`).on('click', function() {
-			$(this).hide();
-			$(`#${burgerMenu}`).fadeIn(animationSpeed);
-			pos = $(window).scrollTop();
-			$('body').addClass(fixedClass).css({ 'top': - pos });
-		});
-		$(`#${burgerCloseBtn}`).on('click', function() {
-			$(`#${burgerBtn}`).show();
-			$(`#${burgerMenu}`).fadeOut(animationSpeed);
-			$('body').removeClass(fixedClass).css({ 'top': 0 });
-			window.scrollTo(0, pos);
+			// 処理
 		});
 	}
 
@@ -167,8 +106,14 @@ $(function() {
 			gap: '2%',
 			padding: "4%",
 			classes: {
-				pagination: 'splide__pagination pagination',
-				page      : 'splide__pagination__page pagination__item',
+				pagination: 'splide__pagination kv-pagination',
+				page      : 'splide__pagination__page kv-pagination__item',
+			},
+			breakpoints: {
+				767: {
+					perPage: 1,
+					padding: "8%",
+				},
 			},
 		});
 		main.mount();

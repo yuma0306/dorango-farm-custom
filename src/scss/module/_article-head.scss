@@ -1,0 +1,19 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+@include pc {
+	.article-head {
+		$this: &;
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		margin-top: 20px;
+	}
+}
+
+@include sp {
+	.article-head {
+		$this: &;
+
+	}
+}

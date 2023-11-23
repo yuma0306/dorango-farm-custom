@@ -1,0 +1,14 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+@include pc {
+	.heading-lv4-01 {
+
+	}
+}
+
+@include sp {
+	.heading-lv4-01 {
+
+	}
+}

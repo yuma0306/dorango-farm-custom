@@ -5,7 +5,7 @@
 	<h1 class="flow" id="js-flow">
 		<span class="flow__text">ヘビ牧場どらんごファームではボールパイソンを中心にヘビ飼育・繁殖方法や動物園情報・動物雑学をわかりやすく紹介します。</span>
 	</h1>
-	<nav class="gnav inner">
+	<nav class="gnav">
 		<ul class="gnav__list">
 			<li class="gnav__item">
 				<a class="gnav__link" href="/breed/">飼育繁殖</a>

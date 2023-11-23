@@ -1,0 +1,53 @@
+@use '../global/import' as *;
+
+.u-p0:not(#_) {
+	padding: 0;
+}
+.u-pt0:not(#_) {
+	padding-top: 0;
+}
+.u-pr0:not(#_) {
+	padding-right: 0;
+}
+.u-pb0:not(#_) {
+	padding-bottom: 0;
+}
+.u-pl0:not(#_) {
+	padding-left: 0;
+}
+
+@include pc {
+    .u-p0-pc:not(#_) {
+		padding: 0;
+	}
+	.u-pt0-pc:not(#_) {
+		padding-top: 0;
+	}
+	.u-pr0-pc:not(#_) {
+		padding-right: 0;
+	}
+	.u-pb0-pc:not(#_) {
+		padding-bottom: 0;
+	}
+	.u-pl0-pc:not(#_) {
+		padding-left: 0;
+	}
+}
+
+@include sp {
+	.u-p0-sp:not(#_) {
+		padding: 0;
+	}
+	.u-pt0-sp:not(#_) {
+		padding-top: 0;
+	}
+	.u-pr0-sp:not(#_) {
+		padding-right: 0;
+	}
+	.u-pb0-sp:not(#_) {
+		padding-bottom: 0;
+	}
+	.u-pl0-sp:not(#_) {
+		padding-left: 0;
+	}
+}

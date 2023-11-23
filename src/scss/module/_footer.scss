@@ -11,11 +11,12 @@
 		&__copy {
 			font-size: $fzSmallPC;
 			text-align: center;
+			margin-top: 30px;
 		}
 		&__list {
 			display: flex;
 			gap: 20px;
-			margin-bottom: 30px;
+			margin-top: 20px;
 		}
 		&__link {
 			display: block;
@@ -26,7 +27,26 @@
 }
 
 @include sp {
-	.header {
-		padding: vw(60) 0;
+	.footer {
+		padding: vw(40) 0;
+		background-color: $white01;
+		&__inner {
+			position: relative;
+		}
+		&__copy {
+			font-size: $fzSmallSP;
+			text-align: center;
+			margin-top: vw(25);
+		}
+		&__list {
+			display: flex;
+			gap: vw(20);
+			margin-top: vw(20);
+		}
+		&__link {
+			display: block;
+			text-decoration: underline;
+			@include hoverOpacity();
+		}
 	}
 }

@@ -1,0 +1,35 @@
+@use '../global/import' as *;
+
+.u-tc:not(#_) {
+	text-align: center;
+}
+.u-tl:not(#_) {
+	text-align: left;
+}
+.u-tr:not(#_) {
+	text-align: right;
+}
+
+@include pc {
+    .u-tc-pc:not(#_) {
+		text-align: center;
+	}
+	.u-tl-pc:not(#_) {
+		text-align: left;
+	}
+	.u-tr-pc:not(#_) {
+		text-align: right;
+	}
+}
+
+@include sp {
+	.u-tc-sp:not(#_) {
+		text-align: center;
+	}
+	.u-tl-sp:not(#_) {
+		text-align: left;
+	}
+	.u-tr-sp:not(#_) {
+		text-align: right;
+	}
+}
