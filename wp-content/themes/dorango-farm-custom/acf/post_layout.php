@@ -1,2 +1,2 @@
 <?php
-d(get_sub_field('post_field'));
+$post = get_sub_field('post_field');

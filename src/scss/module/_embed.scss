@@ -1,0 +1,16 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+@include pc {
+	.embed {
+		$this: &;
+		margin-top: 20px;
+	}
+}
+
+@include sp {
+	.embed {
+		$this: &;
+		margin-top: vw(20);
+	}
+}

@@ -14,7 +14,7 @@
 		}
 		&::after {
 			position: absolute;
-			top: 45%;
+			top: .5em;
 			right: -5px;
 			transform: translate(100%, -50%);
 			width: 30px;
@@ -68,7 +68,7 @@
 		}
 		&::after {
 			position: absolute;
-			top: 45%;
+			top: .5em;
 			right: vw(-5);
 			transform: translate(100%, -50%);
 			width: vw(30);

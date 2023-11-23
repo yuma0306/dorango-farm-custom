@@ -4,13 +4,23 @@
 @include pc {
 	.article-content {
 		$this: &;
-		padding: 20px 0;
+		margin-top: 50px;
+		& > * {
+			&:first-child {
+				margin-top: 0;
+			}
+		}
 	}
 }
 
 @include sp {
-	.article-head {
+	.article-content {
 		$this: &;
-
+		padding: vw(80) 0;
+		& > * {
+			&:first-child {
+				margin-top: 0;
+			}
+		}
 	}
 }

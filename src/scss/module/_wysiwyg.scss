@@ -1,0 +1,27 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+@include pc {
+	.wysiwyg {
+		$this: &;
+		margin-top: 20px;
+		& > * {
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+		p {
+			margin-top: 20px;
+		}
+		a {
+			position: relative;
+			color: $blue01;
+			text-decoration: underline;
+			font-weight: $fwMedium;
+			@include hoverOpacity();
+		}
+	}
+}
+
+@include sp {
+}

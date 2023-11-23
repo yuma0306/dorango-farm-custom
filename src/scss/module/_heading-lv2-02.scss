@@ -4,6 +4,21 @@
 @include pc {
 	.heading-lv2-02 {
 		margin-top: 50px;
+		position: relative;
+		border-bottom: 5px solid $primary03;
+		padding-bottom: 10px;
+		font-size: $fzXLPC;
+		font-weight: $fwMedium;
+		&::before {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 10%;
+			height: 5px;
+			background-color: $primary02;
+			content: "";
+			transform: translateY(100%);
+		}
 	}
 }
 

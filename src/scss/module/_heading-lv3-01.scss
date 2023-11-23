@@ -3,7 +3,20 @@
 
 @include pc {
 	.heading-lv3-01 {
-
+		position: relative;
+		margin-top: 40px;
+		padding-left: 20px;
+		font-size: $fzLargePC;
+		font-weight: $fwMedium;
+		&::before {
+			position: absolute;
+			top: 3px;
+			left: 0;
+			width: 5px;
+			height: 25px;
+			background-color: $primary02;
+			content: "";
+		}
 	}
 }
 
