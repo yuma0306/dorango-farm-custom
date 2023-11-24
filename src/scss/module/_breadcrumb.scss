@@ -42,4 +42,41 @@
 }
 
 @include sp {
+	.breadcrumb {
+		$this: &;
+		display: flex;
+		align-items: end;
+		column-gap: vw(30);
+		margin-top: vw(30);
+		padding: 0 0 vw(10);
+		overflow-x: auto;
+		white-space: nowrap;
+		&__item {
+			position: relative;
+			line-height: $lhFlat;
+			&:not(:last-of-type) {
+				&::after {
+					position: absolute;
+					top: 50%;
+					right: vw(-18);
+					transform: translate(0, -50%);
+					width: vw(8);
+					height: vw(8);
+					border-top: vw(2) solid $brown01;
+					border-right: vw(2) solid $brown01;
+					transform: translateY(-50%) rotate(45deg);
+					content: "";
+				}
+			}
+		}
+		&__link {
+			line-height: $lhFlat;
+			text-decoration: underline;
+			transition: $transition;
+			&:hover {
+				opacity: $opacity;
+				text-decoration: none;
+			}
+		}
+	}
 }

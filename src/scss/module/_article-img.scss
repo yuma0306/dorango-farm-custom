@@ -7,14 +7,48 @@
 			width: min(600px, 100%);
 		}
 		&__caption {
+			position: relative;
 			display: block;
 			margin-top: 10px;
-			font-size: $fwMedium;
+			padding-left: 40px;
+			font-weight: $fwMedium;
 			font-size: $fzSmallPC;
+			&::before {
+				position: absolute;
+				top: -2px;
+				left: 10px;
+				width: 25px;
+				height: 25px;
+				background: url(#{$imgPath}/arrow-turn.svg) no-repeat center / contain;
+				transform: rotate(90deg);
+				content: "";
+			}
 		}
 	}
 }
 
 @include sp {
-
+	.article-img {
+		&__picture {
+			width: 100%;
+		}
+		&__caption {
+			position: relative;
+			display: block;
+			margin-top: vw(10);
+			padding-left: vw(40);
+			font-weight: $fwMedium;
+			font-size: $fzSmallSP;
+			&::before {
+				position: absolute;
+				top: vw(-2);
+				left: vw(10);
+				width: vw(25);
+				height: vw(25);
+				background: url(#{$imgPath}/arrow-turn.svg) no-repeat center / contain;
+				transform: rotate(90deg);
+				content: "";
+			}
+		}
+	}
 }

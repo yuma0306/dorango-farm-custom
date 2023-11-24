@@ -34,6 +34,31 @@
 
 @include sp {
 	.tag {
-
+		display: flex;
+		gap: vw(20);
+		&__link {
+			display: block;
+			position: relative;
+			width: fit-content;
+			padding: vw(10) vw(10) vw(10) vw(28);
+			border: vw( 2) solid $primary04;
+			background-color: $white01;
+			border-radius: 100vh 0 0 100vh;
+			font-weight: $fwMedium;
+			font-size: $fzMediumPC;
+			line-height: $lhFlat;
+			@include hoverOpacity();
+			&::before {
+				position: absolute;
+				top: 50%;
+				left: vw(10);
+				transform: translate(0, -50%);
+				width: vw(10);
+				height: vw(10);
+				content: '';
+				border-radius: 50%;
+				background: $brown01;
+			}
+		}
 	}
 }

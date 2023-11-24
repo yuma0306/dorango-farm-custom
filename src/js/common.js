@@ -26,7 +26,7 @@ const addImageAttr = () => {
 	}
 }
 
-addImageAttr();
+// addImageAttr();
 
 
 /**
@@ -40,6 +40,10 @@ document.addEventListener('DOMContentLoaded', function() {
 	const activeFlag = 'is-active';
 	// フローティング
 	const header = 'js-header';
+	// アコーディオン
+	const acc = 'js-acc';
+	const accTriger = 'js-acc-triger';
+	const accBody = 'js-acc-body';
 
 	/**
 	 * スムーズスクロール
@@ -82,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		const tocListClassName = 'toc__list';
 		const tocItemClassName = 'toc__item';
 		const linkClassName = 'toc__link';
-		const idPrefix = 'heading';
+		const idPrefix = 'anchor-';
 		const tocInsertElement = document.querySelector(tocInsertSelector);
 		const headingElements = document.querySelectorAll(headingSelector);
 		const tocLayers = [];

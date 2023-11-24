@@ -13,6 +13,10 @@
 
 @include sp {
 	.heading-lv4-01 {
-
+		margin-top: vw(30);
+		padding-bottom: vw(5);
+		border-bottom: vw(2) solid $primary01;
+		font-size: $fzMediumSP;
+		font-weight: $fwMedium;
 	}
 }

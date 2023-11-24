@@ -10,13 +10,9 @@
 }
 
 @include sp {
-	.article-content {
-		$this: &;
-		padding: vw(80) 0;
-		& > * {
-			&:first-child {
-				margin-top: 0;
-			}
-		}
+	.affi-note {
+		margin-top: vw(30);
+		font-weight: $fwMedium;
+		text-decoration: underline;
 	}
 }
