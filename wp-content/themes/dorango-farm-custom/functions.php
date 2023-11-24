@@ -4,3 +4,4 @@
     get_template_part('functions/editor');
     get_template_part('functions/init');
     get_template_part('functions/post-type');
+    get_template_part('functions/taxonomy');
