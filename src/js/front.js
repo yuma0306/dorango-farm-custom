@@ -9,6 +9,9 @@ const createSlider = () => {
 		perMove: 1,
 		gap: '2%',
 		padding: '4%',
+		autoplay: true,
+		speed: 1000,
+		interval: 3000,
 		classes: {
 			pagination: 'splide__pagination kv-pagination',
 			page: 'splide__pagination__page kv-pagination__item',

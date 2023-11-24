@@ -29,6 +29,26 @@
 
 @include sp {
 	.heading-lv1-01 {
-
+		position: relative;
+		margin: 0 $innerWidthSP;
+		padding: vw(40) 0;
+		border-bottom: vw(3) solid $primary04;
+		&__text {
+			display: block;
+			margin: 0 auto;
+			text-align: center;
+			font-size: $fzXLSP;
+			font-weight: $fwMedium;
+		}
+		&::after {
+			position: absolute;
+			bottom: vw(-6);
+			right: 0;
+			transform: translate(0, 100%);
+			width: 100%;
+			height: vw(1);
+			background-color: $primary04;
+			content: "";
+		}
 	}
 }

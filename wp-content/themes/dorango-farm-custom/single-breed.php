@@ -4,7 +4,6 @@
 	$currentUri = getCurrentUri();
 	$currentPath = getCurrentPath($currentUri);
 	$modifiedDate = get_the_modified_time('Y-m-d');
-	$overviewList = get_field('overview_field');
 ?>
 <!DOCTYPE html>
 <html lang="ja">

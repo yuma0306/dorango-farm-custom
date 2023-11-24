@@ -14,8 +14,13 @@
 }
 
 @include sp {
-	.article-thumb {
+	.article-date {
 		$this: &;
-
+		display: flex;
+		align-items: flex-end;
+		gap: vw(10);
+		&__img {
+			width: vw(24);
+		}
 	}
 }

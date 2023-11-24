@@ -23,7 +23,22 @@
 }
 
 @include sp {
-	.heading-lv2-01 {
-
+	.heading-lv2-02 {
+		margin-top: vw(50);
+		position: relative;
+		border-bottom: vw(5) solid $primary03;
+		padding-bottom: vw(10);
+		font-size: $fzXLSP;
+		font-weight: $fwMedium;
+		&::before {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 20%;
+			height: 5px;
+			background-color: $primary02;
+			content: "";
+			transform: translateY(100%);
+		}
 	}
 }

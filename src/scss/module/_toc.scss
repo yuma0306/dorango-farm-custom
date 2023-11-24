@@ -46,6 +46,43 @@
 
 @include sp {
 	.toc {
-
+		display: block;
+		width: 100%;
+		margin: vw(40) auto 0;
+		border: vw(1) solid $primary04;
+		background-color: $primary03;
+		&__summary {
+			padding: vw(20);
+			text-align: center;
+			cursor: pointer;
+			@include hoverOpacity();
+		}
+		&__content {
+			padding: vw(20) vw(20) vw(30);
+			border-top: vw(1) dashed $primary04;
+			font-weight: $fwMedium;
+		}
+		&__list {
+			padding-left: vw(20);
+		}
+		&__item {
+			margin-top: vw(10);
+		}
+		&__link {
+			text-decoration: underline;
+			position: relative;
+			@include hoverOpacity;
+			&::before {
+				position: absolute;
+				top: 0.75em;
+				left: -1.2em;
+				transform: translate(0, -50%);
+				width: vw(10);
+				height: vw(10);
+				border-radius: 50%;
+				background-color: $primary04;
+				content: "";
+			}
+		}
 	}
 }

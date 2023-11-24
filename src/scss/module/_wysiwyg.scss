@@ -84,4 +84,83 @@
 }
 
 @include sp {
+	.wysiwyg {
+		$this: &;
+		& > * {
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+		p {
+			margin-top: vw(20);
+		}
+		a {
+			position: relative;
+			color: $blue01;
+			text-decoration: underline;
+			font-weight: $fwMedium;
+			@include hoverOpacity();
+			&[target="_blank"]::after {
+				display: inline-block;
+				margin: 0 vw(5);
+				margin-bottom: vw(-1);
+				width: vw(15);
+				height: vw(15);
+				background: url(#{$imgPath}/icon-blank-blue.svg) no-repeat center / contain;
+				content: "";
+			}
+		}
+		ul {
+			display: grid;
+			gap: vw(10);
+			margin-top: vw(20);
+			padding: vw(15) vw(20);
+			background-color: $primary03;
+			li {
+				position: relative;
+				font-weight: $fwMedium;
+				padding-left: 1em;
+				&::before {
+					position: absolute;
+					top: .1em;
+					left: 0;
+					transform: translateY(50%);
+					width: vw(10);
+					height: vw(10);
+					background: $brown01;
+					border-radius: 50%;
+					content: "";
+				}
+			}
+		}
+		ol {
+			display: grid;
+			gap: vw(15);
+			margin-top: vw(28);
+			background-color: $primary03;
+			padding: vw(20);
+			counter-reset: number 0;
+			li {
+				position: relative;
+				padding-left: vw(30);
+				font-weight: $fwMedium;
+				&::before {
+					display: grid;
+					place-content: center;
+					position: absolute;
+					top: -1em;
+					left: 0;
+					transform: translateY(50%);
+					width: vw(25);
+					height: vw(25);
+					border-radius: 50%;
+					background: $brown01;
+					color: $white01;
+					font-weight: $fwMedium;
+					counter-increment: number 1;
+					content: counter(number);
+				}
+			}
+		}
+	}
 }

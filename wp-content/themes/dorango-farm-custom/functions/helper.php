@@ -225,15 +225,34 @@ function isNoindex() {
  */
 function getAcfArticle() {
 	$acfArticle = 'flexible_field';
-	if(have_rows($acfArticle) ) {
+	// $count = 0;
+	// $tocs = [];
+	if(have_rows($acfArticle)) {
 		while(have_rows($acfArticle)) {
 			the_row();
 			$layout = get_row_layout();
 			$path = get_template_directory();
 			if(file_exists("{$path}/acf/{$layout}.php")) {
+				// include(get_template_directory() . "/acf/{$layout}.php");
 				get_template_part("acf/{$layout}");
 			}
 		}
 	}
 }
+
+// function getAcfArticle() {
+// 	$tocs = [];
+// 	$tocsCount = 0;
+// 	$acfArticle = 'flexible_field';
+// 	if(have_rows($acfArticle) ) {
+// 		while(have_rows($acfArticle)) {
+// 			the_row();
+// 			$layout = get_row_layout();
+// 			$path = get_template_directory();
+// 			if(file_exists("{$path}/acf/{$layout}.php")) {
+// 				get_template_part("acf/{$layout}");
+// 			}
+// 		}
+// 	}
+// }
 

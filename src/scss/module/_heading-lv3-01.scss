@@ -22,6 +22,19 @@
 
 @include sp {
 	.heading-lv3-01 {
-
+		position: relative;
+		margin-top: vw(40);
+		padding-left: vw(20);
+		font-size: $fzLargeSP;
+		font-weight: $fwMedium;
+		&::before {
+			position: absolute;
+			top: vw(3);
+			left: 0;
+			width: vw(5);
+			height: vw(25);
+			background-color: $primary02;
+			content: "";
+		}
 	}
 }

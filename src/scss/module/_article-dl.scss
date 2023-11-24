@@ -30,4 +30,30 @@
 }
 
 @include sp {
+	.article-dl {
+		$this: &;
+		border: vw(1) solid $brown01;
+		background-color: $primary03;
+		&__list {
+			display: flex;
+			&:not(:first-of-type) {
+				#{$this}__term {
+					border-top: vw(1) solid $brown01;
+				}
+				#{$this}__desc {
+					border-top: vw(1) solid $brown01;
+				}
+			}
+		}
+		&__term {
+			width: 35%;
+			font-weight: $fwMedium;
+			padding: vw(15);
+			border-right: vw(1) solid $brown01;
+		}
+		&__desc {
+			flex: 1;
+			padding: vw(15);
+		}
+	}
 }
