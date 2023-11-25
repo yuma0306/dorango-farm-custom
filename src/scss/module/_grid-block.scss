@@ -1,0 +1,18 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+@include pc {
+	.grid-block {
+		display: grid;
+		gap: 20px;
+		margin-top: 20px;
+	}
+}
+
+@include sp {
+	.grid-block {
+		display: grid;
+		gap: vw(20);
+		margin-top: vw(20);
+	}
+}

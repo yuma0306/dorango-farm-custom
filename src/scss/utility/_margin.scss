@@ -3,6 +3,9 @@
 .u-m0:not(#_) {
 	margin: 0;
 }
+.u-m0a:not(#_) {
+	margin: 0 auto;
+}
 .u-mt0:not(#_) {
 	margin-top: 0;
 }
@@ -19,6 +22,9 @@
 @include pc {
     .u-m0-pc:not(#_) {
 		margin: 0;
+	}
+	.u-m0a-pc:not(#_) {
+		margin: 0 auto;
 	}
 	.u-mt0-pc:not(#_) {
 		margin-top: 0;
@@ -37,6 +43,9 @@
 @include sp {
 	.u-m0-sp:not(#_) {
 		margin: 0;
+	}
+	.u-m0a-sp:not(#_) {
+		margin: 0 auto;
 	}
 	.u-mt0-sp:not(#_) {
 		margin-top: 0;

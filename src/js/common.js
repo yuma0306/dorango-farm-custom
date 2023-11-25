@@ -1,35 +1,4 @@
 /**
- * 非同期実行
- */
-const addImageAttr = () => {
-	const createPromiseObj = function(src){
-		return new Promise(function(resolve){
-			const image = new Image();
-			image.src = src;
-			image.onload = function(){
-				resolve(image);
-			}
-		});
-	}
-	const images = document.getElementsByTagName('img');
-	for (const image of images) {
-		const src = image.getAttribute('src');
-		createPromiseObj(src)
-		.then(function(res){
-			if(!image.hasAttribute('width')){
-				image.setAttribute('width', res.width);
-			}
-			if(!image.hasAttribute('height')){
-				image.setAttribute('height', res.height);
-			}
-		});
-	}
-}
-
-// addImageAttr();
-
-
-/**
  * DOM読み込み後
  */
 document.addEventListener('DOMContentLoaded', function() {
@@ -40,10 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	const activeFlag = 'is-active';
 	// フローティング
 	const header = 'js-header';
-	// アコーディオン
-	const acc = 'js-acc';
-	const accTriger = 'js-acc-triger';
-	const accBody = 'js-acc-body';
 
 	/**
 	 * スムーズスクロール
@@ -93,7 +58,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		let idCounter = 1;
 		const generateUniqueId = () => `${idPrefix}${idCounter++}`;
 		let previousRank = -1;
-
 		// 目次生成
 		try {
 			// リンク生成
@@ -150,26 +114,50 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	}
 
-	/**
-	 * リサイズ処理
-	 */
-	const resizeWindow = () => {
-		let vw = window.innerWidth;
-		window.addEventListener('resize', () => {
-			if (vw === window.innerWidth) {
-			// 横幅に変化がない場合は終了
-		return;
-		}
-		vw = window.innerWidth;
-		// 処理
+	const validateSearchBtn = () => {
+		const serchForm = '.js-search-form';
+		const searchBtn = '.js-search-btn';
+		const searchInput = '.js-search-input';
+		const validateErr = '.js-search-err';
+		const searchBtnElm = document.querySelector(searchBtn);
+		const searchInputElm = document.querySelector(searchInput);
+		const searchFormElm = document.querySelector(serchForm);
+		const validateErrElm = document.querySelector(validateErr);
+		searchBtnElm.addEventListener('click', function (e) {
+			e.preventDefault();
+			validateAndSubmitForm();
 		});
-	};
+		searchInputElm.addEventListener('keydown', function (e) {
+			if (e.key === 'Enter') {
+				e.preventDefault();
+				validateAndSubmitForm();
+			}
+		});
+		function validateAndSubmitForm() {
+			const inputValue = searchInputElm.value;
+			if (inputValue.trim() !== '') {
+				searchFormElm.submit();
+			} else {
+				console.log('入力が空です');
+				validateErrElm.style.visibility = 'visible';
+				validateErrElm.style.opacity = '1';
+			}
+		}
+		searchInputElm.addEventListener('focus', function () {
+			validateErrElm.style.visibility = 'hidden';
+			validateErrElm.style.opacity = '0';
+		});
+	}
+
+	// 関数を呼び出してイベントリスナーを設定する
+	validateSearchBtn();
+
 
 	/**
 	 * 関数実行
 	 */
 	createToc();
-	resizeWindow();
 	scrollSmooth();
 	fixedContent();
+	validateSearchBtn();
 });

@@ -57,33 +57,41 @@
 				<section class="article-content" id="js-article">
 					<?php getAcfArticle(); ?>
 				</section>
+				<h2 class="heading-lv2-02">もっと記事を探す</h2>
 				<?php if(!empty($breedTagList)): ?>
-					<h2 class="heading-lv2-02">関連タグ</h2>
-					<div class="">
+					<h3 class="heading-lv3-01">この記事の関連タグ</h3>
+					<div class="grid-block">
 						<?php foreach($breedTagList as $key => $breedTagItem): if(!empty($breedTagItem)): ?>
-							<dl>
-								<dt>
+							<dl class="tag-list">
+								<dt class="tag-list__term">
 									<?php echo esc_html($breedTagTerms[$key]); ?>
 								</dt>
-								<dd>
-									<ul class="tag">
+								<dd class="tag-list__desc">
+									<div class="tag-list__block">
 										<?php foreach($breedTagItem as $breedTag): if(!empty($breedTag)):?>
 											<?php $tagLink = get_term_link($breedTag); ?>
 											<?php if(!is_wp_error($tagLink)): ?>
-												<li class="tag__item">
-													<a class="tag__link" href="<?php echo esc_url($tagLink); ?>">
-														<?php echo esc_html($breedTag->name); ?>
-													</a>
-												</li>
+												<a class="tag" href="<?php echo esc_url($tagLink); ?>">
+													<?php echo esc_html($breedTag->name); ?>
+												</a>
 											<?php endif; ?>
 										<?php endif; endforeach; ?>
-									</ul>
+									</div>
 								</dd>
 							</dl>
 						<?php endif; endforeach; ?>
 					</div>
+					<a href="/breed/tag/" class="btn-link01 u-ml0-pc">タグ一覧</a>
 				<?php endif; ?>
-				<h2 class="heading-lv2-02">「飼育繁殖」のカテゴリー・キーワード検索</h2>
+				<h3 class="heading-lv3-01">キーワード検索</h3>
+				<form class="search-form js-search-form" action="<?php echo home_url(); ?>" method="get">
+					<input class="search-form__input js-search-input" type="text" name="s" value="<?php the_search_query(); ?>" placeholder="キーワード検索">
+					<input type="hidden" name="post_type[]" value="breed">
+					<button type="button" class="search-form__btn js-search-btn">
+						<img class="search-form__icon" src="<?php echo get_template_directory_uri(); ?>/assets/img/icon-search.svg" alt="">
+					</button>
+				</form>
+				<div class="validate-err js-search-err">キーワードを入力してください</div>
 			</div>
 		</main>
 		<?php get_template_part('include/footer'); ?>

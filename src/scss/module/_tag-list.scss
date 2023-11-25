@@ -1,0 +1,40 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+@include pc {
+	.tag-list {
+		display: grid;
+		row-gap: 10px;
+		&__term {
+			font-size: $fzMediumPC;
+			font-weight: $fwMedium;
+		}
+		&__desc {
+			overflow-x: auto;
+		}
+		&__block {
+			display: flex;
+			gap: 20px;
+			white-space: nowrap;
+		}
+	}
+}
+
+@include sp {
+	.tag-list {
+		display: grid;
+		row-gap: vw(10);
+		&__term {
+			font-size: $fzMediumSP;
+			font-weight: $fwMedium;
+		}
+		&__desc {
+			overflow-x: auto;
+		}
+		&__block {
+			display: flex;
+			gap: vw(20);
+			white-space: nowrap;
+		}
+	}
+}

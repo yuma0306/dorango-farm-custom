@@ -58,7 +58,7 @@
 			<?php wp_reset_postdata(); endif; ?>
 			<div class="block-large">
 				<div class="inner">
-					<form class="search-form" action="<?php echo home_url(); ?>" method="get">
+					<form class="search-form u-m0a" action="<?php echo home_url(); ?>" method="get">
 						<input class="search-form__input" type="text" name="s" value="<?php the_search_query(); ?>" placeholder="キーワード検索">
 						<input type="hidden" name="post_type[]" value="breed">
 						<input type="hidden" name="post_type[]" value="zoo">
