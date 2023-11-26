@@ -58,17 +58,20 @@
 			<?php wp_reset_postdata(); endif; ?>
 			<div class="block-large">
 				<div class="inner">
-					<form class="search-form u-m0a" action="<?php echo home_url(); ?>" method="get">
-						<input class="search-form__input" type="text" name="s" value="<?php the_search_query(); ?>" placeholder="キーワード検索">
-						<input type="hidden" name="post_type[]" value="breed">
-						<input type="hidden" name="post_type[]" value="zoo">
-						<input type="hidden" name="post_type[]" value="shop">
-						<input type="hidden" name="post_type[]" value="food">
-						<input type="hidden" name="post_type[]" value="trivia">
-						<button class="search-form__btn">
-							<img class="search-form__icon" src="<?php echo get_template_directory_uri(); ?>/assets/img/icon-search.svg" alt="">
-						</button>
-					</form>
+					<div class="search-form-block">
+						<form class="search-form u-m0a js-search-form" action="<?php echo home_url(); ?>" method="get">
+							<input class="search-form__input js-search-input" type="text" name="s" value="<?php the_search_query(); ?>" placeholder="例：ボールパイソン">
+							<input type="hidden" name="post_type[]" value="breed">
+							<input type="hidden" name="post_type[]" value="zoo">
+							<input type="hidden" name="post_type[]" value="shop">
+							<input type="hidden" name="post_type[]" value="food">
+							<input type="hidden" name="post_type[]" value="trivia">
+							<button type="button" class="search-form__btn js-search-btn">
+								<img class="search-form__icon" src="<?php echo get_template_directory_uri(); ?>/assets/img/icon-search.svg" alt="">
+							</button>
+						</form>
+						<div class="validate-err js-search-err">キーワードを入力してください</div>
+					</div>
 					<div class="blogs-wrap">
 						<?php if($breedPosts->have_posts()): ?>
 							<section class="blogs-block">

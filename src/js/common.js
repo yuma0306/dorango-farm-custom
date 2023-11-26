@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				appendTocToElement(tocInsertElement, findParentLayer(tocLayers, 0, 1));
 			}
 		} catch (error) {
-			console.error(error);
+			// console.error(error);
 		}
 	}
 
@@ -123,6 +123,9 @@ document.addEventListener('DOMContentLoaded', function() {
 		const searchInputElm = document.querySelector(searchInput);
 		const searchFormElm = document.querySelector(serchForm);
 		const validateErrElm = document.querySelector(validateErr);
+		if (!searchBtnElm || !searchInputElm || !searchFormElm || !validateErrElm) {
+			return;
+		}
 		searchBtnElm.addEventListener('click', function (e) {
 			e.preventDefault();
 			validateAndSubmitForm();
@@ -138,7 +141,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			if (inputValue.trim() !== '') {
 				searchFormElm.submit();
 			} else {
-				console.log('入力が空です');
 				validateErrElm.style.visibility = 'visible';
 				validateErrElm.style.opacity = '1';
 			}
@@ -148,10 +150,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			validateErrElm.style.opacity = '0';
 		});
 	}
-
-	// 関数を呼び出してイベントリスナーを設定する
-	validateSearchBtn();
-
 
 	/**
 	 * 関数実行

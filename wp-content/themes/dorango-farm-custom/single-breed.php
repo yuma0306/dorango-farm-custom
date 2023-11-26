@@ -81,11 +81,11 @@
 							</dl>
 						<?php endif; endforeach; ?>
 					</div>
-					<a href="/breed/tag/" class="btn-link01 u-ml0-pc">タグ一覧</a>
+					<a href="/tag/" class="btn-link01 u-ml0-pc">タグ一覧</a>
 				<?php endif; ?>
-				<h3 class="heading-lv3-01">キーワード検索</h3>
+				<h3 class="heading-lv3-01">飼育繁殖の記事を検索</h3>
 				<form class="search-form js-search-form" action="<?php echo home_url(); ?>" method="get">
-					<input class="search-form__input js-search-input" type="text" name="s" value="<?php the_search_query(); ?>" placeholder="キーワード検索">
+					<input class="search-form__input js-search-input" type="text" name="s" value="<?php the_search_query(); ?>" placeholder="例：ボールパイソン">
 					<input type="hidden" name="post_type[]" value="breed">
 					<button type="button" class="search-form__btn js-search-btn">
 						<img class="search-form__icon" src="<?php echo get_template_directory_uri(); ?>/assets/img/icon-search.svg" alt="">

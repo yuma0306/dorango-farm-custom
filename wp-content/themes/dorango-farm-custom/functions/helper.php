@@ -59,17 +59,17 @@ function displayBreadcrumnbs() {
     if(get_post_type() === 'page') {
         global $post;
         $ancestorList = array_reverse(get_post_ancestors($post));
-        echo '<ul class-"breadcrumb">' . "\n";
-            echo '<li class-"breadcrumb__item"><a class-"breadcrumb__link" href="/">トップ</a></li>' . "\n";
+        echo '<ul class="breadcrumb">' . "\n";
+            echo '<li class="breadcrumb__item"><a class="breadcrumb__link" href="/">トップ</a></li>' . "\n";
             if($ancestorList) {
                 foreach($ancestorList as $ancestorItem) {
                     if('publish' !== get_post_status($ancestorItem)) continue;
                     $ancestorLink = get_page_link($ancestorItem);
                     $ancestorTitle = get_post($ancestorItem)->post_title;
-                    echo '<li class-"breadcrumb__item"><a class-"breadcrumb__link" href="'.$ancestorLink.'">'.$ancestorTitle.'</a></li>'."\n";
+                    echo '<li class="breadcrumb__item"><a class="breadcrumb__link" href="'.$ancestorLink.'">'.$ancestorTitle.'</a></li>'."\n";
                 }
             }
-            echo '<li class-"breadcrumb__item"><span class-"breadcrumb__text">'.get_the_title().'</span></li>'."\n";
+            echo '<li class="breadcrumb__item"><span class="breadcrumb__text">'.get_the_title().'</span></li>'."\n";
         echo '</ul>'."\n";
     }
 }

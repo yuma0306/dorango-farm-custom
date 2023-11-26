@@ -36,6 +36,7 @@
 		}
 		&__img {
 			transition: scale $transition;
+			width: 100%;
 			height: 100%;
 		}
 		&__date {
