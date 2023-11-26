@@ -22,7 +22,7 @@ $taxonomies = ['goods', 'method', 'species', 'morph', 'diseases', 'cross'];
 					<?php
 						$terms = get_terms([
 							'taxonomy' => $taxonomy,
-							'hide_empty' => false,
+							'hide_empty' => true,
 						]);
 					?>
 					<?php if(!empty($terms)): ?>

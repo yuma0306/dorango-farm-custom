@@ -5,6 +5,7 @@
 	$currentPath = getCurrentPath($currentUri);
 	$modifiedDate = get_the_modified_time('Y-m-d');
 	$articleID = get_the_ID();
+	$taxonomies = ['goods', 'method', 'species', 'morph', 'diseases', 'cross'];
 	$breedTaxonomyList = [
 		'goods' => '飼育用品',
 		'method' => '飼育法',
