@@ -59,25 +59,37 @@ function displayBreadcrumnbs() {
     if(get_post_type() === 'page') {
         global $post;
         $ancestorList = array_reverse(get_post_ancestors($post));
-        echo '<ul class-"breadcrumb">' . "\n";
-            echo '<li class-"breadcrumb__item"><a class-"breadcrumb__link" href="/">トップ</a></li>' . "\n";
+        echo '<ul class="breadcrumb">' . "\n";
+            echo '<li class="breadcrumb__item"><a class="breadcrumb__link" href="/">トップ</a></li>' . "\n";
             if($ancestorList) {
                 foreach($ancestorList as $ancestorItem) {
                     if('publish' !== get_post_status($ancestorItem)) continue;
                     $ancestorLink = get_page_link($ancestorItem);
                     $ancestorTitle = get_post($ancestorItem)->post_title;
-                    echo '<li class-"breadcrumb__item"><a class-"breadcrumb__link" href="'.$ancestorLink.'">'.$ancestorTitle.'</a></li>'."\n";
+                    echo '<li class="breadcrumb__item"><a class="breadcrumb__link" href="'.$ancestorLink.'">'.$ancestorTitle.'</a></li>'."\n";
                 }
             }
-            echo '<li class-"breadcrumb__item"><span class-"breadcrumb__text">'.get_the_title().'</span></li>'."\n";
+            echo '<li class="breadcrumb__item"><span class="breadcrumb__text">'.get_the_title().'</span></li>'."\n";
         echo '</ul>'."\n";
     }
 }
 
 /**
- * 固定ページテンプレートのパンクズ表示
+ * パンクズスキーマの表示
  */
 function createBreadcrumbsSchema() {
+	// ページ情報
+	$currentUri = getCurrentUri();
+	$currentPath = getCurrentPath($currentUri);
+	$title = '記事一覧';
+	$prefix = [
+		"breed" => "飼育繁殖の",
+		"zoo" => "動物園の",
+		"shop" => "ショップの",
+		"food" => "昆虫食の",
+		"trivia" => "動物雑学の",
+	];
+	// パンクズスキーマ
     $breadcrumbs = [];
     $breadcrumbs[] = [
         '@type' => 'ListItem',
@@ -106,6 +118,50 @@ function createBreadcrumbsSchema() {
             'item' => get_permalink($page)
         ];
     }
+	if(is_404()) {
+		$breadcrumbs[] = [
+			'@type' => 'ListItem',
+			'position' => count($breadcrumbs) + 1,
+			'name' => 'ページが見つかりません',
+			'item' => home_url() . $currentUri
+		];
+	}
+	if(is_archive()) {
+		$archiveTitle = isset($prefix[$currentPath]) ? $prefix[$currentPath] . $title : $title;
+        $breadcrumbs[] = [
+            '@type' => 'ListItem',
+            'position' => count($breadcrumbs) + 1,
+            'name' => $archiveTitle,
+            'item' => home_url() . $currentUri
+        ];
+    }
+	if(is_single()) {
+		$singleTitle = get_the_title();
+		$archiveTitle = isset($prefix[$currentPath]) ? $prefix[$currentPath] . $title : $title;
+		$breadcrumbs[] = [
+            '@type' => 'ListItem',
+            'position' => count($breadcrumbs) + 1,
+            'name' => $archiveTitle,
+            'item' => home_url() . "/{$currentPath}/"
+        ];
+		$breadcrumbs[] = [
+            '@type' => 'ListItem',
+            'position' => count($breadcrumbs) + 1,
+            'name' => $singleTitle,
+            'item' => home_url() . $currentUri
+        ];
+    }
+	if(is_search()){
+		global $wp_query;
+		$total = $wp_query->found_posts;
+		$searchQuery = get_search_query();
+		$breadcrumbs[] = [
+            '@type' => 'ListItem',
+            'position' => count($breadcrumbs) + 1,
+            'name' => "「{$searchQuery}」の検索結果（{$total}件）",
+            'item' => home_url() . $currentUri
+        ];
+	}
     echo json_encode([
         '@context' => 'http://schema.org',
         '@type' => 'BreadcrumbList',
@@ -119,24 +175,24 @@ function createBreadcrumbsSchema() {
  * https://developer.wordpress.org/reference/functions/get_the_posts_pagination/
  */
 function createPagenation(){
-    $pager = [
+    $pager = get_the_posts_pagination([
         'class' => 'pagination',
         'mid_size' => 2,
         'prev_next' => true,
-        'prev_text' => __('<span>戻る</span>'),
-        'next_text' => __('<span>次へ</span>'),
-    ];
-    $replaceclasses = [
-        '/<h2 class-"screen-reader-text">(.*)<\/h2>/' => '',
-        '/<nav class-"navigation\s/' => '<nav class="',
-        '/<div class-"nav-links"/' => '<div class="pagination__inner">',
-        '<li>/' => '<li class="pagination__item">',
+        'prev_text' => __(''),
+        'next_text' => __(''),
+    ]);
+    $replaceClass = [
+		'/<h2 class="screen-reader-text">投稿ナビゲーション<\/h2>/' => '',
+        '/<nav class="navigation\s/' => '<nav class="',
+        '/<div class="nav-links"/' => '<div class="pagination__inner"',
         '/class="page-numbers\scurrent"/' => 'class="pagination__number pagination__number--current"',
         '/class="next\spage-numbers"/' => 'class="pagination__btn pagination__btn--next"',
         '/class="prev\spage-numbers"/' => 'class="pagination__btn pagination__btn--prev"',
         '/class="page-numbers"/' => 'class="pagination__number"',
+        '/class="page-numbers dots"/' => 'class="page-numbers page-numbers--dots"',
     ];
-    foreach($replaceclasses as $pattern => $replacement) {
+    foreach($replaceClass as $pattern => $replacement) {
         $pager = preg_replace($pattern, $replacement, $pager);
     }
     echo $pager;
@@ -239,20 +295,4 @@ function getAcfArticle() {
 		}
 	}
 }
-
-// function getAcfArticle() {
-// 	$tocs = [];
-// 	$tocsCount = 0;
-// 	$acfArticle = 'flexible_field';
-// 	if(have_rows($acfArticle) ) {
-// 		while(have_rows($acfArticle)) {
-// 			the_row();
-// 			$layout = get_row_layout();
-// 			$path = get_template_directory();
-// 			if(file_exists("{$path}/acf/{$layout}.php")) {
-// 				get_template_part("acf/{$layout}");
-// 			}
-// 		}
-// 	}
-// }
 

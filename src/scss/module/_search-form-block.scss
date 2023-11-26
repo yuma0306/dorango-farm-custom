@@ -1,0 +1,9 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+@include pc {
+	.search-form-block {
+		width: 500px;
+		margin: 0 auto;
+	}
+}

@@ -9,7 +9,7 @@
 		align-items: center;
 		width: 500px;
 		height: 45px;
-		margin: 0 auto;
+		margin: 20px 0 0;
 		box-shadow: 0 0 1px 0 $brown01;
 		&__input {
 			display: block;
@@ -52,7 +52,7 @@
 		align-items: center;
 		width: 100%;
 		height: vw(45);
-		margin: 0 auto;
+		margin: vw(20) 0 0;
 		box-shadow: 0 0 vw(2) 0 $brown01;
 		&__input {
 			display: block;

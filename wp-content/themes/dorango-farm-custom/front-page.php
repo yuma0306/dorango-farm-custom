@@ -58,70 +58,73 @@
 			<?php wp_reset_postdata(); endif; ?>
 			<div class="block-large">
 				<div class="inner">
-					<form class="search-form" action="<?php echo home_url(); ?>" method="get">
-						<input class="search-form__input" type="text" name="s" value="<?php the_search_query(); ?>" placeholder="キーワード検索">
-						<input type="hidden" name="post_type[]" value="breed">
-						<input type="hidden" name="post_type[]" value="zoo">
-						<input type="hidden" name="post_type[]" value="shop">
-						<input type="hidden" name="post_type[]" value="food">
-						<input type="hidden" name="post_type[]" value="trivia">
-						<button class="search-form__btn">
-							<img class="search-form__icon" src="<?php echo get_template_directory_uri(); ?>/assets/img/icon-search.svg" alt="">
-						</button>
-					</form>
+					<div class="search-form-block">
+						<form class="search-form u-m0a js-search-form" action="<?php echo home_url(); ?>" method="get">
+							<input class="search-form__input js-search-input" type="text" name="s" value="<?php the_search_query(); ?>" placeholder="例：ボールパイソン">
+							<input type="hidden" name="post_type[]" value="breed">
+							<input type="hidden" name="post_type[]" value="zoo">
+							<input type="hidden" name="post_type[]" value="shop">
+							<input type="hidden" name="post_type[]" value="food">
+							<input type="hidden" name="post_type[]" value="trivia">
+							<button type="button" class="search-form__btn js-search-btn">
+								<img class="search-form__icon" src="<?php echo get_template_directory_uri(); ?>/assets/img/icon-search.svg" alt="検索" width="32" height="32">
+							</button>
+						</form>
+						<div class="validate-err js-search-err">キーワードを入力してください</div>
+					</div>
 					<div class="blogs-wrap">
 						<?php if($breedPosts->have_posts()): ?>
 							<section class="blogs-block">
 								<h2 class="heading-lv2-01 heading-lv2-01--breed"><span class="heading-lv2-01__deco">飼育・繁殖</span>の記事</h2>
-								<ul class="blogs-list">
+								<div class="grid-block">
 									<?php while($breedPosts->have_posts()): $breedPosts->the_post(); ?>
 										<?php get_template_part('include/blogs-item'); ?>
 									<?php endwhile; ?>
-								</ul>
+								</div>
 								<a class="btn-link01 btn-link01--end" href="/breed/">飼育・繁殖の記事一覧</a>
 							</section>
 						<?php wp_reset_postdata(); endif; ?>
 						<?php if($zooPosts->have_posts()): ?>
 							<section class="blogs-block">
 								<h2 class="heading-lv2-01 heading-lv2-01--zoo"><span class="heading-lv2-01__deco">動物園</span>の記事</h2>
-								<ul class="blogs-list">
+								<div class="grid-block">
 									<?php while($zooPosts->have_posts()): $zooPosts->the_post(); ?>
 										<?php get_template_part('include/blogs-item'); ?>
 									<?php endwhile; ?>
-								</ul>
-								<a class="btn-link01 btn-link01--end" href="/breed/">動物園の記事一覧</a>
+								</div>
+								<a class="btn-link01 btn-link01--end" href="/zoo/">動物園の記事一覧</a>
 							</section>
 						<?php wp_reset_postdata(); endif; ?>
 						<?php if($shopPosts->have_posts()): ?>
 							<section class="blogs-block">
 								<h2 class="heading-lv2-01 heading-lv2-01--shop"><span class="heading-lv2-01__deco">ショップ</span>の記事</h2>
-								<ul class="blogs-list">
+								<div class="grid-block">
 									<?php while($shopPosts->have_posts()): $shopPosts->the_post(); ?>
 										<?php get_template_part('include/blogs-item'); ?>
 									<?php endwhile; ?>
-								</ul>
+								</div>
 								<a class="btn-link01 btn-link01--end" href="/shop/">ショップの記事一覧</a>
 							</section>
 						<?php wp_reset_postdata(); endif; ?>
 						<?php if($foodPosts->have_posts()): ?>
 							<section class="blogs-block">
 								<h2 class="heading-lv2-01 heading-lv2-01--food"><span class="heading-lv2-01__deco">昆虫食</span>の記事</h2>
-								<ul class="blogs-list">
+								<div class="grid-block">
 									<?php while($foodPosts->have_posts()): $foodPosts->the_post(); ?>
 										<?php get_template_part('include/blogs-item'); ?>
 									<?php endwhile; ?>
-								</ul>
+								</div>
 								<a class="btn-link01 btn-link01--end" href="/food/">昆虫食の記事一覧</a>
 							</section>
 						<?php wp_reset_postdata(); endif; ?>
 						<?php if($triviaPosts->have_posts()): ?>
 							<section class="blogs-block">
 								<h2 class="heading-lv2-01 heading-lv2-01--trivia"><span class="heading-lv2-01__deco">動物雑学</span>の記事</h2>
-								<ul class="blogs-list">
+								<div class="grid-block">
 									<?php while($triviaPosts->have_posts()): $triviaPosts->the_post(); ?>
 										<?php get_template_part('include/blogs-item'); ?>
 									<?php endwhile; ?>
-								</ul>
+								</div>
 								<a class="btn-link01 btn-link01--end" href="/trivia/">動物雑学の記事一覧</a>
 							</section>
 						<?php wp_reset_postdata(); endif; ?>

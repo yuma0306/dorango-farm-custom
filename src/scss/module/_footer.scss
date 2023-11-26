@@ -39,9 +39,11 @@
 			margin-top: vw(25);
 		}
 		&__list {
-			display: flex;
-			gap: vw(20);
+			display: grid;
+			grid-template-columns: repeat(2, auto);
+			gap: vw(15);
 			margin-top: vw(20);
+			width: vw(280);
 		}
 		&__link {
 			display: block;
