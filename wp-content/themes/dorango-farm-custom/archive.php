@@ -10,7 +10,6 @@
 		"trivia" => "動物雑学の",
 	];
 	$resultTitle = isset($titlePrefix[$currentPath]) ? $titlePrefix[$currentPath] . $title : $title;
-	d($resultTitle);
 ?>
 <!DOCTYPE html>
 <html lang="ja">

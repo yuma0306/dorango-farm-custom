@@ -75,9 +75,21 @@ function displayBreadcrumnbs() {
 }
 
 /**
- * 固定ページテンプレートのパンクズ表示
+ * パンクズスキーマの表示
  */
 function createBreadcrumbsSchema() {
+	// ページ情報
+	$currentUri = getCurrentUri();
+	$currentPath = getCurrentPath($currentUri);
+	$title = '記事一覧';
+	$prefix = [
+		"breed" => "飼育繁殖の",
+		"zoo" => "動物園の",
+		"shop" => "ショップの",
+		"food" => "昆虫食の",
+		"trivia" => "動物雑学の",
+	];
+	// パンクズスキーマ
     $breadcrumbs = [];
     $breadcrumbs[] = [
         '@type' => 'ListItem',
@@ -106,6 +118,50 @@ function createBreadcrumbsSchema() {
             'item' => get_permalink($page)
         ];
     }
+	if(is_404()) {
+		$breadcrumbs[] = [
+			'@type' => 'ListItem',
+			'position' => count($breadcrumbs) + 1,
+			'name' => 'ページが見つかりません',
+			'item' => home_url() . $currentUri
+		];
+	}
+	if(is_archive()) {
+		$archiveTitle = isset($prefix[$currentPath]) ? $prefix[$currentPath] . $title : $title;
+        $breadcrumbs[] = [
+            '@type' => 'ListItem',
+            'position' => count($breadcrumbs) + 1,
+            'name' => $archiveTitle,
+            'item' => home_url() . $currentUri
+        ];
+    }
+	if(is_single()) {
+		$singleTitle = get_the_title();
+		$archiveTitle = isset($prefix[$currentPath]) ? $prefix[$currentPath] . $title : $title;
+		$breadcrumbs[] = [
+            '@type' => 'ListItem',
+            'position' => count($breadcrumbs) + 1,
+            'name' => $archiveTitle,
+            'item' => home_url() . "/{$currentPath}/"
+        ];
+		$breadcrumbs[] = [
+            '@type' => 'ListItem',
+            'position' => count($breadcrumbs) + 1,
+            'name' => $singleTitle,
+            'item' => home_url() . $currentUri
+        ];
+    }
+	if(is_search()){
+		global $wp_query;
+		$total = $wp_query->found_posts;
+		$searchQuery = get_search_query();
+		$breadcrumbs[] = [
+            '@type' => 'ListItem',
+            'position' => count($breadcrumbs) + 1,
+            'name' => "「{$searchQuery}」の検索結果（{$total}件）",
+            'item' => home_url() . $currentUri
+        ];
+	}
     echo json_encode([
         '@context' => 'http://schema.org',
         '@type' => 'BreadcrumbList',
@@ -239,20 +295,4 @@ function getAcfArticle() {
 		}
 	}
 }
-
-// function getAcfArticle() {
-// 	$tocs = [];
-// 	$tocsCount = 0;
-// 	$acfArticle = 'flexible_field';
-// 	if(have_rows($acfArticle) ) {
-// 		while(have_rows($acfArticle)) {
-// 			the_row();
-// 			$layout = get_row_layout();
-// 			$path = get_template_directory();
-// 			if(file_exists("{$path}/acf/{$layout}.php")) {
-// 				get_template_part("acf/{$layout}");
-// 			}
-// 		}
-// 	}
-// }
 

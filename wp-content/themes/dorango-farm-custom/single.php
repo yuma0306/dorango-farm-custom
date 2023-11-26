@@ -4,21 +4,32 @@
 	$currentUri = getCurrentUri();
 	$currentPath = getCurrentPath($currentUri);
 	$modifiedDate = get_the_modified_time('Y-m-d');
-	$articleID = get_the_ID();
-	$taxonomies = ['goods', 'method', 'species', 'morph', 'diseases', 'cross'];
-	$breedTaxonomyList = [
-		'goods' => '飼育用品',
-		'method' => '飼育法',
-		'species' => '種',
-		'morph' => 'モルフ',
-		'diseases' => '病気',
-		'cross' => '繁殖',
+	$postPrefix = [
+		"breed" => "飼育繁殖の",
+		"zoo" => "動物園の",
+		"shop" => "ショップの",
+		"food" => "昆虫食の",
+		"trivia" => "動物雑学の",
 	];
-	$breedTagList = [];
-	$breedTagTerms = [];
-	foreach ($breedTaxonomyList as $breedTaxonomyKey => $breedTaxonomyItem) {
-		$breedTagList[] = get_the_terms($articleID, $breedTaxonomyKey);
-		$breedTagTerms[] = $breedTaxonomyItem;
+	$postType = isset($postPrefix[$currentPath]) ? $postPrefix[$currentPath] : '';
+	// breedのみタグ表示
+	if($currentPath === 'breed') {
+		$articleID = get_the_ID();
+		$taxonomies = ['goods', 'method', 'species', 'morph', 'diseases', 'cross'];
+		$breedTaxonomyList = [
+			'goods' => '飼育用品',
+			'method' => '飼育法',
+			'species' => '種',
+			'morph' => 'モルフ',
+			'diseases' => '病気',
+			'cross' => '繁殖',
+		];
+		$breedTagList = [];
+		$breedTagTerms = [];
+		foreach ($breedTaxonomyList as $breedTaxonomyKey => $breedTaxonomyItem) {
+			$breedTagList[] = get_the_terms($articleID, $breedTaxonomyKey);
+			$breedTagTerms[] = $breedTaxonomyItem;
+		}
 	}
 ?>
 <!DOCTYPE html>
@@ -37,7 +48,7 @@
 						<a class="breadcrumb__link" href="/">ホーム</a>
 					</li>
 					<li class="breadcrumb__item">
-						<a class="breadcrumb__link" href="/<?php echo $currentPath; ?>/">飼育繁殖の記事</a>
+						<a class="breadcrumb__link" href="/<?php echo $currentPath; ?>/"><?php echo $postType; ?>記事一覧</a>
 					</li>
 					<li class="breadcrumb__item">
 						<span class="breadcrumb__text"><?php echo esc_html($heading); ?></span>
@@ -84,10 +95,10 @@
 					</div>
 					<a href="/tag/" class="btn-link01 u-ml0-pc">タグ一覧</a>
 				<?php endif; ?>
-				<h3 class="heading-lv3-01">飼育繁殖の記事を検索</h3>
+				<h3 class="heading-lv3-01"><?php echo $postType; ?>記事を検索</h3>
 				<form class="search-form js-search-form" action="<?php echo home_url(); ?>" method="get">
-					<input class="search-form__input js-search-input" type="text" name="s" value="<?php the_search_query(); ?>" placeholder="例：ボールパイソン">
-					<input type="hidden" name="post_type[]" value="breed">
+					<input class="search-form__input js-search-input" type="text" name="s" value="<?php the_search_query(); ?>" placeholder="キーワード">
+					<input type="hidden" name="post_type[]" value="<?php echo $currentPath; ?>">
 					<button type="button" class="search-form__btn js-search-btn">
 						<img class="search-form__icon" src="<?php echo get_template_directory_uri(); ?>/assets/img/icon-search.svg" alt="検索" width="32" height="32">
 					</button>
