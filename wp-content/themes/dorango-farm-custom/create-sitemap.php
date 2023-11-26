@@ -39,10 +39,12 @@ function getPostPage() {
 
 function getStaticPage() {
 	$staticPages = [];
+	// フロントページ
 	$homeUrl = home_url();
 	$frontFile = get_template_directory() . '/front-page.php';
 	$frontPageLastmod = date('Y-m-d', filemtime($frontFile));
 	$staticPages[] = "<url><loc>{$homeUrl}</loc><lastmod>{$frontPageLastmod}</lastmod></url>\n";
+	// アーカイブページ
 	$archives = [
 		'breed',
 		'zoo',
@@ -54,6 +56,29 @@ function getStaticPage() {
 	$archivePageLastmod = date('Y-m-d', filemtime($archiveFile));
 	foreach ($archives as $archive) {
 		$staticPages[] = "<url><loc>{$homeUrl}/{$archive}/</loc><lastmod>{$archivePageLastmod}</lastmod></url>\n";
+	}
+	// タクソノミーページ
+	$taxonomies = [
+		'goods',
+		'method',
+		'species',
+		'morph',
+		'diseases',
+		'cross',
+	];
+	$taxonomyFile = get_template_directory() . '/taxonomy.php';
+	$taxonomyPageLastmod = date('Y-m-d', filemtime($taxonomyFile));
+	foreach ($taxonomies as $taxonomy) {
+		$terms = get_terms([
+			'taxonomy' => $taxonomy,
+			'hide_empty' => true,
+		]);
+		if(!empty($terms)) {
+			foreach ($terms as $term) {
+				$termLink = get_term_link($term);
+				$staticPages[] = "<url><loc>{$termLink}</loc><lastmod>{$taxonomyPageLastmod}</lastmod></url>\n";
+			}
+		}
 	}
 	return $staticPages;
 }

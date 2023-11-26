@@ -5,7 +5,7 @@
 		'public' => true,
 		'rewrite' => [
 			'with_front' => false,
-			'slug' => 'breed/goods'
+			'slug' => 'tag/goods'
 		],
 		'show_admin_column' => true,
 	]);
@@ -16,7 +16,7 @@
 		'public' => true,
 		'rewrite' => [
 			'with_front' => false,
-			'slug' => 'breed/method'
+			'slug' => 'tag/method'
 		],
 		'show_admin_column' => true,
 	]);
@@ -27,7 +27,7 @@
 		'public' => true,
 		'rewrite' => [
 			'with_front' => false,
-			'slug' => 'breed/species'
+			'slug' => 'tag/species'
 		],
 		'show_admin_column' => true,
 	]);
@@ -38,7 +38,7 @@
 		'public' => true,
 		'rewrite' => [
 			'with_front' => false,
-			'slug' => 'breed/morph'
+			'slug' => 'tag/morph'
 		],
 		'show_admin_column' => true,
 	]);
@@ -49,7 +49,7 @@
 		'public' => true,
 		'rewrite' => [
 			'with_front' => false,
-			'slug' => 'breed/diseases'
+			'slug' => 'tag/diseases'
 		],
 		'show_admin_column' => true,
 	]);
@@ -60,7 +60,7 @@
 		'public' => true,
 		'rewrite' => [
 			'with_front' => false,
-			'slug' => 'breed/cross'
+			'slug' => 'tag/cross'
 		],
 		'show_admin_column' => true,
 	]);

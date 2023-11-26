@@ -81,7 +81,7 @@ function createBreadcrumbsSchema() {
 	// ページ情報
 	$currentUri = getCurrentUri();
 	$currentPath = getCurrentPath($currentUri);
-	$title = '記事一覧';
+	$articleTitle = '記事一覧';
 	$prefix = [
 		"breed" => "飼育繁殖の",
 		"zoo" => "動物園の",
@@ -126,8 +126,8 @@ function createBreadcrumbsSchema() {
 			'item' => home_url() . $currentUri
 		];
 	}
-	if(is_archive()) {
-		$archiveTitle = isset($prefix[$currentPath]) ? $prefix[$currentPath] . $title : $title;
+	if(is_archive() && !is_tax()) {
+		$archiveTitle = isset($prefix[$currentPath]) ? $prefix[$currentPath] . $articleTitle : $articleTitle;
         $breadcrumbs[] = [
             '@type' => 'ListItem',
             'position' => count($breadcrumbs) + 1,
@@ -137,7 +137,7 @@ function createBreadcrumbsSchema() {
     }
 	if(is_single()) {
 		$singleTitle = get_the_title();
-		$archiveTitle = isset($prefix[$currentPath]) ? $prefix[$currentPath] . $title : $title;
+		$archiveTitle = isset($prefix[$currentPath]) ? $prefix[$currentPath] . $articleTitle : $articleTitle;
 		$breadcrumbs[] = [
             '@type' => 'ListItem',
             'position' => count($breadcrumbs) + 1,
@@ -151,6 +151,22 @@ function createBreadcrumbsSchema() {
             'item' => home_url() . $currentUri
         ];
     }
+	if(is_tax()) {
+		$taxTerm = get_queried_object();
+		$taxTitle = "「{$taxTerm->name}」に関する記事";
+		$breadcrumbs[] = [
+            '@type' => 'ListItem',
+            'position' => count($breadcrumbs) + 1,
+            'name' => 'タグ一覧',
+            'item' => home_url() . "/tag/"
+        ];
+		$breadcrumbs[] = [
+            '@type' => 'ListItem',
+            'position' => count($breadcrumbs) + 1,
+            'name' => $taxTitle,
+            'item' => home_url() . $currentUri
+        ];
+	}
 	if(is_search()){
 		global $wp_query;
 		$total = $wp_query->found_posts;
