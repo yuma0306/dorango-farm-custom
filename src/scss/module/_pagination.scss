@@ -1,0 +1,84 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+@include pc {
+	.pagination {
+		width: fit-content;
+		margin: 30px auto 0;
+		&__inner {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+		}
+		&__number {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 30px;
+			height: 30px;
+			border: solid 2px $brown01;
+			border-radius: 50%;
+			background: $white01;
+			color: $brown01;
+			@include hoverOpacity();
+			&--current {
+				background-color: $brown01;
+				color: $white01;
+				&:hover {
+					opacity: 1;
+				}
+			}
+		}
+		&__btn {
+			display: block;
+			width: 25px;
+			height: 25px;
+			background: url(#{$imgPath}/arrow-chevron.svg) no-repeat center / contain;
+			@include hoverOpacity();
+			&--prev {
+				transform: rotate(180deg);
+			}
+		}
+	}
+}
+
+@include sp {
+	.pagination {
+		width: fit-content;
+		margin: vw(30) auto 0;
+		&__inner {
+			display: flex;
+			align-items: center;
+			gap: vw(10);
+		}
+		&__number {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: vw(30);
+			height: vw(30);
+			border: solid vw(2) $brown01;
+			border-radius: 50%;
+			background: $white01;
+			color: $brown01;
+			@include hoverOpacity();
+			&--current {
+				background-color: $brown01;
+				color: $white01;
+				&:hover {
+					opacity: 1;
+				}
+			}
+		}
+		&__btn {
+			display: block;
+			width: vw(25);
+			height: vw(25);
+			background: url(#{$imgPath}/arrow-chevron.svg) no-repeat center / contain;
+			@include hoverOpacity();
+			&--prev {
+				transform: rotate(180deg);
+			}
+		}
+	}
+}

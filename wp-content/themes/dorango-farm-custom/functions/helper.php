@@ -119,24 +119,24 @@ function createBreadcrumbsSchema() {
  * https://developer.wordpress.org/reference/functions/get_the_posts_pagination/
  */
 function createPagenation(){
-    $pager = [
+    $pager = get_the_posts_pagination([
         'class' => 'pagination',
         'mid_size' => 2,
         'prev_next' => true,
-        'prev_text' => __('<span>戻る</span>'),
-        'next_text' => __('<span>次へ</span>'),
-    ];
-    $replaceclasses = [
-        '/<h2 class-"screen-reader-text">(.*)<\/h2>/' => '',
-        '/<nav class-"navigation\s/' => '<nav class="',
-        '/<div class-"nav-links"/' => '<div class="pagination__inner">',
-        '<li>/' => '<li class="pagination__item">',
+        'prev_text' => __(''),
+        'next_text' => __(''),
+    ]);
+    $replaceClass = [
+		'/<h2 class="screen-reader-text">投稿ナビゲーション<\/h2>/' => '',
+        '/<nav class="navigation\s/' => '<nav class="',
+        '/<div class="nav-links"/' => '<div class="pagination__inner"',
         '/class="page-numbers\scurrent"/' => 'class="pagination__number pagination__number--current"',
         '/class="next\spage-numbers"/' => 'class="pagination__btn pagination__btn--next"',
         '/class="prev\spage-numbers"/' => 'class="pagination__btn pagination__btn--prev"',
         '/class="page-numbers"/' => 'class="pagination__number"',
+        '/class="page-numbers dots"/' => 'class="page-numbers page-numbers--dots"',
     ];
-    foreach($replaceclasses as $pattern => $replacement) {
+    foreach($replaceClass as $pattern => $replacement) {
         $pager = preg_replace($pattern, $replacement, $pager);
     }
     echo $pager;

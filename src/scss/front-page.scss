@@ -59,11 +59,6 @@
 		display: grid;
 		grid-template-rows: auto auto 1fr;
 	}
-	.blogs-list {
-		display: grid;
-		gap: 20px;
-		margin-top: 30px;
-	}
 	.kv-arrow {
 		$this: &;
 		position: absolute;
@@ -160,11 +155,6 @@
 	.blogs-block {
 		display: grid;
 		grid-template-rows: auto auto 1fr;
-	}
-	.blogs-list {
-		display: grid;
-		gap: vw(20);
-		margin-top: vw(30);
 	}
 	.kv-arrow {
 		$this: &;

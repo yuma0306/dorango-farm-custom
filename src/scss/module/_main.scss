@@ -1,4 +1,5 @@
 @use '../global/import' as *;
+@use '../config/import' as *;
 
 @include pc {
 	.main {

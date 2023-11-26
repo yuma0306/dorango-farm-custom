@@ -37,14 +37,14 @@
 						<a class="breadcrumb__link" href="/">ホーム</a>
 					</li>
 					<li class="breadcrumb__item">
-						<a class="breadcrumb__link" href="/<?php echo $currentPath; ?>/">飼育繁殖</a>
+						<a class="breadcrumb__link" href="/<?php echo $currentPath; ?>/">飼育繁殖の記事</a>
 					</li>
 					<li class="breadcrumb__item">
 						<span class="breadcrumb__text"><?php echo esc_html($heading); ?></span>
 					</li>
 				</ul>
 				<picture class="article-thumb">
-					<img class="article-thumb__img" src="<?php echo esc_url($thumb['url']); ?>" alt="<?php echo esc_html($thumb['alt']); ?>">
+					<img class="article-thumb__img" src="<?php echo esc_url($thumb['url']); ?>" alt="<?php echo esc_html($thumb['alt']); ?>" width="<?php echo esc_html($thumb['width']); ?>" height="<?php echo esc_html($thumb['height']); ?>">
 				</picture>
 				<div class="article-date">
 					<img class="article-date__img" src="<?php echo get_template_directory_uri(); ?>/assets/img/icon-pen.svg" alt="">
@@ -89,7 +89,7 @@
 					<input class="search-form__input js-search-input" type="text" name="s" value="<?php the_search_query(); ?>" placeholder="例：ボールパイソン">
 					<input type="hidden" name="post_type[]" value="breed">
 					<button type="button" class="search-form__btn js-search-btn">
-						<img class="search-form__icon" src="<?php echo get_template_directory_uri(); ?>/assets/img/icon-search.svg" alt="">
+						<img class="search-form__icon" src="<?php echo get_template_directory_uri(); ?>/assets/img/icon-search.svg" alt="検索" width="32" height="32">
 					</button>
 				</form>
 				<div class="validate-err js-search-err">キーワードを入力してください</div>
