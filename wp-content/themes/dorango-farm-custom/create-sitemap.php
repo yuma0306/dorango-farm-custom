@@ -14,6 +14,7 @@ function getPostPage() {
 			'shop',
 			'food',
 			'trivia',
+			'page',
 		],
 		'post_status' => 'publish',
 		'posts_per_page' => -1,
@@ -39,9 +40,21 @@ function getPostPage() {
 function getStaticPage() {
 	$staticPages = [];
 	$homeUrl = home_url();
-	$frontPage = get_template_directory() . '/front-page.php';
-	$frontPageLastmod = date('Y-m-d', filemtime($frontPage));
+	$frontFile = get_template_directory() . '/front-page.php';
+	$frontPageLastmod = date('Y-m-d', filemtime($frontFile));
 	$staticPages[] = "<url><loc>{$homeUrl}</loc><lastmod>{$frontPageLastmod}</lastmod></url>\n";
+	$archives = [
+		'breed',
+		'zoo',
+		'shop',
+		'food',
+		'trivia',
+	];
+	$archiveFile = get_template_directory() . '/archive.php';
+	$archivePageLastmod = date('Y-m-d', filemtime($archiveFile));
+	foreach ($archives as $archive) {
+		$staticPages[] = "<url><loc>{$homeUrl}/{$archive}/</loc><lastmod>{$archivePageLastmod}</lastmod></url>\n";
+	}
 	return $staticPages;
 }
 
