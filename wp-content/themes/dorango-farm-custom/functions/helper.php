@@ -81,7 +81,7 @@ function createBreadcrumbsSchema() {
 	// ページ情報
 	$currentUri = getCurrentUri();
 	$currentPath = getCurrentPath($currentUri);
-	$title = '記事一覧';
+	$articleTitle = '記事一覧';
 	$prefix = [
 		"breed" => "飼育繁殖の",
 		"zoo" => "動物園の",
@@ -126,8 +126,8 @@ function createBreadcrumbsSchema() {
 			'item' => home_url() . $currentUri
 		];
 	}
-	if(is_archive()) {
-		$archiveTitle = isset($prefix[$currentPath]) ? $prefix[$currentPath] . $title : $title;
+	if(is_archive() && !is_tax()) {
+		$archiveTitle = isset($prefix[$currentPath]) ? $prefix[$currentPath] . $articleTitle : $articleTitle;
         $breadcrumbs[] = [
             '@type' => 'ListItem',
             'position' => count($breadcrumbs) + 1,
@@ -137,7 +137,7 @@ function createBreadcrumbsSchema() {
     }
 	if(is_single()) {
 		$singleTitle = get_the_title();
-		$archiveTitle = isset($prefix[$currentPath]) ? $prefix[$currentPath] . $title : $title;
+		$archiveTitle = isset($prefix[$currentPath]) ? $prefix[$currentPath] . $articleTitle : $articleTitle;
 		$breadcrumbs[] = [
             '@type' => 'ListItem',
             'position' => count($breadcrumbs) + 1,
@@ -151,6 +151,22 @@ function createBreadcrumbsSchema() {
             'item' => home_url() . $currentUri
         ];
     }
+	if(is_tax()) {
+		$taxTerm = get_queried_object();
+		$taxTitle = "「{$taxTerm->name}」に関する記事";
+		$breadcrumbs[] = [
+            '@type' => 'ListItem',
+            'position' => count($breadcrumbs) + 1,
+            'name' => 'タグ一覧',
+            'item' => home_url() . "/tag/"
+        ];
+		$breadcrumbs[] = [
+            '@type' => 'ListItem',
+            'position' => count($breadcrumbs) + 1,
+            'name' => $taxTitle,
+            'item' => home_url() . $currentUri
+        ];
+	}
 	if(is_search()){
 		global $wp_query;
 		$total = $wp_query->found_posts;
@@ -202,12 +218,39 @@ function createPagenation(){
  * メタタイトル取得
  */
 function getMetaTitle () {
-	$blogTitle = get_bloginfo('name');
+	$blogTitle = esc_html(get_bloginfo('name'));
+	$currentUri = getCurrentUri();
+	$currentPath = getCurrentPath($currentUri);
+	$articleTitle = "記事一覧 | {$blogTitle}";
+	$prefix = [
+		"breed" => "飼育繁殖の",
+		"zoo" => "動物園の",
+		"shop" => "ショップの",
+		"food" => "昆虫食の",
+		"trivia" => "動物雑学の",
+	];
 	if(is_front_page()) {
-		return esc_html($blogTitle);
+		return $blogTitle;
 	}
-	$metaTitle = esc_html(get_field('meta_title_field') . '|'  . $blogTitle);
-	return $metaTitle;
+	if(is_404()) {
+		return "ページが見つかりません | {$blogTitle}";
+	}
+	if(is_search()) {
+		global $wp_query;
+		$total = $wp_query->found_posts;
+		$searchQuery = esc_html(get_search_query());
+		return "{$searchQuery}」の検索結果（{$total}件 | {$blogTitle}";
+	}
+	if(is_archive() && !is_tax()) {
+		return isset($prefix[$currentPath]) ? $prefix[$currentPath] . $articleTitle : $articleTitle;
+	}
+	if(is_tax()) {
+		$taxTerm = get_queried_object();
+		return "「{$taxTerm->name}」に関する記事 | {$blogTitle}";
+	}
+	$metaTitle = esc_html(get_field('meta_title_field'));
+	return "{$metaTitle} | {$blogTitle}";
+
 }
 
 /**
@@ -215,11 +258,40 @@ function getMetaTitle () {
  */
 function getMetaDesc() {
 	$blogDesc = esc_html(get_bloginfo('description'));
+	$currentUri = getCurrentUri();
+	$currentPath = getCurrentPath($currentUri);
+	$articleDesc = "記事一覧 | {$blogDesc}";
+	$prefix = [
+		"breed" => "飼育繁殖の",
+		"zoo" => "動物園の",
+		"shop" => "ショップの",
+		"food" => "昆虫食の",
+		"trivia" => "動物雑学の",
+	];
+	if(is_front_page()) {
+		return $blogDesc;
+	}
+	if(is_404()) {
+		return "ページが見つかりません | {$blogDesc}";
+	}
+	if(is_search()) {
+		global $wp_query;
+		$total = $wp_query->found_posts;
+		$searchQuery = esc_html(get_search_query());
+		return "{$searchQuery}」の検索結果（{$total}件 | {$blogDesc}";
+	}
+	if(is_archive() && !is_tax()) {
+		return isset($prefix[$currentPath]) ? $prefix[$currentPath] . $articleDesc : $articleDesc;
+	}
+	if(is_tax()) {
+		$taxTerm = get_queried_object();
+		return "「{$taxTerm->name}」に関する記事 | {$blogDesc}";
+	}
 	if(is_front_page()) {
 		return esc_html($blogDesc);
 	}
-	$metaDesc = esc_html(get_field('meta_desc_field') . '|'  . $blogDesc);
-	return $metaDesc;
+	$metaDesc = esc_html(get_field('meta_title_field'));
+	return "{$metaDesc} | {$blogDesc}";
 }
 
 /**
@@ -289,8 +361,8 @@ function getAcfArticle() {
 			$layout = get_row_layout();
 			$path = get_template_directory();
 			if(file_exists("{$path}/acf/{$layout}.php")) {
-				// include(get_template_directory() . "/acf/{$layout}.php");
 				get_template_part("acf/{$layout}");
+				// include(get_template_directory() . "/acf/{$layout}.php");
 			}
 		}
 	}
