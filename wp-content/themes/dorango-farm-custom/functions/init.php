@@ -155,3 +155,15 @@ remove_action('do_feed_rss2', 'do_feed_rss2');
 remove_action('do_feed_atom', 'do_feed_atom');
 remove_action('wp_head', 'feed_links', 2);
 remove_action('wp_head', 'feed_links_extra', 3);
+
+// functions.php などに追加するコード
+
+function execCreateSitemap($post_id, $post, $update) {
+    if($update) {
+        $scriptPath = ABSPATH . 'wp-content/themes/dorango-farm-custom/create-sitemap.php';
+        if (file_exists($scriptPath) && is_executable($scriptPath)) {
+            exec('php' . $scriptPath);
+        }
+    }
+}
+add_action('save_post', 'execCreateSitemap', 10, 3);

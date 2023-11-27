@@ -8,7 +8,7 @@
 		border-bottom: 3px solid $primary04;
 		&__text {
 			display: block;
-			width: $innerWidthSmallPC;
+			width: vwMin($innerWidthSmallPC);
 			margin: 0 auto;
 			text-align: center;
 			font-size: $fzXLPC;
@@ -30,7 +30,7 @@
 @include sp {
 	.heading-lv1-01 {
 		position: relative;
-		margin: 0 $innerWidthSP;
+		margin: 0 vw($innerWidthSP);
 		padding: vw(40) 0;
 		border-bottom: vw(3) solid $primary04;
 		&__text {

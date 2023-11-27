@@ -3,7 +3,14 @@
 
 @include pc {
 	.search-form-block {
+		position: relative;
 		width: 500px;
 		margin: 0 auto;
+	}
+}
+
+@include sp {
+	.search-form-block {
+		position: relative;
 	}
 }

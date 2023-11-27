@@ -1,4 +1,4 @@
-<footer class="footer">
+<footer class="footer block-large">
 	<div class="inner footer__inner">
 		<a class="logo logo--footer" href="/">ヘビ牧場どらんごファーム</a>
 		<ul class="footer__list">

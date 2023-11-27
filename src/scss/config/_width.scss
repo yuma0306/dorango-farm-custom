@@ -4,9 +4,9 @@ $mediaSp: 767px;
 
 // デザインカンプの横幅
 $compWidth: 390;
-$pcCompWidth: 1100;
+$pcCompWidth: 1200;
 
 // inner
-$innerWidthPC: 1100px;
-$innerWidthSmallPC: 1000px;
-$innerWidthSP: calc(1vw * 10 / $compWidth * 100);
+$innerWidthPC: 1100;
+$innerWidthSmallPC: 1000;
+$innerWidthSP: 10;

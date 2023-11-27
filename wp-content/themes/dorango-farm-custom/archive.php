@@ -21,7 +21,7 @@
 			<h1 class="heading-lv1-01">
 				<span class="heading-lv1-01__text"><?php echo $resultTitle; ?></span>
 			</h1>
-			<div class="inner inner--small">
+			<div class="inner">
 				<ul class="breadcrumb">
 					<li class="breadcrumb__item">
 						<a class="breadcrumb__link" href="/">ホーム</a>

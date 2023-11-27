@@ -103,7 +103,9 @@
 						<img class="search-form__icon" src="<?php echo get_template_directory_uri(); ?>/assets/img/icon-search.svg" alt="検索" width="32" height="32">
 					</button>
 				</form>
-				<div class="validate-err js-search-err">キーワードを入力してください</div>
+				<div class="validate-err js-search-err">
+					<div class="validate-err__elm js-search-child">キーワードを入力してください</div>
+				</div>
 			</div>
 		</main>
 		<?php get_template_part('include/footer'); ?>
