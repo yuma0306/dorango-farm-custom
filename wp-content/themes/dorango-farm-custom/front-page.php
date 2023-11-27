@@ -71,11 +71,13 @@
 								<img class="search-form__icon" src="<?php echo get_template_directory_uri(); ?>/assets/img/icon-search.svg" alt="検索" width="32" height="32">
 							</button>
 						</form>
-						<div class="validate-err js-search-err">キーワードを入力してください</div>
+						<div class="validate-err js-search-err">
+							<div class="validate-err__elm js-search-child">キーワードを入力してください</div>
+						</div>
 					</div>
 					<div class="blogs-wrap">
 						<?php if($breedPosts->have_posts()): ?>
-							<section class="blogs-block">
+							<section class="blogs-block js-animate-y">
 								<h2 class="heading-lv2-01 heading-lv2-01--breed"><span class="heading-lv2-01__deco">飼育・繁殖</span>の記事</h2>
 								<div class="grid-block">
 									<?php while($breedPosts->have_posts()): $breedPosts->the_post(); ?>
@@ -86,7 +88,7 @@
 							</section>
 						<?php wp_reset_postdata(); endif; ?>
 						<?php if($zooPosts->have_posts()): ?>
-							<section class="blogs-block">
+							<section class="blogs-block js-animate-y">
 								<h2 class="heading-lv2-01 heading-lv2-01--zoo"><span class="heading-lv2-01__deco">動物園</span>の記事</h2>
 								<div class="grid-block">
 									<?php while($zooPosts->have_posts()): $zooPosts->the_post(); ?>
@@ -97,7 +99,7 @@
 							</section>
 						<?php wp_reset_postdata(); endif; ?>
 						<?php if($shopPosts->have_posts()): ?>
-							<section class="blogs-block">
+							<section class="blogs-block js-animate-y">
 								<h2 class="heading-lv2-01 heading-lv2-01--shop"><span class="heading-lv2-01__deco">ショップ</span>の記事</h2>
 								<div class="grid-block">
 									<?php while($shopPosts->have_posts()): $shopPosts->the_post(); ?>
@@ -108,7 +110,7 @@
 							</section>
 						<?php wp_reset_postdata(); endif; ?>
 						<?php if($foodPosts->have_posts()): ?>
-							<section class="blogs-block">
+							<section class="blogs-block js-animate-y">
 								<h2 class="heading-lv2-01 heading-lv2-01--food"><span class="heading-lv2-01__deco">昆虫食</span>の記事</h2>
 								<div class="grid-block">
 									<?php while($foodPosts->have_posts()): $foodPosts->the_post(); ?>
@@ -119,7 +121,7 @@
 							</section>
 						<?php wp_reset_postdata(); endif; ?>
 						<?php if($triviaPosts->have_posts()): ?>
-							<section class="blogs-block">
+							<section class="blogs-block js-animate-y">
 								<h2 class="heading-lv2-01 heading-lv2-01--trivia"><span class="heading-lv2-01__deco">動物雑学</span>の記事</h2>
 								<div class="grid-block">
 									<?php while($triviaPosts->have_posts()): $triviaPosts->the_post(); ?>

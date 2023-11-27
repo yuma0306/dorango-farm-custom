@@ -16,6 +16,15 @@
 			</h1>
 			<div class="inner inner--small">
 				<?php displayBreadcrumnbs(); ?>
+				<form action="">
+					<div>
+						<label for="">
+							<span></span>
+							<span></span>
+						</label>
+						<input type="text">
+					</div>
+				</form>
 			</div>
 		</main>
 		<?php get_template_part('include/footer'); ?>

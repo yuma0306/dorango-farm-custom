@@ -4,15 +4,15 @@
 @include pc {
 	.inner {
 		margin: 0 auto;
-		width: $innerWidthPC;
+		width: vwMin($innerWidthPC);
 		&--small {
-			width: $innerWidthSmallPC;
+			width: vwMin($innerWidthSmallPC);
 		}
 	}
 }
 
 @include sp {
 	.inner {
-		margin: 0 $innerWidthSP;
+		margin: 0 vw($innerWidthSP);
 	}
 }

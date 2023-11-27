@@ -3,7 +3,7 @@
 
 @include pc {
 	.kv {
-		padding: calc(144px + 30px) 0 45px;
+		padding: calc(142px + 30px) 0 45px;
 		background-color: $primary01;
 	}
 	.kv-slide {
@@ -52,7 +52,7 @@
 	.blogs-wrap {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
-		gap: 80px 50px;
+		gap: 80px vwMin(50);
 		margin-top: 50px;
 	}
 	.blogs-block {

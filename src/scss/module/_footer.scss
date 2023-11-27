@@ -3,7 +3,6 @@
 
 @include pc {
 	.footer {
-		padding: 50px 0;
 		background-color: $white01;
 		&__inner {
 			position: relative;
@@ -28,7 +27,6 @@
 
 @include sp {
 	.footer {
-		padding: vw(50) 0;
 		background-color: $white01;
 		&__inner {
 			position: relative;

@@ -4,7 +4,7 @@
 @include pc {
 	.gnav {
 		margin: 15px auto 0;
-		width: $innerWidthPC;
+		width: vwMin($innerWidthPC);
 		&__list {
 			display: flex;
 			align-items: center;
