@@ -155,3 +155,54 @@ remove_action('do_feed_rss2', 'do_feed_rss2');
 remove_action('do_feed_atom', 'do_feed_atom');
 remove_action('wp_head', 'feed_links', 2);
 remove_action('wp_head', 'feed_links_extra', 3);
+
+/**
+ * 検査機能にACFカスタムフィールドを追加
+ */
+// function acfAllFieldsSearchFilter($query) {
+//     // 検索結果ページかつメインクエリの場合
+//     if ($query->is_search && $query->is_main_query()) {
+//         // ACF 柔軟なコンテンツフィールドのフィールドキー
+//         $flexibleContentFieldKey = 'flexible_field';
+//         // 通常のフィールドのキーを配列にまとめる
+//         $normalFields = array(
+//             'meta_title_field',
+//             'meta_desc_field',
+//             // 他の通常のフィールドを追加
+//         );
+//         // 検索クエリから検索ワードを取得
+//         $searchQuery = get_search_query();
+//         // カスタムクエリを構築
+//         $metaQuery = array('relation' => 'OR');
+//         // 柔軟なコンテンツフィールドが存在するか確認
+//         if (have_rows($flexibleContentFieldKey)) {
+//             while (have_rows($flexibleContentFieldKey)) {
+//                 the_row();
+//                 // 各行内の柔軟なコンテンツフィールドを検索対象に追加
+//                 $subFields = get_sub_field_objects();
+//                 foreach ($subFields as $subFieldKey => $subField) {
+// 					d($subField);
+//                     if ($subField['type'] === 'text') {
+//                         $metaQuery[] = array(
+//                             'key'     => $flexibleContentFieldKey . '_' . $subFieldKey,
+//                             'value'   => $searchQuery,
+//                             'compare' => 'LIKE',
+//                         );
+//                     }
+//                 }
+//             }
+//         }
+//         // 通常のフィールドを検索対象に追加
+//         foreach ($normalFields as $normalField) {
+//             $metaQuery[] = array(
+//                 'key'     => $normalField,
+//                 'value'   => $searchQuery,
+//                 'compare' => 'LIKE',
+//             );
+//         }
+//         // メタクエリをセット
+//         $query->set('meta_query', $metaQuery);
+//     }
+// }
+// add_action('pre_get_posts', 'acfAllFieldsSearchFilter');
+
