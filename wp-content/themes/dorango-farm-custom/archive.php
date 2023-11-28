@@ -48,7 +48,7 @@
 						<?php endwhile; ?>
 					<?php endif; ?>
 				</div>
-				<?php createWaPagination($query); ?>
+				<?php createWpPagination($query); ?>
 			</div>
 		</main>
 		<?php get_template_part('include/footer'); ?>

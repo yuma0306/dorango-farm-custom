@@ -186,7 +186,7 @@ function createBreadcrumbsSchema() {
 }
 
 /**
- * ページネーションカスタマイズ
+ * メインループページネーション
  * https://developer.wordpress.org/reference/hooks/navigation_markup_template/
  * https://developer.wordpress.org/reference/functions/get_the_posts_pagination/
  */
@@ -214,8 +214,11 @@ function createPagenation(){
     echo $pager;
 }
 
-
-function createWaPagination($query) {
+/**
+ * WP_Queryページネーション
+ * https://developer.wordpress.org/reference/functions/get_pagenum_link/
+ */
+function createWpPagination($query) {
 	$big = 999999999;
 	$pager = paginate_links([
 		'base' => str_replace($big,'%#%', esc_url(get_pagenum_link($big))),
