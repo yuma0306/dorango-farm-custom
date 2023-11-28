@@ -186,7 +186,7 @@ function createBreadcrumbsSchema() {
 }
 
 /**
- * ページネーションカスタマイズ
+ * メインループページネーション
  * https://developer.wordpress.org/reference/hooks/navigation_markup_template/
  * https://developer.wordpress.org/reference/functions/get_the_posts_pagination/
  */
@@ -212,6 +212,37 @@ function createPagenation(){
         $pager = preg_replace($pattern, $replacement, $pager);
     }
     echo $pager;
+}
+
+/**
+ * WP_Queryページネーション
+ * https://developer.wordpress.org/reference/functions/get_pagenum_link/
+ */
+function createWpPagination($query) {
+	$big = 999999999;
+	$pager = paginate_links([
+		'base' => str_replace($big,'%#%', esc_url(get_pagenum_link($big))),
+		'format' => '/%#%/',
+		'current' => max(1, get_query_var('paged')),
+		'total' => $query->max_num_pages,
+		'mid_size' => 1,
+		'prev_next' => true,
+		'prev_text' => __(''),
+        'next_text' => __(''),
+	]);
+	$replaceClass = [
+        '/class="page-numbers\scurrent"/' => 'class="pagination__number pagination__number--current"',
+        '/class="next\spage-numbers"/' => 'class="pagination__btn pagination__btn--next"',
+        '/class="prev\spage-numbers"/' => 'class="pagination__btn pagination__btn--prev"',
+        '/class="page-numbers"/' => 'class="pagination__number"',
+        '/class="page-numbers dots"/' => 'class="page-numbers page-numbers--dots"',
+    ];
+	if(!empty($pager)) {
+		foreach($replaceClass as $pattern => $replacement) {
+			$pager = preg_replace($pattern, $replacement, $pager);
+		}
+		echo "<div class=\"pagination\">{$pager}</div>";
+	}
 }
 
 /**

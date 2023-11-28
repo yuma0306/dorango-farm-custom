@@ -8,7 +8,7 @@
 		align-items: end;
 		column-gap: 30px;
 		margin-top: 30px;
-		padding: 0 0 10px;
+		padding-bottom: 20px;
 		overflow-x: auto;
 		white-space: nowrap;
 		&__item {
@@ -48,7 +48,7 @@
 		align-items: end;
 		column-gap: vw(30);
 		margin-top: vw(30);
-		padding: 0 0 vw(10);
+		padding: 0 0 vw(20);
 		overflow-x: auto;
 		white-space: nowrap;
 		&__item {

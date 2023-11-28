@@ -6,7 +6,7 @@
 		$this: &;
 		display: block;
 		width: 100%;
-		margin: 10px auto 0;
+		margin: 0 auto ;
 		aspect-ratio: 16/9;
 		overflow: hidden;
 		&__img {
@@ -21,7 +21,7 @@
 		$this: &;
 		display: block;
 		width: 100%;
-		margin: vw(10) auto 0;
+		margin: 0 auto;
 		aspect-ratio: 16/9;
 		overflow: hidden;
 		&__img {

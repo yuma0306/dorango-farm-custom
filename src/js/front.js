@@ -17,7 +17,11 @@ const createSlider = () => {
 			page: 'splide__pagination__page kv-pagination__item',
 		},
 		breakpoints: {
-			767: {
+			1024: {
+				perPage: 2,
+				padding: '6%',
+			},
+			639: {
 				perPage: 1,
 				padding: '8%',
 			},

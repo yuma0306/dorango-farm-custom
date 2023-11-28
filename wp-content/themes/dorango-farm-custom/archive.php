@@ -32,13 +32,23 @@
 				</ul>
 				<p class="affi-note">当サイトはアフェリエイト広告を利用しています。</p>
 				<div class="grid-block grid-block--col2">
-					<?php if(have_posts()): ?>
-						<?php while (have_posts()): the_post(); ?>
+					<?php
+						$args = [
+							'post_type' => $currentPath,
+							'posts_per_page' => get_option('post_per_page'),
+							'orderby' => 'modified',
+							'order' => 'DESC',
+							'paged' => get_query_var('paged') ? get_query_var('paged') : 1,
+						];
+						$query = new WP_Query($args);
+					?>
+					<?php if($query->have_posts()): ?>
+						<?php while ($query->have_posts()): $query->the_post(); ?>
 							<?php get_template_part('include/blogs-item'); ?>
 						<?php endwhile; ?>
 					<?php endif; ?>
 				</div>
-				<?php createPagenation(); ?>
+				<?php createWpPagination($query); ?>
 			</div>
 		</main>
 		<?php get_template_part('include/footer'); ?>

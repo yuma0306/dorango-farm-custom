@@ -1,0 +1,96 @@
+@use './global/import' as *;
+@use './config/import' as *;
+
+@include pc {
+	.contact-form {
+		width: min(600px, 100%);
+		margin: 20px auto 0;
+	}
+	.contact-label {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		margin-bottom: 10px;
+		&__tag {
+			padding: 5px;
+			background-color: $red01;
+			color: $white01;
+			font-weight: $fwMedium;
+		}
+		&__text {
+			font-weight: $fwMedium;
+		}
+	}
+	.contact-block {
+		&__input {
+			display: block;
+			width: 100%;
+			padding: 15px;
+			background-color: $white01;
+			border: 2px solid $beige01;
+			&:focus {
+				outline: none;
+				border: 2px solid $primary01;
+			}
+		}
+		&__textarea {
+			display: block;
+			width: 100%;
+			aspect-ratio: 16/9;
+			padding: 15px;
+			background-color: $white01;
+			border: 2px solid $beige01;
+			&:focus {
+				outline: none;
+				border: 2px solid $primary01;
+			}
+		}
+	}
+}
+
+@include sp {
+	.contact-form {
+		width: 100%;
+		margin: vw(20) auto 0;
+	}
+	.contact-label {
+		display: flex;
+		align-items: center;
+		gap: vw(10);
+		margin-bottom: vw(10);
+		&__tag {
+			padding: vw(5);
+			background-color: $red01;
+			color: $white01;
+			font-weight: $fwMedium;
+		}
+		&__text {
+			font-weight: $fwMedium;
+		}
+	}
+	.contact-block {
+		&__input {
+			display: block;
+			width: 100%;
+			padding: vw(15);
+			background-color: $white01;
+			border: vw(2) solid $beige01;
+			&:focus {
+				outline: none;
+				border: vw(2) solid $primary01;
+			}
+		}
+		&__textarea {
+			display: block;
+			width: 100%;
+			aspect-ratio: 16/9;
+			padding: vw(15);
+			background-color: $white01;
+			border: vw(2) solid $beige01;
+			&:focus {
+				outline: none;
+				border: vw(2) solid $primary01;
+			}
+		}
+	}
+}
