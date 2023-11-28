@@ -48,6 +48,10 @@
 			margin-top: 5px;
 			text-decoration: underline;
 			font-weight: $fwMedium;
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 4;
+			overflow: hidden;
 		}
 	}
 }
@@ -96,6 +100,10 @@
 			margin-top: vw(5);
 			text-decoration: underline;
 			font-weight: $fwMedium;
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 4;
+			overflow: hidden;
 		}
 	}
 }

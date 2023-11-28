@@ -16,14 +16,35 @@
 			</h1>
 			<div class="inner inner--small">
 				<?php displayBreadcrumnbs(); ?>
-				<form action="">
-					<div>
-						<label for="">
-							<span></span>
-							<span></span>
+				<form class="contact-form grid-block" action="">
+					<div class="contact-group">
+						<label class="contact-label" for="">
+							<span class="contact-label__tag">必須</span>
+							<span class="contact-label__text">お名前</span>
 						</label>
-						<input type="text">
+						<div class="contact-block">
+							<input class="contact-block__input" id="email" name="" type="text" placeholder="ヘビ牧場&emsp;太郎">
+						</div>
 					</div>
+					<div class="contact-group">
+						<label class="contact-label" for="">
+							<span class="contact-label__tag">必須</span>
+							<span class="contact-label__text">メールアドレス</span>
+						</label>
+						<div class="contact-block">
+							<input class="contact-block__input" id="" name="" type="email" placeholder="xxx@gmail.com">
+						</div>
+					</div>
+					<div class="contact-group">
+						<label class="contact-label" for="">
+							<span class="contact-label__tag">必須</span>
+							<span class="contact-label__text">お問い合わせ内容</span>
+						</label>
+						<div class="contact-block">
+							<textarea class="contact-block__textarea" id="" name="" placeholder="お問い合わせ内容を入力してください。"></textarea>
+						</div>
+					</div>
+					<button type="button" class="btn-link01">送信</button>
 				</form>
 			</div>
 		</main>
