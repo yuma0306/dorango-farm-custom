@@ -1,7 +1,4 @@
 <?php
-
-add_action( 'init', 'addCustomPostType' );
-
 function addCustomPostType() {
 	register_post_type('breed', [
 		'label' => '飼育・繁殖',
@@ -83,3 +80,5 @@ function addCustomPostType() {
 		'menu_position' => 5,
 	]);
 }
+
+add_action('init', 'addCustomPostType');
