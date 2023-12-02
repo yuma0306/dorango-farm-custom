@@ -1,4 +1,5 @@
 <?php
+function addCustomTaxonomy() {
 	register_taxonomy('goods', 'breed', [
 		'label' => '飼育用品',
 		'hierarchical' => false,
@@ -64,5 +65,9 @@
 		],
 		'show_admin_column' => true,
 	]);
+}
+
+add_action('init', 'addCustomTaxonomy');
+
 
 ?>
