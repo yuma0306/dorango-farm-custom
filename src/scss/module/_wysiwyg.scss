@@ -13,20 +13,7 @@
 			margin-top: 20px;
 		}
 		a {
-			position: relative;
-			color: $blue01;
-			text-decoration: underline;
-			font-weight: $fwMedium;
-			@include hoverOpacity();
-			&[target="_blank"]::after {
-				display: inline-block;
-				margin: 0 5px;
-				margin-bottom: -1px;
-				width: 15px;
-				height: 15px;
-				background: url(#{$imgPath}/icon-blank-blue.svg) no-repeat center / contain;
-				content: "";
-			}
+			@include incLinkTextPC();
 		}
 		ul {
 			position: relative;
@@ -100,6 +87,37 @@
 				}
 			}
 		}
+		blockquote {
+			position: relative;
+			display: grid;
+			gap: 10px;
+			margin-top: 20px;
+			padding: 20px 30px;
+			background-color: $primary03;
+			&::before {
+				position: absolute;
+				top: 0;
+				left: 0;
+				transform: translateY(-50%);
+				width: 30px;
+				height: 30px;
+				background: url(#{$imgPath}/icon-quote.svg) no-repeat center / contain;
+				content: "";
+			}
+			&::after {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				transform: translateY(50%) rotate(180deg);
+				width: 30px;
+				height: 30px;
+				background: url(#{$imgPath}/icon-quote.svg) no-repeat center / contain;
+				content: "";
+			}
+			* {
+				margin: 0;
+			}
+		}
 	}
 }
 
@@ -115,20 +133,7 @@
 			margin-top: vw(20);
 		}
 		a {
-			position: relative;
-			color: $blue01;
-			text-decoration: underline;
-			font-weight: $fwMedium;
-			@include hoverOpacity();
-			&[target="_blank"]::after {
-				display: inline-block;
-				margin: 0 vw(5);
-				margin-bottom: vw(-1);
-				width: vw(15);
-				height: vw(15);
-				background: url(#{$imgPath}/icon-blank-blue.svg) no-repeat center / contain;
-				content: "";
-			}
+			@include incLinkTextSP();
 		}
 		ul {
 			position: relative;
@@ -200,6 +205,37 @@
 					counter-increment: number 1;
 					content: counter(number);
 				}
+			}
+		}
+		blockquote {
+			position: relative;
+			display: grid;
+			gap: vw(10);
+			margin-top: vw(20);
+			padding: vw(20) vw(30);
+			background-color: $primary03;
+			&::before {
+				position: absolute;
+				top: 0;
+				left: 0;
+				transform: translateY(-50%);
+				width: vw(30);
+				height: vw(30);
+				background: url(#{$imgPath}/icon-quote.svg) no-repeat center / contain;
+				content: "";
+			}
+			&::after {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				transform: translateY(50%) rotate(180deg);
+				width: vw(30);
+				height: vw(30);
+				background: url(#{$imgPath}/icon-quote.svg) no-repeat center / contain;
+				content: "";
+			}
+			* {
+				margin: 0;
 			}
 		}
 	}

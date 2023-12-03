@@ -7,10 +7,10 @@
 			<?php foreach($list as $item): ?>
 				<dl class="article-dl__list">
 					<dt class="article-dl__term">
-						<?php echo esc_html($item['dt_field']);	?>
+						<?php echo $item['dt_field'];	?>
 					</dt>
 					<dd class="article-dl__desc">
-						<?php echo esc_html($item['dd_field']); ?>
+						<?php echo $item['dd_field']; ?>
 					</dd>
 				</dl>
 			<?php endforeach; ?>

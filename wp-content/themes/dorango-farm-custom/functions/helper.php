@@ -355,10 +355,10 @@ function getOgUrl() {
  * og:imageを取得
  */
 function getOgImage() {
-	$defaultImage = '/assets/ogp.webp';
+	$defaultImage = get_template_directory_uri() . '/assets/img/ogp.webp';
 	$ogImage = get_field('og_image_field');
 	if(empty($ogImage)) {
-		echo esc_url('https://dorango-farm.com' . $defaultImage);
+		echo esc_url($defaultImage);
 	} else {
 		echo $ogImage;
 	}
@@ -384,18 +384,84 @@ function isNoindex() {
  */
 function getAcfArticle() {
 	$acfArticle = 'flexible_field';
-	// $count = 0;
-	// $tocs = [];
+	$count = 0;
+	$tocs = [];
 	if(have_rows($acfArticle)) {
 		while(have_rows($acfArticle)) {
 			the_row();
 			$layout = get_row_layout();
 			$path = get_template_directory();
 			if(file_exists("{$path}/acf/{$layout}.php")) {
-				get_template_part("acf/{$layout}");
-				// include(get_template_directory() . "/acf/{$layout}.php");
+				include(get_template_directory() . "/acf/{$layout}.php");
 			}
 		}
 	}
 }
+
+/**
+ * 目次自動生成
+ */
+function createToc() {
+	$acfArticle = 'flexible_field';
+	$count = 1;
+	$tocs = [];
+	$startHeadingLv = 2;
+	$endHeadingLv = 3;
+	$pattern = "/^h([\"{$startHeadingLv}-{$endHeadingLv}\"])_layout$/";
+	// 一番上の見出し階層
+	$currentLv = $startHeadingLv;
+	if(have_rows($acfArticle)) {
+		while(have_rows($acfArticle)) {
+			the_row();
+			$layout = get_row_layout();
+			if(preg_match($pattern, $layout, $matches)) {
+				$headingLv = intval($matches[1]);
+				$headingText = get_sub_field("h{$headingLv}_field");
+				if($headingLv > $currentLv) {
+					$tocs[] = "<li class=\"toc__item\"><ol class=\"toc__list toc__list--lower\">\n";
+				} elseif ($headingLv < $currentLv) {
+					$tocs[] = "</ol></li>\n";
+				}
+				$tocs[] = "<li class=\"toc__item toc__item--lv{$headingLv}\"><a href=\"#anchor-{$count}\" class=\"toc__link\">{$headingText}</a></li>";
+				$currentLv = $headingLv;
+				$count++;
+			}
+		}
+	}
+	while ($currentLv > $startHeadingLv) {
+		$tocs[] = "</ol></li>\n";
+		$currentLv--;
+	}
+	array_unshift($tocs, '<ol class="toc__list">');
+	$tocs[] = '</ol>';
+	foreach ($tocs as $toc) {
+		echo $toc;
+	}
+}
+
+function loadCssFile() {
+	$currentUri = getCurrentUri();
+    $baseUri = get_stylesheet_directory_uri();
+    $cssFiles = [
+        '/contact/' => '/assets/css/contact.css',
+        '/' => [
+            'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide-core.min.css',
+            $baseUri . '/assets/css/front-page.css',
+        ],
+    ];
+	// 共通CSS
+	echo "<link rel='stylesheet' href='{$baseUri}/assets/css/style.css'>";
+    if(isset($cssFiles[$currentUri])) {
+        if(is_array($cssFiles[$currentUri])) {
+            foreach ($cssFiles[$currentUri] as $cssFile) {
+                if (isset($cssFile)) {
+                    echo "<link rel='stylesheet' href='{$cssFile}'>";
+                }
+            }
+        } else {
+            echo "<link rel='stylesheet' href='{$baseUri}{$cssFiles[$currentUri]}'>";
+        }
+    }
+}
+
 
