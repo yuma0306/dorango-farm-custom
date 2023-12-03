@@ -399,3 +399,29 @@ function getAcfArticle() {
 	}
 }
 
+function loadCssFile() {
+	$currentUri = getCurrentUri();
+    $baseUri = get_stylesheet_directory_uri();
+    $cssFiles = [
+        '/contact/' => '/assets/css/contact.css',
+        '/' => [
+            'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide-core.min.css',
+            $baseUri . '/assets/css/front-page.css',
+        ],
+    ];
+	// 共通CSS
+	echo "<link rel='stylesheet' href='{$baseUri}/assets/css/style.css'>";
+    if(isset($cssFiles[$currentUri])) {
+        if(is_array($cssFiles[$currentUri])) {
+            foreach ($cssFiles[$currentUri] as $cssFile) {
+                if (isset($cssFile)) {
+                    echo "<link rel='stylesheet' href='{$cssFile}'>";
+                }
+            }
+        } else {
+            echo "<link rel='stylesheet' href='{$baseUri}{$cssFiles[$currentUri]}'>";
+        }
+    }
+}
+
+
