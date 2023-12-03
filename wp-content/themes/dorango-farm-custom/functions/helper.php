@@ -355,10 +355,10 @@ function getOgUrl() {
  * og:imageを取得
  */
 function getOgImage() {
-	$defaultImage = '/assets/ogp.webp';
+	$defaultImage = get_template_directory_uri() . '/assets/img/ogp.webp';
 	$ogImage = get_field('og_image_field');
 	if(empty($ogImage)) {
-		echo esc_url('https://dorango-farm.com' . $defaultImage);
+		echo esc_url($defaultImage);
 	} else {
 		echo $ogImage;
 	}

@@ -25,6 +25,9 @@
 		}
 		&__desc {
 			padding: 15px;
+			a {
+				@include incLinkTextPC();
+			}
 		}
 	}
 }
@@ -54,6 +57,9 @@
 		&__desc {
 			flex: 1;
 			padding: vw(15);
+			a {
+				@include incLinkTextSP();
+			}
 		}
 	}
 }

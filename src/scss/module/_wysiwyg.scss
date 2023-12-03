@@ -13,20 +13,7 @@
 			margin-top: 20px;
 		}
 		a {
-			position: relative;
-			color: $blue01;
-			text-decoration: underline;
-			font-weight: $fwMedium;
-			@include hoverOpacity();
-			&[target="_blank"]::after {
-				display: inline-block;
-				margin: 0 5px;
-				margin-bottom: -1px;
-				width: 15px;
-				height: 15px;
-				background: url(#{$imgPath}/icon-blank-blue.svg) no-repeat center / contain;
-				content: "";
-			}
+			@include incLinkTextPC();
 		}
 		ul {
 			position: relative;
@@ -115,20 +102,7 @@
 			margin-top: vw(20);
 		}
 		a {
-			position: relative;
-			color: $blue01;
-			text-decoration: underline;
-			font-weight: $fwMedium;
-			@include hoverOpacity();
-			&[target="_blank"]::after {
-				display: inline-block;
-				margin: 0 vw(5);
-				margin-bottom: vw(-1);
-				width: vw(15);
-				height: vw(15);
-				background: url(#{$imgPath}/icon-blank-blue.svg) no-repeat center / contain;
-				content: "";
-			}
+			@include incLinkTextSP();
 		}
 		ul {
 			position: relative;

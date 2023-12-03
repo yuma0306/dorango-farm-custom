@@ -22,9 +22,15 @@
 	<meta property="og:site_name" content="<?php echo bloginfo('name'); ?>">
 	<meta property="og:type" content="website">
 	<meta property="og:locale" content="ja_JP">
-	<meta property="fb:app_id" content="">
-	<meta name="twitter:site" content="">
-	<meta name="twitter:card" content="summary">
+	<!-- favicon -->
+	<link rel="apple-touch-icon" sizes="76x76" href="<?php echo get_template_directory_uri(); ?>/assets/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_template_directory_uri(); ?>/assets/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_template_directory_uri(); ?>/assets/favicon/favicon-16x16.png">
+	<link rel="manifest" href="<?php echo get_template_directory_uri(); ?>/assets/favicon/site.webmanifest">
+	<link rel="mask-icon" href="<?php echo get_template_directory_uri(); ?>/assets/favicon/safari-pinned-tab.svg" color="#E1AA3C">
+	<meta name="msapplication-TileColor" content="#E1AA3C">
+	<meta name="theme-color" content="#E1AA3C">
+	<!-- /favicon -->
 	<!-- /ogp -->
 	<!-- style -->
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/style.css">
