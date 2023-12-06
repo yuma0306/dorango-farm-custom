@@ -18,10 +18,10 @@
 	// 各投稿タイプの記事取得
 	function getPostsByType($postType) {
 		$args = [
-			'post_type'      => $postType,
+			'post_type' => $postType,
 			'posts_per_page' => 2,
-			'orderby'        => 'date',
-			'order'          => 'DESC',
+			'orderby' => 'modified',
+			'order' => 'DESC',
 		];
 		return new WP_Query($args);
 	}
