@@ -14,3 +14,13 @@ tab_width = 4
 trim_trailing_whitespace = true
 # 最終行の改行設定（true=改行あり）
 insert_final_newline = true
+
+[*.json]
+indent_style = space
+indent_size = 2
+tab_width = 2
+
+[*.htaccess]
+indent_style = space
+indent_size = 2
+tab_width = 2

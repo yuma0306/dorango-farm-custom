@@ -120,7 +120,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	 * 関数実行
 	 */
 	animateScrollY();
-	// createToc();
 	scrollSmooth();
 	fixedContent();
 	validateSearchBtn();

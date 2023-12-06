@@ -201,7 +201,7 @@ function createPagenation(){
     $replaceClass = [
 		'/<h2 class="screen-reader-text">投稿ナビゲーション<\/h2>/' => '',
         '/<nav class="navigation\s/' => '<nav class="',
-        '/<div class="nav-links"/' => '<div class="pagination__inner"',
+        '/<div class="nav-links"/' => '<div class="pagination"',
         '/class="page-numbers\scurrent"/' => 'class="pagination__number pagination__number--current"',
         '/class="next\spage-numbers"/' => 'class="pagination__btn pagination__btn--next"',
         '/class="prev\spage-numbers"/' => 'class="pagination__btn pagination__btn--prev"',
