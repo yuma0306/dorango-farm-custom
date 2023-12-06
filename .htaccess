@@ -10,40 +10,130 @@ RewriteRule ^(.*)$ https://%1%{REQUEST_URI} [R=301,L]
 Redirect permanent /wp-sitemap.xml /sitemap.xml
 
 # 231206リニューアル
-RewriteRule ^classification/$ /trivia/classification/ [R=301,L]
-RewriteRule ^insulation/$ /breed/insulation/ [R=301,L]
-RewriteRule ^rat/$ /breed/rat/ [R=301,L]
-RewriteRule ^reptile-zoo/$ /zoo/reptile-zoo/ [R=301,L]
-RewriteRule ^shop-kanagawa/$ /shop/kanagawa/ [R=301,L]
-RewriteRule ^insect-toast/$ /food/insect-toast/ [R=301,L]
-RewriteRule ^dantotu-comparison/$ /breed/dantotu-comparison/ [R=301,L]
-RewriteRule ^reptile-word/$ /trivia/reptile-word/ [R=301,L]
-RewriteRule ^ball-python/$ /trivia/ball-python/ [R=301,L]
-RewriteRule ^food-2/$ /breed/food-2/ [R=301,L]
-RewriteRule ^food-1/$ /breed/food-1/ [R=301,L]
-RewriteRule ^book/$ /trivia/book/ [R=301,L]
-RewriteRule ^heat/$ /breed/dantotsu-pantheon/ [R=301,L]
-RewriteRule ^sick/$ /breed/sick/ [R=301,L]
-RewriteRule ^ballpython-cage/$ /breed/ballpython-cage/ [R=301,L]
-RewriteRule ^ballpython-breed/$ /breed/ballpython-breed/ [R=301,L]
-RewriteRule ^ballpython-breed2/$ /breed/ballpython-breed2/ [R=301,L]
-RewriteRule ^ballpaython-breeding/$ /breed/ballpaython-breeding/ [R=301,L]
-RewriteRule ^moving/$ /breed/moving/ [R=301,L]
-RewriteRule ^eat/$ /breed/eat/ [R=301,L]
-RewriteRule ^driftwood/$ /breed/driftwood/ [R=301,L]
-RewriteRule ^banana/$ /breed/banana/ [R=301,L]
-RewriteRule ^comparison/$ /breed/comparison/ [R=301,L]
-RewriteRule ^tokyo/$ /shop/tokyo/ [R=301,L]
-RewriteRule ^saitama/$ /shop/saitama/ [R=301,L]
-RewriteRule ^ball-book/$ /trivia/ball-book/ [R=301,L]
-RewriteRule ^panel-heater/$ /breed/panel-heater/ [R=301,L]
-RewriteRule ^dantotu-thermo/$ /breed/dantotu-thermo/ [R=301,L]
-RewriteRule ^ball-cage/$ /breed/ball-cage/ [R=301,L]
-RewriteRule ^ball-temp/$ /breed/ball-temp/ [R=301,L]
-RewriteRule ^ball-cost/$ /breed/ball-cost/ [R=301,L]
-RewriteRule ^ball-beginner/$ /breed/ball-beginner/ [R=301,L]
-RewriteRule ^corn-snake-breed/$ /breed/corn-snake-breeding/ [R=301,L]
-RewriteRule ^spilota-breed/$ /breed/spilota-breeding/ [R=301,L]
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  RewriteCond %{REQUEST_URI} ^/classification/$
+  RewriteRule ^(.*)$ /trivia/classification/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/insulation/$
+  RewriteRule ^(.*)$ /breed/insulation/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/rat/$
+  RewriteRule ^(.*)$ /breed/rat/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/reptile-zoo/$
+  RewriteRule ^(.*)$ /zoo/reptile-zoo/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/shop-kanagawa/$
+  RewriteRule ^(.*)$ /shop/kanagawa/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/insect-toast/$
+  RewriteRule ^(.*)$ /food/insect-toast/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/dantotu-comparison/$
+  RewriteRule ^(.*)$ /breed/dantotu-comparison/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/reptile-word/$
+  RewriteRule ^(.*)$ /trivia/reptile-word/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/ball-python/$
+  RewriteRule ^(.*)$ /trivia/ball-python/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/food-2/$
+  RewriteRule ^(.*)$ /breed/food-2/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/food-1/$
+  RewriteRule ^(.*)$ /breed/food-1/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/book/$
+  RewriteRule ^(.*)$ /trivia/book/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/heat/$
+  RewriteRule ^(.*)$ /breed/dantotsu-pantheon/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/sick/$
+  RewriteRule ^(.*)$ /breed/sick/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/ballpython-cage/$
+  RewriteRule ^(.*)$ /breed/ballpython-cage/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/ballpython-breed/$
+  RewriteRule ^(.*)$ /breed/ballpython-breed/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/ballpython-breed2/$
+  RewriteRule ^(.*)$ /breed/ballpython-breed2/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/ballpaython-breeding/$
+  RewriteRule ^(.*)$ /breed/ballpaython-breeding/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/moving/$
+  RewriteRule ^(.*)$ /breed/moving/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/eat/$
+  RewriteRule ^(.*)$ /breed/eat/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/driftwood/$
+  RewriteRule ^(.*)$ /breed/driftwood/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/banana/$
+  RewriteRule ^(.*)$ /breed/banana/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/comparison/$
+  RewriteRule ^(.*)$ /breed/comparison/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/tokyo/$
+  RewriteRule ^(.*)$ /shop/tokyo/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/saitama/$
+  RewriteRule ^(.*)$ /shop/saitama/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/ball-book/$
+  RewriteRule ^(.*)$ /trivia/ball-book/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/panel-heater/$
+  RewriteRule ^(.*)$ /breed/panel-heater/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/dantotu-thermo/$
+  RewriteRule ^(.*)$ /breed/dantotu-thermo/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/ball-cage/$
+  RewriteRule ^(.*)$ /breed/ball-cage/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/ball-temp/$
+  RewriteRule ^(.*)$ /breed/ball-temp/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/ball-cost/$
+  RewriteRule ^(.*)$ /breed/ball-cost/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/ball-beginner/$
+  RewriteRule ^(.*)$ /breed/ball-beginner/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/corn-snake-breed/$
+  RewriteRule ^(.*)$ /breed/corn-snake-breeding/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/spilota-breed/$
+  RewriteRule ^(.*)$ /breed/spilota-breeding/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/category/reptile-shop/$
+  RewriteRule ^(.*)$ /shop/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/category/animal-trivia/$
+  RewriteRule ^(.*)$ /trivia/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/category/zoo/$
+  RewriteRule ^(.*)$ /zoo/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/category/mammal-breed/$
+  RewriteRule ^(.*)$ /breed/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/category/insect-food/$
+  RewriteRule ^(.*)$ /food/ [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/category/reptile-breed/$
+  RewriteRule ^(.*)$ /breed/ [R=301,L]
+
+</IfModule>
 
 # BEGIN WordPress
 # "BEGIN WordPress" から "END WordPress" までのディレクティブ (行) は
