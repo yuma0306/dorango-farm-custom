@@ -4,6 +4,7 @@
 ?>
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
 	<meta charset="UTF-8">
+	<?php get_template_part('include/gtm-head'); ?>
 	<?php isNoindex(); ?>
 	<title><?php echo $metaTitle; ?></title>
 	<meta name="description" content="<?php echo $metaDesc; ?>">
