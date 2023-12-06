@@ -6,9 +6,44 @@ RewriteEngine On
 RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
 RewriteRule ^(.*)$ https://%1%{REQUEST_URI} [R=301,L]
 
-# 301リダイレクト
+# サイトマップのリダイレクト
 Redirect permanent /wp-sitemap.xml /sitemap.xml
-Redirect permanent /category/breed/ /category/reptile-breed/
+
+# 231206リニューアル
+RewriteRule ^classification/$ /trivia/classification/ [R=301,L]
+RewriteRule ^insulation/$ /breed/insulation/ [R=301,L]
+RewriteRule ^rat/$ /breed/rat/ [R=301,L]
+RewriteRule ^reptile-zoo/$ /zoo/reptile-zoo/ [R=301,L]
+RewriteRule ^shop-kanagawa/$ /shop/kanagawa/ [R=301,L]
+RewriteRule ^insect-toast/$ /food/insect-toast/ [R=301,L]
+RewriteRule ^dantotu-comparison/$ /breed/dantotu-comparison/ [R=301,L]
+RewriteRule ^reptile-word/$ /trivia/reptile-word/ [R=301,L]
+RewriteRule ^ball-python/$ /trivia/ball-python/ [R=301,L]
+RewriteRule ^food-2/$ /breed/food-2/ [R=301,L]
+RewriteRule ^food-1/$ /breed/food-1/ [R=301,L]
+RewriteRule ^book/$ /trivia/book/ [R=301,L]
+RewriteRule ^heat/$ /breed/dantotsu-pantheon/ [R=301,L]
+RewriteRule ^sick/$ /breed/sick/ [R=301,L]
+RewriteRule ^ballpython-cage/$ /breed/ballpython-cage/ [R=301,L]
+RewriteRule ^ballpython-breed/$ /breed/ballpython-breed/ [R=301,L]
+RewriteRule ^ballpython-breed2/$ /breed/ballpython-breed2/ [R=301,L]
+RewriteRule ^ballpaython-breeding/$ /breed/ballpaython-breeding/ [R=301,L]
+RewriteRule ^moving/$ /breed/moving/ [R=301,L]
+RewriteRule ^eat/$ /breed/eat/ [R=301,L]
+RewriteRule ^driftwood/$ /breed/driftwood/ [R=301,L]
+RewriteRule ^banana/$ /breed/banana/ [R=301,L]
+RewriteRule ^comparison/$ /breed/comparison/ [R=301,L]
+RewriteRule ^tokyo/$ /shop/tokyo/ [R=301,L]
+RewriteRule ^saitama/$ /shop/saitama/ [R=301,L]
+RewriteRule ^ball-book/$ /trivia/ball-book/ [R=301,L]
+RewriteRule ^panel-heater/$ /breed/panel-heater/ [R=301,L]
+RewriteRule ^dantotu-thermo/$ /breed/dantotu-thermo/ [R=301,L]
+RewriteRule ^ball-cage/$ /breed/ball-cage/ [R=301,L]
+RewriteRule ^ball-temp/$ /breed/ball-temp/ [R=301,L]
+RewriteRule ^ball-cost/$ /breed/ball-cost/ [R=301,L]
+RewriteRule ^ball-beginner/$ /breed/ball-beginner/ [R=301,L]
+RewriteRule ^corn-snake-breed/$ /breed/corn-snake-breeding/ [R=301,L]
+RewriteRule ^spilota-breed/$ /breed/spilota-breeding/ [R=301,L]
 
 # BEGIN WordPress
 # "BEGIN WordPress" から "END WordPress" までのディレクティブ (行) は
