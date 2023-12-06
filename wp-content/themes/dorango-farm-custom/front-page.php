@@ -3,14 +3,9 @@
 	$recomPosts = [
 		4931,
 		4936,
-		4893,
-		4920,
 		4926,
 		4942,
-		5005,
-		4999,
 		4994,
-		4990,
 	];
 	$kvArgs = [
 		'post_type' => ['breed', 'zoo', 'shop', 'food', 'trivia'],

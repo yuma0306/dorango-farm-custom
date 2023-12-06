@@ -46,7 +46,7 @@
 			min-width: vw(110);
 			text-align: center;
 			&:not(:first-of-type) {
-				border-left: vw(2) dashed $white01;
+				border-left: vw(1) solid $white01;
 			}
 		}
 		&__link {
