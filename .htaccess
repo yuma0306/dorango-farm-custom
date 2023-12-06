@@ -82,10 +82,10 @@ Redirect permanent /wp-sitemap.xml /sitemap.xml
   RewriteCond %{REQUEST_URI} ^/comparison/$
   RewriteRule ^(.*)$ /breed/comparison/ [R=301,L]
 
-  RewriteCond %{REQUEST_URI} ^/tokyo/$
+  RewriteCond %{REQUEST_URI} ^/shop-tokyo/$
   RewriteRule ^(.*)$ /shop/tokyo/ [R=301,L]
 
-  RewriteCond %{REQUEST_URI} ^/saitama/$
+  RewriteCond %{REQUEST_URI} ^/shop-saitama/$
   RewriteRule ^(.*)$ /shop/saitama/ [R=301,L]
 
   RewriteCond %{REQUEST_URI} ^/ball-book/$
