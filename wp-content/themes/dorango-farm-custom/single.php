@@ -68,7 +68,7 @@
 					</div>
 				</details>
 				<p class="affi-note">当サイトはアフェリエイト広告を利用しています。</p>
-				<section class="article-content" id="js-article">
+				<section class="article-content">
 					<?php getAcfArticle(); ?>
 				</section>
 				<h2 class="heading-lv2-02">もっと記事を探す</h2>
