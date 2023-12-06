@@ -10,6 +10,7 @@ $taxonomies = ['goods', 'method', 'species', 'morph', 'diseases', 'cross'];
 <html lang="ja">
 <?php get_template_part('include/head'); ?>
 <body>
+	<?php get_template_part('include/gtm-body'); ?>
 	<div class="wrapper">
 		<?php get_template_part('include/header'); ?>
 		<main class="main">
