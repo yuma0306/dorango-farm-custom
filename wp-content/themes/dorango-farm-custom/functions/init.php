@@ -144,7 +144,7 @@ remove_action('template_redirect', 'wp_old_slug_redirect');
 /**
  * デフォルトsitemapを削除
  */
-add_filter( 'wp_sitemaps_enabled', '__return_false' );
+add_filter('wp_sitemaps_enabled', '__return_false');
 
 /**
  * デフォルトrssの削除
@@ -167,3 +167,14 @@ function execCreateSitemap($post_id, $post, $update) {
     }
 }
 add_action('save_post', 'execCreateSitemap', 10, 3);
+
+/**
+ * WPマイナーアップデート自動更新停止
+ * WPメジャーアップデートはデフォルトで自動更新無し
+ */
+add_filter('automatic_updater_disabled', '__return_true');
+
+/**
+ * プラグインの自動更新停止
+ */
+add_filter('auto_update_plugin', '__return_false');

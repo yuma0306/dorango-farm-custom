@@ -6,6 +6,10 @@
 		padding: calc(142px + 30px) 0 45px;
 		background-color: $primary01;
 	}
+	.kv-slider {
+		max-width: 1500px;
+		margin: 0 auto;
+	}
 	.kv-slide {
 		$this: &;
 		&__link {
