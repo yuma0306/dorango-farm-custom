@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: お問い合わせ
+ * Template Name: お問い合わせ完了
  */
 ?>
 <!DOCTYPE html>
@@ -16,13 +16,14 @@
 			</h1>
 			<div class="inner inner--small">
 				<?php displayBreadcrumnbs(); ?>
-				<?php the_content(); ?>
+				<div class="article-content">
+					<?php getAcfArticle(); ?>
+				</div>
 			</div>
 		</main>
 		<?php get_template_part('include/footer'); ?>
 	</div>
 	<script src="<?php echo get_template_directory_uri() ?>/assets/js/common.js" defer></script>
-	<script src="<?php echo get_template_directory_uri() ?>/assets/js/contact.js" defer></script>
     <?php wp_footer(); ?>
 </body>
 </html>
