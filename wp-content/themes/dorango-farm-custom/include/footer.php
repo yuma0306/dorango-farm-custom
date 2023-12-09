@@ -9,7 +9,7 @@
 				<a href="/privacy/" class="footer__link">プライバシーポリシー</a>
 			</li>
 			<li class="footer__item">
-				<a href="https://docs.google.com/forms/d/e/1FAIpQLSeHvhCsjpzOLC6tAMs42Q_rhhGZg4dq8BMcscJMzFI9qV0W8A/viewform" class="footer__link">問い合わせ</a>
+				<a href="/contact/" class="footer__link">お問い合わせ</a>
 			</li>
 		</ul>
 		<p class="footer__copy">&copy;ヘビ牧場どらんごファーム</p>
