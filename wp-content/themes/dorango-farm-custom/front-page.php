@@ -22,6 +22,7 @@
 			'posts_per_page' => 2,
 			'orderby' => 'modified',
 			'order' => 'DESC',
+			'post_status' => 'publish',
 		];
 		return new WP_Query($args);
 	}
