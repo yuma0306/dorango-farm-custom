@@ -29,15 +29,15 @@ add_action('init', 'initEditor');
 function customBlockTypes($allowed_blocks, $post) {
     // Allow block type
     return [
-        'core/paragraph',
-        'core/heading',
-        'core/list',
-        'core/list-item',
-        'core/table',
-        'core/images',
-        'core/columns',
         'core/shortcode',
-        'core/html',
+        // 'core/paragraph',
+        // 'core/heading',
+        // 'core/list',
+        // 'core/list-item',
+        // 'core/table',
+        // 'core/images',
+        // 'core/columns',
+        // 'core/html',
     ];
 }
 add_filter('allowed_block_types_all', 'customBlockTypes', 10, 10);
