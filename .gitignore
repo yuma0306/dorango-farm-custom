@@ -22,6 +22,9 @@
 # ignore
 !.gitignore
 
+# .github
+!/.github
+
 # robots.txt
 !robots.txt
 
