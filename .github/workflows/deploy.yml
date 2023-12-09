@@ -19,5 +19,11 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           passphrase: ${{ secrets.SSH_PASS }}
           script: |
+            echo "Contents of the SSH private key:"
+            cat ${{ secrets.SSH_PRIVATE_KEY }}
+
+            echo "List files in the directory:"
+            ls -l
+
             cd ${{ secrets.SERVER_DEPLOY_DIR }}
             git pull origin main
