@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",function(){document.querySelector(".wpcf7").addEventListener("wpcf7invalid",function(){setTimeout(function(){var t=document.querySelector(".wpcf7-not-valid:first-child").offsetTop;window.scrollTo({top:t,behavior:"smooth"})},500)},!1),document.addEventListener("wpcf7mailsent",function(t){location="/"},!1)});
