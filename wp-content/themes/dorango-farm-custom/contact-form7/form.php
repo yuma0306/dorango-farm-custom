@@ -6,7 +6,7 @@
 			<span class="contact-label__text">お名前</span>
 		</label>
 		<div class="contact-block">
-			[text* your-name autocomplete:name class:contact-block__input id:name]
+			[text* your-name autocomplete:name class:contact-block__input id:name placeholder "蛇　太郎"]
 		</div>
 	</div>
 	<!-- /name -->
@@ -17,7 +17,7 @@
 			<span class="contact-label__text">メールアドレス</span>
 		</label>
 		<div class="contact-block">
-			[email* your-email autocomplete:email class:contact-block__input id:email]
+			[email* your-email autocomplete:email class:contact-block__input id:email placeholder "XXX@gmail.com"]
 		</div>
 	</div>
 	<!-- /email -->
@@ -28,7 +28,7 @@
 			<span class="contact-label__text">お問い合わせ内容</span>
 		</label>
 		<div class="contact-block">
-			[textarea* your-message class:contact-block__textarea id:inquiry]
+			[textarea* your-message class:contact-block__textarea id:inquiry placeholder "お問い合わせ内容を入力してください"]
 		</div>
 	</div>
 	<!-- /inquiry -->
