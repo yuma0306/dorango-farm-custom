@@ -1,4 +1,3 @@
 User-agent: *
 Disallow: /wp-content/themes/dorango-farm-custom/create-sitemap.php
-
 Sitemap: https://dorango-farm.com/sitemap.xml
