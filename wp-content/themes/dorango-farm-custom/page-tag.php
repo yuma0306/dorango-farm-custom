@@ -4,7 +4,6 @@
  */
 
 $taxonomies = ['goods', 'method', 'species', 'morph', 'diseases', 'cross'];
-
 ?>
 <!DOCTYPE html>
 <html lang="ja">

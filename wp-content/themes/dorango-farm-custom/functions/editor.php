@@ -12,6 +12,7 @@ function initEditor() {
     if(!isset($postId)) return;
     $templateFile = get_post_meta($postId, '_wp_page_template', true);
     $templates = [
+		'page-thanks.php',
         'page-tag.php',
 		'default',
 		'',
