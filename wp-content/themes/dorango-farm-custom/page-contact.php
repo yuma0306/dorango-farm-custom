@@ -18,7 +18,6 @@
 			<div class="inner inner--small">
 				<?php displayBreadcrumnbs(); ?>
 				<?php the_content(); ?>
-				<button type="button" class="btn-link01">送信</button>
 			</div>
 		</main>
 		<?php get_template_part('include/footer'); ?>
