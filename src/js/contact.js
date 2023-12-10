@@ -1,4 +1,6 @@
-
+/**
+ * DOM読み込み後
+ */
 document.addEventListener('DOMContentLoaded', function() {
 	/**
 	 * ContactForm7 DOMイベント
