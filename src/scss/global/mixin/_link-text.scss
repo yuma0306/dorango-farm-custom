@@ -1,5 +1,6 @@
 @use '../../config/import' as *;
 @use './hover' as *;
+@use '../function/vw' as *;
 
 @mixin incLinkTextPC() {
 	position: relative;
