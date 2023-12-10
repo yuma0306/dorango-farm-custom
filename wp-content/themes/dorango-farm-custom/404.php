@@ -38,7 +38,6 @@
 				<div class="validate-err js-search-err">
 					<div class="validate-err__elm js-search-child">キーワードを入力してください</div>
 				</div>
-
 			</div>
 		</main>
 		<?php get_template_part('include/footer'); ?>
