@@ -9,7 +9,7 @@
 		left: 0;
 		width: 100%;
 		padding: 15px 0 20px;
-		z-index: 100;
+		z-index: $headerZIndex;
 		&.is-active {
 			box-shadow: $primary03 0 0 2px 0;
 		}
@@ -24,7 +24,7 @@
 		left: 0;
 		width: 100%;
 		padding: vw(15) 0 0;
-		z-index: 100;
+		z-index: $headerZIndex;
 		&.is-active {
 			box-shadow: $primary03 0 0 vw(2) vw(2);
 		}
