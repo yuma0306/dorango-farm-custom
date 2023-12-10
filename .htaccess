@@ -6,6 +6,10 @@ RewriteEngine On
 RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
 RewriteRule ^(.*)$ https://%1%{REQUEST_URI} [R=301,L]
 
+<Files wp-config\.php>
+  Require all denied
+</Files>
+
 # サイトマップのリダイレクト
 Redirect permanent /wp-sitemap.xml /sitemap.xml
 
