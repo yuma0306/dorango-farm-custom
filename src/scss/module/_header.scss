@@ -11,7 +11,7 @@
 		padding: 15px 0 20px;
 		z-index: $headerZIndex;
 		&.is-active {
-			box-shadow: $primary03 0 0 2px 0;
+			box-shadow: 0 0 10px $white01;
 		}
 	}
 }
@@ -26,7 +26,7 @@
 		padding: vw(15) 0 0;
 		z-index: $headerZIndex;
 		&.is-active {
-			box-shadow: $primary03 0 0 vw(2) vw(2);
+			box-shadow: 0 0 vw(10) $white01;
 		}
 	}
 }
