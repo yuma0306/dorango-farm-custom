@@ -1,0 +1,1 @@
+{"version":3,"sources":["editor.scss"],"names":[],"mappings":"AAAA,KACC","file":"../editor.css","sourcesContent":["mark {\n\tbackground: linear-gradient(transparent 70%, #FFE600 70%);\n}\n"]}

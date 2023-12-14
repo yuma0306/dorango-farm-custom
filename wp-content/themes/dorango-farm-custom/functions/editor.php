@@ -51,21 +51,105 @@ add_filter('allowed_block_types_all', 'customBlockTypes', 10, 10);
  * ▼devツールのconsoleから実行
  * wp.data.select( 'core/rich-text' ).getFormatTypes();
  */
-function customRichtext() {
-    if(is_admin()){
-        wp_enqueue_style(
-            'gutenberg-richtext-style',
-            get_stylesheet_directory_uri() . '/gutenberg/gutenberg.css',
-        );
-        wp_enqueue_script(
-            'gutenberg-richtext-js',
-            get_stylesheet_directory_uri() . '/gutenberg/gutenberg.js',
-            array('lodash', 'wp-rich-text', 'wp-element', 'wp-components', 'wp-blocks', 'wp-block-editor', 'wp-keycodes'),
-            null,
-            true,
-        );
-    }
-}
+// function customRichtext() {
+//     if(is_admin()){
+//         wp_enqueue_style(
+//             'gutenberg-richtext-style',
+//             get_template_directory_uri() . '/gutenberg/gutenberg.css',
+//         );
+//         wp_enqueue_script(
+//             'gutenberg-richtext-js',
+//             get_template_directory_uri() . '/gutenberg/gutenberg.js',
+//             array('lodash', 'wp-rich-text', 'wp-element', 'wp-components', 'wp-blocks', 'wp-block-editor', 'wp-keycodes'),
+//             null,
+//             true,
+//         );
+//     }
+// }
+// add_action('enqueue_block_editor_assets', 'customRichtext');
+// add_action('admin_enqueue_scripts', 'customRichtext');
 
-add_action('enqueue_block_editor_assets', 'customRichtext');
-add_action('wp_enqueue_scripts', 'customRichtext');
+/**
+ * 【ACF】wysiwygエディターの追加
+ * https://www.advancedcustomfields.com/resources/customize-the-wysiwyg-toolbars/
+ */
+function add_original_wysiwyg_editor($toolbars) {
+    $toolbars['original_toolbars'] = [];
+    $toolbars['original_toolbars'][1] = [
+		// 太字
+		'bold',
+		// 番号なしリスト
+		'bullist',
+		// 番号付きリスト
+		'numlist',
+		// 引用
+		'blockquote',
+		// 左寄せ
+		'alignleft',
+		// 中央揃え
+		'aligncenter',
+		// 右寄せ
+		'alignright',
+		// リンクの挿入と編集
+		'link',
+		// リンクの削除
+		'unlink',
+		// テキスト色
+		'forecolor',
+		// オリジナル
+		'marker',
+		'removeMarker',
+		// フォントサイズ
+		'fontsizeselect',
+	];
+	// $toolbars['original_toolbars'][2] = [ ];
+    return $toolbars;
+}
+add_filter('acf/fields/wysiwyg/toolbars', 'add_original_wysiwyg_editor');
+
+/**
+ * 【TinyMCE】フォントサイズカスタマイズ
+ */
+function custom_tiny_mce_font_sizes($init) {
+    $init['fontsize_formats'] = '13px 15px 17px 20px 22px';
+    return $init;
+}
+add_filter('tiny_mce_before_init', 'custom_tiny_mce_font_sizes');
+
+/**
+ * 【TinyMCE】カレーパレットカスタマイズ
+ * https://www.advancedcustomfields.com/resources/customize-the-wysiwyg-toolbars/
+ */
+function custom_tiny_mce_colors($init) {
+	$default_colors = '
+		"333333", "TextBlack",
+		"FFFFFF", "white"
+	';
+	$custom_colors = '
+		"E1AA3C", "Primary01",
+		"FA8501", "Primary02"
+	';
+	$init['textcolor_map'] = '[' . $default_colors . ',' . $custom_colors . ']';
+	// 行数設定
+	// $init['textcolor_rows'] = 6;
+	return $init;
+}
+add_filter('tiny_mce_before_init', 'custom_tiny_mce_colors');
+
+/**
+ * 【TinyMCE】オリジナルボタン用JS読み込み
+ */
+function add_tiny_mce_btn_js($piugins) {
+	$piugins['marker'] = get_stylesheet_directory_uri() . '/assets/js/tinymce-button.js';
+	return $piugins;
+}
+add_filter('mce_external_plugins', 'add_tiny_mce_btn_js');
+
+/**
+ * 【TinyMCE】オリジナルボタンの追加
+ */
+function add_tiny_mce_btns($buttons) {
+	$buttons[] = 'marker';
+	return $buttons;
+}
+add_filter('mce_external_plugins', 'add_tiny_mce_btns');

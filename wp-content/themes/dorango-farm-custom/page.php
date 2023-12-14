@@ -17,7 +17,7 @@
 				<details class="toc">
 					<summary class="toc__summary">目次</summary>
 					<div class="toc__content">
-					<?php createToc(); ?>
+						<?php createToc(); ?>
 					</div>
 				</details>
 				<p class="affi-note">当サイトはアフェリエイト広告を利用しています。</p>
