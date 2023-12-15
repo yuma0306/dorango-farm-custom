@@ -137,19 +137,27 @@ function custom_tiny_mce_colors($init) {
 add_filter('tiny_mce_before_init', 'custom_tiny_mce_colors');
 
 /**
- * 【TinyMCE】オリジナルボタン用JS読み込み
+ * カスタムTinyMCEボタン用のスクリプトを読み込む
  */
-function add_tiny_mce_btn_js($piugins) {
-	$piugins['marker'] = get_stylesheet_directory_uri() . '/assets/js/tinymce-button.js';
-	return $piugins;
+function enqueue_tinymce_marker_script() {
+    wp_enqueue_script('tinymce-marker', get_stylesheet_directory_uri() . '/assets/js/tinymce-button.js', array('jquery'), '1.0', true);
 }
-add_filter('mce_external_plugins', 'add_tiny_mce_btn_js');
+add_action('admin_enqueue_scripts', 'enqueue_tinymce_marker_script');
 
 /**
- * 【TinyMCE】オリジナルボタンの追加
+ * カスタムTinyMCEボタンを追加する
  */
-function add_tiny_mce_btns($buttons) {
-	$buttons[] = 'marker';
-	return $buttons;
+function add_tinymce_marker_button($buttons) {
+    array_push($buttons, 'marker');
+    return $buttons;
 }
-add_filter('mce_external_plugins', 'add_tiny_mce_btns');
+add_filter('mce_buttons', 'add_tinymce_marker_button');
+
+/**
+ * カスタムTinyMCEボタンのプラグインを追加する
+ */
+function add_tinymce_marker_plugin($plugins) {
+    $plugins['marker'] = get_stylesheet_directory_uri() . '/assets/js/tinymce-button.js';
+    return $plugins;
+}
+add_filter('mce_external_plugins', 'add_tinymce_marker_plugin');
