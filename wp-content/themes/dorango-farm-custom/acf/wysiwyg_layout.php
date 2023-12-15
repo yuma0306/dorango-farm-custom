@@ -3,7 +3,7 @@
 ?>
 <?php if(!empty($wysiwyg)): ?>
 	<div class="article-block">
-		<div class="wysiwyg">
+		<div class="wysiwyg js-wysiwyg">
 			<?php echo $wysiwyg; ?>
 		</div>
 	</div>

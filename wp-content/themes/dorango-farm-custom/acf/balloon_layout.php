@@ -9,7 +9,7 @@
 				<picture class="balloon__picture">
 					<img class="balloon__img" src="<?php echo get_template_directory_uri(); ?>/assets/img/img-<?php $balloonFlag ? print 'lizard' : print 'frog'; ?>.webp" alt="" width="96" height="96">
 				</picture>
-				<div class="balloon__text wysiwyg">
+				<div class="balloon__text wysiwyg js-wysiwyg">
 					<?php echo $balloonItem['balloon_wysiwyg_field']; ?>
 				</div>
 			</div>

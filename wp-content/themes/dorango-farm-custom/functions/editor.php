@@ -4,7 +4,7 @@
  * エディター画面のカスタマイズ
  * https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-support/#disabling-the-default-block-patterns
  */
-function initEditor() {
+function init_editor() {
     remove_theme_support('core-block-patterns');
     remove_post_type_support('page', 'comments');
     remove_post_type_support('page', 'author');
@@ -21,13 +21,13 @@ function initEditor() {
         remove_post_type_support('page', 'editor');
     }
 }
-add_action('init', 'initEditor');
+add_action('init', 'init_editor');
 
 /**
  * グーテンベルクの制御
  * https://developer.wordpress.org/block-editor/reference-guides/filters/block-filters/#hiding-blocks-from-the-inserter
  */
-function customBlockTypes($allowed_blocks, $post) {
+function custom_block_types($allowed_blocks, $post) {
     // Allow block type
     return [
         'core/shortcode',
@@ -41,7 +41,7 @@ function customBlockTypes($allowed_blocks, $post) {
         // 'core/html',
     ];
 }
-add_filter('allowed_block_types_all', 'customBlockTypes', 10, 10);
+add_filter('allowed_block_types_all', 'custom_block_types', 10, 10);
 
 /**
  * リッチエディターへの機能追加
