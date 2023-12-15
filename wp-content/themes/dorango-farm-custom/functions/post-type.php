@@ -1,5 +1,5 @@
 <?php
-function addCustomPostType() {
+function add_custom_post_type() {
 	register_post_type('breed', [
 		'label' => '飼育・繁殖',
 		'hierarchical' => false,
@@ -81,4 +81,4 @@ function addCustomPostType() {
 	]);
 }
 
-add_action('init', 'addCustomPostType');
+add_action('init', 'add_custom_post_type');

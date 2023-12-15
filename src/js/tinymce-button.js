@@ -1,13 +1,13 @@
 (function() {
     tinymce.PluginManager.add('marker', function( editor, url ) {
         editor.addButton('marker', {
-            title: 'marker',
+            title: 'マーカー',
 			icon: 'mce-ico mce-i-underline',
             cmd: 'marker',
         });
 		// マーカーを削除するボタン
         editor.addButton('removeMarker', {
-            title: 'Remove Marker',
+            title: 'マーカー削除',
             icon: 'mce-ico mce-i-remove',
             cmd: 'removeMarker',
         });
@@ -19,7 +19,7 @@
                 return;
             }
             let openColumn = '<span style="background: linear-gradient(transparent 70%, #FFE600 70%);">';
-            let closeColumn = '</mark>';
+            let closeColumn = '</span>';
             let returnText = '';
             returnText = openColumn + selectedText + closeColumn;
             editor.execCommand('mceReplaceContent', false, returnText);

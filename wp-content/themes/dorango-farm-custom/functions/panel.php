@@ -2,7 +2,7 @@
 /**
 * ツールバー項目非表示
 */
-function removeWpNodes($wp_admin_bar) {
+function remove_wp_nodes($wp_admin_bar) {
     $wp_admin_bar->remove_node('comments');
     $wp_admin_bar->remove_menu( 'updates' ); //更新
     $wp_admin_bar->remove_menu( 'wp-logo' ); //ロゴ
@@ -28,12 +28,12 @@ function removeWpNodes($wp_admin_bar) {
     // $wp_admin_bar->remove_menu( 'menu-toggle' ); //メニュー
     // $wp_admin_bar->remove_menu( 'search' ); //検索
 }
-add_action('admin_bar_menu', 'removeWpNodes', 99);
+add_action('admin_bar_menu', 'remove_wp_nodes', 99);
 
 /**
 * ダッシュボード項目非表示
 */
-function removeDashboardWidget() {
+function remove_dashboard_widget() {
     remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' ); //概要
     remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' ); //クイックドラフト
     remove_meta_box( 'dashboard_primary', 'dashboard', 'side' ); //WordPressニュース
@@ -44,12 +44,12 @@ function removeDashboardWidget() {
     global $wp_meta_boxes;
     unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments']); // 最近のコメント表示を削除
 }
-add_action('wp_dashboard_setup', 'removeDashboardWidget');
+add_action('wp_dashboard_setup', 'remove_dashboard_widget');
 
 /**
 * メニューの非表示
 */
-function removeMenus(){
+function remove_menus(){
     // remove_menu_page('edit.php'); //投稿メニュー
     remove_menu_page('edit-comments.php'); //コメント
     // remove_menu_page('index.php'); //ダッシュボード
@@ -62,21 +62,21 @@ function removeMenus(){
     // remove_menu_page('tools.php'); //ツールメニュー
     // remove_menu_page('options-general.php'); //設定
 }
-add_action('admin_menu', 'removeMenus');
+add_action('admin_menu', 'remove_menus');
 
 /**
  * 更新通知を管理者権限のみに表示
  */
-function updateNagAdminOnly() {
+function update_nag_adminOnly() {
     if(!current_user_can('administrator')) {
         remove_action('admin_notices', 'update_nag', 3);
     }
 }
-add_action('admin_init', 'updateNagAdminonly');
+add_action('admin_init', 'update_nag_adminonly');
 
-function customMenuPos() {
+function custom_menu_pos() {
 	global $menu;
 	$menu[19] = $menu[10];
 	unset($menu[10]);
 }
-add_action('admin_menu', 'customMenuPos');
+add_action('admin_menu', 'custom_menu_pos');

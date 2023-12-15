@@ -113,7 +113,8 @@
 		</main>
 		<?php get_template_part('include/footer'); ?>
 	</div>
-	<script src="<?php echo get_template_directory_uri() ?>/assets/js/common.js" defer></script>
+	<!-- <script src="<?php echo get_template_directory_uri() ?>/assets/js/common.js" defer></script> -->
+	<script src="/src/js/common.js" defer></script>
     <?php wp_footer(); ?>
 </body>
 </html>
