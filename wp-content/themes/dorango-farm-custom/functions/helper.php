@@ -464,4 +464,19 @@ function loadCssFile() {
     }
 }
 
+function get_article_file() {
+	$currentUri = getCurrentUri();
+	$filePath = substr($currentUri, 0, strlen($currentUri) -1);
+	$articleFile = get_template_directory() . 'include' . $filePath . '.php';
+	if(file_exists($articleFile)) {
+		include $articleFile;
+		return;
+	}
+	$indexArticleFile = get_template_directory() . 'include' . $currentUri . 'index.php';
+	if(file_exists($indexArticleFile)) {
+		include $indexArticleFile;
+		return;
+	}
+}
+
 
