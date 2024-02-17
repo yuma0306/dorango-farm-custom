@@ -1,11 +1,6 @@
 <?php
 	$meta_title = get_meta_title();
 	$meta_desc = get_meta_desc();
-	$base_uri = get_stylesheet_directory();
-	$ip = '';
-	if (getenv('SERVER_ADDR') !== false) {
-		$ip = $_SERVER['SERVER_ADDR'];
-	}
 ?>
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
 	<meta charset="UTF-8">
@@ -37,6 +32,11 @@
 	<!-- /favicon -->
 	<!-- style -->
 	<?php
+		$base_uri = get_stylesheet_directory();
+		$ip = '';
+		if (getenv('SERVER_ADDR') !== false) {
+			$ip = $_SERVER['SERVER_ADDR'];
+		}
 		// ローカル環境
 		if (false !== strpos($ip, '::1')) {
 			load_css_file();
