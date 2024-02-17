@@ -15,7 +15,7 @@ function d() {
 /**
  * パタメータを除いたルートパスを取得
  */
-function getCurrentUri() {
+function get_current_uri() {
     $uri = $_SERVER['REQUEST_URI'];
     if(strstr($uri, '?')) {
         $uri = strtok($uri, '?');
@@ -79,7 +79,7 @@ function displayBreadcrumnbs() {
  */
 function createBreadcrumbsSchema() {
 	// ページ情報
-	$currentUri = getCurrentUri();
+	$currentUri = get_current_uri();
 	$currentPath = getCurrentPath($currentUri);
 	$articleTitle = '記事一覧';
 	$prefix = [
@@ -248,9 +248,9 @@ function createWpPagination($query) {
 /**
  * メタタイトル取得
  */
-function getMetaTitle () {
+function get_meta_title () {
 	$blogTitle = esc_html(get_bloginfo('name'));
-	$currentUri = getCurrentUri();
+	$currentUri = get_current_uri();
 	$currentPath = getCurrentPath($currentUri);
 	$articleTitle = "記事一覧 | {$blogTitle}";
 	$prefix = [
@@ -287,9 +287,9 @@ function getMetaTitle () {
 /**
  * メタディスクリプション取得
  */
-function getMetaDesc() {
+function get_meta_desc() {
 	$blogDesc = esc_html(get_bloginfo('description'));
-	$currentUri = getCurrentUri();
+	$currentUri = get_current_uri();
 	$currentPath = getCurrentPath($currentUri);
 	$articleDesc = "記事一覧 | {$blogDesc}";
 	$prefix = [
@@ -329,7 +329,7 @@ function getMetaDesc() {
  * カノニカルタグを取得
  */
 function getCanonical() {
-	$currentUri = getCurrentUri();
+	$currentUri = get_current_uri();
 	$canonical = get_field('canonical_field');
 	if(empty($canonical)) {
 		echo esc_url('https://dorango-farm.com' . $currentUri);
@@ -342,7 +342,7 @@ function getCanonical() {
  * og:urlを取得
  */
 function getOgUrl() {
-	$currentUri = getCurrentUri();
+	$currentUri = get_current_uri();
 	$ogUrl = get_field('og_url_field');
 	if(empty($ogUrl)) {
 		echo esc_url('https://dorango-farm.com' . $currentUri);
@@ -439,8 +439,8 @@ function createToc() {
 	}
 }
 
-function loadCssFile() {
-	$currentUri = getCurrentUri();
+function load_css_file() {
+	$currentUri = get_current_uri();
     $baseUri = get_stylesheet_directory_uri();
     $cssFiles = [
         '/contact/' => '/assets/css/contact.css',
@@ -465,7 +465,7 @@ function loadCssFile() {
 }
 
 function get_article_file() {
-	$currentUri = getCurrentUri();
+	$currentUri = get_current_uri();
 	$filePath = substr($currentUri, 0, strlen($currentUri) -1);
 	$articleFile = get_template_directory() . 'include' . $filePath . '.php';
 	if(file_exists($articleFile)) {

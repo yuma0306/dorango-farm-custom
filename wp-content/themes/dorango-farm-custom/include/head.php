@@ -1,20 +1,22 @@
 <?php
-	$metaTitle = getMetaTitle();
-	$metaDesc = getMetaDesc();
+	$meta_title = get_meta_title();
+	$meta_desc = get_meta_desc();
+	$domain = $_SERVER['SERVER_NAME'];
+	$base_uri = get_stylesheet_directory();
 ?>
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
 	<meta charset="UTF-8">
 	<?php get_template_part('include/gtm-head'); ?>
 	<?php isNoindex(); ?>
-	<title><?php echo $metaTitle; ?></title>
-	<meta name="description" content="<?php echo $metaDesc; ?>">
+	<title><?php echo $meta_title; ?></title>
+	<meta name="description" content="<?php echo $meta_desc; ?>">
 	<link rel="canonical" href="<?php getCanonical(); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	<meta name="format-detection" content="telephone=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<!-- ogp -->
-	<meta property="og:title" content="<?php echo $metaTitle; ?>">
-	<meta property="og:description" content="<?php echo $metaDesc; ?>">
+	<meta property="og:title" content="<?php echo $meta_title; ?>">
+	<meta property="og:description" content="<?php echo $meta_desc; ?>">
 	<meta property="og:url" content="<?php getOgUrl(); ?>">
 	<meta property="og:image" content="<?php getOgImage(); ?>">
 	<meta property="og:site_name" content="<?php echo bloginfo('name'); ?>">
@@ -31,7 +33,23 @@
 	<meta name="theme-color" content="#E1AA3C">
 	<!-- /favicon -->
 	<!-- style -->
-	<?php loadCssFile(); ?>
+	<?php
+		if($domain === 'dorango-farm.com' && false !== strpos($domain, 'localhost')) {
+			ob_start();
+				require_once "{$base_uri}/assets/css/style.css";
+				if(is_front_page()) {
+					require_once "{$base_uri}/assets/css/front-page.css";
+				}
+				if(is_page('contact')) {
+					require_once "{$base_uri}/assets/css/contact.css";
+				}
+				$style = ob_get_contents();
+			ob_end_clean();
+			echo "<style>{$style}</style>";
+		} else {
+			load_css_file();
+		}
+	?>
 	<!-- /style -->
 	<!-- schema -->
 	<script type="application/ld+json">

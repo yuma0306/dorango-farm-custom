@@ -1,5 +1,5 @@
 <?php
-	$currentUri = getCurrentUri();
+	$currentUri = get_current_uri();
 	$currentPath = getCurrentPath($currentUri);
 	$title = '記事一覧';
 	$titlePrefix = [

@@ -105,6 +105,11 @@ const watchFiles = () => {
     gulp.watch(srcPath.php, gulp.series(browserSyncReload));
 };
 
+// sassコンパイル
+exports.sass = gulp.series(
+    compSass,
+);
+
 // 開発時
 exports.default = gulp.series(
     gulp.parallel(compSass,minifyJs,changeWebp),

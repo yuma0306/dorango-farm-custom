@@ -14,7 +14,6 @@
 		'post_status' => 'publish',
 	];
 	$kvPosts = new WP_Query($kvArgs);
-
 	// 各投稿タイプの記事取得
 	function getPostsByType($postType) {
 		$args = [
