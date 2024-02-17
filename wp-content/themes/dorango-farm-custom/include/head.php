@@ -1,8 +1,11 @@
 <?php
 	$meta_title = get_meta_title();
 	$meta_desc = get_meta_desc();
-	$domain = $_SERVER['SERVER_NAME'];
 	$base_uri = get_stylesheet_directory();
+	$ip = '';
+	if (getenv('SERVER_ADDR') !== false) {
+		$ip = $_SERVER['SERVER_ADDR'];
+	}
 ?>
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
 	<meta charset="UTF-8">
@@ -34,7 +37,11 @@
 	<!-- /favicon -->
 	<!-- style -->
 	<?php
-		if($domain === 'dorango-farm.com' && false !== strpos($domain, 'localhost')) {
+		// ローカル環境
+		if (false !== strpos($ip, '::1')) {
+			load_css_file();
+		// 本番環境
+		} else {
 			ob_start();
 				require_once "{$base_uri}/assets/css/style.css";
 				if(is_front_page()) {
@@ -46,8 +53,6 @@
 				$style = ob_get_contents();
 			ob_end_clean();
 			echo "<style>{$style}</style>";
-		} else {
-			load_css_file();
 		}
 	?>
 	<!-- /style -->
