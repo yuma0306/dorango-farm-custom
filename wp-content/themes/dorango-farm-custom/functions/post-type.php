@@ -15,7 +15,6 @@ function add_custom_post_type() {
 		],
 		'menu_position' => 5,
 	]);
-
 	register_post_type('zoo', [
 		'label' => '動物園',
 		'hierarchical' => false,
@@ -31,7 +30,6 @@ function add_custom_post_type() {
 		],
 		'menu_position' => 5,
 	]);
-
 	register_post_type('shop', [
 		'label' => 'ショップ',
 		'hierarchical' => false,
@@ -47,7 +45,6 @@ function add_custom_post_type() {
 		],
 		'menu_position' => 5,
 	]);
-
 	register_post_type('food', [
 		'label' => '昆虫食',
 		'hierarchical' => false,
@@ -63,7 +60,6 @@ function add_custom_post_type() {
 		],
 		'menu_position' => 5,
 	]);
-
 	register_post_type('trivia', [
 		'label' => '動物雑学',
 		'hierarchical' => false,

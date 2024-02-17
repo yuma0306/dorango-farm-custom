@@ -1,5 +1,6 @@
 @use './global/import' as *;
 @use './config/import' as *;
+@use './plugin/splide' as splide;
 
 @include pc {
 	.kv {

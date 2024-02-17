@@ -43,5 +43,3 @@ if (file_exists($envFile)) {
 		add_filter('wp_redirect', 'logout_redirect', 10, 2);
 	}
 }
-
-?>

@@ -107,5 +107,3 @@ function writeSitemap($tags) {
 
 $tags = createTags();
 writeSitemap($tags);
-
-?>

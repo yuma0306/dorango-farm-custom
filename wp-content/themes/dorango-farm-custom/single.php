@@ -1,7 +1,7 @@
 <?php
 	$heading = get_the_title();
 	$thumb = get_field('thumb_field');
-	$currentUri = getCurrentUri();
+	$currentUri = get_current_uri();
 	$currentPath = getCurrentPath($currentUri);
 	$modifiedDate = get_the_modified_time('Y-m-d');
 	$postPrefix = [
