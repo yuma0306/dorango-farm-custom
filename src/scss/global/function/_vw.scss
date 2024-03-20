@@ -12,10 +12,10 @@
 	@return min(pcVw($num), $num * 1px);
 }
 
-// @function pcMin($num) {
-// 	@return calc($num * 0.8 * 1px);
-// }
-
-// @function vwClamp($num) {
-// 	@return clamp(pcMin($num), pcVw($num), $num * 1px);
-// }
+@function vwClamp($num, $min: null) {
+	@if $min == null {
+		@return clamp(calc($num * 0.8 * 1px), pcVw($num), $num * 1px);
+	} @else {
+		@return clamp($min * 1px, pcVw($num), $num * 1px);
+	}
+}
