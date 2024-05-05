@@ -46,7 +46,7 @@
 		position: relative;
 		display: grid;
 		place-items: center;
-		width: vw(250);
+		min-width: vw(250);
 		height: vw(50);
 		padding: 0 vw(30);
 		margin: vw(30) auto 0;
@@ -62,7 +62,7 @@
 		&::after {
 			position: absolute;
 			top: 50%;
-			right: vw(15);
+			right: vw(10);
 			transform: translate(0%, -50%);
 			width: vw(16);
 			height: vw(18);

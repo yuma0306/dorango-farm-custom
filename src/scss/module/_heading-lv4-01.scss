@@ -3,7 +3,7 @@
 
 @include pc {
 	.heading-lv4-01 {
-		margin-top: 30px;
+		margin-top: 35px;
 		padding-bottom: 5px;
 		border-bottom: 2px solid $primary01;
 		font-size: $fzMediumPC;
@@ -13,7 +13,7 @@
 
 @include sp {
 	.heading-lv4-01 {
-		margin-top: vw(30);
+		margin-top: vw(35);
 		padding-bottom: vw(5);
 		border-bottom: vw(2) solid $primary01;
 		font-size: $fzMediumSP;

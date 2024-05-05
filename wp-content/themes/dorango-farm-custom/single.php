@@ -6,7 +6,7 @@
 	$modifiedDate = get_the_modified_time('Y-m-d');
 	$postPrefix = [
 		"breed" => "飼育繁殖の",
-		"zoo" => "動物園の",
+		"zoo" => "アニマルスポットの",
 		"shop" => "ショップの",
 		"food" => "昆虫食の",
 		"trivia" => "動物雑学の",

@@ -4,7 +4,7 @@
 @include pc {
 	.heading-lv3-01 {
 		position: relative;
-		margin-top: 40px;
+		margin-top: 45px;
 		padding-left: 20px;
 		font-size: $fzLargePC;
 		font-weight: $fwMedium;
@@ -23,7 +23,7 @@
 @include sp {
 	.heading-lv3-01 {
 		position: relative;
-		margin-top: vw(40);
+		margin-top: vw(45);
 		padding-left: vw(20);
 		font-size: $fzLargeSP;
 		font-weight: $fwMedium;

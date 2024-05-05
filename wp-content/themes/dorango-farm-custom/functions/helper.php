@@ -84,7 +84,7 @@ function createBreadcrumbsSchema() {
 	$articleTitle = '記事一覧';
 	$prefix = [
 		"breed" => "飼育繁殖の",
-		"zoo" => "動物園の",
+		"zoo" => "アニマルスポットの",
 		"shop" => "ショップの",
 		"food" => "昆虫食の",
 		"trivia" => "動物雑学の",
@@ -255,7 +255,7 @@ function get_meta_title () {
 	$articleTitle = "記事一覧 | {$blogTitle}";
 	$prefix = [
 		"breed" => "飼育繁殖の",
-		"zoo" => "動物園の",
+		"zoo" => "アニマルスポットの",
 		"shop" => "ショップの",
 		"food" => "昆虫食の",
 		"trivia" => "動物雑学の",
@@ -294,7 +294,7 @@ function get_meta_desc() {
 	$articleDesc = "記事一覧 | {$blogDesc}";
 	$prefix = [
 		"breed" => "飼育繁殖の",
-		"zoo" => "動物園の",
+		"zoo" => "アニマルスポットの",
 		"shop" => "ショップの",
 		"food" => "昆虫食の",
 		"trivia" => "動物雑学の",
