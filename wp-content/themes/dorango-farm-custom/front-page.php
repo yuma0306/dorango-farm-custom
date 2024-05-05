@@ -90,13 +90,13 @@
 						<?php wp_reset_postdata(); endif; ?>
 						<?php if($zooPosts->have_posts()): ?>
 							<section class="blogs-block js-animate-y">
-								<h2 class="heading-lv2-01 heading-lv2-01--zoo"><span class="heading-lv2-01__deco">動物園</span>の記事</h2>
+								<h2 class="heading-lv2-01 heading-lv2-01--zoo"><span class="heading-lv2-01__deco">アニマルスポット</span>の記事</h2>
 								<div class="grid-block">
 									<?php while($zooPosts->have_posts()): $zooPosts->the_post(); ?>
 										<?php get_template_part('include/blogs-item'); ?>
 									<?php endwhile; ?>
 								</div>
-								<a class="btn-link01 btn-link01--end" href="/zoo/">動物園の記事一覧</a>
+								<a class="btn-link01 btn-link01--end" href="/zoo/">アニマルスポットの記事一覧</a>
 							</section>
 						<?php wp_reset_postdata(); endif; ?>
 						<?php if($shopPosts->have_posts()): ?>

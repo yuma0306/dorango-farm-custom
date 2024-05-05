@@ -3,7 +3,7 @@
 
 @include pc {
 	.heading-lv2-02 {
-		margin-top: 50px;
+		margin-top: 65px;
 		position: relative;
 		border-bottom: 5px solid $primary03;
 		padding-bottom: 10px;
@@ -24,7 +24,7 @@
 
 @include sp {
 	.heading-lv2-02 {
-		margin-top: vw(50);
+		margin-top: vw(65);
 		position: relative;
 		border-bottom: vw(5) solid $primary03;
 		padding-bottom: vw(10);

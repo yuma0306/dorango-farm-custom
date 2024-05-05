@@ -16,7 +16,7 @@ function add_custom_post_type() {
 		'menu_position' => 5,
 	]);
 	register_post_type('zoo', [
-		'label' => '動物園',
+		'label' => 'アニマルスポット',
 		'hierarchical' => false,
 		'public' => true,
 		'has_archive' => true,

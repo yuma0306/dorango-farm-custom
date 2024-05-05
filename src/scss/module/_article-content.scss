@@ -16,7 +16,7 @@
 @include sp {
 	.article-content {
 		$this: &;
-		padding: vw(20) 0;
+		padding: vw(20) 0 0;
 		& > * {
 			&:first-child {
 				margin-top: 0;
