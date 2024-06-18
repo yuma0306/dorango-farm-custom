@@ -4,17 +4,18 @@
 @include pc {
 	.gnav {
 		margin: 15px auto 0;
-		max-width: #{$innerWidthPC}px;
+		width: fit-content;
+		overflow-x: auto;
+		white-space: nowrap;
 		&__list {
 			display: flex;
 			align-items: center;
-			justify-content: space-between;
-			border-right: 1px dashed $white01;
 		}
 		&__item {
-			flex: 1;
-			border-left: 1px dashed $white01;
 			text-align: center;
+			&:not(:first-of-type) {
+				border-left: 1px dotted $white01;
+			}
 		}
 		&__link {
 			display: block;
