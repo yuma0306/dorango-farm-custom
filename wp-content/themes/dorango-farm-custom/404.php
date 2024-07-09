@@ -18,7 +18,6 @@
 						<span class="breadcrumb__text">ページが見つかりません</span>
 					</li>
 				</ul>
-				<p class="affi-note">当サイトはアフェリエイト広告を利用しています。</p>
 				<div class="grid-block">
 					<p>ページが見つかりません。</p>
 					<p>リンクから別のページに遷移、または記事を検索してください。</p>
