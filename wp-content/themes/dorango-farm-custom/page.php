@@ -20,7 +20,6 @@
 						<?php createToc(); ?>
 					</div>
 				</details>
-				<p class="affi-note">当サイトはアフェリエイト広告を利用しています。</p>
 				<section class="article-content">
 					<?php getAcfArticle(); ?>
 				</section>

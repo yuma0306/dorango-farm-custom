@@ -25,7 +25,6 @@
 						<span class="breadcrumb__text"><?php echo esc_html($taxTitle); ?></span>
 					</li>
 				</ul>
-				<p class="affi-note">当サイトはアフェリエイト広告を利用しています。</p>
 				<div class="grid-block grid-block--col2">
 					<?php if(have_posts()): ?>
 						<?php while (have_posts()): the_post(); ?>

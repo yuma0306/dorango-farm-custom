@@ -31,7 +31,6 @@
 						<span class="breadcrumb__text"><?php echo $resultTitle; ?></span>
 					</li>
 				</ul>
-				<p class="affi-note">当サイトはアフェリエイト広告を利用しています。</p>
 				<div class="grid-block grid-block--col2">
 					<?php
 						$args = [
