@@ -50,7 +50,7 @@ add_action('wp_dashboard_setup', 'remove_dashboard_widget');
 * メニューの非表示
 */
 function remove_menus(){
-    // remove_menu_page('edit.php'); //投稿メニュー
+    remove_menu_page('edit.php'); //投稿メニュー
     remove_menu_page('edit-comments.php'); //コメント
     // remove_menu_page('index.php'); //ダッシュボード
     // remove_menu_page('edit.php?post_type=memo'); //カスタム投稿タイプmemo
