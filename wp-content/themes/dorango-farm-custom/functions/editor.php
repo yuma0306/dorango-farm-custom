@@ -14,6 +14,7 @@ function init_editor() {
     $templates = [
 		'page-thanks.php',
         'page-tag.php',
+		'page-lp.php',
 		'default',
 		'',
     ];
