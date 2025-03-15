@@ -25,6 +25,7 @@
 						<span class="breadcrumb__text"><?php echo esc_html($taxTitle); ?></span>
 					</li>
 				</ul>
+				<?php get_template_part('include/aff-text'); ?>
 				<div class="grid-block grid-block--col2">
 					<?php if(have_posts()): ?>
 						<?php while (have_posts()): the_post(); ?>

@@ -68,6 +68,7 @@
 					<?php createToc(); ?>
 					</div>
 				</details>
+				<?php get_template_part('include/aff-text'); ?>
 				<section class="article-content">
 					<?php getAcfArticle(); ?>
 				</section>

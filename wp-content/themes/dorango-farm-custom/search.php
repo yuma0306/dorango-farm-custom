@@ -23,6 +23,7 @@
 						<span class="breadcrumb__text">「<?php echo $searchQuery; ?>」の検索結果（<?php echo $total; ?>件）</span>
 					</li>
 				</ul>
+				<?php get_template_part('include/aff-text'); ?>
 				<?php if(have_posts()): ?>
 					<div class="grid-block grid-block--col2">
 						<?php while (have_posts()): the_post(); ?>
