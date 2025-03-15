@@ -31,6 +31,7 @@
 						<span class="breadcrumb__text"><?php echo $resultTitle; ?></span>
 					</li>
 				</ul>
+				<?php get_template_part('include/aff-text'); ?>
 				<div class="grid-block grid-block--col2">
 					<?php
 						$args = [
