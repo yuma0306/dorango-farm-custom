@@ -11,6 +11,7 @@ function add_custom_post_type() {
 		],
 		'supports' => [
 			'title',
+			'revisions',
 		],
 		'menu_position' => 5,
 	]);
@@ -25,6 +26,7 @@ function add_custom_post_type() {
 		],
 		'supports' => [
 			'title',
+			'revisions',
 		],
 		'menu_position' => 5,
 	]);
@@ -39,6 +41,7 @@ function add_custom_post_type() {
 		],
 		'supports' => [
 			'title',
+			'revisions',
 		],
 		'menu_position' => 5,
 	]);
@@ -53,6 +56,7 @@ function add_custom_post_type() {
 		],
 		'supports' => [
 			'title',
+			'revisions',
 		],
 		'menu_position' => 5,
 	]);
@@ -67,6 +71,7 @@ function add_custom_post_type() {
 		],
 		'supports' => [
 			'title',
+			'revisions',
 		],
 		'menu_position' => 5,
 	]);
