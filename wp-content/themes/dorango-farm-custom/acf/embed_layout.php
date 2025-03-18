@@ -1,4 +1,5 @@
 <?php
+	// removeMoshimoLink(content: $embed);
 	$embed = get_sub_field('embed_field');
 ?>
 <?php if(!empty($embed)): ?>
