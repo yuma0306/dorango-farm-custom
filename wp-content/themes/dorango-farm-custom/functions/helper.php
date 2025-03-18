@@ -380,6 +380,18 @@ function isNoindex() {
 }
 
 /**
+ * もしも削除
+ */
+function removeMoshimoLink($content) {
+	if ($content === null || $content === '') {
+        return '';
+    }
+    $pattern = '/<!-- START MoshimoAffiliateEasyLink -->.*?<!-- MoshimoAffiliateEasyLink END -->/s';
+    $result = preg_replace($pattern, '', $content);
+    return $result;
+}
+
+/**
  * adf component取得
  */
 function getAcfArticle() {
