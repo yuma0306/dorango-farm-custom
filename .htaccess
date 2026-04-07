@@ -13,9 +13,11 @@ RewriteRule ^(.*)$ https://%1%{REQUEST_URI} [R=301,L]
 # サイトマップのリダイレクト
 Redirect permanent /wp-sitemap.xml /sitemap.xml
 
-# 231206リニューアル
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  RewriteCond %{REQUEST_URI} ^/zoo/lumphinee/$
+  RewriteRule ^(.*)$ https://nihonjinlog.com/thailand/water-monitor/ [R=301,L]
 
   RewriteCond %{REQUEST_URI} ^/classification/$
   RewriteRule ^(.*)$ /trivia/classification/ [R=301,L]
