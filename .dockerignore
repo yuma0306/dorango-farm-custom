@@ -1,0 +1,7 @@
+node_modules
+.git
+sql
+*.sql
+.DS_Store
+npm-debug.log
+review.diff
