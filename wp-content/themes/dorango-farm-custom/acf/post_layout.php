@@ -1,7 +1,7 @@
 <?php
 	$post = get_sub_field('post_field');
 	$postID = $post[0];
-	$thumb = get_field('thumb_field', $postID);
+	$thumb = get_article_thumb($postID);
 	$permalink = get_permalink($postID);
 	$title = get_the_title($postID);
 	$modifiedDate = get_the_modified_time('Y-m-d', $postID);

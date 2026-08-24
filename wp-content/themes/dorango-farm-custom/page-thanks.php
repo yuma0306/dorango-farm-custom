@@ -17,7 +17,7 @@
 			<div class="inner inner--small">
 				<?php displayBreadcrumnbs(); ?>
 				<div class="article-content">
-					<?php getAcfArticle(); ?>
+					<?php render_article(); ?>
 				</div>
 			</div>
 		</main>

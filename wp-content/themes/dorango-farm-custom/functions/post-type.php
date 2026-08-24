@@ -11,8 +11,11 @@ function add_custom_post_type() {
 		],
 		'supports' => [
 			'title',
+			'editor',
+			'thumbnail',
 			'revisions',
 		],
+		'show_in_rest' => true,
 		'menu_position' => 5,
 	]);
 	register_post_type('zoo', [
@@ -26,8 +29,11 @@ function add_custom_post_type() {
 		],
 		'supports' => [
 			'title',
+			'editor',
+			'thumbnail',
 			'revisions',
 		],
+		'show_in_rest' => true,
 		'menu_position' => 5,
 	]);
 	register_post_type('shop', [
@@ -41,8 +47,11 @@ function add_custom_post_type() {
 		],
 		'supports' => [
 			'title',
+			'editor',
+			'thumbnail',
 			'revisions',
 		],
+		'show_in_rest' => true,
 		'menu_position' => 5,
 	]);
 	register_post_type('food', [
@@ -56,8 +65,11 @@ function add_custom_post_type() {
 		],
 		'supports' => [
 			'title',
+			'editor',
+			'thumbnail',
 			'revisions',
 		],
+		'show_in_rest' => true,
 		'menu_position' => 5,
 	]);
 	register_post_type('trivia', [
@@ -71,8 +83,11 @@ function add_custom_post_type() {
 		],
 		'supports' => [
 			'title',
+			'editor',
+			'thumbnail',
 			'revisions',
 		],
+		'show_in_rest' => true,
 		'menu_position' => 5,
 	]);
 }

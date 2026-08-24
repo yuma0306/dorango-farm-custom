@@ -365,6 +365,41 @@ function getOgImage() {
 }
 
 /**
+ * アイキャッチ（Gutenberg）または ACF thumb_field を同じ形で返す
+ */
+function get_featured_thumb_array($post_id) {
+	if (!has_post_thumbnail($post_id)) {
+		return null;
+	}
+	$attachment_id = get_post_thumbnail_id($post_id);
+	$src = wp_get_attachment_image_src($attachment_id, 'full');
+	if (empty($src[0])) {
+		return null;
+	}
+	return [
+		'url' => $src[0],
+		'width' => $src[1],
+		'height' => $src[2],
+		'alt' => (string) get_post_meta($attachment_id, '_wp_attachment_image_alt', true),
+	];
+}
+
+function get_article_thumb($post_id = null) {
+	$post_id = $post_id ?: get_the_ID();
+	if (is_gutenberg_article($post_id)) {
+		$featured = get_featured_thumb_array($post_id);
+		if (!empty($featured)) {
+			return $featured;
+		}
+	}
+	$acf_thumb = function_exists('get_field') ? get_field('thumb_field', $post_id) : null;
+	if (!empty($acf_thumb['url'])) {
+		return $acf_thumb;
+	}
+	return get_featured_thumb_array($post_id);
+}
+
+/**
  * noindex・nofollow
  */
 function isNoindex() {
@@ -392,6 +427,67 @@ function removeMoshimoLink($content) {
 }
 
 /**
+ * Gutenberg 本文を表示するか
+ */
+function is_gutenberg_article($post_id = null) {
+	if (!function_exists('get_field')) {
+		return false;
+	}
+	$post_id = $post_id ?: get_the_ID();
+	return (bool) get_field('use_gutenberg_field', $post_id);
+}
+
+/**
+ * 本文出力（チェック ON なら Gutenberg、OFF なら ACF Flexible）
+ */
+function render_article() {
+	if (is_gutenberg_article()) {
+		the_content();
+		return;
+	}
+	getAcfArticle();
+}
+
+/**
+ * Gutenberg 見出しに既存クラスと目次用 ID を付ける
+ */
+function dorango_render_heading_block($block_content, $block) {
+	if (($block['blockName'] ?? '') !== 'core/heading' || $block_content === '') {
+		return $block_content;
+	}
+	if (!class_exists('WP_HTML_Tag_Processor')) {
+		return $block_content;
+	}
+
+	static $counts = [];
+	$post_id = get_the_ID() ?: 0;
+	if (!isset($counts[$post_id])) {
+		$counts[$post_id] = 0;
+	}
+
+	$level = (int) ($block['attrs']['level'] ?? 2);
+	$class_map = [
+		2 => 'heading-lv2-02',
+		3 => 'heading-lv3-01',
+		4 => 'heading-lv4-01',
+	];
+
+	$processor = new WP_HTML_Tag_Processor($block_content);
+	if (!$processor->next_tag()) {
+		return $block_content;
+	}
+	if (isset($class_map[$level])) {
+		$processor->add_class($class_map[$level]);
+	}
+	if ($level === 2 || $level === 3) {
+		$counts[$post_id]++;
+		$processor->set_attribute('id', 'anchor-' . $counts[$post_id]);
+	}
+	return $processor->get_updated_html();
+}
+add_filter('render_block', 'dorango_render_heading_block', 10, 2);
+
+/**
  * adf component取得
  */
 function getAcfArticle() {
@@ -411,9 +507,47 @@ function getAcfArticle() {
 }
 
 /**
+ * Gutenberg 本文から目次を生成
+ */
+function createGutenbergToc() {
+	$content = (string) get_post_field('post_content', get_the_ID());
+	$count = 1;
+	$tocs = [];
+	$startHeadingLv = 2;
+	$currentLv = $startHeadingLv;
+	if (preg_match_all('/<h([23])\b[^>]*>(.*?)<\/h\1>/is', $content, $matches, PREG_SET_ORDER)) {
+		foreach ($matches as $match) {
+			$headingLv = (int) $match[1];
+			$headingText = wp_strip_all_tags($match[2]);
+			if ($headingLv > $currentLv) {
+				$tocs[] = "<li class=\"toc__item\"><ol class=\"toc__list toc__list--lower\">\n";
+			} elseif ($headingLv < $currentLv) {
+				$tocs[] = "</ol></li>\n";
+			}
+			$tocs[] = "<li class=\"toc__item toc__item--lv{$headingLv}\"><a href=\"#anchor-{$count}\" class=\"toc__link\">" . esc_html($headingText) . "</a></li>";
+			$currentLv = $headingLv;
+			$count++;
+		}
+	}
+	while ($currentLv > $startHeadingLv) {
+		$tocs[] = "</ol></li>\n";
+		$currentLv--;
+	}
+	array_unshift($tocs, '<ol class="toc__list">');
+	$tocs[] = '</ol>';
+	foreach ($tocs as $toc) {
+		echo $toc;
+	}
+}
+
+/**
  * 目次自動生成
  */
 function createToc() {
+	if (is_gutenberg_article()) {
+		createGutenbergToc();
+		return;
+	}
 	$acfArticle = 'flexible_field';
 	$count = 1;
 	$tocs = [];
