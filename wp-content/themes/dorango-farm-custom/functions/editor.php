@@ -15,8 +15,6 @@ function init_editor() {
 		'page-thanks.php',
         'page-tag.php',
 		'page-lp.php',
-		'default',
-		'',
     ];
     if(in_array($templateFile, $templates)) {
         remove_post_type_support('page', 'editor');
@@ -28,21 +26,20 @@ add_action('init', 'init_editor');
  * グーテンベルクの制御
  * https://developer.wordpress.org/block-editor/reference-guides/filters/block-filters/#hiding-blocks-from-the-inserter
  */
-function custom_block_types($allowed_blocks, $post) {
-    // Allow block type
+function custom_block_types($allowed_blocks, $editor_context) {
     return [
+        'core/paragraph',
+        'core/heading',
+        'core/list',
+        'core/list-item',
+        'core/image',
+        'core/quote',
+        'core/embed',
+        'core/html',
         'core/shortcode',
-        // 'core/paragraph',
-        // 'core/heading',
-        // 'core/list',
-        // 'core/list-item',
-        // 'core/table',
-        // 'core/images',
-        // 'core/columns',
-        // 'core/html',
     ];
 }
-add_filter('allowed_block_types_all', 'custom_block_types', 10, 10);
+add_filter('allowed_block_types_all', 'custom_block_types', 10, 2);
 
 /**
  * リッチエディターへの機能追加
@@ -136,6 +133,47 @@ function custom_tiny_mce_colors($init) {
 	return $init;
 }
 add_filter('tiny_mce_before_init', 'custom_tiny_mce_colors');
+
+/**
+ * クラシックブロックで script を残す（もしもかんたんリンク用）
+ */
+function dorango_tinymce_allow_script($init) {
+	$existing = $init['extended_valid_elements'] ?? '';
+	$allow = 'script[type|src|id|charset|async|defer],div[id|class|style]';
+	$init['extended_valid_elements'] = $existing !== '' ? $existing . ',' . $allow : $allow;
+	return $init;
+}
+add_filter('tiny_mce_before_init', 'dorango_tinymce_allow_script');
+
+/**
+ * Gutenberg が script を外したもしもコードを復元する
+ */
+function dorango_restore_moshimo_scripts($content) {
+	if (!is_string($content) || $content === '') {
+		return $content;
+	}
+	return preg_replace_callback(
+		'/<!--\s*START MoshimoAffiliateEasyLink\s*-->(.*?)<!--\s*MoshimoAffiliateEasyLink END\s*-->/s',
+		function ($matches) {
+			$inner = $matches[1];
+			if (stripos($inner, '<script') !== false) {
+				return $matches[0];
+			}
+			$div = '';
+			if (preg_match('/(<div\b.*?<\/div>)/is', $inner, $div_match)) {
+				$div = $div_match[1];
+				$inner = str_replace($div_match[1], '', $inner);
+			}
+			$js = trim($inner);
+			if ($js === '') {
+				return $matches[0];
+			}
+			return '<!-- START MoshimoAffiliateEasyLink --><script type="text/javascript">' . $js . '</script>' . $div . '<!-- MoshimoAffiliateEasyLink END -->';
+		},
+		$content
+	);
+}
+add_filter('the_content', 'dorango_restore_moshimo_scripts', 8);
 
 /**
  * カスタムTinyMCEボタン用のスクリプトを読み込む

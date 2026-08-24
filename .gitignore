@@ -11,10 +11,11 @@
 # .htaccess
 !.htaccess
 
-# gulp
+# assets source + build tooling
 !/src
-!gulpfile.js
+!vite.config.js
 !package.json
+!package-lock.json
 
 # editor
 !.editorconfig
@@ -30,6 +31,14 @@
 
 # docker
 !docker-compose.yml
+!.dockerignore
+!.env.example
+!wp-config.docker.php
+!/docker/
+/docker/certs/*
+!/docker/certs/.gitkeep
+!/docker/certs/.gitignore
 
-# README.md
+# docs
 !README.md
+!MIGRATION.md

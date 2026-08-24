@@ -33,27 +33,17 @@
 	<!-- style -->
 	<?php
 		$base_uri = get_stylesheet_directory();
-		$ip = '';
-		if (getenv('SERVER_ADDR') !== false) {
-			$ip = $_SERVER['SERVER_ADDR'];
-		}
-		// ローカル環境
-		if (false !== strpos($ip, '::1')) {
-			load_css_file();
-		// 本番環境
-		} else {
-			ob_start();
-				require_once "{$base_uri}/assets/css/style.css";
-				if(is_front_page()) {
-					require_once "{$base_uri}/assets/css/front-page.css";
-				}
-				if(is_page('contact')) {
-					require_once "{$base_uri}/assets/css/contact.css";
-				}
-				$style = ob_get_contents();
-			ob_end_clean();
-			echo "<style>{$style}</style>";
-		}
+		ob_start();
+			require_once "{$base_uri}/assets/css/style.css";
+			if(is_front_page()) {
+				require_once "{$base_uri}/assets/css/front-page.css";
+			}
+			if(is_page('contact')) {
+				require_once "{$base_uri}/assets/css/contact.css";
+			}
+			$style = ob_get_contents();
+		ob_end_clean();
+		echo "<style>{$style}</style>";
 	?>
 	<!-- /style -->
 	<!-- schema -->

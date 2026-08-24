@@ -1,6 +1,6 @@
 <?php
 	$heading = get_the_title();
-	$thumb = get_field('thumb_field');
+	$thumb = get_article_thumb();
 	$currentUri = get_current_uri();
 	$currentPath = getCurrentPath($currentUri);
 	$modifiedDate = get_the_modified_time('Y-m-d');
@@ -55,9 +55,11 @@
 						<span class="breadcrumb__text"><?php echo esc_html($heading); ?></span>
 					</li>
 				</ul>
+				<?php if(!empty($thumb)): ?>
 				<picture class="article-thumb">
 					<img class="article-thumb__img" src="<?php echo esc_url($thumb['url']); ?>" alt="<?php echo esc_html($thumb['alt']); ?>" width="<?php echo esc_html($thumb['width']); ?>" height="<?php echo esc_html($thumb['height']); ?>">
 				</picture>
+				<?php endif; ?>
 				<div class="article-date">
 					<img class="article-date__img" src="<?php echo get_template_directory_uri(); ?>/assets/img/icon-pen.svg" alt="">
 					<time class="article-date__text" datetime="<?php echo esc_html($modifiedDate); ?>"><?php echo esc_html($modifiedDate); ?></time>
@@ -69,8 +71,8 @@
 					</div>
 				</details>
 				<?php get_template_part('include/aff-text'); ?>
-				<section class="article-content">
-					<?php getAcfArticle(); ?>
+				<section class="<?php echo is_gutenberg_article() ? 'article-content-v2' : 'article-content'; ?>">
+					<?php render_article(); ?>
 				</section>
 				<h2 class="heading-lv2-02">もっと記事を探す</h2>
 				<?php if(!empty($breedTagList)): ?>

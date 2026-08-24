@@ -37,6 +37,11 @@ function remove_head_action() {
 }
 add_action('init', 'remove_head_action');
 
+function dorango_setup_theme() {
+	add_theme_support('post-thumbnails');
+}
+add_action('after_setup_theme', 'dorango_setup_theme');
+
 function remove_json_action() {
     // REST API関連のリンクを削除
     remove_action('wp_head', 'rest_output_link_wp_head', 10);
