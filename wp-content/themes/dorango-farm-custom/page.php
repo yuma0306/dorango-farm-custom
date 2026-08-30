@@ -21,8 +21,8 @@
 					</div>
 				</details>
 				<?php get_template_part('include/aff-text'); ?>
-				<section class="article-content">
-					<?php render_article(); ?>
+				<section class="article-content-v2 wysiwyg-v2">
+					<?php the_content(); ?>
 				</section>
 			</div>
 		</main>

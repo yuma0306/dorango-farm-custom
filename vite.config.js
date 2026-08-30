@@ -20,6 +20,18 @@ export default defineConfig({
 		minify: true,
 		sourcemap: false,
 		assetsInlineLimit: 0,
+		watch: {
+			exclude: [
+				'wp-content/themes/dorango-farm-custom/assets/**',
+				'sql/**',
+			],
+			chokidar: {
+				ignored: [
+					'**/wp-content/themes/dorango-farm-custom/assets/**',
+					'**/sql/**',
+				],
+			},
+		},
 		rollupOptions: {
 			input: {
 				style: path.resolve(__dirname, 'src/scss/style.scss'),
@@ -28,10 +40,6 @@ export default defineConfig({
 				common: path.resolve(__dirname, 'src/js/common.js'),
 				front: path.resolve(__dirname, 'src/js/front.js'),
 				'contact-form': path.resolve(__dirname, 'src/js/contact.js'),
-				'tinymce-button': path.resolve(
-					__dirname,
-					'src/js/tinymce-button.js',
-				),
 			},
 			output: {
 				entryFileNames: (chunk) => {

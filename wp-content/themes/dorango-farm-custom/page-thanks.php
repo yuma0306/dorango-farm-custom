@@ -17,7 +17,7 @@
 			<div class="inner inner--small">
 				<?php displayBreadcrumnbs(); ?>
 				<div class="article-content">
-					<?php render_article(); ?>
+					<?php the_content(); ?>
 				</div>
 			</div>
 		</main>

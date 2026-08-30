@@ -72,12 +72,12 @@ ls -lh ~/code/dorango-farm-custom/sql/dump-prod.sql
 ```bash
 cd ~/code/dorango-farm-custom
 
-docker compose exec -T db mysql -uwordpress -pwordpress -e "
+docker compose --env-file /dev/null exec -T db mysql -uwordpress -pwordpress -e "
 DROP DATABASE IF EXISTS wordpress;
 CREATE DATABASE wordpress CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 "
 
-docker compose exec -T db mysql -uwordpress -pwordpress wordpress \
+docker compose --env-file /dev/null exec -T db mysql -uwordpress -pwordpress wordpress \
   < sql/dump-prod.sql
 ```
 

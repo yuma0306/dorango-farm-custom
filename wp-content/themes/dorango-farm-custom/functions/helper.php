@@ -24,15 +24,6 @@ function get_current_uri() {
 }
 
 /**
- * 使用されているテンプレートを取得
- */
-function getCurrentTemplate() {
-    $template = get_page_template();
-    $template = pathinfo($template, PATHINFO_FILENAME);
-    return $template;
-}
-
-/**
  * 現在のディレクトリ（第一階層を取得）
  */
 function getCurrentPath($uri) {
@@ -365,9 +356,10 @@ function getOgImage() {
 }
 
 /**
- * アイキャッチ（Gutenberg）または ACF thumb_field を同じ形で返す
+ * アイキャッチ
  */
-function get_featured_thumb_array($post_id) {
+function get_article_thumb($post_id = null) {
+	$post_id = $post_id ?: get_the_ID();
 	if (!has_post_thumbnail($post_id)) {
 		return null;
 	}
@@ -384,21 +376,6 @@ function get_featured_thumb_array($post_id) {
 	];
 }
 
-function get_article_thumb($post_id = null) {
-	$post_id = $post_id ?: get_the_ID();
-	if (is_gutenberg_article($post_id)) {
-		$featured = get_featured_thumb_array($post_id);
-		if (!empty($featured)) {
-			return $featured;
-		}
-	}
-	$acf_thumb = function_exists('get_field') ? get_field('thumb_field', $post_id) : null;
-	if (!empty($acf_thumb['url'])) {
-		return $acf_thumb;
-	}
-	return get_featured_thumb_array($post_id);
-}
-
 /**
  * noindex・nofollow
  */
@@ -412,40 +389,6 @@ function isNoindex() {
 	} elseif(!$isNoindex && $isNofollow) {
 		echo '<meta name="robots" content="nofollow">';
 	}
-}
-
-/**
- * もしも削除
- */
-function removeMoshimoLink($content) {
-	if ($content === null || $content === '') {
-        return '';
-    }
-    $pattern = '/<!-- START MoshimoAffiliateEasyLink -->.*?<!-- MoshimoAffiliateEasyLink END -->/s';
-    $result = preg_replace($pattern, '', $content);
-    return $result;
-}
-
-/**
- * Gutenberg 本文を表示するか
- */
-function is_gutenberg_article($post_id = null) {
-	if (!function_exists('get_field')) {
-		return false;
-	}
-	$post_id = $post_id ?: get_the_ID();
-	return (bool) get_field('use_gutenberg_field', $post_id);
-}
-
-/**
- * 本文出力（チェック ON なら Gutenberg、OFF なら ACF Flexible）
- */
-function render_article() {
-	if (is_gutenberg_article()) {
-		the_content();
-		return;
-	}
-	getAcfArticle();
 }
 
 /**
@@ -488,28 +431,9 @@ function dorango_render_heading_block($block_content, $block) {
 add_filter('render_block', 'dorango_render_heading_block', 10, 2);
 
 /**
- * adf component取得
+ * 目次自動生成（Gutenberg 本文の h2 / h3）
  */
-function getAcfArticle() {
-	$acfArticle = 'flexible_field';
-	$count = 0;
-	$tocs = [];
-	if(have_rows($acfArticle)) {
-		while(have_rows($acfArticle)) {
-			the_row();
-			$layout = get_row_layout();
-			$path = get_template_directory();
-			if(file_exists("{$path}/acf/{$layout}.php")) {
-				include(get_template_directory() . "/acf/{$layout}.php");
-			}
-		}
-	}
-}
-
-/**
- * Gutenberg 本文から目次を生成
- */
-function createGutenbergToc() {
+function createToc() {
 	$content = (string) get_post_field('post_content', get_the_ID());
 	$count = 1;
 	$tocs = [];
@@ -537,66 +461,6 @@ function createGutenbergToc() {
 	$tocs[] = '</ol>';
 	foreach ($tocs as $toc) {
 		echo $toc;
-	}
-}
-
-/**
- * 目次自動生成
- */
-function createToc() {
-	if (is_gutenberg_article()) {
-		createGutenbergToc();
-		return;
-	}
-	$acfArticle = 'flexible_field';
-	$count = 1;
-	$tocs = [];
-	$startHeadingLv = 2;
-	$endHeadingLv = 3;
-	$pattern = "/^h([\"{$startHeadingLv}-{$endHeadingLv}\"])_layout$/";
-	// 一番上の見出し階層
-	$currentLv = $startHeadingLv;
-	if(have_rows($acfArticle)) {
-		while(have_rows($acfArticle)) {
-			the_row();
-			$layout = get_row_layout();
-			if(preg_match($pattern, $layout, $matches)) {
-				$headingLv = intval($matches[1]);
-				$headingText = get_sub_field("h{$headingLv}_field");
-				if($headingLv > $currentLv) {
-					$tocs[] = "<li class=\"toc__item\"><ol class=\"toc__list toc__list--lower\">\n";
-				} elseif ($headingLv < $currentLv) {
-					$tocs[] = "</ol></li>\n";
-				}
-				$tocs[] = "<li class=\"toc__item toc__item--lv{$headingLv}\"><a href=\"#anchor-{$count}\" class=\"toc__link\">{$headingText}</a></li>";
-				$currentLv = $headingLv;
-				$count++;
-			}
-		}
-	}
-	while ($currentLv > $startHeadingLv) {
-		$tocs[] = "</ol></li>\n";
-		$currentLv--;
-	}
-	array_unshift($tocs, '<ol class="toc__list">');
-	$tocs[] = '</ol>';
-	foreach ($tocs as $toc) {
-		echo $toc;
-	}
-}
-
-function get_article_file() {
-	$currentUri = get_current_uri();
-	$filePath = substr($currentUri, 0, strlen($currentUri) -1);
-	$articleFile = get_template_directory() . 'include' . $filePath . '.php';
-	if(file_exists($articleFile)) {
-		include $articleFile;
-		return;
-	}
-	$indexArticleFile = get_template_directory() . 'include' . $currentUri . 'index.php';
-	if(file_exists($indexArticleFile)) {
-		include $indexArticleFile;
-		return;
 	}
 }
 
