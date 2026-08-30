@@ -5,99 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	/**
 	 * 共通変数
 	 */
-	const media = '639';
-	// アクティブなクラス
 	const activeFlag = 'is-active';
-	// フローティング
 	const header = 'js-header';
-	// wysiwyg Editor
-	const wysiwyg = 'js-wysiwyg';
-	const wysiwygStyle = '[style*="font-size"]';
-	const designWidth = 390;
-	/**
-	 * SPロード時
-	 */
-	const loadSpWindow = (vw = null) => {
-		let width = vw;
-		if(!vw) {
-			width = window.innerWidth;
-		}
-		if(media >= width) {
-			convertVwStyle();
-		}
-	}
-	/**
-	 * リサイズ処理
-	 */
-	const resizeWindow = () => {
-		let vw = window.innerWidth;
-		window.addEventListener('resize', () => {
-			if (vw === window.innerWidth) {
-				// 横幅に変化がない場合は終了
-				return;
-			}
-			vw = window.innerWidth;
-			resizeWysiwygFontSize(vw);
-		});
-	};
-	/**
-	 * 【ACF】wysiwygエディターで出力されたインラインのfont-sizeを変換
-	 */
-	const resizeWysiwygFontSize = vw => {
-		// PC
-		if(vw > media) {
-			convertPxStyle();
-		// SP
-		} else if(media >= vw) {
-			convertVwStyle();
-		}
-	}
-	/**
-	 * pxからvwに単位変換
-	 */
-	const convertPxStyle = () => {
-		const elements = document.querySelectorAll(`.${wysiwyg} ${wysiwygStyle}`);
-		elements.forEach(function(element) {
-			let currentStyle = element.getAttribute('style');
-			let matches = currentStyle.match(/([\d.]+)vw/);
-			if (matches) {
-				let val = parseFloat(matches[1]);
-				let size = convertVwToPx(val);
-				element.style.fontSize = size;
-			}
-		});
-	}
-	/**
-	 * vwからpxに単位変換
-	 */
-	const convertVwStyle = () => {
-		const elements = document.querySelectorAll(`.${wysiwyg} ${wysiwygStyle}`);
-		elements.forEach(function(element) {
-			let currentStyle = element.getAttribute('style');
-			let matches = currentStyle.match(/([\d.]+)px/);
-			if (matches) {
-				let val = parseFloat(matches[1]);
-				let size = convertPxToVw(val);
-				element.style.fontSize = size;
-			}
-		});
-	}
-	/**
-	 * pxからvwに単位変換
-	 */
-	const convertPxToVw = pxVal => {
-		let px = parseFloat(pxVal, 10);
-		let vw = (px / designWidth) * 100;
-		return `${vw}vw`;
-	}
-	/**
-	 * vwからpxに単位変換
-	 */
-	const convertVwToPx = vwVal => {
-		let vw = parseFloat(vwVal, 10);
-		let px = (vw * designWidth) / 100;
-		return `${px}px`;
-	}
 	/**
 	 * スムーズスクロール
 	 */
@@ -210,6 +119,4 @@ document.addEventListener('DOMContentLoaded', function() {
 	scrollSmooth();
 	fixedContent();
 	validateSearchBtn();
-	loadSpWindow();
-	resizeWindow();
 });

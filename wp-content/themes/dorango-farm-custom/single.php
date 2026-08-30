@@ -71,8 +71,8 @@
 					</div>
 				</details>
 				<?php get_template_part('include/aff-text'); ?>
-				<section class="<?php echo is_gutenberg_article() ? 'article-content-v2 wysiwyg-v2 js-wysiwyg' : 'article-content'; ?>">
-					<?php render_article(); ?>
+				<section class="article-content-v2 wysiwyg-v2">
+					<?php the_content(); ?>
 				</section>
 				<h2 class="heading-lv2-02">もっと記事を探す</h2>
 				<?php if(!empty($breedTagList)): ?>
