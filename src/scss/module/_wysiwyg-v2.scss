@@ -3,8 +3,17 @@
 
 @include pc {
 	.wysiwyg-v2 {
+		.wp-block-image {
+			display: block;
+			width: min(100%, 640px);
+		}
 		a {
 			@include incLinkTextPC();
+		}
+		iframe {
+			display: block;
+			aspect-ratio: 16 / 9;
+			width: min(100%, 640px);
 		}
 		ul {
 			position: relative;
@@ -113,6 +122,15 @@
 	.wysiwyg-v2 {
 		a {
 			@include incLinkTextSP();
+		}
+		.wp-block-image {
+			display: block;
+			width: 100%;
+		}
+		iframe {
+			display: block;
+			aspect-ratio: 16 / 9;
+			width: 100%;
 		}
 		ul {
 			position: relative;

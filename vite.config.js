@@ -38,7 +38,6 @@ export default defineConfig({
 				'front-page': path.resolve(__dirname, 'src/scss/front-page.scss'),
 				contact: path.resolve(__dirname, 'src/scss/contact.scss'),
 				common: path.resolve(__dirname, 'src/js/common.js'),
-				front: path.resolve(__dirname, 'src/js/front.js'),
 				'contact-form': path.resolve(__dirname, 'src/js/contact.js'),
 			},
 			output: {
