@@ -1,59 +1,7 @@
 @use './global/import' as *;
 @use './config/import' as *;
-@use './plugin/splide' as splide;
 
 @include pc {
-	.kv {
-		padding: calc(142px + 30px) 0 45px;
-		background-color: $primary01;
-	}
-	.kv-slider {
-		max-width: 1500px;
-		margin: 0 auto;
-	}
-	.kv-slide {
-		$this: &;
-		&__link {
-			display: block;
-			&:hover {
-				#{$this}__img {
-					scale: $scale;
-				}
-				#{$this}__text {
-					text-decoration: none;
-					opacity: $opacity;
-				}
-				#{$this}__date {
-					opacity: $opacity;
-				}
-			}
-		}
-		&__thumb {
-			width: 100%;
-			aspect-ratio: 16 / 9;
-			overflow: hidden;
-		}
-		&__img {
-			width: 100%;
-			height: 100%;
-			transition: scale $transition;
-		}
-		&__block {
-			padding: 5px;
-		}
-		&__date {
-			display: block;
-			color: $white01;
-			font-weight: $fwMedium;
-		}
-		&__text {
-			margin-top: 5px;
-			color: $white01;
-			font-weight: $fwMedium;
-			font-size: $fzMediumPC;
-			text-decoration: underline;
-		}
-	}
 	.blogs-wrap {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
@@ -64,94 +12,9 @@
 		display: grid;
 		grid-template-rows: auto auto 1fr;
 	}
-	.kv-arrow {
-		$this: &;
-		position: absolute;
-		right: 20px;
-		bottom: 5px;
-		transform: translate(0, 100%);
-		display: flex;
-		gap: 10px;
-		&__btn {
-			position: relative;
-			width: 28px;
-			height: 32px;
-			background: url(#{$imgPath}/arrow-white.svg) no-repeat center / contain;
-			transition: $transition;
-			&:hover {
-				scale: $scale;
-			}
-			&--prev {
-				transform: rotate(180deg);
-			}
-		}
-	}
-	.kv-pagination {
-		gap: 14px;
-		margin-top: 30px;
-		&__item {
-			display: block;
-			width: 14px;
-			height: 14px;
-			border-radius: 50%;
-			border: 1px solid $white01;
-			background-color: $white01;
-			&.is-active {
-				scale: (1.1);
-				background-color: $primary02;
-			}
-		}
-	}
 }
 
 @include sp {
-	.kv {
-		padding: calc(vw(144) + vw(15)) 0 vw(40);
-		background-color: $primary01;
-	}
-	.kv-slide {
-		$this: &;
-		&__link {
-			display: block;
-			&:hover {
-				#{$this}__img {
-					scale: $scale;
-				}
-				#{$this}__text {
-					text-decoration: none;
-					opacity: $opacity;
-				}
-				#{$this}__date {
-					opacity: $opacity;
-				}
-			}
-		}
-		&__thumb {
-			width: 100%;
-			aspect-ratio: 16 / 9;
-			overflow: hidden;
-		}
-		&__img {
-			width: 100%;
-			height: 100%;
-			transition: scale $transition;
-		}
-		&__block {
-			padding: vw(5);
-		}
-		&__date {
-			display: block;
-			color: $white01;
-			font-weight: $fwMedium;
-		}
-		&__text {
-			margin-top: vw(5);
-			color: $white01;
-			font-weight: $fwMedium;
-			font-size: $fzMediumSP;
-			text-decoration: underline;
-		}
-	}
 	.blogs-wrap {
 		display: grid;
 		row-gap: vw(50);
@@ -160,52 +23,5 @@
 	.blogs-block {
 		display: grid;
 		grid-template-rows: auto auto 1fr;
-	}
-	.kv-arrow {
-		$this: &;
-		&__btn {
-			position: absolute;
-			top: vw(100);
-			right: 2%;
-			transform: translate(0, -50%);
-			width: vw(40);
-			height: vw(40);
-			background: $primary02;
-			transition: $transition;
-			border-radius: 50%;
-			@include hoverOpacity();
-			&::before {
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-				width: 70%;
-				height: 70%;
-				background: url(#{$imgPath}/arrow-white.svg) no-repeat center / contain;
-				content: "";
-			}
-			&--prev {
-				top: vw(100);
-				left: 2%;
-				right: auto;
-				transform: rotate(180deg) translate(0, 50%);
-			}
-		}
-	}
-	.kv-pagination {
-		gap: vw(14);
-		margin-top: vw(10);
-		&__item {
-			display: block;
-			width: vw(14);
-			height: vw(14);
-			border-radius: 50%;
-			border: vw(2) solid $white01;
-			background-color: $white01;
-			&.is-active {
-				scale: (1.1);
-				background-color: $primary02;
-			}
-		}
 	}
 }
