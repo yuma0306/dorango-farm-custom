@@ -1,8 +1,9 @@
 <?php
-	$title = get_the_title();
-	$thumb = get_article_thumb();
-	$modifiedDate = get_the_modified_time('Y-m-d');
-	$permalink = get_permalink();
+	$post_id = absint( ($args ?? [])['post_id'] ?? get_the_ID() );
+	$title = get_the_title($post_id);
+	$thumb = get_article_thumb($post_id);
+	$modifiedDate = get_post_modified_time('Y-m-d', false, $post_id);
+	$permalink = get_permalink($post_id);
 ?>
 <div class="blogs-item">
 	<a class="blogs-item__link" href="<?php echo esc_url($permalink); ?>">
