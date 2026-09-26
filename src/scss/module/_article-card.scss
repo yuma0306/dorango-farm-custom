@@ -6,17 +6,8 @@
 	display: grid;
 	grid-template-columns: 42% 1fr;
 	align-items: center;
-	overflow: hidden;
 	background: $white01;
 	text-decoration: none;
-	&:hover {
-		#{$this}__img {
-			scale: $scale;
-		}
-		#{$this}__title {
-			opacity: $opacity;
-		}
-	}
 	&__img {
 		width: 100%;
 		height: 100%;
