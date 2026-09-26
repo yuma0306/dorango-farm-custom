@@ -88,34 +88,8 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 	}
 	/**
-	 * フェードアニメーション
-	 */
-	const animateScrollY = () => {
-		const animateElms = document.querySelectorAll('.js-animate-y');
-		// アニメーション要素がなければ終わり
-		if (animateElms.length === 0) {
-			return;
-		}
-		const delayTime = 0.2;
-		window.addEventListener('scroll', function() {
-		const scrollPos = window.scrollY;
-		const windowHeight = window.innerHeight;
-		animateElms.forEach((animateElm, index) => {
-			const elementPos = animateElm.offsetTop;
-			const adjust = 50;
-				if (scrollPos > elementPos - windowHeight + adjust) {
-					animateElm.style.opacity = 1;
-					animateElm.style.visibility = 'visible';
-					animateElm.style.transform = 'translateY(0)';
-					animateElm.style.transitionDelay = `${index * delayTime}s`;
-				}
-			});
-		});
-	}
-	/**
 	 * 関数実行
 	 */
-	animateScrollY();
 	scrollSmooth();
 	fixedContent();
 	validateSearchBtn();

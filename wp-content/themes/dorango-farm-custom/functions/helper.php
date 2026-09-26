@@ -279,6 +279,7 @@ function get_meta_title () {
  * メタディスクリプション取得
  */
 function get_meta_desc() {
+	$blogTitle = esc_html(get_bloginfo('name'));
 	$blogDesc = esc_html(get_bloginfo('description'));
 	$currentUri = get_current_uri();
 	$currentPath = getCurrentPath($currentUri);
@@ -309,11 +310,8 @@ function get_meta_desc() {
 		$taxTerm = get_queried_object();
 		return "「{$taxTerm->name}」に関する記事 | {$blogDesc}";
 	}
-	if(is_front_page()) {
-		return esc_html($blogDesc);
-	}
-	$metaDesc = esc_html(get_field('meta_title_field'));
-	return "{$metaDesc} | {$blogDesc}";
+	$metaDesc = esc_html(get_field('meta_desc_field'));
+	return "{$metaDesc} | {$blogTitle}";
 }
 
 /**
