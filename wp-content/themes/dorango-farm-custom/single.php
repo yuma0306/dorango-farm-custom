@@ -12,25 +12,6 @@
 		"trivia" => "動物雑学の",
 	];
 	$postType = isset($postPrefix[$currentPath]) ? $postPrefix[$currentPath] : '';
-	// breedのみタグ表示
-	if($currentPath === 'breed') {
-		$articleID = get_the_ID();
-		$taxonomies = ['goods', 'method', 'species', 'morph', 'diseases', 'cross'];
-		$breedTaxonomyList = [
-			'goods' => '飼育用品',
-			'method' => '飼育法',
-			'species' => '種',
-			'morph' => 'モルフ',
-			'diseases' => '病気',
-			'cross' => '繁殖',
-		];
-		$breedTagList = [];
-		$breedTagTerms = [];
-		foreach ($breedTaxonomyList as $breedTaxonomyKey => $breedTaxonomyItem) {
-			$breedTagList[] = get_the_terms($articleID, $breedTaxonomyKey);
-			$breedTagTerms[] = $breedTaxonomyItem;
-		}
-	}
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -74,33 +55,8 @@
 				<section class="article-content-v2 wysiwyg-v2">
 					<?php the_content(); ?>
 				</section>
+				<?php get_template_part('include/ball-python-hub'); ?>
 				<h2 class="heading-lv2-02">もっと記事を探す</h2>
-				<?php if(!empty($breedTagList)): ?>
-					<h3 class="heading-lv3-01">この記事の関連タグ</h3>
-					<div class="grid-block">
-						<?php foreach($breedTagList as $key => $breedTagItem): if(!empty($breedTagItem)): ?>
-							<dl class="tag-list">
-								<dt class="tag-list__term">
-									<?php echo esc_html($breedTagTerms[$key]); ?>
-								</dt>
-								<dd class="tag-list__desc">
-									<div class="tag-list__block">
-										<?php foreach($breedTagItem as $breedTag): if(!empty($breedTag)):?>
-											<?php $tagLink = get_term_link($breedTag); ?>
-											<?php if(!is_wp_error($tagLink)): ?>
-												<a class="tag" href="<?php echo esc_url($tagLink); ?>">
-													<?php echo esc_html($breedTag->name); ?>
-												</a>
-											<?php endif; ?>
-										<?php endif; endforeach; ?>
-									</div>
-								</dd>
-							</dl>
-						<?php endif; endforeach; ?>
-					</div>
-					<a href="/tag/" class="btn-link01 u-ml0-pc">タグ一覧</a>
-				<?php endif; ?>
-				<h3 class="heading-lv3-01"><?php echo $postType; ?>記事を検索</h3>
 				<form class="search-form js-search-form" action="<?php echo home_url(); ?>" method="get">
 					<input class="search-form__input js-search-input" type="text" name="s" value="<?php the_search_query(); ?>" placeholder="キーワード">
 					<input type="hidden" name="post_type[]" value="<?php echo $currentPath; ?>">
