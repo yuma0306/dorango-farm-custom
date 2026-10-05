@@ -9,6 +9,7 @@ function add_custom_taxonomy() {
 			'slug' => 'tag/goods'
 		],
 		'show_admin_column' => true,
+		'show_in_rest' => true,
 	]);
 	register_taxonomy('method', 'breed', [
 		'label' => '飼育法',
@@ -19,6 +20,7 @@ function add_custom_taxonomy() {
 			'slug' => 'tag/method'
 		],
 		'show_admin_column' => true,
+		'show_in_rest' => true,
 	]);
 	register_taxonomy('species', 'breed', [
 		'label' => '種',
@@ -29,6 +31,7 @@ function add_custom_taxonomy() {
 			'slug' => 'tag/species'
 		],
 		'show_admin_column' => true,
+		'show_in_rest' => true,
 	]);
 	register_taxonomy('morph', 'breed', [
 		'label' => 'モルフ',
@@ -39,6 +42,7 @@ function add_custom_taxonomy() {
 			'slug' => 'tag/morph'
 		],
 		'show_admin_column' => true,
+		'show_in_rest' => true,
 	]);
 	register_taxonomy('diseases', 'breed', [
 		'label' => '病気',
@@ -49,6 +53,7 @@ function add_custom_taxonomy() {
 			'slug' => 'tag/diseases'
 		],
 		'show_admin_column' => true,
+		'show_in_rest' => true,
 	]);
 	register_taxonomy('cross', 'breed', [
 		'label' => '繁殖',
@@ -59,6 +64,7 @@ function add_custom_taxonomy() {
 			'slug' => 'tag/cross'
 		],
 		'show_admin_column' => true,
+		'show_in_rest' => true,
 	]);
 }
 
