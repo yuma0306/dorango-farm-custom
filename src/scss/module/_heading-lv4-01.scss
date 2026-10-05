@@ -3,8 +3,7 @@
 
 @include pc {
 	.heading-lv4-01 {
-		margin-top: 35px;
-		padding-bottom: 5px;
+		padding-block: calc(#{$spacing-1} * 1px) calc(#{$spacing-6} * 1px);
 		border-bottom: 2px solid $primary01;
 		font-size: $fzMediumPC;
 		font-weight: $fwMedium;
@@ -13,8 +12,7 @@
 
 @include sp {
 	.heading-lv4-01 {
-		margin-top: vw(35);
-		padding-bottom: vw(5);
+		padding: vw($spacing-1) vw($spacing-6);
 		border-bottom: vw(2) solid $primary01;
 		font-size: $fzMediumSP;
 		font-weight: $fwMedium;
