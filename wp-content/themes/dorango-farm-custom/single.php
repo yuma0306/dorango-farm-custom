@@ -12,25 +12,6 @@
 		"trivia" => "動物雑学の",
 	];
 	$postType = isset($postPrefix[$currentPath]) ? $postPrefix[$currentPath] : '';
-	// breedのみタグ表示
-	if($currentPath === 'breed') {
-		$articleID = get_the_ID();
-		$taxonomies = ['goods', 'method', 'species', 'morph', 'diseases', 'cross'];
-		$breedTaxonomyList = [
-			'goods' => '飼育用品',
-			'method' => '飼育法',
-			'species' => '種',
-			'morph' => 'モルフ',
-			'diseases' => '病気',
-			'cross' => '繁殖',
-		];
-		$breedTagList = [];
-		$breedTagTerms = [];
-		foreach ($breedTaxonomyList as $breedTaxonomyKey => $breedTaxonomyItem) {
-			$breedTagList[] = get_the_terms($articleID, $breedTaxonomyKey);
-			$breedTagTerms[] = $breedTaxonomyItem;
-		}
-	}
 ?>
 <!DOCTYPE html>
 <html lang="ja">

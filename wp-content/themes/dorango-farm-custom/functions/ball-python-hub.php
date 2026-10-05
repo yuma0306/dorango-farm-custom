@@ -7,11 +7,11 @@ function is_ball_python_post(): bool {
 function ball_python_hub_sections(): array {
 	return [
 		['title' => 'ケージについて', 'post_ids' => [4926, 4994]],
-		['title' => '温度・湿度について', 'post_ids' => []],
-		['title' => '餌について', 'post_ids' => []],
-		['title' => '拒食について', 'post_ids' => []],
-		['title' => '繁殖について', 'post_ids' => []],
-		['title' => '病気・健康管理について', 'post_ids' => []],
+		['title' => '温度・湿度について', 'post_ids' => [4999]],
+		['title' => '餌について', 'post_ids' => [4911, 4907]],
+		['title' => '拒食について', 'post_ids' => [4949]],
+		['title' => '繁殖について', 'post_ids' => [4931, 4936]],
+		['title' => '病気・健康管理について', 'post_ids' => [4923]],
 	];
 }
 
