@@ -10,7 +10,7 @@
 		font-weight: $fwMedium;
 		&::before {
 			position: absolute;
-			top: 3px;
+			top:  calc(#{$spacing-2} * 1px);
 			left: 0;
 			width: 5px;
 			height: 25px;
@@ -29,7 +29,7 @@
 		font-weight: $fwMedium;
 		&::before {
 			position: absolute;
-			top: vw(3);
+			top: vw($spacing-2);
 			left: 0;
 			width: vw(5);
 			height: vw(25);
