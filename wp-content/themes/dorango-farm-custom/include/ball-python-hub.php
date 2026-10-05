@@ -4,9 +4,15 @@ if (!is_ball_python_post()) {
 }
 
 $sections = ball_python_hub_sections();
+$current_id = (int) get_the_ID();
 $post_ids = [];
 foreach ($sections as $section) {
-	$post_ids = array_merge($post_ids, $section['post_ids'] ?? []);
+	foreach ($section['post_ids'] ?? [] as $post_id) {
+		$post_id = absint($post_id);
+		if ($post_id && $post_id !== $current_id) {
+			$post_ids[] = $post_id;
+		}
+	}
 }
 $posts_by_id = ball_python_hub_posts_by_id($post_ids);
 
