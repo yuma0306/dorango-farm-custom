@@ -3,10 +3,9 @@
 
 @include pc {
 	.heading-lv2-02 {
-		margin-top: 65px;
 		position: relative;
 		border-bottom: 5px solid $primary03;
-		padding-bottom: 10px;
+		padding-block: calc(#{$spacing-3} * 1px) calc(#{$spacing-1} * 1px);
 		font-size: $fzXLPC;
 		font-weight: $fwMedium;
 		&::before {
@@ -24,10 +23,9 @@
 
 @include sp {
 	.heading-lv2-02 {
-		margin-top: vw(65);
 		position: relative;
 		border-bottom: vw(5) solid $primary03;
-		padding-bottom: vw(10);
+		padding-block: vw($spacing-3) vw($spacing-1);
 		font-size: $fzXLSP;
 		font-weight: $fwMedium;
 		&::before {
@@ -35,7 +33,7 @@
 			bottom: 0;
 			left: 0;
 			width: 20%;
-			height: 5px;
+			height: vw(5);
 			background-color: $primary02;
 			content: "";
 			transform: translateY(100%);

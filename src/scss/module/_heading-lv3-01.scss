@@ -4,8 +4,8 @@
 @include pc {
 	.heading-lv3-01 {
 		position: relative;
-		margin-top: 45px;
 		padding-left: 20px;
+		padding-top: calc(#{$spacing-2} * 1px);
 		font-size: $fzLargePC;
 		font-weight: $fwMedium;
 		&::before {
@@ -23,8 +23,8 @@
 @include sp {
 	.heading-lv3-01 {
 		position: relative;
-		margin-top: vw(45);
 		padding-left: vw(20);
+		padding-top: vw($spacing-2);
 		font-size: $fzLargeSP;
 		font-weight: $fwMedium;
 		&::before {
