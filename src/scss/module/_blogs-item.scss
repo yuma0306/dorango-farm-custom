@@ -4,7 +4,7 @@
 @include pc {
 	.blogs-item {
 		$this: &;
-		height: 160px;
+		height: 140px;
 		background: $white01;
 		box-shadow: $primary03 0 0 1px 0px;
 		overflow: hidden;
@@ -34,7 +34,6 @@
 		}
 		&__thumb {
 			overflow: hidden;
-			aspect-ratio: 1200 / 630;
 		}
 		&__img {
 			transition: scale $transition;
@@ -89,7 +88,6 @@
 		}
 		&__thumb {
 			overflow: hidden;
-			aspect-ratio: 1200 / 630;
 		}
 		&__img {
 			transition: scale $transition;
