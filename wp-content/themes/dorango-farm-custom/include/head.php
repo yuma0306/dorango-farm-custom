@@ -20,6 +20,11 @@
 	<meta property="og:site_name" content="<?php echo bloginfo('name'); ?>">
 	<meta property="og:type" content="website">
 	<meta property="og:locale" content="ja_JP">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@dorango_farm">
+	<meta name="twitter:title" content="<?php echo $meta_title; ?>">
+	<meta name="twitter:description" content="<?php echo $meta_desc; ?>">
+	<meta name="twitter:image" content="<?php getOgImage(); ?>">
 	<!-- /ogp -->
 	<!-- favicon -->
 	<link rel="apple-touch-icon" sizes="76x76" href="<?php echo get_template_directory_uri(); ?>/assets/favicon/apple-touch-icon.png">
