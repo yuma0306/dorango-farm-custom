@@ -1,4 +1,4 @@
-<header class="header" id="js-header">
+<header class="header">
 	<div class="inner">
 		<a class="logo" href="/">ヘビ牧場どらんごファーム</a>
 	</div>

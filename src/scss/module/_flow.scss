@@ -21,11 +21,6 @@
 			@include flowTxt();
 		}
 	}
-	.is-active {
-		.flow {
-			height: 0;
-		}
-	}
 }
 
 @include sp {
@@ -46,11 +41,6 @@
 			font-size: $fzBasePC;
 			line-height: $lhFlat;
 			@include flowTxt();
-		}
-	}
-	.is-active {
-		.flow {
-			height: 0;
 		}
 	}
 }

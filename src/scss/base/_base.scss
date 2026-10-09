@@ -21,6 +21,10 @@
 	font-display: swap;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	font-family: "Noto Sans JP", sans-serif;
 	background-color: $beige01;

@@ -12,6 +12,9 @@
 		"trivia" => "動物雑学の",
 	];
 	$postType = isset($postPrefix[$currentPath]) ? $postPrefix[$currentPath] : '';
+	ob_start();
+	createToc();
+	$tocHtml = ob_get_clean();
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -48,7 +51,7 @@
 				<details class="toc">
 					<summary class="toc__summary">目次</summary>
 					<div class="toc__content">
-					<?php createToc(); ?>
+					<?php echo $tocHtml; ?>
 					</div>
 				</details>
 				<?php get_template_part('include/aff-text'); ?>
@@ -71,7 +74,8 @@
 		</main>
 		<?php get_template_part('include/footer'); ?>
 	</div>
+	<?php get_template_part('include/toc-float', null, ['toc_html' => $tocHtml]); ?>
 	<script src="<?php echo get_template_directory_uri() ?>/assets/js/common.js" defer></script>
-    <?php wp_footer(); ?>
+	<?php wp_footer(); ?>
 </body>
 </html>
