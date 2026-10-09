@@ -4,29 +4,15 @@
 @include pc {
 	.header {
 		background-color: $primary01;
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
 		padding: 15px 0 20px;
 		z-index: $headerZIndex;
-		&.is-active {
-			box-shadow: 0 0 10px $white01;
-		}
 	}
 }
 
 @include sp {
 	.header {
 		background-color: $primary01;
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
 		padding: vw(15) 0 0;
 		z-index: $headerZIndex;
-		&.is-active {
-			box-shadow: 0 0 vw(10) $white01;
-		}
 	}
 }

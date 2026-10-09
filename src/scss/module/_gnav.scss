@@ -27,11 +27,6 @@
 			@include hoverOpacity();
 		}
 	}
-	.is-active {
-		.gnav {
-			margin-top: 0;
-		}
-	}
 }
 
 @include sp {
@@ -58,11 +53,6 @@
 			font-size: $fzMediumSP;
 			color: $white01;
 			@include hoverOpacity();
-		}
-	}
-	.is-active {
-		.gnav {
-			margin-top: 0;
 		}
 	}
 }

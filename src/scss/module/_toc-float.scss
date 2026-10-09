@@ -1,0 +1,77 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+.toc-float {
+	position: fixed;
+	z-index: $tocFloatZIndex;
+	&__backdrop {
+		position: fixed;
+		inset: 0;
+		background: rgb(0 0 0 / 45%);
+		&[hidden] {
+			display: none;
+		}
+	}
+	&__panel {
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100%;
+		overflow: auto;
+		background: $white01;
+		&[hidden] {
+			display: none;
+		}
+	}
+	&__btn {
+		position: relative;
+		z-index: 1;
+		display: grid;
+		place-items: center;
+		border-radius: 50%;
+		background: $white01;
+		border: 1px solid $primary04;
+		color: $brown01;
+	}
+	&__icon {
+		display: block;
+	}
+}
+
+@include pc {
+	.toc-float {
+		right: #{$spacing-2}px;
+		bottom: #{$spacing-2}px;
+		&__panel {
+			width: min(360px, 100%);
+			padding: #{$spacing-3}px #{$spacing-2}px;
+		}
+		&__btn {
+			width: 64px;
+			height: 64px;
+		}
+		&__icon {
+			width: 28px;
+			height: 28px;
+		}
+	}
+}
+
+@include sp {
+	.toc-float {
+		right: vw($spacing-2);
+		bottom: vw($spacing-2);
+		&__panel {
+			width: min(vw(300), 100%);
+			padding: vw($spacing-3) vw($spacing-2);
+		}
+		&__btn {
+			width: vw(56);
+			height: vw(56);
+		}
+		&__icon {
+			width: vw(24);
+			height: vw(24);
+		}
+	}
+}
