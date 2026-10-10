@@ -1,4 +1,5 @@
 @use '../global/import' as *;
+@use '../config/import' as *;
 
 .u-tc:not(#_) {
 	text-align: center;
@@ -11,7 +12,7 @@
 }
 
 @include pc {
-    .u-tc-pc:not(#_) {
+	.u-tc-pc:not(#_) {
 		text-align: center;
 	}
 	.u-tl-pc:not(#_) {
@@ -32,4 +33,14 @@
 	.u-tr-sp:not(#_) {
 		text-align: right;
 	}
+}
+
+.u-primary02:not(#_) {
+	color: $primary02;
+}
+.u-medium:not(#_) {
+	font-weight: $fwMedium;
+}
+.u-bold:not(#_) {
+	font-weight: $fwBold;
 }

@@ -43,7 +43,7 @@
 		right: #{$spacing-2}px;
 		bottom: #{$spacing-2}px;
 		&__panel {
-			width: min(360px, 100%);
+			width: min(500px, 100%);
 			padding: #{$spacing-3}px #{$spacing-2}px;
 		}
 		&__btn {
@@ -62,7 +62,7 @@
 		right: vw($spacing-2);
 		bottom: vw($spacing-2);
 		&__panel {
-			width: min(vw(300), 100%);
+			width: calc(100% - (vw($spacing-2) * 2) - vw(56));
 			padding: vw($spacing-3) vw($spacing-2);
 		}
 		&__btn {

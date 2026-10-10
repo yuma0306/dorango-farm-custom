@@ -1,12 +1,16 @@
 <header class="header">
 	<div class="inner">
-		<a class="logo" href="/">ヘビ牧場どらんごファーム</a>
+		<?php if (is_front_page()) : ?>
+			<h1><a class="logo" href="/">ヘビ牧場どらんごファーム</a></h1>
+		<?php else : ?>
+			<a class="logo" href="/">ヘビ牧場どらんごファーム</a>
+		<?php endif; ?>
 	</div>
-	<h1 class="flow" id="js-flow">
-		<span class="flow__text">ヘビ牧場どらんごファームではボールパイソンを中心にヘビ飼育・繁殖方法やアニマルスポット情報・動物雑学をわかりやすく紹介します。</span>
-	</h1>
 	<nav class="gnav">
 		<ul class="gnav__list">
+			<li class="gnav__item">
+				<a class="gnav__link" href="/tag/species/ball-python/">ボールパイソンの記事</a>
+			</li>
 			<li class="gnav__item">
 				<a class="gnav__link" href="/breed/">飼育繁殖</a>
 			</li>

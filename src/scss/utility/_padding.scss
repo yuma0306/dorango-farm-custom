@@ -1,4 +1,6 @@
+@use 'sass:map';
 @use '../global/import' as *;
+@use '../config/import' as *;
 
 .u-p0:not(#_) {
 	padding: 0;
@@ -17,7 +19,7 @@
 }
 
 @include pc {
-    .u-p0-pc:not(#_) {
+	.u-p0-pc:not(#_) {
 		padding: 0;
 	}
 	.u-pt0-pc:not(#_) {
@@ -31,6 +33,14 @@
 	}
 	.u-pl0-pc:not(#_) {
 		padding-left: 0;
+	}
+	@for $i from 1 through 5 {
+		.u-pt#{$i}-pc:not(#_) {
+			padding-top: #{map.get($spacing-map, $i)}px;
+		}
+		.u-pb#{$i}-pc:not(#_) {
+			padding-bottom: #{map.get($spacing-map, $i)}px;
+		}
 	}
 }
 
@@ -49,5 +59,13 @@
 	}
 	.u-pl0-sp:not(#_) {
 		padding-left: 0;
+	}
+	@for $i from 1 through 5 {
+		.u-pt#{$i}-sp:not(#_) {
+			padding-top: #{map.get($spacing-map, $i)}px;
+		}
+		.u-pb#{$i}-sp:not(#_) {
+			padding-bottom: #{map.get($spacing-map, $i)}px;
+		}
 	}
 }

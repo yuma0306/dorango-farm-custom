@@ -40,9 +40,6 @@
 		$base_uri = get_stylesheet_directory();
 		ob_start();
 			require_once "{$base_uri}/assets/css/style.css";
-			if(is_front_page()) {
-				require_once "{$base_uri}/assets/css/front-page.css";
-			}
 			if(is_page('contact')) {
 				require_once "{$base_uri}/assets/css/contact.css";
 			}
