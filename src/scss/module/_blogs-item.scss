@@ -44,7 +44,6 @@
 	}
 	&__dates {
 		display: flex;
-		flex-wrap: wrap;
 	}
 	&__date {
 		display: inline-flex;
@@ -82,7 +81,7 @@
 
 @include pc {
 	.blogs-item {
-		height: 140px;
+		height: 160px;
 		box-shadow: $primary03 0 0 1px 0px;
 		.wysiwyg-v2 & {
 			width: min(540px, 100%);
@@ -94,7 +93,7 @@
 			width: 100%;
 		}
 		&__dates {
-			gap: #{$spacing-6}px #{$spacing-1}px;
+			gap: #{$spacing-6}px;
 		}
 		&__date {
 			gap: #{$spacing-6}px;
@@ -117,13 +116,14 @@
 @include sp {
 	.blogs-item {
 		width: 100%;
-		height: vw(140);
+		height: vw(160);
 		box-shadow: $primary03 0 0 vw(2) 0;
 		&__block {
-			padding: vw(10);
+			padding: vw($spacing-1);
 		}
 		&__dates {
-			gap: vw($spacing-6) vw($spacing-1);
+			gap: vw($spacing-6);
+			flex-direction: column;
 		}
 		&__date {
 			gap: vw($spacing-6);
@@ -134,8 +134,8 @@
 			font-size: $fzSmallSP;
 		}
 		&__icon {
-			width: vw(22);
-			height: vw(22);
+			width: vw(14);
+			height: vw(14);
 		}
 		&__text {
 			margin-top: vw(5);

@@ -3,6 +3,24 @@
 		<a class="logo logo--footer" href="/">ヘビ牧場どらんごファーム</a>
 		<ul class="footer__list">
 			<li class="footer__item">
+				<a href="/tag/species/ball-python/" class="footer__link">ボールパイソンの記事</a>
+			</li>
+			<li class="footer__item">
+				<a href="/breed/" class="footer__link">飼育繁殖</a>
+			</li>
+			<li class="footer__item">
+				<a href="/zoo/" class="footer__link">アニマルスポット</a>
+			</li>
+			<li class="footer__item">
+				<a href="/shop/" class="footer__link">ショップ</a>
+			</li>
+			<li class="footer__item">
+				<a href="/food/" class="footer__link">昆虫食</a>
+			</li>
+			<li class="footer__item">
+				<a href="/trivia/" class="footer__link">動物雑学</a>
+			</li>
+			<li class="footer__item">
 				<a href="/tag/" class="footer__link">タグ一覧</a>
 			</li>
 			<li class="footer__item">

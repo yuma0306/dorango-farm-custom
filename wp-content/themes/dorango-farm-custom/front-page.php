@@ -28,7 +28,7 @@
 				</div>
 				<p class="u-pt2-pc u-pt2-sp">ヘビ牧場どらんごファームでは、実際に飼育・繁殖した経験をもとに、<span class="u-primary02 u-bold">ボールパイソン</span>を中心に<span class="u-primary02 u-bold">爬虫類の飼育・繁殖、飼育用品、動物園、野生観察</span>について発信するメディアです。</p>
 				<?php get_template_part('include/ball-python-hub'); ?>
-				<a class="btn-link01 btn-link01--end" href="<?php echo esc_url($ballPythonArchiveUrl); ?>">ボールパイソンの記事一覧</a>
+				<a class="btn-link01 btn-link01--end" href="<?php echo esc_url($ballPythonArchiveUrl); ?>">ボールパイソンの記事</a>
 			</div>
 		</div>
 		</main>

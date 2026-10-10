@@ -1,13 +1,14 @@
-
 // font-size PC
-$fzSmallPC: 13px;
+$fzXSmallPC: 10px;
+$fzSmallPC: 12px;
 $fzBasePC: 15px;
 $fzMediumPC: 17px;
 $fzLargePC: 20px;
 $fzXLPC: 22px;
 
 // font-size SP
-$fzSmallSP: calc(1vw * 13 / 390 * 100);
+$fzXSmallSP: calc(1vw * 10 / 390 * 100);
+$fzSmallSP: calc(1vw * 12 / 390 * 100);
 $fzBaseSP: calc(1vw * 15 / 390 * 100);
 $fzMediumSP: calc(1vw * 17 / 390 * 100);
 $fzLargeSP: calc(1vw * 20 / 390 * 100);
