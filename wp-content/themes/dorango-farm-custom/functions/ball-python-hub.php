@@ -8,7 +8,7 @@ const BALL_PYTHON_HUB_ID = 4942;
 
 function ball_python_hub_sections(): array {
 	return [
-		['title' => 'お迎え', 'post_ids' => [5503]],
+		['title' => 'お迎え', 'post_ids' => [5503, 5012]],
 		['title' => '温度・湿度', 'post_ids' => [4999]],
 		['title' => '床材', 'post_ids' => [5517]],
 		['title' => 'メンテナンス・掃除', 'post_ids' => [5475]],
