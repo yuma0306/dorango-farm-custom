@@ -87,7 +87,6 @@ export default defineConfig({
 		rollupOptions: {
 			input: {
 				style: path.resolve(__dirname, 'src/scss/style.scss'),
-				'front-page': path.resolve(__dirname, 'src/scss/front-page.scss'),
 				contact: path.resolve(__dirname, 'src/scss/contact.scss'),
 				common: path.resolve(__dirname, 'src/scripts/common.ts'),
 				'contact-form': path.resolve(__dirname, 'src/scripts/contact.ts'),

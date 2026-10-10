@@ -1,5 +1,9 @@
 <?php
-$data = ball_python_hub_data();
+$exclude_id = 0;
+if (isset($args['exclude_id'])) {
+	$exclude_id = (int) $args['exclude_id'];
+}
+$data = ball_python_hub_data($exclude_id);
 if ($data === null) {
 	return;
 }

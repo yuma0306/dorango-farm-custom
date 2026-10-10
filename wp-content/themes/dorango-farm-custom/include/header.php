@@ -2,9 +2,6 @@
 	<div class="inner">
 		<a class="logo" href="/">ヘビ牧場どらんごファーム</a>
 	</div>
-	<h1 class="flow" id="js-flow">
-		<span class="flow__text">ヘビ牧場どらんごファームではボールパイソンを中心にヘビ飼育・繁殖方法やアニマルスポット情報・動物雑学をわかりやすく紹介します。</span>
-	</h1>
 	<nav class="gnav">
 		<ul class="gnav__list">
 			<li class="gnav__item">

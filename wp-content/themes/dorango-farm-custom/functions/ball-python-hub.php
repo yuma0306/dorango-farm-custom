@@ -17,18 +17,14 @@ function ball_python_hub_sections(): array {
 	];
 }
 
-function ball_python_hub_data(): ?array {
-	if (!is_ball_python_post()) {
-		return null;
-	}
+function ball_python_hub_data(int $exclude_id): ?array {
 	$sections = ball_python_hub_sections();
-	$current_id = (int) get_the_ID();
-	$hub_id = BALL_PYTHON_HUB_ID !== $current_id ? BALL_PYTHON_HUB_ID : 0;
+	$hub_id = BALL_PYTHON_HUB_ID !== $exclude_id ? BALL_PYTHON_HUB_ID : 0;
 	$post_ids = [];
 	foreach ($sections as $section) {
 		foreach ($section['post_ids'] ?? [] as $post_id) {
 			$post_id = absint($post_id);
-			if ($post_id && $post_id !== $current_id) {
+			if ($post_id && $post_id !== $exclude_id) {
 				$post_ids[] = $post_id;
 			}
 		}

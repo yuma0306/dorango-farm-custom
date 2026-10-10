@@ -59,7 +59,9 @@
 				<section class="article-content-v2 wysiwyg-v2">
 					<?php the_content(); ?>
 				</section>
-				<?php get_template_part('include/ball-python-hub'); ?>
+				<?php if (is_ball_python_post()) : ?>
+					<?php get_template_part('include/ball-python-hub', null, ['exclude_id' => get_the_ID()]); ?>
+				<?php endif; ?>
 				<h2 class="heading-lv2-02">もっと記事を探す</h2>
 				<form class="search-form js-search-form" action="<?php echo home_url(); ?>" method="get">
 					<input class="search-form__input js-search-input" type="text" name="s" value="<?php the_search_query(); ?>" placeholder="キーワード">

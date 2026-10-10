@@ -1,4 +1,5 @@
 @use '../global/import' as *;
+@use '../config/import' as *;
 
 .u-m0:not(#_) {
 	margin: 0;
@@ -20,7 +21,7 @@
 }
 
 @include pc {
-    .u-m0-pc:not(#_) {
+	.u-m0-pc:not(#_) {
 		margin: 0;
 	}
 	.u-m0a-pc:not(#_) {

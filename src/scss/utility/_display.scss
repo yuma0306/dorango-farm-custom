@@ -21,7 +21,7 @@
 }
 
 @include pc {
-    .u-block-pc:not(#_) {
+	.u-block-pc:not(#_) {
 		display: block;
 	}
 	.u-ib-pc:not(#_) {

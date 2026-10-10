@@ -1,1 +1,0 @@
-@media screen and (min-width:640px){.blogs-wrap{display:grid;grid-template-columns:repeat(2,1fr);gap:80px min(4.1666666667vw,50px);margin-top:50px}.blogs-block{display:grid;grid-template-rows:auto auto 1fr}}@media screen and (max-width:639px){.blogs-wrap{display:grid;row-gap:12.8205128205vw;margin-top:10.2564102564vw}.blogs-block{display:grid;grid-template-rows:auto auto 1fr}}
