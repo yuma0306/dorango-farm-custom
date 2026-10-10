@@ -4,6 +4,8 @@ function is_ball_python_post(): bool {
 	return is_singular('breed') && has_term('ball-python', 'species');
 }
 
+const BALL_PYTHON_HUB_ID = 4942;
+
 function ball_python_hub_sections(): array {
 	return [
 		['title' => 'ケージについて', 'post_ids' => [4926, 4994]],
@@ -12,6 +14,58 @@ function ball_python_hub_sections(): array {
 		['title' => '拒食について', 'post_ids' => [4949]],
 		['title' => '繁殖について', 'post_ids' => [4931, 4936]],
 		['title' => '病気・健康管理について', 'post_ids' => [4923]],
+	];
+}
+
+function ball_python_hub_data(): ?array {
+	if (!is_ball_python_post()) {
+		return null;
+	}
+	$sections = ball_python_hub_sections();
+	$current_id = (int) get_the_ID();
+	$hub_id = BALL_PYTHON_HUB_ID !== $current_id ? BALL_PYTHON_HUB_ID : 0;
+	$post_ids = [];
+	foreach ($sections as $section) {
+		foreach ($section['post_ids'] ?? [] as $post_id) {
+			$post_id = absint($post_id);
+			if ($post_id && $post_id !== $current_id) {
+				$post_ids[] = $post_id;
+			}
+		}
+	}
+	if ($hub_id) {
+		$post_ids[] = $hub_id;
+	}
+	$posts_by_id = ball_python_hub_posts_by_id($post_ids);
+	$hub_visible = (bool) ($hub_id && isset($posts_by_id[$hub_id]));
+	$visible = [];
+	foreach ($sections as $section) {
+		$title = (string) ($section['title'] ?? '');
+		if ($title === '') {
+			continue;
+		}
+		$ids = [];
+		foreach ($section['post_ids'] ?? [] as $post_id) {
+			$post_id = absint($post_id);
+			if ($post_id && isset($posts_by_id[$post_id])) {
+				$ids[] = $post_id;
+			}
+		}
+		if ($ids === []) {
+			continue;
+		}
+		$visible[] = [
+			'title' => $title,
+			'post_ids' => $ids,
+		];
+	}
+	if ($visible === [] && !$hub_visible) {
+		return null;
+	}
+	return [
+		'hub_id' => $hub_id,
+		'hub_visible' => $hub_visible,
+		'visible' => $visible,
 	];
 }
 

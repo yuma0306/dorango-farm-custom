@@ -4,3 +4,11 @@ $spacing-2: 16;
 $spacing-3: 24;
 $spacing-4: 32;
 $spacing-5: 40;
+
+$spacing-map: (
+	1: $spacing-1,
+	2: $spacing-2,
+	3: $spacing-3,
+	4: $spacing-4,
+	5: $spacing-5,
+);

@@ -3,6 +3,7 @@
 	$thumb = get_article_thumb();
 	$currentUri = get_current_uri();
 	$currentPath = getCurrentPath($currentUri);
+	$publishedDate = get_the_date('Y-m-d');
 	$modifiedDate = get_the_modified_time('Y-m-d');
 	$postPrefix = [
 		"breed" => "飼育繁殖の",
@@ -45,8 +46,8 @@
 				</picture>
 				<?php endif; ?>
 				<div class="article-date">
-					<img class="article-date__img" src="<?php echo get_template_directory_uri(); ?>/assets/img/icon-pen.svg" alt="">
-					<time class="article-date__text" datetime="<?php echo esc_html($modifiedDate); ?>"><?php echo esc_html($modifiedDate); ?></time>
+					<span class="article-date__item"><span class="article-date__icon article-date__icon--pencil" role="img" aria-label="投稿日"></span><time class="article-date__text" datetime="<?php echo esc_html($publishedDate); ?>"><?php echo esc_html($publishedDate); ?></time></span>
+					<span class="article-date__item"><span class="article-date__icon article-date__icon--update" role="img" aria-label="更新日"></span><time class="article-date__text" datetime="<?php echo esc_html($modifiedDate); ?>"><?php echo esc_html($modifiedDate); ?></time></span>
 				</div>
 				<details class="toc">
 					<summary class="toc__summary">目次</summary>

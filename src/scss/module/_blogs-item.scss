@@ -1,111 +1,144 @@
 @use '../global/import' as *;
 @use '../config/import' as *;
 
+.blogs-item {
+	$this: &;
+	position: relative;
+	background: $white01;
+	overflow: hidden;
+	&__badge {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: $aboveZIndex;
+		background-color: $primary02;
+		color: $white01;
+		font-weight: $fwBold;
+	}
+	&__link {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		height: 100%;
+		&:hover {
+			#{$this}__img {
+				scale: $scale;
+			}
+			#{$this}__text {
+				text-decoration: none;
+				opacity: $opacity;
+			}
+			#{$this}__date {
+				opacity: $opacity;
+			}
+		}
+	}
+	&__block {
+		color: $brown01;
+	}
+	&__thumb {
+		overflow: hidden;
+	}
+	&__img {
+		transition: scale $transition;
+		height: 100%;
+	}
+	&__dates {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	&__date {
+		display: inline-flex;
+		align-items: center;
+		font-weight: $fwMedium;
+	}
+	&__icon {
+		display: block;
+		flex-shrink: 0;
+		background-color: $brown01;
+		-webkit-mask-repeat: no-repeat;
+		mask-repeat: no-repeat;
+		-webkit-mask-position: center;
+		mask-position: center;
+		-webkit-mask-size: contain;
+		mask-size: contain;
+		&--pencil {
+			-webkit-mask-image: url(#{$imgPath}/icon-pencil.svg);
+			mask-image: url(#{$imgPath}/icon-pencil.svg);
+		}
+		&--update {
+			-webkit-mask-image: url(#{$imgPath}/icon-update.svg);
+			mask-image: url(#{$imgPath}/icon-update.svg);
+		}
+	}
+	&__text {
+		text-decoration: underline;
+		font-weight: $fwMedium;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 4;
+		overflow: hidden;
+	}
+}
+
 @include pc {
 	.blogs-item {
-		$this: &;
 		height: 140px;
-		background: $white01;
 		box-shadow: $primary03 0 0 1px 0px;
-		overflow: hidden;
 		.wysiwyg-v2 & {
 			width: min(540px, 100%);
 		}
-		&__link {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			height: 100%;
-			&:hover {
-				#{$this}__img {
-					scale: $scale;
-				}
-				#{$this}__text {
-					text-decoration: none;
-					opacity: $opacity;
-				}
-				#{$this}__date {
-					opacity: $opacity;
-				}
-			}
-		}
 		&__block {
 			padding: 15px;
-			color: $brown01;
-		}
-		&__thumb {
-			overflow: hidden;
 		}
 		&__img {
-			transition: scale $transition;
 			width: 100%;
-			height: 100%;
+		}
+		&__dates {
+			gap: #{$spacing-6}px #{$spacing-1}px;
 		}
 		&__date {
-			display: block;
+			gap: #{$spacing-6}px;
 			font-size: $fzSmallPC;
-			font-weight: $fwMedium;
+		}
+		&__badge {
+			padding: #{$spacing-6}px #{$spacing-1}px;
+			font-size: $fzSmallPC;
+		}
+		&__icon {
+			width: 14px;
+			height: 14px;
 		}
 		&__text {
 			margin-top: 5px;
-			text-decoration: underline;
-			font-weight: $fwMedium;
-			display: -webkit-box;
-			-webkit-box-orient: vertical;
-			-webkit-line-clamp: 4;
-			overflow: hidden;
 		}
 	}
 }
 
 @include sp {
 	.blogs-item {
-		$this: &;
 		width: 100%;
 		height: vw(140);
-		background: $white01;
 		box-shadow: $primary03 0 0 vw(2) 0;
-		overflow: hidden;
-		&__link {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			height: 100%;
-			&:hover {
-				#{$this}__img {
-					scale: $scale;
-				}
-				#{$this}__text {
-					text-decoration: none;
-					opacity: $opacity;
-				}
-				#{$this}__date {
-					opacity: $opacity;
-				}
-			}
-		}
 		&__block {
 			padding: vw(10);
-			color: $brown01;
 		}
-		&__thumb {
-			overflow: hidden;
-		}
-		&__img {
-			transition: scale $transition;
-			height: 100%;
+		&__dates {
+			gap: vw($spacing-6) vw($spacing-1);
 		}
 		&__date {
-			display: block;
+			gap: vw($spacing-6);
 			font-size: $fzSmallSP;
-			font-weight: $fwMedium;
+		}
+		&__badge {
+			padding: vw($spacing-6) vw($spacing-1);
+			font-size: $fzSmallSP;
+		}
+		&__icon {
+			width: vw(22);
+			height: vw(22);
 		}
 		&__text {
 			margin-top: vw(5);
-			text-decoration: underline;
-			font-weight: $fwMedium;
-			display: -webkit-box;
-			-webkit-box-orient: vertical;
-			-webkit-line-clamp: 4;
-			overflow: hidden;
 		}
 	}
 }

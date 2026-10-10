@@ -3,12 +3,12 @@
 
 @include pc {
 	.main {
-		padding: 20px 0 100px;
+		padding-bottom: 80px;
 	}
 }
 
 @include sp {
 	.main {
-		padding: vw(20) 0 vw(90);
+		padding-bottom: vw(80);
 	}
 }

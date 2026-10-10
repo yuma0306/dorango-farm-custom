@@ -1,30 +1,57 @@
 @use '../global/import' as *;
 @use '../config/import' as *;
 
+.article-date {
+	display: flex;
+	align-items: flex-end;
+	justify-content: flex-end;
+	&__item {
+		display: flex;
+		align-items: center;
+	}
+	&__icon {
+		display: block;
+		width: 14px;
+		height: 14px;
+		flex-shrink: 0;
+		background-color: $brown01;
+		-webkit-mask-repeat: no-repeat;
+		mask-repeat: no-repeat;
+		-webkit-mask-position: center;
+		mask-position: center;
+		-webkit-mask-size: contain;
+		mask-size: contain;
+		&--pencil {
+			-webkit-mask-image: url(#{$imgPath}/icon-pencil.svg);
+			mask-image: url(#{$imgPath}/icon-pencil.svg);
+		}
+		&--update {
+			-webkit-mask-image: url(#{$imgPath}/icon-update.svg);
+			mask-image: url(#{$imgPath}/icon-update.svg);
+		}
+	}
+}
+
 @include pc {
 	.article-date {
-		$this: &;
-		display: flex;
-		align-items: flex-end;
-		justify-content: flex-end;
-		gap: 10px;
-		margin-top: 15px;
-		&__img {
-			width: 24px;
+		gap: #{$spacing-2}px;
+		margin-top: #{$spacing-2}px;
+		&__item {
+			gap: #{$spacing-6}px;
 		}
 	}
 }
 
 @include sp {
 	.article-date {
-		$this: &;
-		display: flex;
-		align-items: flex-end;
-		justify-content: flex-end;
-		gap: vw(10);
-		margin-top: vw(15);
-		&__img {
-			width: vw(24);
+		gap: vw($spacing-2);
+		margin-top: vw($spacing-2);
+		&__item {
+			gap: vw($spacing-6);
+		}
+		&__icon {
+			width: vw(22);
+			height: vw(22);
 		}
 	}
 }
