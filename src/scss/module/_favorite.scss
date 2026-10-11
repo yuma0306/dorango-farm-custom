@@ -1,0 +1,47 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+.favorite {
+	display: grid;
+	place-items: center;
+	flex-shrink: 0;
+	background-color: $white01;
+	border-radius: 50%;
+	&__icon {
+		display: block;
+		background-color: $primary04;
+		-webkit-mask-image: url(#{$imgPath}/icon-heart.svg);
+		mask-image: url(#{$imgPath}/icon-heart.svg);
+		-webkit-mask-repeat: no-repeat;
+		mask-repeat: no-repeat;
+		-webkit-mask-position: center;
+		mask-position: center;
+		-webkit-mask-size: contain;
+		mask-size: contain;
+	}
+	&[data-js-favorite-active] &__icon {
+		background-color: $red01;
+	}
+}
+
+@include pc {
+	.favorite {
+		width: 32px;
+		height: 32px;
+		&__icon {
+			width: 18px;
+			height: 18px;
+		}
+	}
+}
+
+@include sp {
+	.favorite {
+		width: vw(44);
+		height: vw(44);
+		&__icon {
+			width: vw(24);
+			height: vw(24);
+		}
+	}
+}

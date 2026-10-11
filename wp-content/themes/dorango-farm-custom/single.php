@@ -46,6 +46,9 @@
 				</picture>
 				<?php endif; ?>
 				<div class="article-date">
+					<button type="button" class="favorite" data-js-favorite-btn data-post-id="<?php echo esc_attr((string) get_the_ID()); ?>" aria-pressed="false" aria-label="お気に入りに追加">
+						<span class="favorite__icon" aria-hidden="true"></span>
+					</button>
 					<span class="article-date__item"><span class="article-date__icon article-date__icon--pencil" role="img" aria-label="投稿日"></span><time class="article-date__text" datetime="<?php echo esc_html($publishedDate); ?>"><?php echo esc_html($publishedDate); ?></time></span>
 					<span class="article-date__item"><span class="article-date__icon article-date__icon--update" role="img" aria-label="更新日"></span><time class="article-date__text" datetime="<?php echo esc_html($modifiedDate); ?>"><?php echo esc_html($modifiedDate); ?></time></span>
 				</div>

@@ -14,7 +14,6 @@ function init_editor() {
     $templates = [
 		'page-thanks.php',
         'page-tag.php',
-		'page-lp.php',
     ];
     if(in_array($templateFile, $templates)) {
         remove_post_type_support('page', 'editor');

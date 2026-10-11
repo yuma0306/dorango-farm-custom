@@ -8,21 +8,21 @@
 	$permalink = get_permalink($post_id);
 ?>
 <div class="blogs-item">
-	<a class="blogs-item__link" href="<?php echo esc_url($permalink); ?>">
+	<a class="blogs-item__link" data-js-favorite-link href="<?php echo esc_url($permalink); ?>">
 		<?php if ($is_hub) : ?>
 			<span class="blogs-item__badge">おすすめ</span>
 		<?php endif; ?>
 		<?php if(!empty($thumb)): ?>
-			<picture class="blogs-item__thumb">
-				<img class="blogs-item__img" src="<?php echo esc_url($thumb['url']); ?>" alt="<?php echo esc_html($thumb['url']); ?>"  width="<?php echo esc_html($thumb['width']); ?>" height="<?php echo esc_html($thumb['height']); ?>">
+			<picture class="blogs-item__thumb" data-js-favorite-thumb>
+				<img class="blogs-item__img" data-js-favorite-img src="<?php echo esc_url($thumb['url']); ?>" alt="<?php echo esc_html($thumb['url']); ?>"  width="<?php echo esc_html($thumb['width']); ?>" height="<?php echo esc_html($thumb['height']); ?>">
 			</picture>
 		<?php endif; ?>
-		<div class="blogs-item__block">
+		<div class="blogs-item__block" data-js-favorite-block>
 			<div class="blogs-item__dates">
-				<span class="blogs-item__date"><span class="blogs-item__icon blogs-item__icon--pencil" role="img" aria-label="投稿日"></span><time datetime="<?php echo esc_html($publishedDate); ?>"><?php echo esc_html($publishedDate); ?></time></span>
-				<span class="blogs-item__date"><span class="blogs-item__icon blogs-item__icon--update" role="img" aria-label="更新日"></span><time datetime="<?php echo esc_html($modifiedDate); ?>"><?php echo esc_html($modifiedDate); ?></time></span>
+				<span class="blogs-item__date"><span class="blogs-item__icon blogs-item__icon--pencil" role="img" aria-label="投稿日"></span><time data-js-favorite-published datetime="<?php echo esc_html($publishedDate); ?>"><?php echo esc_html($publishedDate); ?></time></span>
+				<span class="blogs-item__date"><span class="blogs-item__icon blogs-item__icon--update" role="img" aria-label="更新日"></span><time data-js-favorite-modified datetime="<?php echo esc_html($modifiedDate); ?>"><?php echo esc_html($modifiedDate); ?></time></span>
 			</div>
-			<p class="blogs-item__text"><?php echo esc_html($title); ?></p>
+			<p class="blogs-item__text" data-js-favorite-title><?php echo esc_html($title); ?></p>
 		</div>
 	</a>
 </div>
