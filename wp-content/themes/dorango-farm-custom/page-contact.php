@@ -14,7 +14,7 @@
 			<h1 class="heading-lv1-01">
 				<span class="heading-lv1-01__text"><?php echo the_title(); ?></span>
 			</h1>
-			<div class="inner inner--small">
+			<div class="inner">
 				<?php displayBreadcrumnbs(); ?>
 				<?php the_content(); ?>
 			</div>

@@ -16,7 +16,7 @@ $taxonomies = ['goods', 'method', 'species', 'morph', 'diseases', 'cross'];
 			<h1 class="heading-lv1-01">
 				<span class="heading-lv1-01__text">タグ一覧</span>
 			</h1>
-			<div class="inner inner--small">
+			<div class="inner">
 				<?php displayBreadcrumnbs(); ?>
 				<?php foreach($taxonomies as $taxonomy): ?>
 					<?php

@@ -5,9 +5,6 @@
 	.inner {
 		margin: 0 auto;
 		width: vwMin($innerWidthPC);
-		&--small {
-			width: vwMin($innerWidthSmallPC);
-		}
 	}
 }
 

@@ -12,7 +12,7 @@
 			<h1 class="heading-lv1-01">
 				<span class="heading-lv1-01__text"><?php echo esc_html($heading); ?></span>
 			</h1>
-			<div class="inner inner--small">
+			<div class="inner">
 				<?php displayBreadcrumnbs(); ?>
 				<details class="toc">
 					<summary class="toc__summary">目次</summary>
