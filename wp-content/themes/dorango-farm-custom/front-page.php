@@ -20,7 +20,7 @@
 			<div class="inner">
 				<form class="search-form js-search-form u-m0a" action="<?php echo home_url(); ?>" method="get">
 					<input class="search-form__input js-search-input" type="text" name="s" value="" placeholder="キーワード例：ボールパイソン">
-					<button type="button" class="search-form__btn js-search-btn">
+					<button type="button" class="search-form__btn js-search-btn" data-gtm-event="<?php echo esc_attr(gtm_event('search_submit')); ?>">
 						<span class="search-form__icon" role="img" aria-label="検索"></span>
 					</button>
 				</form>

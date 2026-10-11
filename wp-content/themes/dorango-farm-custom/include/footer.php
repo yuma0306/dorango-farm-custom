@@ -9,7 +9,7 @@
 			<?php endforeach; ?>
 		</ul>
 		<p class="footer__copy">&copy;<?php echo esc_html(get_bloginfo('name')); ?></p>
-		<a href="#" class="btn-top">
+		<a href="#" class="btn-top" data-gtm-event="<?php echo esc_attr(gtm_event('btn_top')); ?>">
 			<img class="btn-top__manbou" src="<?php echo get_template_directory_uri(); ?>/assets/img/icon-manbou.svg" alt="" width="125" height="150">
 		</a>
 		<?php get_template_part('include/toast'); ?>

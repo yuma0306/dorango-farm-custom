@@ -4,6 +4,7 @@
 			type="button"
 			class="hamburger-btn hamburger-btn--open"
 			data-js-hamburger-btn
+			data-gtm-event="<?php echo esc_attr(gtm_event('hamburger_open')); ?>"
 			aria-expanded="false"
 			aria-controls="hamburger-panel"
 			aria-label="メニューを開く"
@@ -16,6 +17,7 @@
 	<div
 		class="hamburger__overlay"
 		data-js-hamburger-overlay
+		data-gtm-event="<?php echo esc_attr(gtm_event('hamburger_close')); ?>"
 		aria-hidden="true"
 	></div>
 	<nav
@@ -28,6 +30,7 @@
 			type="button"
 			class="hamburger-btn hamburger-btn--close"
 			data-js-hamburger-btn
+			data-gtm-event="<?php echo esc_attr(gtm_event('hamburger_close')); ?>"
 			aria-expanded="false"
 			aria-controls="hamburger-panel"
 			aria-label="メニューを閉じる"
