@@ -6,8 +6,8 @@ if (!str_contains($toc_html, 'toc__link')) {
 }
 ?>
 <div class="toc-float" data-js-toc-float>
-	<button class="toc-float__backdrop" data-js-toc-float-backdrop type="button" aria-label="目次を閉じる" hidden></button>
-	<div class="toc-float__panel" data-js-toc-float-panel hidden>
+	<div class="toc-float__overlay" data-js-toc-float-overlay aria-hidden="true"></div>
+	<div class="toc-float__panel" data-js-toc-float-panel>
 		<?php echo $toc_html; ?>
 	</div>
 	<button class="toc-float__btn" data-js-toc-float-btn type="button" aria-expanded="false" aria-label="目次">

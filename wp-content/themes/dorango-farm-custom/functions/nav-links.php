@@ -1,6 +1,10 @@
 <?php
 
 const NAV_LINKS = [
+	'home' => [
+		'href' => '/',
+		'label' => 'ホーム',
+	],
 	'ballPython' => [
 		'href' => '/tag/species/ball-python/',
 		'label' => 'ボールパイソンの記事',
@@ -47,7 +51,8 @@ const NAV_LINKS = [
 	],
 ];
 
-const GNAV_LINK_KEYS = [
+const HAMBURGER_LINK_KEYS = [
+	'home',
 	'ballPython',
 	'breed',
 	'zoo',

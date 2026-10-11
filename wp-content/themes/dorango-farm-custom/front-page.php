@@ -13,8 +13,9 @@
 <?php get_template_part('include/head'); ?>
 <body>
 	<?php get_template_part('include/gtm-body'); ?>
-	<div class="wrapper">
+	<div class="wrapper" data-js-page-wrapper>
 		<?php get_template_part('include/header'); ?>
+		<?php get_template_part('include/hamburger'); ?>
 		<main class="main u-pt5-pc u-pt5-sp">
 			<div class="inner">
 				<form class="search-form js-search-form u-m0a" action="<?php echo home_url(); ?>" method="get">

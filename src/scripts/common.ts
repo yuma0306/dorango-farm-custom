@@ -5,6 +5,7 @@ import { initFavorites } from './modules/favorite';
 import { initHistoryPage } from './modules/history';
 import { initRecentPosts } from './modules/recent-posts';
 import { initSingleFixedFooter } from './modules/single-fixed-footer';
+import { initHamburger } from './modules/hamburger';
 
 document.addEventListener('DOMContentLoaded', () => {
 	initSearchValidation();
@@ -14,4 +15,5 @@ document.addEventListener('DOMContentLoaded', () => {
 	initRecentPosts();
 	initHistoryPage();
 	initSingleFixedFooter();
+	initHamburger();
 });

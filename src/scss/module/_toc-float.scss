@@ -4,23 +4,30 @@
 .toc-float {
 	position: fixed;
 	z-index: $tocFloatZIndex;
-	&__backdrop {
-		@include overlay-backdrop;
+	&__overlay {
+		position: fixed;
+		inset: 0;
+		z-index: $tocFloatZIndex;
+		background-color: rgb(0 0 0 / 50%);
+		opacity: 0;
+		pointer-events: none;
+		visibility: hidden;
+		transition: opacity $transition, visibility $transition;
 	}
 	&__panel {
 		position: fixed;
-		top: 0;
-		left: 0;
-		height: 100%;
-		overflow: auto;
+		inset: 0 auto 0 0;
+		z-index: calc($tocFloatZIndex + 1);
+		box-sizing: border-box;
+		overflow-y: auto;
 		background: $white01;
-		&[hidden] {
-			display: none;
-		}
+		visibility: hidden;
+		transition: translate $transitionLong;
+		translate: -100% 0;
 	}
 	&__btn {
 		position: relative;
-		z-index: 1;
+		z-index: calc($tocFloatZIndex + 2);
 		display: grid;
 		place-items: center;
 		border-radius: 50%;
@@ -31,6 +38,17 @@
 	&__icon {
 		display: block;
 	}
+	&.js-open {
+		.toc-float__overlay {
+			opacity: 1;
+			pointer-events: auto;
+			visibility: visible;
+		}
+		.toc-float__panel {
+			translate: 0;
+			visibility: visible;
+		}
+	}
 }
 
 @include pc {
@@ -38,7 +56,7 @@
 		right: #{$spacing-2}px;
 		bottom: #{$spacing-2}px;
 		&__panel {
-			width: min(500px, 100%);
+			width: 500px;
 			padding: #{$spacing-3}px #{$spacing-2}px;
 		}
 		&__btn {
@@ -57,7 +75,7 @@
 		right: vw($spacing-2);
 		bottom: vw($spacing-2);
 		&__panel {
-			width: calc(100% - (vw($spacing-2) * 2) - vw(56));
+			width: 85vw;
 			padding: vw($spacing-3) vw($spacing-2);
 		}
 		&__btn {

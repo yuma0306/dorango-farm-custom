@@ -1,0 +1,59 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+.hamburger-btn {
+	position: relative;
+	box-sizing: border-box;
+	padding: 0;
+	border: 0;
+	background-color: $primary01;
+	cursor: pointer;
+	&__bar {
+		position: absolute;
+		left: 50%;
+		display: block;
+		background-color: $white01;
+		translate: -50% 0;
+		transition: rotate $transition, opacity $transition, top $transition;
+	}
+}
+
+@include pc {
+	.hamburger-btn {
+		width: #{$headerBarHeightPC}px;
+		height: #{$headerBarHeightPC}px;
+		&__bar {
+			width: 22px;
+			height: 2px;
+			&:nth-child(1) {
+				top: calc(50% - 8px);
+			}
+			&:nth-child(2) {
+				top: calc(50% - 1px);
+			}
+			&:nth-child(3) {
+				top: calc(50% + 6px);
+			}
+		}
+	}
+}
+
+@include sp {
+	.hamburger-btn {
+		width: vw($headerBarHeightSP);
+		height: vw($headerBarHeightSP);
+		&__bar {
+			width: vw(22);
+			height: vw(2);
+			&:nth-child(1) {
+				top: calc(50% - #{vw(8)});
+			}
+			&:nth-child(2) {
+				top: calc(50% - #{vw(1)});
+			}
+			&:nth-child(3) {
+				top: calc(50% + #{vw(6)});
+			}
+		}
+	}
+}

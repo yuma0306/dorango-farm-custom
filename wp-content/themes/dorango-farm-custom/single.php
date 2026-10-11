@@ -24,6 +24,7 @@
 	<?php get_template_part('include/gtm-body'); ?>
 	<div class="wrapper">
 		<?php get_template_part('include/header'); ?>
+		<?php get_template_part('include/hamburger'); ?>
 		<main class="main">
 			<h1 class="heading-lv1-01">
 				<span class="heading-lv1-01__text"><?php echo esc_html($heading); ?></span>

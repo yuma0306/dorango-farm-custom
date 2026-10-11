@@ -3,8 +3,9 @@
 <?php get_template_part('include/head'); ?>
 <body>
 	<?php get_template_part('include/gtm-body'); ?>
-	<div class="wrapper">
+	<div class="wrapper" data-js-page-wrapper>
 		<?php get_template_part('include/header'); ?>
+		<?php get_template_part('include/hamburger'); ?>
 		<main class="main">
 			<h1 class="heading-lv1-01">
 				<span class="heading-lv1-01__text">ページが見つかりません</span>
