@@ -1,18 +1,18 @@
 @use '../global/import' as *;
 @use '../config/import' as *;
 
-.single-fixed-footer {
+.floating-bar {
 	position: fixed;
 	right: 0;
 	bottom: 0;
 	left: 0;
-	z-index: $singleFixedFooterZIndex;
+	z-index: $floatingBarZIndex;
 	padding-bottom: env(safe-area-inset-bottom, 0);
 	background-color: $primary01;
 	color: $white01;
 	&__inner {
 		display: grid;
-		grid-template-columns: repeat(var(--single-fixed-footer-cols, 4), 1fr);
+		grid-template-columns: repeat(var(--floating-bar-cols, 4), 1fr);
 		align-content: center;
 		width: min(100%, #{$innerWidthPC}px);
 		margin-inline: auto;
@@ -24,7 +24,7 @@
 		font-weight: $fwMedium;
 		line-height: 1;
 		text-align: center;
-		&[data-js-favorite-active] .single-fixed-footer__icon--favorite {
+		&[data-js-favorite-active] .floating-bar__icon--favorite {
 			background-color: $red01;
 		}
 	}
@@ -57,12 +57,12 @@
 }
 
 @include pc {
-	.has-single-fixed-footer {
-		padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px));
+	.has-floating-bar {
+		padding-bottom: calc(#{$headerBarHeightPC}px + env(safe-area-inset-bottom, 0px));
 	}
-	.single-fixed-footer {
+	.floating-bar {
 		&__item {
-			height: 56px;
+			height: #{$headerBarHeightPC}px;
 			gap: 4px;
 			font-size: $fzSmallPC;
 			border-right: 1px solid $white01;
@@ -75,23 +75,23 @@
 			height: 24px;
 		}
 	}
-	.has-single-fixed-footer {
+	.has-floating-bar {
 		.toc-float__btn {
 			display: none;
 		}
 		.toc-float {
-			bottom: calc(56px + env(safe-area-inset-bottom, 0px));
+			bottom: calc(#{$headerBarHeightPC}px + env(safe-area-inset-bottom, 0px));
 		}
 	}
 }
 
 @include sp {
-	.has-single-fixed-footer {
-		padding-bottom: calc(#{vw(56)} + env(safe-area-inset-bottom, 0px));
+	.has-floating-bar {
+		padding-bottom: calc(#{vw($headerBarHeightSP)} + env(safe-area-inset-bottom, 0px));
 	}
-	.single-fixed-footer {
+	.floating-bar {
 		&__item {
-			height: vw(56);
+			height: vw($headerBarHeightSP);
 			gap: vw(4);
 			font-size: $fzSmallSP;
 			border-right: vw(1) solid $white01;
@@ -104,12 +104,12 @@
 			height: vw(24);
 		}
 	}
-	.has-single-fixed-footer {
+	.has-floating-bar {
 		.toc-float__btn {
 			display: none;
 		}
 		.toc-float {
-			bottom: calc(#{vw(56)} + env(safe-area-inset-bottom, 0px));
+			bottom: calc(#{vw($headerBarHeightSP)} + env(safe-area-inset-bottom, 0px));
 		}
 	}
 }

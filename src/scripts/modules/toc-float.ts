@@ -28,7 +28,7 @@ export function initTocFloat(): void {
 		}
 		setOpen(false);
 	});
-	document.querySelector('[data-js-single-fixed-footer-toc]')?.addEventListener('click', () => {
+	document.querySelector('[data-js-floating-bar-toc]')?.addEventListener('click', () => {
 		setOpen(true);
 	});
 	document.addEventListener('keydown', (event) => {

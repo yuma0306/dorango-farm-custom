@@ -4,7 +4,7 @@ import { initTocFloat } from './modules/toc-float';
 import { initFavorites } from './modules/favorite';
 import { initHistoryPage } from './modules/history';
 import { initRecentPosts } from './modules/recent-posts';
-import { initSingleFixedFooter } from './modules/single-fixed-footer';
+import { initFloatingBar } from './modules/floating-bar';
 import { initHamburger } from './modules/hamburger';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,6 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	initFavorites();
 	initRecentPosts();
 	initHistoryPage();
-	initSingleFixedFooter();
+	initFloatingBar();
 	initHamburger();
 });
