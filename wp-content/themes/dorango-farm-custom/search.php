@@ -39,7 +39,7 @@
 						<input class="search-form__input js-search-input" type="text" name="s" value="<?php the_search_query(); ?>" placeholder="例：ボールパイソン">
 						<input type="hidden" name="post_type[]" value="breed">
 						<button type="button" class="search-form__btn js-search-btn">
-							<img class="search-form__icon" src="<?php echo get_template_directory_uri(); ?>/assets/img/icon-search.svg" alt="検索" width="32" height="32">
+							<span class="search-form__icon" role="img" aria-label="検索"></span>
 						</button>
 					</form>
 					<div class="validate-err js-search-err">

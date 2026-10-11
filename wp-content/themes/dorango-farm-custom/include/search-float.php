@@ -19,7 +19,7 @@ if ($post_type === '') {
 			<form class="search-form js-search-form" action="<?php echo esc_url(home_url('/')); ?>" method="get">
 				<input class="search-form__input js-search-input" type="text" name="s" value="<?php echo esc_attr(get_search_query()); ?>" placeholder="キーワード">
 				<button type="button" class="search-form__btn js-search-btn">
-					<img class="search-form__icon" src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/icon-search.svg" alt="検索" width="32" height="32">
+					<span class="search-form__icon" role="img" aria-label="検索"></span>
 				</button>
 			</form>
 			<div class="validate-err js-search-err">

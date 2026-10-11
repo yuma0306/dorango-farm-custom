@@ -1,16 +1,18 @@
 <div class="hamburger" data-js-hamburger>
-	<button
-		type="button"
-		class="hamburger-btn hamburger-btn--open"
-		data-js-hamburger-btn
-		aria-expanded="false"
-		aria-controls="hamburger-panel"
-		aria-label="メニューを開く"
-	>
-		<span class="hamburger-btn__bar" aria-hidden="true"></span>
-		<span class="hamburger-btn__bar" aria-hidden="true"></span>
-		<span class="hamburger-btn__bar" aria-hidden="true"></span>
-	</button>
+	<div class="hamburger__open">
+		<button
+			type="button"
+			class="hamburger-btn hamburger-btn--open"
+			data-js-hamburger-btn
+			aria-expanded="false"
+			aria-controls="hamburger-panel"
+			aria-label="メニューを開く"
+		>
+			<span class="hamburger-btn__bar" aria-hidden="true"></span>
+			<span class="hamburger-btn__bar" aria-hidden="true"></span>
+			<span class="hamburger-btn__bar" aria-hidden="true"></span>
+		</button>
+	</div>
 	<div
 		class="hamburger__overlay"
 		data-js-hamburger-overlay

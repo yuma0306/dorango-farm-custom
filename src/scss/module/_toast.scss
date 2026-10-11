@@ -47,6 +47,10 @@
 
 @include sp {
 	.toast {
+		right: vw($innerWidthSP);
+		left: vw($innerWidthSP);
+		width: auto;
+		margin-inline: 0;
 		top: vw($spacing-3);
 		padding: vw($spacing-2) vw($spacing-3);
 		border: vw(2) solid $primary02;

@@ -21,7 +21,7 @@
 				<form class="search-form js-search-form u-m0a" action="<?php echo home_url(); ?>" method="get">
 					<input class="search-form__input js-search-input" type="text" name="s" value="" placeholder="キーワード例：ボールパイソン">
 					<button type="button" class="search-form__btn js-search-btn">
-						<img class="search-form__icon" src="<?php echo get_template_directory_uri(); ?>/assets/img/icon-search.svg" alt="検索" width="32" height="32">
+						<span class="search-form__icon" role="img" aria-label="検索"></span>
 					</button>
 				</form>
 				<div class="validate-err js-search-err">

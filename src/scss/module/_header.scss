@@ -17,13 +17,11 @@
 @include pc {
 	.header {
 		height: #{$headerBarHeightPC}px;
-		padding-right: #{$headerBarHeightPC}px;
 	}
 }
 
 @include sp {
 	.header {
 		height: vw($headerBarHeightSP);
-		padding-right: vw($headerBarHeightSP);
 	}
 }
