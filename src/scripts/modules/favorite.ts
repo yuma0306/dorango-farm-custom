@@ -1,54 +1,8 @@
+import { fetchPostListItems, renderPostListCard } from './post-cards';
 import { showToast } from './toast';
 
 const STORAGE_KEY = 'dorango_favorites';
 const MAX_IDS = 30;
-
-type FavoriteItem = {
-	id: number;
-	title: string;
-	url: string;
-	thumb: { url: string; width: number; height: number; alt: string } | null;
-	published: string;
-	modified: string;
-};
-
-function isRecord(value: unknown): value is Record<string, unknown> {
-	return typeof value === 'object' && value !== null;
-}
-
-function isFavoriteThumb(value: unknown): value is FavoriteItem['thumb'] & object {
-	if (!isRecord(value)) {
-		return false;
-	}
-	return (
-		typeof value.url === 'string' &&
-		typeof value.width === 'number' &&
-		typeof value.height === 'number' &&
-		typeof value.alt === 'string'
-	);
-}
-
-function isFavoriteItem(value: unknown): value is FavoriteItem {
-	if (!isRecord(value)) {
-		return false;
-	}
-	const thumb = value.thumb;
-	return (
-		typeof value.id === 'number' &&
-		typeof value.title === 'string' &&
-		typeof value.url === 'string' &&
-		(thumb === null || isFavoriteThumb(thumb)) &&
-		typeof value.published === 'string' &&
-		typeof value.modified === 'string'
-	);
-}
-
-function parseFavoriteItems(data: unknown): FavoriteItem[] {
-	if (!Array.isArray(data)) {
-		return [];
-	}
-	return data.filter(isFavoriteItem);
-}
 
 export function getFavoriteIds(): number[] {
 	try {
@@ -128,54 +82,6 @@ export function initFavoriteButtons(scope: ParentNode = document): void {
 	});
 }
 
-function renderFavoriteCard(
-	template: HTMLTemplateElement,
-	thumbTemplate: HTMLTemplateElement | null,
-	item: FavoriteItem,
-): DocumentFragment {
-	const fragment = template.content.cloneNode(true) as DocumentFragment;
-	const link = fragment.querySelector('[data-js-favorite-link]');
-	if (link instanceof HTMLAnchorElement) {
-		link.href = item.url;
-	}
-	const block = fragment.querySelector('[data-js-favorite-block]');
-	if (item.thumb) {
-		let img = fragment.querySelector('[data-js-favorite-img]');
-		if (!(img instanceof HTMLImageElement) && thumbTemplate !== null) {
-			fragment.querySelector('[data-js-favorite-thumb]')?.remove();
-			const thumbFragment = thumbTemplate.content.cloneNode(true) as DocumentFragment;
-			const picture = thumbFragment.querySelector('[data-js-favorite-thumb]');
-			if (picture instanceof HTMLElement && block instanceof HTMLElement) {
-				block.before(picture);
-				img = fragment.querySelector('[data-js-favorite-img]');
-			}
-		}
-		if (img instanceof HTMLImageElement) {
-			img.src = item.thumb.url;
-			img.alt = item.thumb.alt;
-			img.width = item.thumb.width;
-			img.height = item.thumb.height;
-		}
-	} else {
-		fragment.querySelector('[data-js-favorite-thumb]')?.remove();
-	}
-	const published = fragment.querySelector('[data-js-favorite-published]');
-	if (published instanceof HTMLTimeElement) {
-		published.dateTime = item.published;
-		published.textContent = item.published;
-	}
-	const modified = fragment.querySelector('[data-js-favorite-modified]');
-	if (modified instanceof HTMLTimeElement) {
-		modified.dateTime = item.modified;
-		modified.textContent = item.modified;
-	}
-	const title = fragment.querySelector('[data-js-favorite-title]');
-	if (title instanceof HTMLElement) {
-		title.textContent = item.title;
-	}
-	return fragment;
-}
-
 export function initFavoritePage(): void {
 	const page = document.querySelector<HTMLElement>('[data-js-favorite-page]');
 	if (!page) {
@@ -198,23 +104,15 @@ export function initFavoritePage(): void {
 		}
 		empty.hidden = true;
 		loading.hidden = false;
-		const controller = new AbortController();
-		const timeoutId = window.setTimeout(() => {
-			controller.abort();
-		}, 10000);
 		try {
-			const res = await fetch(`/wp-json/dorango/v1/favorites?ids=${ids.join(',')}`, { signal: controller.signal });
-			if (!res.ok) {
-				throw new Error(`HTTP ${res.status}`);
-			}
-			const items = parseFavoriteItems(await res.json());
+			const items = await fetchPostListItems(ids);
 			list.replaceChildren();
 			if (items.length === 0) {
 				empty.hidden = false;
 				return;
 			}
 			items.forEach((item) => {
-				list.append(renderFavoriteCard(template, thumbTemplate, item));
+				list.append(renderPostListCard(template, thumbTemplate, item));
 			});
 		} catch {
 			list.replaceChildren();
@@ -222,7 +120,6 @@ export function initFavoritePage(): void {
 			error.textContent = '一覧の取得に失敗しました。時間をおいて再度お試しください。';
 			list.append(error);
 		} finally {
-			window.clearTimeout(timeoutId);
 			loading.hidden = true;
 		}
 	};

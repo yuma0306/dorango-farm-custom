@@ -65,6 +65,7 @@
 				<?php if (is_ball_python_post()) : ?>
 					<?php get_template_part('include/ball-python-hub', null, ['exclude_id' => get_the_ID()]); ?>
 				<?php endif; ?>
+				<?php get_template_part('include/recent-posts', null, ['post_id' => get_the_ID()]); ?>
 				<h2 class="heading-lv2-02">もっと記事を探す</h2>
 				<form class="search-form js-search-form" action="<?php echo home_url(); ?>" method="get">
 					<input class="search-form__input js-search-input" type="text" name="s" value="<?php the_search_query(); ?>" placeholder="キーワード">

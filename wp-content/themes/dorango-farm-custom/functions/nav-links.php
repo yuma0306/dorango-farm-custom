@@ -29,6 +29,10 @@ const NAV_LINKS = [
 		'href' => '/favorite/',
 		'label' => 'お気に入り',
 	],
+	'history' => [
+		'href' => '/history/',
+		'label' => '最近チェックした記事',
+	],
 	'tags' => [
 		'href' => '/tag/',
 		'label' => 'タグ一覧',
@@ -51,6 +55,7 @@ const GNAV_LINK_KEYS = [
 	'food',
 	'trivia',
 	'favorite',
+	'history',
 ];
 
 const FOOTER_LINK_KEYS = [
@@ -61,6 +66,7 @@ const FOOTER_LINK_KEYS = [
 	'food',
 	'trivia',
 	'favorite',
+	'history',
 	'tags',
 	'privacy',
 	'contact',

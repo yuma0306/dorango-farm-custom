@@ -36,8 +36,8 @@
 						<?php get_template_part('include/blogs-item', null, ['post_id' => 0]); ?>
 					</template>
 					<template data-js-favorite-thumb-template>
-						<picture class="blogs-item__thumb" data-js-favorite-thumb>
-							<img class="blogs-item__img" data-js-favorite-img alt="" width="0" height="0">
+						<picture class="blogs-item__thumb" data-js-blogs-item-thumb>
+							<img class="blogs-item__img" data-js-blogs-item-img alt="" width="0" height="0">
 						</picture>
 					</template>
 				</div>

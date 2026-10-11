@@ -53,5 +53,6 @@
 		<?php createBreadcrumbsSchema(); ?>
 	</script>
 	<!-- /schema -->
+	<?php dorango_recent_limits_script(); ?>
 	<?php wp_head(); ?>
 </head>
