@@ -16,7 +16,7 @@
 			<div class="inner">
 				<?php displayBreadcrumnbs(); ?>
 				<details class="toc">
-					<summary class="toc__summary">目次</summary>
+					<summary class="toc__summary" data-gtm-event="<?php echo esc_attr(gtm_event('article_toc')); ?>">目次</summary>
 					<div class="toc__content">
 						<?php createToc(); ?>
 					</div>

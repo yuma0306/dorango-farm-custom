@@ -2,6 +2,7 @@
     get_template_part('functions/admin');
     get_template_part('functions/helper');
     get_template_part('functions/nav-links');
+    get_template_part('functions/gtm');
     get_template_part('functions/panel');
     get_template_part('functions/editor');
     get_template_part('functions/shortcode');

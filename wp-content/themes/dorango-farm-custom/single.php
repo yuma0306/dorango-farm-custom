@@ -20,7 +20,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <?php get_template_part('include/head'); ?>
-<body class="has-single-fixed-footer">
+<body class="has-floating-bar">
 	<?php get_template_part('include/gtm-body'); ?>
 	<div class="wrapper">
 		<?php get_template_part('include/header'); ?>
@@ -52,7 +52,7 @@
 				</div>
 				<?php if (str_contains($tocHtml, 'toc__link')) : ?>
 					<details class="toc">
-						<summary class="toc__summary">目次</summary>
+						<summary class="toc__summary" data-gtm-event="<?php echo esc_attr(gtm_event('article_toc')); ?>">目次</summary>
 						<div class="toc__content">
 							<?php echo $tocHtml; ?>
 						</div>
@@ -74,7 +74,7 @@
 	<?php get_template_part('include/search-float', null, ['post_type' => $currentPath]); ?>
 	<script src="<?php echo get_template_directory_uri() ?>/assets/js/common.js" defer></script>
 	<?php wp_footer(); ?>
-	<?php get_template_part('include/single-fixed-footer', null, [
+	<?php get_template_part('include/floating-bar', null, [
 		'post_id' => get_the_ID(),
 		'has_toc' => str_contains($tocHtml, 'toc__link'),
 	]); ?>
