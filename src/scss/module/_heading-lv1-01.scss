@@ -1,54 +1,52 @@
 @use '../global/import' as *;
 @use '../config/import' as *;
 
+.heading-lv1-01 {
+	position: relative;
+	border-bottom-style: solid;
+	border-bottom-color: $primary04;
+	&__text {
+		display: block;
+		margin: 0 auto;
+		text-align: center;
+		font-weight: $fwMedium;
+	}
+	&::after {
+		position: absolute;
+		right: 0;
+		transform: translate(0, 100%);
+		width: 100%;
+		background-color: $primary04;
+		content: '';
+	}
+}
+
 @include pc {
 	.heading-lv1-01 {
-		position: relative;
-		padding: 60px 0;
-		border-bottom: 3px solid $primary04;
+		padding-block: #{$spacing-4}px;
+		border-bottom-width: 3px;
 		&__text {
-			display: block;
-			width: vwMin($innerWidthSmallPC);
-			margin: 0 auto;
-			text-align: center;
+			width: vwMin($innerWidthPC);
 			font-size: $fzXLPC;
-			font-weight: $fwMedium;
 		}
 		&::after {
-			position: absolute;
 			bottom: -6px;
-			right: 0;
-			transform: translate(0, 100%);
-			width: 100%;
 			height: 1px;
-			background-color: $primary04;
-			content: "";
 		}
 	}
 }
 
 @include sp {
 	.heading-lv1-01 {
-		position: relative;
 		margin: 0 vw($innerWidthSP);
-		padding: vw(40) 0;
-		border-bottom: vw(3) solid $primary04;
+		padding-block: vw($spacing-4);
+		border-bottom-width: vw(3);
 		&__text {
-			display: block;
-			margin: 0 auto;
-			text-align: center;
 			font-size: $fzXLSP;
-			font-weight: $fwMedium;
 		}
 		&::after {
-			position: absolute;
 			bottom: vw(-6);
-			right: 0;
-			transform: translate(0, 100%);
-			width: 100%;
 			height: vw(1);
-			background-color: $primary04;
-			content: "";
 		}
 	}
 }

@@ -1,41 +1,52 @@
 @use '../global/import' as *;
 @use '../config/import' as *;
 
+.breadcrumb {
+	display: flex;
+	align-items: end;
+	overflow-x: auto;
+	white-space: nowrap;
+	&__item {
+		position: relative;
+		line-height: $lhFlat;
+		&:not(:last-of-type) {
+			&::after {
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%) rotate(45deg);
+				border-top-style: solid;
+				border-right-style: solid;
+				border-top-color: $brown01;
+				border-right-color: $brown01;
+				content: '';
+			}
+		}
+	}
+	&__link {
+		line-height: $lhFlat;
+		text-decoration: underline;
+		transition: $transition;
+		&:hover {
+			opacity: $opacity;
+			text-decoration: none;
+		}
+	}
+}
+
 @include pc {
 	.breadcrumb {
-		$this: &;
-		display: flex;
-		align-items: end;
 		column-gap: 30px;
 		margin-top: 30px;
 		padding-bottom: 20px;
-		overflow-x: auto;
-		white-space: nowrap;
 		&__item {
-			position: relative;
-			line-height: $lhFlat;
 			&:not(:last-of-type) {
 				&::after {
-					position: absolute;
-					top: 50%;
 					right: -18px;
-					transform: translate(0, -50%);
 					width: 8px;
 					height: 8px;
-					border-top: 2px solid $brown01;
-					border-right: 2px solid $brown01;
-					transform: translateY(-50%) rotate(45deg);
-					content: "";
+					border-top-width: 2px;
+					border-right-width: 2px;
 				}
-			}
-		}
-		&__link {
-			line-height: $lhFlat;
-			text-decoration: underline;
-			transition: $transition;
-			&:hover {
-				opacity: $opacity;
-				text-decoration: none;
 			}
 		}
 	}
@@ -43,39 +54,18 @@
 
 @include sp {
 	.breadcrumb {
-		$this: &;
-		display: flex;
-		align-items: end;
 		column-gap: vw(30);
 		margin-top: vw(30);
 		padding: 0 0 vw(20);
-		overflow-x: auto;
-		white-space: nowrap;
 		&__item {
-			position: relative;
-			line-height: $lhFlat;
 			&:not(:last-of-type) {
 				&::after {
-					position: absolute;
-					top: 50%;
 					right: vw(-18);
-					transform: translate(0, -50%);
 					width: vw(8);
 					height: vw(8);
-					border-top: vw(2) solid $brown01;
-					border-right: vw(2) solid $brown01;
-					transform: translateY(-50%) rotate(45deg);
-					content: "";
+					border-top-width: vw(2);
+					border-right-width: vw(2);
 				}
-			}
-		}
-		&__link {
-			line-height: $lhFlat;
-			text-decoration: underline;
-			transition: $transition;
-			&:hover {
-				opacity: $opacity;
-				text-decoration: none;
 			}
 		}
 	}

@@ -1,6 +1,7 @@
 <?php
     get_template_part('functions/admin');
     get_template_part('functions/helper');
+    get_template_part('functions/nav-links');
     get_template_part('functions/panel');
     get_template_part('functions/editor');
     get_template_part('functions/shortcode');
@@ -8,3 +9,6 @@
     get_template_part('functions/post-type');
     get_template_part('functions/taxonomy');
     get_template_part('functions/ball-python-hub');
+    get_template_part('functions/favorites');
+    get_template_part('functions/recent-posts');
+    get_template_part('functions/api');

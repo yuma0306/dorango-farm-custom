@@ -1,38 +1,17 @@
 <footer class="footer block-large">
 	<div class="inner footer__inner">
-		<a class="logo logo--footer" href="/">ヘビ牧場どらんごファーム</a>
+		<a class="logo logo--footer" href="/"><?php echo esc_html(get_bloginfo('name')); ?></a>
 		<ul class="footer__list">
-			<li class="footer__item">
-				<a href="/tag/species/ball-python/" class="footer__link">ボールパイソンの記事</a>
-			</li>
-			<li class="footer__item">
-				<a href="/breed/" class="footer__link">飼育繁殖</a>
-			</li>
-			<li class="footer__item">
-				<a href="/zoo/" class="footer__link">アニマルスポット</a>
-			</li>
-			<li class="footer__item">
-				<a href="/shop/" class="footer__link">ショップ</a>
-			</li>
-			<li class="footer__item">
-				<a href="/food/" class="footer__link">昆虫食</a>
-			</li>
-			<li class="footer__item">
-				<a href="/trivia/" class="footer__link">動物雑学</a>
-			</li>
-			<li class="footer__item">
-				<a href="/tag/" class="footer__link">タグ一覧</a>
-			</li>
-			<li class="footer__item">
-				<a href="/privacy/" class="footer__link">プライバシーポリシー</a>
-			</li>
-			<li class="footer__item">
-				<a href="/contact/" class="footer__link">お問い合わせ</a>
-			</li>
+			<?php foreach (get_nav_links(FOOTER_LINK_KEYS) as $link) : ?>
+				<li class="footer__item">
+					<a href="<?php echo esc_url($link['href']); ?>" class="footer__link"><?php echo esc_html($link['label']); ?></a>
+				</li>
+			<?php endforeach; ?>
 		</ul>
-		<p class="footer__copy">&copy;ヘビ牧場どらんごファーム</p>
+		<p class="footer__copy">&copy;<?php echo esc_html(get_bloginfo('name')); ?></p>
 		<a href="#" class="btn-top">
 			<img class="btn-top__manbou" src="<?php echo get_template_directory_uri(); ?>/assets/img/icon-manbou.svg" alt="" width="125" height="150">
 		</a>
+		<?php get_template_part('include/toast'); ?>
 	</div>
 </footer>

@@ -1,0 +1,57 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+@keyframes loading-spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.loading {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	&[hidden] {
+		display: none;
+	}
+	&__spinner {
+		display: block;
+		border-radius: 50%;
+		border-style: solid;
+		border-color: $primary03;
+		border-top-color: $brown01;
+		animation: loading-spin 1s linear infinite;
+	}
+	&__text {
+		color: $brown01;
+		font-weight: $fwMedium;
+	}
+}
+
+@include pc {
+	.loading {
+		gap: #{$spacing-1}px;
+		&__spinner {
+			width: 24px;
+			height: 24px;
+			border-width: 3px;
+		}
+		&__text {
+			font-size: $fzSmallPC;
+		}
+	}
+}
+
+@include sp {
+	.loading {
+		gap: vw($spacing-1);
+		&__spinner {
+			width: vw(32);
+			height: vw(32);
+			border-width: vw(4);
+		}
+		&__text {
+			font-size: $fzSmallSP;
+		}
+	}
+}

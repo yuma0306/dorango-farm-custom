@@ -1,51 +1,51 @@
 @use '../global/import' as *;
 @use '../config/import' as *;
 
+.footer {
+	background-color: $white01;
+	&__inner {
+		position: relative;
+	}
+	&__copy {
+		text-align: center;
+	}
+	&__link {
+		display: block;
+		text-decoration: underline;
+		@include hoverOpacity();
+	}
+}
+
 @include pc {
 	.footer {
-		background-color: $white01;
 		&__inner {
-			position: relative;
+			display: grid;
+			gap: #{$spacing-2}px;
 		}
 		&__copy {
 			font-size: $fzSmallPC;
-			text-align: center;
-			margin-top: 30px;
 		}
 		&__list {
 			display: flex;
-			gap: 20px;
-			margin-top: 20px;
-		}
-		&__link {
-			display: block;
-			text-decoration: underline;
-			@include hoverOpacity();
+			flex-wrap: wrap;
+			gap: #{$spacing-2}px;
 		}
 	}
 }
 
 @include sp {
 	.footer {
-		background-color: $white01;
 		&__inner {
-			position: relative;
+			display: grid;
+			gap: vw($spacing-2);
 		}
 		&__copy {
 			font-size: $fzSmallSP;
-			text-align: center;
-			margin-top: vw(25);
 		}
 		&__list {
 			display: grid;
 			grid-template-columns: repeat(2, auto);
-			gap: vw(15);
-			margin-top: vw(20);
-		}
-		&__link {
-			display: block;
-			text-decoration: underline;
-			@include hoverOpacity();
+			gap: vw($spacing-2);
 		}
 	}
 }
