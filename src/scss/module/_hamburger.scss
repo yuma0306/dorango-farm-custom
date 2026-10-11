@@ -2,11 +2,15 @@
 @use '../config/import' as *;
 
 .hamburger {
-	.hamburger-btn--open {
+	&__open {
 		position: fixed;
 		top: 0;
 		right: 0;
 		z-index: $hamburgerZIndex;
+		pointer-events: none;
+		.hamburger-btn--open {
+			pointer-events: auto;
+		}
 	}
 	&__overlay {
 		position: fixed;
