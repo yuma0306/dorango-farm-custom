@@ -16,9 +16,22 @@
 				<span class="heading-lv1-01__text"><?php echo esc_html($heading); ?></span>
 			</h1>
 			<div class="inner inner--small">
+				<ul class="breadcrumb">
+					<li class="breadcrumb__item">
+						<a class="breadcrumb__link" href="/">ホーム</a>
+					</li>
+					<li class="breadcrumb__item">
+						<span class="breadcrumb__text"><?php echo esc_html($heading); ?></span>
+					</li>
+				</ul>
 				<div data-js-favorite-page>
-					<p>作品カードのハートを押すと、この端末のブラウザに保存されます。</p>
-					<p>シークレットモード（プライベートブラウズ）では、ブラウザを閉じるとお気に入りが消えてしまいます。<span class="u-primary02 u-bold">通常のブラウザでのご利用をおすすめします。</span></p>
+					<div class="stack">
+						<p>作品カードのハートを押すと、この端末のブラウザに保存されます。</p>
+						<p>シークレットモード（プライベートブラウズ）では、ブラウザを閉じるとお気に入りが消えてしまいます。通常のブラウザでのご利用をおすすめします。</p>
+						<?php get_template_part('include/loading'); ?>
+						<div class="grid-block grid-block--col2" data-js-favorite-list></div>
+						<p data-js-favorite-empty hidden>お気に入りに登録した記事はありません。</p>
+					</div>
 					<template data-js-favorite-template>
 						<?php get_template_part('include/blogs-item', null, ['post_id' => 0]); ?>
 					</template>
@@ -27,9 +40,6 @@
 							<img class="blogs-item__img" data-js-favorite-img alt="" width="0" height="0">
 						</picture>
 					</template>
-					<?php get_template_part('include/loading'); ?>
-					<div class="grid-block grid-block--col2" data-js-favorite-list></div>
-					<p data-js-favorite-empty hidden>お気に入りに登録した記事はありません。</p>
 				</div>
 			</div>
 		</main>

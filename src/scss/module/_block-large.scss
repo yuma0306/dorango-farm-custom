@@ -3,12 +3,12 @@
 
 @include pc {
 	.block-large {
-		padding-block: 60px;
+		padding-block: #{$spacing-4}px;
 	}
 }
 
 @include sp {
 	.block-large {
-		padding-block: vw(60);
+		padding-block: vw($spacing-4);
 	}
 }
