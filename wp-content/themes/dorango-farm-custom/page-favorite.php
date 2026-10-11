@@ -27,7 +27,7 @@
 				</ul>
 				<div data-js-favorite-page>
 					<div class="stack">
-						<p>作品カードのハートを押すと、この端末のブラウザに保存されます。</p>
+						<p>お気に入り登録した記事一覧が確認できます。</p>
 						<p>シークレットモード（プライベートブラウズ）では、ブラウザを閉じるとお気に入りが消えてしまいます。通常のブラウザでのご利用をおすすめします。</p>
 						<?php get_template_part('include/loading'); ?>
 						<div class="grid-block grid-block--col2" data-js-favorite-list></div>
