@@ -27,7 +27,7 @@
 				</ul>
 				<div data-js-history-page>
 					<div class="stack">
-						<p>記事ページを開くと、この端末のブラウザに最近チェックした記事として保存されます（最大<?php echo RECENT_HISTORY_LIMIT; ?>件）。</p>
+						<p>最近チェックした記事一覧が確認できます。</p>
 						<p>シークレットモード（プライベートブラウズ）では、ブラウザを閉じると履歴が消えてしまいます。通常のブラウザでのご利用をおすすめします。</p>
 						<?php get_template_part('include/loading'); ?>
 						<div class="grid-block grid-block--col2" data-js-history-list></div>
