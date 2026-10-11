@@ -1,0 +1,115 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+.single-fixed-footer {
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: $singleFixedFooterZIndex;
+	padding-bottom: env(safe-area-inset-bottom, 0);
+	background-color: $primary01;
+	color: $white01;
+	&__inner {
+		display: grid;
+		grid-template-columns: repeat(var(--single-fixed-footer-cols, 4), 1fr);
+		align-content: center;
+		width: min(100%, #{$innerWidthPC}px);
+		margin-inline: auto;
+	}
+	&__item {
+		display: grid;
+		place-items: center;
+		align-content: center;
+		font-weight: $fwMedium;
+		line-height: 1;
+		text-align: center;
+		&[data-js-favorite-active] .single-fixed-footer__icon--favorite {
+			background-color: $red01;
+		}
+	}
+	&__icon {
+		display: block;
+		background-color: $white01;
+		-webkit-mask-repeat: no-repeat;
+		mask-repeat: no-repeat;
+		-webkit-mask-position: center;
+		mask-position: center;
+		-webkit-mask-size: contain;
+		mask-size: contain;
+		&--favorite {
+			-webkit-mask-image: url(#{$imgPath}/icon-heart.svg);
+			mask-image: url(#{$imgPath}/icon-heart.svg);
+		}
+		&--toc {
+			-webkit-mask-image: url(#{$imgPath}/icon-toc.svg);
+			mask-image: url(#{$imgPath}/icon-toc.svg);
+		}
+		&--search {
+			-webkit-mask-image: url(#{$imgPath}/icon-search.svg);
+			mask-image: url(#{$imgPath}/icon-search.svg);
+		}
+		&--history {
+			-webkit-mask-image: url(#{$imgPath}/icon-update.svg);
+			mask-image: url(#{$imgPath}/icon-update.svg);
+		}
+	}
+}
+
+@include pc {
+	.has-single-fixed-footer {
+		padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px));
+	}
+	.single-fixed-footer {
+		&__item {
+			height: 56px;
+			gap: 4px;
+			font-size: $fzSmallPC;
+			border-right: 1px solid $white01;
+			&:first-child {
+				border-left: 1px solid $white01;
+			}
+		}
+		&__icon {
+			width: 24px;
+			height: 24px;
+		}
+	}
+	.has-single-fixed-footer {
+		.toc-float__btn {
+			display: none;
+		}
+		.toc-float {
+			bottom: calc(56px + env(safe-area-inset-bottom, 0px));
+		}
+	}
+}
+
+@include sp {
+	.has-single-fixed-footer {
+		padding-bottom: calc(#{vw(56)} + env(safe-area-inset-bottom, 0px));
+	}
+	.single-fixed-footer {
+		&__item {
+			height: vw(56);
+			gap: vw(4);
+			font-size: $fzSmallSP;
+			border-right: vw(1) solid $white01;
+			&:last-child {
+				border-right: none;
+			}
+		}
+		&__icon {
+			width: vw(24);
+			height: vw(24);
+		}
+	}
+	.has-single-fixed-footer {
+		.toc-float__btn {
+			display: none;
+		}
+		.toc-float {
+			bottom: calc(#{vw(56)} + env(safe-area-inset-bottom, 0px));
+		}
+	}
+}

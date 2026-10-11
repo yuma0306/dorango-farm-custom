@@ -1,11 +1,8 @@
-/**
- * フローティング目次の開閉
- */
 export function initTocFloat(): void {
-	const root = document.querySelector<HTMLElement>('.js-toc-float');
-	const btn = root?.querySelector<HTMLButtonElement>('.js-toc-float-btn');
-	const panel = root?.querySelector<HTMLElement>('.js-toc-float-panel');
-	const backdrop = root?.querySelector<HTMLButtonElement>('.js-toc-float-backdrop');
+	const root = document.querySelector<HTMLElement>('[data-js-toc-float]');
+	const btn = root?.querySelector<HTMLButtonElement>('[data-js-toc-float-btn]');
+	const panel = root?.querySelector<HTMLElement>('[data-js-toc-float-panel]');
+	const backdrop = root?.querySelector<HTMLButtonElement>('[data-js-toc-float-backdrop]');
 	if (!root || !btn || !panel || !backdrop) {
 		return;
 	}
@@ -30,5 +27,8 @@ export function initTocFloat(): void {
 			return;
 		}
 		setOpen(false);
+	});
+	document.querySelector('[data-js-single-fixed-footer-toc]')?.addEventListener('click', () => {
+		setOpen(true);
 	});
 }

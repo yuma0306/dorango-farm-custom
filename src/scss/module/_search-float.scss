@@ -1,0 +1,60 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+.search-float {
+	position: fixed;
+	inset: 0;
+	z-index: $tocFloatZIndex;
+	pointer-events: none;
+	&__backdrop {
+		@include overlay-backdrop;
+		pointer-events: auto;
+	}
+	&__panel {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		box-sizing: border-box;
+		max-height: calc(100% - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+		overflow: auto;
+		background: $white01;
+		transform: translate(-50%, -50%);
+		pointer-events: auto;
+		&[hidden] {
+			display: none;
+		}
+	}
+	&__inner {
+		.search-form {
+			width: 100%;
+			max-width: none;
+		}
+	}
+}
+
+@include pc {
+	.search-float {
+		&__panel {
+			width: 100%;
+			max-width: vwMin($innerWidthPC);
+			padding: #{$spacing-3}px;
+		}
+		&__inner {
+			display: grid;
+			gap: #{$spacing-2}px;
+		}
+	}
+}
+
+@include sp {
+	.search-float {
+		&__panel {
+			width: calc(100% - #{vw($innerWidthSP)} * 2);
+			padding: vw($spacing-3);
+		}
+		&__inner {
+			display: grid;
+			gap: vw($spacing-2);
+		}
+	}
+}

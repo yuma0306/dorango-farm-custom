@@ -26,7 +26,7 @@
 		padding-block: #{$spacing-4}px;
 		border-bottom-width: 3px;
 		&__text {
-			width: vwMin($innerWidthSmallPC);
+			width: vwMin($innerWidthPC);
 			font-size: $fzXLPC;
 		}
 		&::after {

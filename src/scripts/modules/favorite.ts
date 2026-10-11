@@ -55,7 +55,15 @@ function paintFavoriteButton(btn: HTMLButtonElement, active: boolean): void {
 		btn.removeAttribute('data-js-favorite-active');
 	}
 	btn.setAttribute('aria-pressed', active ? 'true' : 'false');
-	btn.setAttribute('aria-label', active ? 'お気に入りを解除しました' : 'お気に入りに追加');
+	btn.setAttribute('aria-label', active ? 'お気に入りから外す' : 'お気に入りに追加');
+}
+
+function syncFavoriteButtons(id: number, active: boolean): void {
+	document
+		.querySelectorAll<HTMLButtonElement>(`[data-js-favorite-btn][data-post-id="${id}"]`)
+		.forEach((btn) => {
+			paintFavoriteButton(btn, active);
+		});
 }
 
 export function initFavoriteButtons(scope: ParentNode = document): void {
@@ -69,7 +77,7 @@ export function initFavoriteButtons(scope: ParentNode = document): void {
 		btn.addEventListener('click', (e) => {
 			e.preventDefault();
 			const active = toggleFavorite(id);
-			paintFavoriteButton(btn, active);
+			syncFavoriteButtons(id, active);
 			if (active) {
 				showToast(
 					'メニューの「<a href="/favorite/">お気に入り記事</a>」からお気に入りした作品が確認できます。',

@@ -4,6 +4,7 @@
 .btn-top {
 	position: absolute;
 	display: block;
+	font-size: $fzSmallPC;
 	&::before {
 		position: absolute;
 		bottom: 50%;
@@ -66,6 +67,7 @@
 	.btn-top {
 		top: vw(-80);
 		right: vw(10);
+		font-size: $fzSmallSP;
 		&::before {
 			width: vw(50);
 			height: vw(50);

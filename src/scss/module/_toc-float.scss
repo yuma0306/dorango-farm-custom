@@ -5,12 +5,7 @@
 	position: fixed;
 	z-index: $tocFloatZIndex;
 	&__backdrop {
-		position: fixed;
-		inset: 0;
-		background: rgb(0 0 0 / 45%);
-		&[hidden] {
-			display: none;
-		}
+		@include overlay-backdrop;
 	}
 	&__panel {
 		position: fixed;
