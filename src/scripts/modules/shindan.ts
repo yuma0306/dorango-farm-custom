@@ -33,6 +33,7 @@ export function initShindan(): void {
 }
 
 function getUiElements(root: HTMLElement) {
+	const leadEl = root.querySelector<HTMLElement>('[data-js-shindan-lead]');
 	const quizEl = root.querySelector<HTMLElement>('[data-js-shindan-quiz]');
 	const resultEl = root.querySelector<HTMLElement>('[data-js-shindan-result]');
 	const outcomesEl = root.querySelector<HTMLElement>('[data-js-shindan-outcomes]');
@@ -45,6 +46,7 @@ function getUiElements(root: HTMLElement) {
 	);
 
 	if (
+		!leadEl ||
 		!quizEl ||
 		!resultEl ||
 		!outcomesEl ||
@@ -56,6 +58,7 @@ function getUiElements(root: HTMLElement) {
 	}
 
 	return {
+		leadEl,
 		quizEl,
 		resultEl,
 		outcomesEl,
@@ -131,6 +134,7 @@ function showResult(ui: Ui, answers: Answers): void {
 	if (!isCompleteAnswers(answers)) {
 		return;
 	}
+	ui.leadEl.hidden = true;
 	ui.quizEl.hidden = true;
 	ui.resultEl.hidden = false;
 	hideAllOutcomes(ui);
