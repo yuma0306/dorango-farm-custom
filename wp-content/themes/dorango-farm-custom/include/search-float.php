@@ -5,14 +5,14 @@ if ($post_type === '') {
 }
 ?>
 <div class="search-float" data-js-search-float>
-	<button class="search-float__backdrop" data-js-search-float-backdrop type="button" aria-label="検索を閉じる" hidden></button>
+	<button class="search-float__backdrop" data-js-search-float-backdrop type="button" aria-label="検索を閉じる" style="display: none"></button>
 	<div
 		class="search-float__panel"
 		data-js-search-float-panel
 		role="dialog"
 		aria-modal="true"
 		aria-labelledby="search-float-title"
-		hidden
+		style="display: none"
 	>
 		<div class="search-float__inner">
 			<h2 class="heading-lv2-02 u-pt0" id="search-float-title">もっと記事を探す</h2>

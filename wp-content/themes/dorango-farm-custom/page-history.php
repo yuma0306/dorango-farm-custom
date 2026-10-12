@@ -31,7 +31,7 @@
 						<p>シークレットモード（プライベートブラウズ）では、ブラウザを閉じると履歴が消えてしまいます。通常のブラウザでのご利用をおすすめします。</p>
 						<?php get_template_part('include/loading'); ?>
 						<div class="grid-block grid-block--col2" data-js-history-list></div>
-						<p data-js-history-empty hidden>最近チェックした記事はありません。</p>
+						<p data-js-history-empty style="display: none">最近チェックした記事はありません。</p>
 					</div>
 					<template data-js-history-template>
 						<?php get_template_part('include/blogs-item', null, ['post_id' => 0]); ?>

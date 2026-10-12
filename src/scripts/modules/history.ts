@@ -1,3 +1,4 @@
+import { hideElement, showElement } from './element-display';
 import { fetchPostListItems, renderPostListCard } from './post-cards';
 import { getRecentIds } from './recent-storage';
 
@@ -19,16 +20,16 @@ export function initHistoryPage(): void {
 		const ids = getRecentIds();
 		list.replaceChildren();
 		if (ids.length === 0) {
-			empty.hidden = false;
+			showElement(empty);
 			return;
 		}
-		empty.hidden = true;
-		loading.hidden = false;
+		hideElement(empty);
+		showElement(loading);
 		try {
 			const items = await fetchPostListItems(ids);
 			list.replaceChildren();
 			if (items.length === 0) {
-				empty.hidden = false;
+				showElement(empty);
 				return;
 			}
 			items.forEach((item) => {
@@ -40,7 +41,7 @@ export function initHistoryPage(): void {
 			error.textContent = '一覧の取得に失敗しました。時間をおいて再度お試しください。';
 			list.append(error);
 		} finally {
-			loading.hidden = true;
+			hideElement(loading);
 		}
 	};
 

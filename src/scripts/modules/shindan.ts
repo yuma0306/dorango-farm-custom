@@ -1,4 +1,5 @@
 import { pushBallPythonShindan } from './ball-python-shindan-gtm';
+import { hideElement, showElement } from './element-display';
 import { questions } from './shindan-questions';
 
 const outcomeIds = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'] as const;
@@ -134,9 +135,9 @@ function showResult(ui: Ui, answers: Answers): void {
 	if (!isCompleteAnswers(answers)) {
 		return;
 	}
-	ui.leadEl.style.display = 'none';
-	ui.quizEl.hidden = true;
-	ui.resultEl.hidden = false;
+	hideElement(ui.leadEl);
+	hideElement(ui.quizEl);
+	showElement(ui.resultEl);
 	hideAllOutcomes(ui);
 	const outcomeId = resolveOutcomeId(answers);
 	if (!outcomeId) {
@@ -148,13 +149,13 @@ function showResult(ui: Ui, answers: Answers): void {
 	if (!panel) {
 		return;
 	}
-	panel.hidden = false;
+	showElement(panel);
 	pushBallPythonShindan(outcomeId);
 }
 
 function hideAllOutcomes(ui: Ui): void {
 	for (const panel of ui.outcomePanels) {
-		panel.hidden = true;
+		hideElement(panel);
 	}
 }
 

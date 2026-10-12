@@ -31,7 +31,7 @@
 						<p>シークレットモード（プライベートブラウズ）では、ブラウザを閉じるとお気に入りが消えてしまいます。通常のブラウザでのご利用をおすすめします。</p>
 						<?php get_template_part('include/loading'); ?>
 						<div class="grid-block grid-block--col2" data-js-favorite-list></div>
-						<p data-js-favorite-empty hidden>お気に入りに登録した記事はありません。</p>
+						<p data-js-favorite-empty style="display: none">お気に入りに登録した記事はありません。</p>
 					</div>
 					<template data-js-favorite-template>
 						<?php get_template_part('include/blogs-item', null, ['post_id' => 0]); ?>

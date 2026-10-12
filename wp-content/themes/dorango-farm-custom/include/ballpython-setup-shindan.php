@@ -5,13 +5,13 @@
 		<p>飼育・繁殖などの目的に合わせて、いくつかの質問に答えるだけで、ケージやヒーター、床材など、<span class="u-bold u-primary02">必要な飼育用品をまとめて</span>ご提案します。登録・メールアドレスの入力など不要です。</p>
 	</div>
 	<form class="u-mt3-pc u-mt3-sp" data-js-shindan-quiz novalidate></form>
-	<div class="u-mt3-pc u-mt3-sp" data-js-shindan-result hidden>
+	<div class="u-mt3-pc u-mt3-sp" data-js-shindan-result style="display: none">
 		<div class="box" data-js-shindan-outcomes>
 			<?php foreach (DORANGO_SHINDAN_OUTCOME_IDS as $outcome_id) : ?>
 				<div
 					class="shindan__outcome"
 					data-js-shindan-outcome="<?php echo esc_attr($outcome_id); ?>"
-					hidden
+					style="display: none"
 				>
 					<?php shindan_render_outcome($outcome_id); ?>
 				</div>

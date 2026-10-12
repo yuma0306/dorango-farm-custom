@@ -20,9 +20,6 @@
 		background: $white01;
 		transform: translate(-50%, -50%);
 		pointer-events: auto;
-		&[hidden] {
-			display: none;
-		}
 	}
 	&__inner {
 		.search-form {
