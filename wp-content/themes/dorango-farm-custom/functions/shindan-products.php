@@ -8,14 +8,17 @@ function shindan_product(string $id): ?string {
 		'heating_top_m' => 'heating-top-m',
 		'multi_panel_heater_16w' => 'multi-panel-heater-16w',
 		'multi_panel_heater_32w' => 'multi-panel-heater-32w',
-		'pet_sheet' => 'pet-sheet',
+		'pet_sheet_medium' => 'pet-sheet-medium',
+		'pet_sheet_large' => 'pet-sheet-large',
 		'thermostat_basic' => 'thermostat-basic',
 		'thermostat_advanced' => 'thermostat-advanced',
 		'vivaria_twin_meter_neo' => 'vivaria-twin-meter-neo',
 		'ad_5648a' => 'ad-5648a',
 		'husk_chip' => 'husk-chip',
 		'water_dish_natural' => 'water-dish-natural',
-		'water_dish_simple' => 'water-dish-simple',
+		'water_dish_tapper_medium' => 'water-dish-tapper-medium',
+		'water_dish_tapper_large' => 'water-dish-tapper-large',
+		'hypochlorous_acid_water' => 'hypochlorous-acid-water',
 	];
 
 	return $affiliates[$id] ?? null;

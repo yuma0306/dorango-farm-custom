@@ -18,6 +18,7 @@
 		<a
 			class="button u-mt3-pc u-mt3-sp"
 			href="<?php echo esc_url(home_url('/ballpython-setup-shindan/')); ?>"
+			data-gtm-event="<?php echo esc_attr(gtm_event('ball_python_shindan_retry')); ?>"
 		>もう一度診断する</a>
 	</div>
 	<template data-js-shindan-question-template>
