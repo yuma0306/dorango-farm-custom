@@ -21,7 +21,7 @@ function shindan_outcomes(): array {
 				],
 				[
 					'label' => '水入れ',
-					'product_id' => 'water_dish_tapper_medium',
+					'product_id' => 'water_dish_natural',
 				],
 				[
 					'label' => '次亜塩素酸水',
