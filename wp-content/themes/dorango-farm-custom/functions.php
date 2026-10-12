@@ -14,3 +14,5 @@
     get_template_part('functions/recent-posts');
     get_template_part('functions/api');
     get_template_part('functions/shindan');
+    get_template_part('functions/shindan-products');
+    get_template_part('functions/shindan-outcomes');

@@ -3,4 +3,10 @@
 
 .box {
 	background-color: $beige01;
+	@include pc {
+		padding: #{$spacing-2}px;
+	}
+	@include sp {
+		padding: vw($spacing-2);
+	}
 }

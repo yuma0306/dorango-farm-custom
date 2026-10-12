@@ -16,10 +16,10 @@ const DORANGO_SHINDAN_OUTCOME_IDS = [
 	'M',
 ];
 
-function shindan_shortcode(): string {
+function ballpython_setup_shindan_shortcode(): string {
 	ob_start();
-	get_template_part('include/shindan');
+	get_template_part('include/ballpython-setup-shindan');
 	return (string) ob_get_clean();
 }
 
-add_shortcode('shindan', 'shindan_shortcode');
+add_shortcode('ballpython_setup_shindan', 'ballpython_setup_shindan_shortcode');

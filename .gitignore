@@ -44,3 +44,5 @@
 !MIGRATION.md
 
 .DS_Store
+
+!biome.json

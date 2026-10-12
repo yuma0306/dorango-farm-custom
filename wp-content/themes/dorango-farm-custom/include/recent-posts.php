@@ -4,7 +4,7 @@ if ($post_id <= 0) {
 	return;
 }
 ?>
-<section class="recent-posts" data-js-recent-posts data-post-id="<?php echo esc_attr((string) $post_id); ?>" hidden>
+<section class="stack" data-js-recent-posts data-post-id="<?php echo esc_attr((string) $post_id); ?>" hidden>
 	<h2 class="heading-lv2-02">最近チェックした記事</h2>
 	<?php get_template_part('include/loading'); ?>
 	<div class="grid-block grid-block--col2" data-js-recent-posts-list></div>

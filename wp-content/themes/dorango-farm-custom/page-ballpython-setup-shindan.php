@@ -1,6 +1,7 @@
 <?php
 /**
  * Template Name: ボールパイソン飼育セット診断
+ * Slug: ballpython-setup-shindan
  */
 ?>
 <!DOCTYPE html>
@@ -19,7 +20,7 @@
 				<?php displayBreadcrumnbs(); ?>
 				<div class="stack">
 					<?php get_template_part('include/aff-text'); ?>
-					<?php get_template_part('include/shindan'); ?>
+					<?php get_template_part('include/ballpython-setup-shindan'); ?>
 				</div>
 			</div>
 		</main>
