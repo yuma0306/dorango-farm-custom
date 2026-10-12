@@ -1,3 +1,4 @@
+import { hideElement, showElement } from './element-display';
 import { fetchPostListItems, renderPostListCard } from './post-cards';
 import {
 	getRecentHistoryLimit,
@@ -35,7 +36,7 @@ export function initRecentPosts(): void {
 	}
 
 	const render = async () => {
-		loading.hidden = false;
+		showElement(loading);
 		list.replaceChildren();
 		try {
 			const items = await fetchPostListItems(ids);
@@ -46,11 +47,11 @@ export function initRecentPosts(): void {
 			items.forEach((item) => {
 				list.append(renderPostListCard(template, thumbTemplate, item));
 			});
-			section.hidden = false;
+			showElement(section);
 		} catch {
 			list.replaceChildren();
 		} finally {
-			loading.hidden = true;
+			hideElement(loading);
 		}
 	};
 

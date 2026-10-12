@@ -1,3 +1,5 @@
+import { hideElement, isElementHidden, showElement } from './element-display';
+
 let lastFocused: HTMLElement | null = null;
 
 export function setSearchFloatOpen(open: boolean): void {
@@ -9,15 +11,15 @@ export function setSearchFloatOpen(open: boolean): void {
 	}
 	if (open) {
 		lastFocused = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-		backdrop.hidden = false;
-		panel.hidden = false;
+		showElement(backdrop);
+		showElement(panel);
 		document.body.style.overflow = 'hidden';
 		const input = panel.querySelector<HTMLInputElement>('.js-search-input');
 		input?.focus();
 		return;
 	}
-	backdrop.hidden = true;
-	panel.hidden = true;
+	hideElement(backdrop);
+	hideElement(panel);
 	document.body.style.overflow = '';
 	lastFocused?.focus();
 	lastFocused = null;
@@ -34,7 +36,7 @@ export function initSearchFloat(): void {
 		setSearchFloatOpen(false);
 	});
 	document.addEventListener('keydown', (event) => {
-		if (event.key !== 'Escape' || panel.hidden) {
+		if (event.key !== 'Escape' || isElementHidden(panel)) {
 			return;
 		}
 		setSearchFloatOpen(false);

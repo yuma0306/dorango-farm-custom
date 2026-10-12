@@ -1,4 +1,6 @@
-const HIDE_DELAY = 2500;
+import { hideElement, showElement } from './element-display';
+
+const HIDE_DELAY = 3000;
 
 let hideTimer = 0;
 
@@ -18,8 +20,11 @@ export function showToast(message: string, options?: ShowToastOptions): void {
 	} else {
 		text.textContent = message;
 	}
-	toast.hidden = false;
+	showElement(toast);
+	toast.style.animation = 'none';
+	void toast.offsetWidth;
+	toast.style.animation = '';
 	hideTimer = window.setTimeout(() => {
-		toast.hidden = true;
+		hideElement(toast);
 	}, HIDE_DELAY);
 }

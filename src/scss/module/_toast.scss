@@ -22,12 +22,7 @@
 	border: 1px solid $primary02;
 	text-align: center;
 	font-weight: $fwMedium;
-	&[hidden] {
-		display: none;
-	}
-	&:not([hidden]) {
-		animation: toast-in $transitionLong ease-out;
-	}
+	animation: toast-in $transitionLong ease-out;
 	&__text {
 		a {
 			color: $blue01;
