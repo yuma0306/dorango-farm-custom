@@ -12,6 +12,8 @@ const themeDir = path.resolve(
 const assetsDir = path.join(themeDir, 'assets');
 const imgSrcDir = path.resolve(__dirname, 'src/img');
 const imgOutDir = path.join(assetsDir, 'img');
+const dataSrcDir = path.resolve(__dirname, 'src/data');
+const dataOutDir = path.join(themeDir, 'data');
 
 async function isNewer(src, dest) {
 	try {
@@ -29,6 +31,20 @@ function themeImages() {
 	return {
 		name: 'theme-images',
 		async buildStart() {
+			await fs.mkdir(dataOutDir, { recursive: true });
+			const dataFiles = await fs.readdir(dataSrcDir);
+			for (const file of dataFiles) {
+				if (!file.endsWith('.json')) {
+					continue;
+				}
+				const src = path.join(dataSrcDir, file);
+				const dest = path.join(dataOutDir, file);
+				this.addWatchFile(src);
+				if (await isNewer(src, dest)) {
+					await fs.copyFile(src, dest);
+				}
+			}
+
 			await fs.mkdir(imgOutDir, { recursive: true });
 			const entries = await fs.readdir(imgSrcDir, { withFileTypes: true });
 			for (const entry of entries) {
@@ -72,24 +88,13 @@ export default defineConfig({
 		minify: true,
 		sourcemap: false,
 		assetsInlineLimit: 0,
-		watch: {
-			exclude: [
-				'wp-content/themes/dorango-farm-custom/assets/**',
-				'sql/**',
-			],
-			chokidar: {
-				ignored: [
-					'**/wp-content/themes/dorango-farm-custom/assets/**',
-					'**/sql/**',
-				],
-			},
-		},
 		rollupOptions: {
 			input: {
 				style: path.resolve(__dirname, 'src/scss/style.scss'),
 				contact: path.resolve(__dirname, 'src/scss/contact.scss'),
 				common: path.resolve(__dirname, 'src/scripts/common.ts'),
 				'contact-form': path.resolve(__dirname, 'src/scripts/contact.ts'),
+				'set-diagnosis': path.resolve(__dirname, 'src/scripts/set-diagnosis.ts'),
 			},
 			output: {
 				entryFileNames: (chunk) => {

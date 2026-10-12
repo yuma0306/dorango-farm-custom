@@ -96,7 +96,9 @@ export function initFavoritePage(): void {
 		return;
 	}
 	const template = page.querySelector<HTMLTemplateElement>('[data-js-favorite-template]');
-	const thumbTemplate = page.querySelector<HTMLTemplateElement>('[data-js-favorite-thumb-template]');
+	const thumbTemplate = page.querySelector<HTMLTemplateElement>(
+		'[data-js-favorite-thumb-template]',
+	);
 	const loading = page.querySelector<HTMLElement>('[data-js-loading]');
 	const list = page.querySelector<HTMLElement>('[data-js-favorite-list]');
 	const empty = page.querySelector<HTMLElement>('[data-js-favorite-empty]');

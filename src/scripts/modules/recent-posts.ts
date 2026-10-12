@@ -1,7 +1,7 @@
 import { fetchPostListItems, renderPostListCard } from './post-cards';
 import {
-	getRecentIds,
 	getRecentHistoryLimit,
+	getRecentIds,
 	getRecentSingleSectionLimit,
 	recordRecentPost,
 } from './recent-storage';
@@ -18,7 +18,9 @@ export function initRecentPosts(): void {
 	recordRecentPost(currentId);
 
 	const template = section.querySelector<HTMLTemplateElement>('[data-js-recent-posts-template]');
-	const thumbTemplate = section.querySelector<HTMLTemplateElement>('[data-js-recent-posts-thumb-template]');
+	const thumbTemplate = section.querySelector<HTMLTemplateElement>(
+		'[data-js-recent-posts-thumb-template]',
+	);
 	const loading = section.querySelector<HTMLElement>('[data-js-loading]');
 	const list = section.querySelector<HTMLElement>('[data-js-recent-posts-list]');
 	if (!template || !loading || !list) {

@@ -1,3 +1,5 @@
+import { cloneTemplateContent } from './clone-template';
+
 export type PostListItem = {
 	id: number;
 	title: string;
@@ -50,7 +52,7 @@ export function renderPostListCard(
 	thumbTemplate: HTMLTemplateElement | null,
 	item: PostListItem,
 ): DocumentFragment {
-	const fragment = template.content.cloneNode(true) as DocumentFragment;
+	const fragment = cloneTemplateContent(template);
 	const link = fragment.querySelector('[data-js-blogs-item-link]');
 	if (link instanceof HTMLAnchorElement) {
 		link.href = item.url;
@@ -60,7 +62,7 @@ export function renderPostListCard(
 		let img = fragment.querySelector('[data-js-blogs-item-img]');
 		if (!(img instanceof HTMLImageElement) && thumbTemplate !== null) {
 			fragment.querySelector('[data-js-blogs-item-thumb]')?.remove();
-			const thumbFragment = thumbTemplate.content.cloneNode(true) as DocumentFragment;
+			const thumbFragment = cloneTemplateContent(thumbTemplate);
 			const picture = thumbFragment.querySelector('[data-js-blogs-item-thumb]');
 			if (picture instanceof HTMLElement && block instanceof HTMLElement) {
 				block.before(picture);
