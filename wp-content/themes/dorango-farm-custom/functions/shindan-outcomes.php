@@ -17,11 +17,15 @@ function shindan_outcomes(): array {
 				],
 				[
 					'label' => '床材',
-					'product_id' => 'pet_sheet',
+					'product_id' => 'pet_sheet_medium',
 				],
 				[
 					'label' => '水入れ',
-					'product_id' => 'water_dish_simple',
+					'product_id' => 'water_dish_tapper_medium',
+				],
+				[
+					'label' => '次亜塩素酸水',
+					'product_id' => 'hypochlorous_acid_water',
 				],
 			],
 		],
@@ -44,11 +48,11 @@ function shindan_outcomes(): array {
 				],
 				[
 					'label' => '床材',
-					'product_id' => 'pet_sheet',
+					'product_id' => 'pet_sheet_medium',
 				],
 				[
 					'label' => '水入れ',
-					'product_id' => 'water_dish_simple',
+					'product_id' => 'water_dish_tapper_medium',
 				],
 				[
 					'label' => 'サーモスタット',
@@ -57,6 +61,10 @@ function shindan_outcomes(): array {
 				[
 					'label' => '温湿度計',
 					'product_id' => 'ad_5648a',
+				],
+				[
+					'label' => '次亜塩素酸水',
+					'product_id' => 'hypochlorous_acid_water',
 				],
 			],
 		],
@@ -93,6 +101,10 @@ function shindan_outcomes(): array {
 					'label' => '温湿度計',
 					'product_id' => 'ad_5648a',
 				],
+				[
+					'label' => '次亜塩素酸水',
+					'product_id' => 'hypochlorous_acid_water',
+				],
 			],
 		],
 		// D: メス → 繁殖「はい」→ エアコン「いいえ」→ レイアウト「掃除・管理のしやすさ」
@@ -114,11 +126,11 @@ function shindan_outcomes(): array {
 				],
 				[
 					'label' => '床材',
-					'product_id' => 'pet_sheet',
+					'product_id' => 'pet_sheet_large',
 				],
 				[
 					'label' => '水入れ',
-					'product_id' => 'water_dish_simple',
+					'product_id' => 'water_dish_tapper_large',
 				],
 				[
 					'label' => 'サーモスタット',
@@ -127,6 +139,10 @@ function shindan_outcomes(): array {
 				[
 					'label' => '温湿度計',
 					'product_id' => 'ad_5648a',
+				],
+				[
+					'label' => '次亜塩素酸水',
+					'product_id' => 'hypochlorous_acid_water',
 				],
 			],
 		],
@@ -163,6 +179,10 @@ function shindan_outcomes(): array {
 					'label' => '温湿度計',
 					'product_id' => 'ad_5648a',
 				],
+				[
+					'label' => '次亜塩素酸水',
+					'product_id' => 'hypochlorous_acid_water',
+				],
 			],
 		],
 		// F: オス → 繁殖「いいえ」→ レイアウト「掃除・管理のしやすさ」→ 温湿度「費用を抑えたい」
@@ -184,11 +204,11 @@ function shindan_outcomes(): array {
 				],
 				[
 					'label' => '床材',
-					'product_id' => 'pet_sheet',
+					'product_id' => 'pet_sheet_medium',
 				],
 				[
 					'label' => '水入れ',
-					'product_id' => 'water_dish_simple',
+					'product_id' => 'water_dish_tapper_medium',
 				],
 				[
 					'label' => 'サーモスタット',
@@ -197,6 +217,10 @@ function shindan_outcomes(): array {
 				[
 					'label' => '温湿度計',
 					'product_id' => 'vivaria_twin_meter_neo',
+				],
+				[
+					'label' => '次亜塩素酸水',
+					'product_id' => 'hypochlorous_acid_water',
 				],
 			],
 		],
@@ -219,11 +243,11 @@ function shindan_outcomes(): array {
 				],
 				[
 					'label' => '床材',
-					'product_id' => 'pet_sheet',
+					'product_id' => 'pet_sheet_medium',
 				],
 				[
 					'label' => '水入れ',
-					'product_id' => 'water_dish_simple',
+					'product_id' => 'water_dish_tapper_medium',
 				],
 				[
 					'label' => 'サーモスタット',
@@ -232,6 +256,10 @@ function shindan_outcomes(): array {
 				[
 					'label' => '温湿度計',
 					'product_id' => 'ad_5648a',
+				],
+				[
+					'label' => '次亜塩素酸水',
+					'product_id' => 'hypochlorous_acid_water',
 				],
 			],
 		],
@@ -268,6 +296,10 @@ function shindan_outcomes(): array {
 					'label' => '温湿度計',
 					'product_id' => 'vivaria_twin_meter_neo',
 				],
+				[
+					'label' => '次亜塩素酸水',
+					'product_id' => 'hypochlorous_acid_water',
+				],
 			],
 		],
 		// I: オス → 繁殖「いいえ」→ レイアウト「自然な見た目を再現したい」→ 温湿度「最高・最低まで把握したい」
@@ -303,6 +335,10 @@ function shindan_outcomes(): array {
 					'label' => '温湿度計',
 					'product_id' => 'ad_5648a',
 				],
+				[
+					'label' => '次亜塩素酸水',
+					'product_id' => 'hypochlorous_acid_water',
+				],
 			],
 		],
 		// J: メス → 繁殖「いいえ」→ レイアウト「掃除・管理のしやすさ」→ 温湿度「費用を抑えたい」
@@ -324,11 +360,11 @@ function shindan_outcomes(): array {
 				],
 				[
 					'label' => '床材',
-					'product_id' => 'pet_sheet',
+					'product_id' => 'pet_sheet_large',
 				],
 				[
 					'label' => '水入れ',
-					'product_id' => 'water_dish_simple',
+					'product_id' => 'water_dish_tapper_large',
 				],
 				[
 					'label' => 'サーモスタット',
@@ -337,6 +373,10 @@ function shindan_outcomes(): array {
 				[
 					'label' => '温湿度計',
 					'product_id' => 'vivaria_twin_meter_neo',
+				],
+				[
+					'label' => '次亜塩素酸水',
+					'product_id' => 'hypochlorous_acid_water',
 				],
 			],
 		],
@@ -359,11 +399,11 @@ function shindan_outcomes(): array {
 				],
 				[
 					'label' => '床材',
-					'product_id' => 'pet_sheet',
+					'product_id' => 'pet_sheet_large',
 				],
 				[
 					'label' => '水入れ',
-					'product_id' => 'water_dish_simple',
+					'product_id' => 'water_dish_tapper_large',
 				],
 				[
 					'label' => 'サーモスタット',
@@ -372,6 +412,10 @@ function shindan_outcomes(): array {
 				[
 					'label' => '温湿度計',
 					'product_id' => 'ad_5648a',
+				],
+				[
+					'label' => '次亜塩素酸水',
+					'product_id' => 'hypochlorous_acid_water',
 				],
 			],
 		],
@@ -408,6 +452,10 @@ function shindan_outcomes(): array {
 					'label' => '温湿度計',
 					'product_id' => 'vivaria_twin_meter_neo',
 				],
+				[
+					'label' => '次亜塩素酸水',
+					'product_id' => 'hypochlorous_acid_water',
+				],
 			],
 		],
 		// M: メス → 繁殖「いいえ」→ レイアウト「自然な見た目を再現したい」→ 温湿度「最高・最低まで把握したい」
@@ -442,6 +490,10 @@ function shindan_outcomes(): array {
 				[
 					'label' => '温湿度計',
 					'product_id' => 'ad_5648a',
+				],
+				[
+					'label' => '次亜塩素酸水',
+					'product_id' => 'hypochlorous_acid_water',
 				],
 			],
 		],
