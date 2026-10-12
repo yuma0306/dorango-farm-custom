@@ -31,7 +31,7 @@ const NAV_LINKS = [
 	],
 	'favorite' => [
 		'href' => '/favorite/',
-		'label' => 'お気に入り',
+		'label' => 'お気に入り記事',
 	],
 	'history' => [
 		'href' => '/history/',
