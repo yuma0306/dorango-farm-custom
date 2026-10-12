@@ -3,6 +3,7 @@
  * Template Name: ボールパイソン飼育セット診断
  * Slug: ballpython-setup-shindan
  */
+$thumb = get_article_thumb();
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -19,6 +20,11 @@
 			<div class="inner">
 				<?php displayBreadcrumnbs(); ?>
 				<div class="stack">
+					<?php if (!empty($thumb)) : ?>
+						<picture class="article-thumb">
+							<img class="article-thumb__img" src="<?php echo esc_url($thumb['url']); ?>" alt="<?php echo esc_html($thumb['alt']); ?>" width="<?php echo esc_html($thumb['width']); ?>" height="<?php echo esc_html($thumb['height']); ?>">
+						</picture>
+					<?php endif; ?>
 					<?php get_template_part('include/aff-text'); ?>
 					<?php get_template_part('include/ballpython-setup-shindan'); ?>
 				</div>
