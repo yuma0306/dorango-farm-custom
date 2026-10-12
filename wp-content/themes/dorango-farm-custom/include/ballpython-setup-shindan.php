@@ -27,6 +27,6 @@
 		</dl>
 	</template>
 	<template data-js-shindan-option-template>
-		<button type="button" class="button" data-js-shindan-option></button>
+		<button type="button" class="button flex-child-1" data-js-shindan-option></button>
 	</template>
 </div>

@@ -10,9 +10,11 @@ if ($data === null) {
 ?>
 <section class="stack">
 	<h2 class="heading-lv2-02">ボールパイソンについて詳しく</h2>
-	<?php if ($data['hub_visible']) : ?>
+	<?php if ($data['recommended_post_ids'] !== []) : ?>
 		<div class="grid-block grid-block--col2">
-			<?php get_template_part('include/blogs-item', null, ['post_id' => $data['hub_id']]); ?>
+			<?php foreach ($data['recommended_post_ids'] as $post_id) : ?>
+				<?php get_template_part('include/blogs-item', null, ['post_id' => $post_id]); ?>
+			<?php endforeach; ?>
 		</div>
 	<?php endif; ?>
 	<?php foreach ($data['visible'] as $section) : ?>

@@ -4,6 +4,7 @@ const NAV_LINKS = [
 	'home' => [
 		'href' => '/',
 		'label' => 'ホーム',
+		'icon' => 'home',
 	],
 	'ballPython' => [
 		'href' => '/tag/species/ball-python/',
@@ -36,10 +37,12 @@ const NAV_LINKS = [
 	'favorite' => [
 		'href' => '/favorite/',
 		'label' => 'お気に入り記事',
+		'icon' => 'heart',
 	],
 	'history' => [
 		'href' => '/history/',
 		'label' => '最近チェックした記事',
+		'icon' => 'history',
 	],
 	'tags' => [
 		'href' => '/tag/',
@@ -57,6 +60,8 @@ const NAV_LINKS = [
 
 const HAMBURGER_LINK_KEYS = [
 	'home',
+	'favorite',
+	'history',
 	'ballPython',
 	'ballPythonSetupShindan',
 	'breed',
@@ -64,8 +69,6 @@ const HAMBURGER_LINK_KEYS = [
 	'shop',
 	'food',
 	'trivia',
-	'favorite',
-	'history',
 ];
 
 const FOOTER_LINK_KEYS = [

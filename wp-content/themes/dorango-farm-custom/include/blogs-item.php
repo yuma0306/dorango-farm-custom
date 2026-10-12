@@ -1,6 +1,6 @@
 <?php
 	$post_id = absint( ($args ?? [])['post_id'] ?? get_the_ID() );
-	$is_hub = defined('BALL_PYTHON_HUB_ID') && $post_id === BALL_PYTHON_HUB_ID;
+	$is_recommended = ball_python_hub_is_recommended($post_id);
 	$title = get_the_title($post_id);
 	$thumb = get_article_thumb($post_id);
 	$publishedDate = get_post_time('Y-m-d', false, $post_id);
@@ -9,7 +9,7 @@
 ?>
 <div class="blogs-item">
 	<a class="blogs-item__link" data-js-blogs-item-link href="<?php echo esc_url($permalink); ?>">
-		<?php if ($is_hub) : ?>
+		<?php if ($is_recommended) : ?>
 			<span class="blogs-item__badge">おすすめ</span>
 		<?php endif; ?>
 		<?php if(!empty($thumb)): ?>
