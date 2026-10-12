@@ -145,10 +145,7 @@ function showResult(ui: Ui, answers: Answers): void {
 		return;
 	}
 	panel.hidden = false;
-	pushBallPythonShindan({
-		outcomeId,
-		answers: pruneAnswers(answers),
-	});
+	pushBallPythonShindan(outcomeId);
 }
 
 function hideAllOutcomes(ui: Ui): void {
