@@ -134,7 +134,7 @@ function showResult(ui: Ui, answers: Answers): void {
 	if (!isCompleteAnswers(answers)) {
 		return;
 	}
-	ui.leadEl.hidden = true;
+	ui.leadEl.style.display = 'none';
 	ui.quizEl.hidden = true;
 	ui.resultEl.hidden = false;
 	hideAllOutcomes(ui);
