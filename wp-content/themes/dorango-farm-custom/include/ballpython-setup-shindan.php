@@ -1,7 +1,9 @@
 <div class="content-box" data-js-shindan>
 	<h2 class="heading-lv2-02 u-pt0">ボールパイソン飼育セット診断</h2>
-	<p class="u-mt2-pc u-mt2-sp"><span class="u-bold u-primary02">たった数秒</span>で、あなたにぴったりの<span class="u-bold u-primary02">飼育セット</span>がわかる！</p>
-	<p class="u-mt1-pc u-mt1-sp">飼育・繁殖などの目的に合わせて、いくつかの質問に答えるだけで、ケージやヒーター、床材など、<span class="u-bold u-primary02">必要な飼育用品をまとめて</span>ご提案します。登録・メールアドレスの入力など不要です。</p>
+	<div class="stack stack--gap1 u-mt2-pc u-mt2-sp" data-js-shindan-lead>
+		<p><span class="u-bold u-primary02">たった数秒</span>で、あなたにぴったりの<span class="u-bold u-primary02">飼育セット</span>がわかる！</p>
+		<p>飼育・繁殖などの目的に合わせて、いくつかの質問に答えるだけで、ケージやヒーター、床材など、<span class="u-bold u-primary02">必要な飼育用品をまとめて</span>ご提案します。登録・メールアドレスの入力など不要です。</p>
+	</div>
 	<form class="u-mt3-pc u-mt3-sp" data-js-shindan-quiz novalidate></form>
 	<div class="u-mt3-pc u-mt3-sp" data-js-shindan-result hidden>
 		<div class="box" data-js-shindan-outcomes>
