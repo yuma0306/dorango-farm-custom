@@ -9,6 +9,10 @@ const NAV_LINKS = [
 		'href' => '/tag/species/ball-python/',
 		'label' => 'ボールパイソンの記事',
 	],
+	'ballPythonSetupShindan' => [
+		'href' => '/ballpython-setup-shindan/',
+		'label' => 'ボールパイソン飼育セット診断',
+	],
 	'breed' => [
 		'href' => '/breed/',
 		'label' => '飼育繁殖',
@@ -54,6 +58,7 @@ const NAV_LINKS = [
 const HAMBURGER_LINK_KEYS = [
 	'home',
 	'ballPython',
+	'ballPythonSetupShindan',
 	'breed',
 	'zoo',
 	'shop',
@@ -65,6 +70,7 @@ const HAMBURGER_LINK_KEYS = [
 
 const FOOTER_LINK_KEYS = [
 	'ballPython',
+	'ballPythonSetupShindan',
 	'breed',
 	'zoo',
 	'shop',
