@@ -1,0 +1,37 @@
+export const questions = {
+	sex: {
+		question: 'ボールパイソンの性別は？',
+		options: {
+			male: 'オス',
+			female: 'メス',
+		},
+	},
+	breeding: {
+		question: '繁殖を予定していますか？',
+		options: {
+			yes: 'はい',
+			no: 'いいえ',
+		},
+	},
+	airConditioned: {
+		question: 'エアコンで飼育部屋の温度管理ができますか？',
+		options: {
+			yes: 'はい',
+			no: 'いいえ',
+		},
+	},
+	layout: {
+		question: 'ケージレイアウトで重視するのは？',
+		options: {
+			easy: '掃除・管理のしやすさ',
+			natural: '手間がかかっても自然な見た目を再現したい',
+		},
+	},
+	thermometer: {
+		question: '温湿度の管理で重視するのは？',
+		options: {
+			basic: '現在の温度・湿度が確認できれば十分。費用を抑えたい',
+			advanced: '昼夜の温度変化や最高・最低温度まで把握したい',
+		},
+	},
+} as const;

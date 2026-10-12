@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: 飼育セット診断
+ * Template Name: ボールパイソン飼育セット診断
  */
 ?>
 <!DOCTYPE html>
@@ -17,14 +17,15 @@
 			</h1>
 			<div class="inner">
 				<?php displayBreadcrumnbs(); ?>
-				<?php get_template_part('include/aff-text'); ?>
-				<?php get_template_part('include/set-diagnosis'); ?>
+				<div class="stack">
+					<?php get_template_part('include/aff-text'); ?>
+					<?php get_template_part('include/shindan'); ?>
+				</div>
 			</div>
 		</main>
 		<?php get_template_part('include/footer'); ?>
 	</div>
 	<script src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/js/common.js" defer></script>
-	<script type="module" src="<?php echo esc_url(dorango_set_diagnosis_uri()); ?>"></script>
 	<?php wp_footer(); ?>
 </body>
 </html>

@@ -1,3 +1,4 @@
+@use 'sass:map';
 @use '../global/import' as *;
 @use '../config/import' as *;
 
@@ -39,6 +40,11 @@
 	.u-ml0-pc:not(#_) {
 		margin-left: 0;
 	}
+	@for $i from 1 through 5 {
+		.u-mt#{$i}-pc:not(#_) {
+			margin-top: #{map.get($spacing-map, $i)}px;
+		}
+	}
 }
 
 @include sp {
@@ -59,5 +65,10 @@
 	}
 	.u-ml0-sp:not(#_) {
 		margin-left: 0;
+	}
+	@for $i from 1 through 5 {
+		.u-mt#{$i}-sp:not(#_) {
+			margin-top: #{map.get($spacing-map, $i)}px;
+		}
 	}
 }

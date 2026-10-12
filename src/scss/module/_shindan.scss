@@ -1,0 +1,14 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+.shidan-title {
+	display: block;
+	font-weight: $fwBold;
+	text-align: center;
+	@include pc {
+		font-size: $fzLargePC;
+	}
+	@include sp {
+		font-size: $fzLargeSP;
+	}
+}

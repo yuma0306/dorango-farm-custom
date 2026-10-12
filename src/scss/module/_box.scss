@@ -1,0 +1,6 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+.box {
+	background-color: $beige01;
+}

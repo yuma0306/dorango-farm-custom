@@ -1,0 +1,61 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+.button {
+	position: relative;
+	display: grid;
+	place-items: center;
+	width: fit-content;
+	margin-inline: auto;
+	border-radius: 100dvh;
+	background-color: $white01;
+	font-weight: $fwMedium;
+	transition: $transition;
+	text-align: center;
+	border: 1px solid $brown01;
+	&--end {
+		align-self: end;
+	}
+	&--no-arrow {
+		&:not(#_)::after {
+			content: none;
+		}
+	}
+	&::after {
+		position: absolute;
+		top: 50%;
+		transform: translate(0%, -50%);
+		background: url(#{$imgPath}/arrow-brown.svg) no-repeat center / contain;
+		transition: $transition;
+		content: "";
+	}
+	&:hover {
+		@include hoverOpacity();
+	}
+}
+
+@include pc {
+	.button {
+		min-width: 250px;
+		min-height: #{$spacing-7}px;
+		padding-inline: #{$spacing-5}px;
+		&::after {
+			right: #{$spacing-2}px;
+			width: #{$spacing-2}px;
+			height: #{$spacing-2}px;
+		}
+	}
+}
+
+@include sp {
+	.button {
+		min-width: vw(250);
+		min-height: vw($spacing-7);
+		padding-inline: vw($spacing-5);
+		&::after {
+			right: vw($spacing-2);
+			width: vw($spacing-2);
+			height: vw($spacing-2);
+		}
+	}
+}

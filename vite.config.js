@@ -88,13 +88,19 @@ export default defineConfig({
 		minify: true,
 		sourcemap: false,
 		assetsInlineLimit: 0,
+		watch: {
+			include: ['src/**'],
+			exclude: [
+				'**/wp-content/themes/dorango-farm-custom/assets/**',
+				'**/wp-content/themes/dorango-farm-custom/data/**',
+			],
+		},
 		rollupOptions: {
 			input: {
 				style: path.resolve(__dirname, 'src/scss/style.scss'),
 				contact: path.resolve(__dirname, 'src/scss/contact.scss'),
 				common: path.resolve(__dirname, 'src/scripts/common.ts'),
 				'contact-form': path.resolve(__dirname, 'src/scripts/contact.ts'),
-				'set-diagnosis': path.resolve(__dirname, 'src/scripts/set-diagnosis.ts'),
 			},
 			output: {
 				entryFileNames: (chunk) => {

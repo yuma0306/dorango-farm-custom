@@ -13,4 +13,4 @@
     get_template_part('functions/favorites');
     get_template_part('functions/recent-posts');
     get_template_part('functions/api');
-    get_template_part('functions/set-diagnosis');
+    get_template_part('functions/shindan');

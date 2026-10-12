@@ -1,4 +1,4 @@
-import questions from '../../data/questions.json';
+import { questions } from './shindan-questions';
 
 const outcomeIds = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'] as const;
 
@@ -20,34 +20,33 @@ const outcomeMatchers: { id: OutcomeId; when: Partial<Record<QuestionId, string>
 
 const firstQuestionId: QuestionId = 'sex';
 
-export function initSetDiagnosis(root: HTMLElement): void {
-	const ui = getUiElements(root);
-	if (!ui) {
-		return;
-	}
-	bindSetDiagnosisUi(ui);
+export function initShindan(): void {
+	document.querySelectorAll<HTMLElement>('[data-js-shindan]').forEach((root) => {
+		const ui = getUiElements(root);
+		if (!ui) {
+			return;
+		}
+		bindShindanUi(ui);
+		renderQuestion(ui, firstQuestionId);
+	});
 }
 
 function getUiElements(root: HTMLElement) {
-	const quizEl = root.querySelector<HTMLElement>('[data-js-set-diagnosis-quiz]');
-	const stepEl = root.querySelector<HTMLElement>('[data-js-set-diagnosis-step]');
-	const resultEl = root.querySelector<HTMLElement>('[data-js-set-diagnosis-result]');
-	const errorEl = root.querySelector<HTMLElement>('[data-js-set-diagnosis-error]');
-	const outcomesEl = root.querySelector<HTMLElement>('[data-js-set-diagnosis-outcomes]');
-	const outcomePanels = root.querySelectorAll<HTMLElement>('[data-js-set-diagnosis-outcome]');
-	const retryBtn = root.querySelector<HTMLButtonElement>('[data-js-set-diagnosis-retry]');
+	const quizEl = root.querySelector<HTMLElement>('[data-js-shindan-quiz]');
+	const resultEl = root.querySelector<HTMLElement>('[data-js-shindan-result]');
+	const outcomesEl = root.querySelector<HTMLElement>('[data-js-shindan-outcomes]');
+	const outcomePanels = root.querySelectorAll<HTMLElement>('[data-js-shindan-outcome]');
+	const retryBtn = root.querySelector<HTMLButtonElement>('[data-js-shindan-retry]');
 	const questionTemplate = root.querySelector<HTMLTemplateElement>(
-		'[data-js-set-diagnosis-question-template]',
+		'[data-js-shindan-question-template]',
 	);
 	const optionTemplate = root.querySelector<HTMLTemplateElement>(
-		'[data-js-set-diagnosis-option-template]',
+		'[data-js-shindan-option-template]',
 	);
 
 	if (
 		!quizEl ||
-		!stepEl ||
 		!resultEl ||
-		!errorEl ||
 		!outcomesEl ||
 		!retryBtn ||
 		!questionTemplate ||
@@ -59,9 +58,7 @@ function getUiElements(root: HTMLElement) {
 
 	return {
 		quizEl,
-		stepEl,
 		resultEl,
-		errorEl,
 		outcomesEl,
 		outcomePanels,
 		retryBtn,
@@ -72,21 +69,21 @@ function getUiElements(root: HTMLElement) {
 
 type Ui = NonNullable<ReturnType<typeof getUiElements>>;
 
-function bindSetDiagnosisUi(ui: Ui): void {
+function bindShindanUi(ui: Ui): void {
 	let answers: Answers = {};
 
-	ui.stepEl.addEventListener('click', (event) => {
+	ui.quizEl.addEventListener('click', (event) => {
 		const target = event.target;
 		if (!(target instanceof Element)) {
 			return;
 		}
-		const btn = target.closest<HTMLButtonElement>('[data-js-set-diagnosis-option]');
+		const btn = target.closest<HTMLButtonElement>('[data-js-shindan-option]');
 		if (!btn) {
 			return;
 		}
-		const value = btn.dataset.setDiagnosisOptionValue;
-		const field = btn.closest<HTMLElement>('[data-js-set-diagnosis-question]');
-		const questionId = field?.getAttribute('data-js-set-diagnosis-question');
+		const value = btn.dataset.shindanOptionValue;
+		const field = btn.closest<HTMLElement>('[data-js-shindan-question]');
+		const questionId = field?.getAttribute('data-js-shindan-question');
 		if (!value || !questionId || !isQuestionId(questionId)) {
 			return;
 		}
@@ -106,7 +103,6 @@ function bindSetDiagnosisUi(ui: Ui): void {
 		renderQuestion(ui, firstQuestionId);
 		ui.resultEl.hidden = true;
 		ui.quizEl.hidden = false;
-		ui.errorEl.hidden = true;
 		hideAllOutcomes(ui);
 	});
 }
@@ -117,28 +113,28 @@ function renderQuestion(ui: Ui, id: QuestionId): void {
 	if (!(fragment instanceof DocumentFragment)) {
 		return;
 	}
-	const field = fragment.querySelector<HTMLElement>('[data-js-set-diagnosis-question]');
-	const legend = fragment.querySelector<HTMLElement>('[data-js-set-diagnosis-question-text]');
-	const optionsEl = fragment.querySelector<HTMLElement>('[data-js-set-diagnosis-question-options]');
+	const field = fragment.querySelector<HTMLElement>('[data-js-shindan-question]');
+	const legend = fragment.querySelector<HTMLElement>('[data-js-shindan-question-text]');
+	const optionsEl = fragment.querySelector<HTMLElement>('[data-js-shindan-question-options]');
 	if (!field || !legend || !optionsEl) {
 		return;
 	}
-	field.setAttribute('data-js-set-diagnosis-question', id);
+	field.setAttribute('data-js-shindan-question', id);
 	legend.textContent = def.question;
 	for (const [value, label] of Object.entries(def.options)) {
 		const optionFragment = ui.optionTemplate.content.cloneNode(true);
 		if (!(optionFragment instanceof DocumentFragment)) {
 			continue;
 		}
-		const btn = optionFragment.querySelector<HTMLButtonElement>('[data-js-set-diagnosis-option]');
+		const btn = optionFragment.querySelector<HTMLButtonElement>('[data-js-shindan-option]');
 		if (!btn) {
 			continue;
 		}
-		btn.dataset.setDiagnosisOptionValue = value;
+		btn.dataset.shindanOptionValue = value;
 		btn.textContent = label;
 		optionsEl.append(optionFragment);
 	}
-	ui.stepEl.replaceChildren(fragment);
+	ui.quizEl.replaceChildren(fragment);
 }
 
 function showResult(ui: Ui, answers: Answers): void {
@@ -150,17 +146,14 @@ function showResult(ui: Ui, answers: Answers): void {
 	hideAllOutcomes(ui);
 	const outcomeId = resolveOutcomeId(answers);
 	if (!outcomeId) {
-		ui.errorEl.hidden = false;
 		return;
 	}
 	const panel = ui.outcomesEl.querySelector<HTMLElement>(
-		`[data-js-set-diagnosis-outcome="${outcomeId}"]`,
+		`[data-js-shindan-outcome="${outcomeId}"]`,
 	);
 	if (!panel) {
-		ui.errorEl.hidden = false;
 		return;
 	}
-	ui.errorEl.hidden = true;
 	panel.hidden = false;
 }
 

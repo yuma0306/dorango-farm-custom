@@ -1,6 +1,3 @@
-/**
- * DOM読み込み後
- */
 document.addEventListener('DOMContentLoaded', () => {
 	const redirectThanks = () => {
 		const thanksPath = '/contact/thanks/';
