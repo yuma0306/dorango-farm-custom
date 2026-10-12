@@ -1,0 +1,6 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+.hr {
+	border-top: 1px solid $gray01;
+}

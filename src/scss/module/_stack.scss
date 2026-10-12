@@ -3,10 +3,6 @@
 
 .stack {
 	display: grid;
-	> * {
-		min-width: 0;
-		margin: 0;
-	}
 }
 
 @include pc {

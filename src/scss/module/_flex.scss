@@ -1,0 +1,39 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+.flex {
+	display: flex;
+	flex-wrap: wrap;
+	&--fit-center {
+		width: fit-content;
+		margin-inline: auto;
+	}
+	&--justify-center {
+		justify-content: center;
+	}
+	&--align-center {
+		align-items: center;
+	}
+}
+
+@include pc {
+	.flex {
+		gap: #{$spacing-2}px;
+		@each $key, $value in $spacing-map {
+			&--gap#{$key} {
+				gap: #{$value}px;
+			}
+		}
+	}
+}
+
+@include sp {
+	.flex {
+		gap: vw($spacing-2);
+		@each $key, $value in $spacing-map {
+			&--gap#{$key} {
+				gap: vw($value);
+			}
+		}
+	}
+}

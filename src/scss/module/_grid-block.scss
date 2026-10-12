@@ -4,8 +4,7 @@
 @include pc {
 	.grid-block {
 		display: grid;
-		gap: 20px;
-		margin-top: 20px;
+		gap: #{$spacing-2}px;
 		&--col2 {
 			grid-template-columns: repeat(2, 1fr);
 		}
@@ -15,7 +14,6 @@
 @include sp {
 	.grid-block {
 		display: grid;
-		gap: vw(20);
-		margin-top: vw(20);
+		gap: #{$spacing-2}px;
 	}
 }

@@ -35,7 +35,6 @@
 @include pc {
 	.article-date {
 		gap: #{$spacing-2}px;
-		margin-top: #{$spacing-2}px;
 		&__item {
 			gap: #{$spacing-6}px;
 		}
@@ -45,7 +44,6 @@
 @include sp {
 	.article-date {
 		gap: vw($spacing-2);
-		margin-top: vw($spacing-2);
 		&__item {
 			gap: vw($spacing-6);
 		}

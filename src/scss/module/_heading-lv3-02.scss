@@ -1,0 +1,16 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+@include pc {
+	.heading-lv3-02 {
+		font-size: $fzLargePC;
+		font-weight: $fwMedium;
+	}
+}
+
+@include sp {
+	.heading-lv3-02 {
+		font-size: $fzLargeSP;
+		font-weight: $fwMedium;
+	}
+}

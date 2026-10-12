@@ -15,26 +15,28 @@
 				<span class="heading-lv1-01__text"><?php echo esc_html($taxTitle); ?></span>
 			</h1>
 			<div class="inner">
-				<ul class="breadcrumb">
-					<li class="breadcrumb__item">
-						<a class="breadcrumb__link" href="/">ホーム</a>
-					</li>
-					<li class="breadcrumb__item">
-						<a class="breadcrumb__link" href="/tag/">タグ一覧</a>
-					</li>
-					<li class="breadcrumb__item">
-						<span class="breadcrumb__text"><?php echo esc_html($taxTitle); ?></span>
-					</li>
-				</ul>
-				<?php get_template_part('include/aff-text'); ?>
-				<div class="grid-block grid-block--col2">
-					<?php if(have_posts()): ?>
-						<?php while (have_posts()): the_post(); ?>
-							<?php get_template_part('include/blogs-item'); ?>
-						<?php endwhile; ?>
-					<?php endif; ?>
+				<div class="stack">
+					<ul class="breadcrumb">
+						<li class="breadcrumb__item">
+							<a class="breadcrumb__link" href="/">ホーム</a>
+						</li>
+						<li class="breadcrumb__item">
+							<a class="breadcrumb__link" href="/tag/">タグ一覧</a>
+						</li>
+						<li class="breadcrumb__item">
+							<span class="breadcrumb__text"><?php echo esc_html($taxTitle); ?></span>
+						</li>
+					</ul>
+					<?php get_template_part('include/aff-text'); ?>
+					<div class="grid-block grid-block--col2">
+						<?php if(have_posts()): ?>
+							<?php while (have_posts()): the_post(); ?>
+								<?php get_template_part('include/blogs-item'); ?>
+							<?php endwhile; ?>
+						<?php endif; ?>
+					</div>
+					<?php createPagenation(); ?>
 				</div>
-				<?php createPagenation(); ?>
 			</div>
 		</main>
 		<?php get_template_part('include/footer'); ?>

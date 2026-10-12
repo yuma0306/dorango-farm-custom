@@ -8,7 +8,7 @@ if ($data === null) {
 	return;
 }
 ?>
-<section>
+<section class="stack">
 	<h2 class="heading-lv2-02">ボールパイソンについて詳しく</h2>
 	<?php if ($data['hub_visible']) : ?>
 		<div class="grid-block grid-block--col2">

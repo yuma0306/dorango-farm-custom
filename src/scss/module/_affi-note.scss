@@ -1,18 +1,7 @@
 @use '../global/import' as *;
 @use '../config/import' as *;
 
-@include pc {
-	.affi-note {
-		margin-top: 20px;
-		font-weight: $fwMedium;
-		text-decoration: underline;
-	}
-}
-
-@include sp {
-	.affi-note {
-		margin-top: vw(20);
-		font-weight: $fwMedium;
-		text-decoration: underline;
-	}
+.affi-note {
+	font-weight: $fwMedium;
+	text-decoration: underline;
 }

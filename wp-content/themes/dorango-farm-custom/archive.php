@@ -24,33 +24,35 @@
 				<span class="heading-lv1-01__text"><?php echo $resultTitle; ?></span>
 			</h1>
 			<div class="inner">
-				<ul class="breadcrumb">
-					<li class="breadcrumb__item">
-						<a class="breadcrumb__link" href="/">ホーム</a>
-					</li>
-					<li class="breadcrumb__item">
-						<span class="breadcrumb__text"><?php echo $resultTitle; ?></span>
-					</li>
-				</ul>
-				<?php get_template_part('include/aff-text'); ?>
-				<div class="grid-block grid-block--col2">
-					<?php
-						$args = [
-							'post_type' => $currentPath,
-							'posts_per_page' => get_option('post_per_page'),
-							'orderby' => 'modified',
-							'order' => 'DESC',
-							'paged' => get_query_var('paged') ? get_query_var('paged') : 1,
-						];
-						$query = new WP_Query($args);
-					?>
-					<?php if($query->have_posts()): ?>
-						<?php while ($query->have_posts()): $query->the_post(); ?>
-							<?php get_template_part('include/blogs-item'); ?>
-						<?php endwhile; ?>
-					<?php endif; ?>
+				<div class="stack">
+					<ul class="breadcrumb">
+						<li class="breadcrumb__item">
+							<a class="breadcrumb__link" href="/">ホーム</a>
+						</li>
+						<li class="breadcrumb__item">
+							<span class="breadcrumb__text"><?php echo $resultTitle; ?></span>
+						</li>
+					</ul>
+					<?php get_template_part('include/aff-text'); ?>
+					<div class="grid-block grid-block--col2">
+						<?php
+							$args = [
+								'post_type' => $currentPath,
+								'posts_per_page' => get_option('post_per_page'),
+								'orderby' => 'modified',
+								'order' => 'DESC',
+								'paged' => get_query_var('paged') ? get_query_var('paged') : 1,
+							];
+							$query = new WP_Query($args);
+						?>
+						<?php if($query->have_posts()): ?>
+							<?php while ($query->have_posts()): $query->the_post(); ?>
+								<?php get_template_part('include/blogs-item'); ?>
+							<?php endwhile; ?>
+						<?php endif; ?>
+					</div>
+					<?php createWpPagination($query); ?>
 				</div>
-				<?php createWpPagination($query); ?>
 			</div>
 		</main>
 		<?php get_template_part('include/footer'); ?>

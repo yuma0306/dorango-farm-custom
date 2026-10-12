@@ -41,24 +41,26 @@
 						<span class="breadcrumb__text"><?php echo esc_html($heading); ?></span>
 					</li>
 				</ul>
-				<?php if(!empty($thumb)): ?>
-				<picture class="article-thumb">
-					<img class="article-thumb__img" src="<?php echo esc_url($thumb['url']); ?>" alt="<?php echo esc_html($thumb['alt']); ?>" width="<?php echo esc_html($thumb['width']); ?>" height="<?php echo esc_html($thumb['height']); ?>">
-				</picture>
-				<?php endif; ?>
-				<div class="article-date">
-					<span class="article-date__item"><span class="article-date__icon article-date__icon--pencil" role="img" aria-label="投稿日"></span><time class="article-date__text" datetime="<?php echo esc_html($publishedDate); ?>"><?php echo esc_html($publishedDate); ?></time></span>
-					<span class="article-date__item"><span class="article-date__icon article-date__icon--update" role="img" aria-label="更新日"></span><time class="article-date__text" datetime="<?php echo esc_html($modifiedDate); ?>"><?php echo esc_html($modifiedDate); ?></time></span>
+				<div class="stack">
+					<?php if(!empty($thumb)): ?>
+					<picture class="article-thumb">
+						<img class="article-thumb__img" src="<?php echo esc_url($thumb['url']); ?>" alt="<?php echo esc_html($thumb['alt']); ?>" width="<?php echo esc_html($thumb['width']); ?>" height="<?php echo esc_html($thumb['height']); ?>">
+					</picture>
+					<?php endif; ?>
+					<div class="article-date">
+						<span class="article-date__item"><span class="article-date__icon article-date__icon--pencil" role="img" aria-label="投稿日"></span><time class="article-date__text" datetime="<?php echo esc_html($publishedDate); ?>"><?php echo esc_html($publishedDate); ?></time></span>
+						<span class="article-date__item"><span class="article-date__icon article-date__icon--update" role="img" aria-label="更新日"></span><time class="article-date__text" datetime="<?php echo esc_html($modifiedDate); ?>"><?php echo esc_html($modifiedDate); ?></time></span>
+					</div>
+					<?php if (str_contains($tocHtml, 'toc__link')) : ?>
+						<details class="toc">
+							<summary class="toc__summary" data-gtm-event="<?php echo esc_attr(gtm_event('article_toc')); ?>">目次</summary>
+							<div class="toc__content">
+								<?php echo $tocHtml; ?>
+							</div>
+						</details>
+					<?php endif; ?>
+					<?php get_template_part('include/aff-text'); ?>
 				</div>
-				<?php if (str_contains($tocHtml, 'toc__link')) : ?>
-					<details class="toc">
-						<summary class="toc__summary" data-gtm-event="<?php echo esc_attr(gtm_event('article_toc')); ?>">目次</summary>
-						<div class="toc__content">
-							<?php echo $tocHtml; ?>
-						</div>
-					</details>
-				<?php endif; ?>
-				<?php get_template_part('include/aff-text'); ?>
 				<section class="article-content-v2 wysiwyg-v2">
 					<?php the_content(); ?>
 				</section>

@@ -1,0 +1,22 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+.content-box {
+	background-color: $white01;
+}
+
+@include pc {
+	.content-box {
+		box-shadow: 0 0 2px $primary04;
+		padding: #{$spacing-3}px;
+		border-radius: #{$spacing-2}px;
+	}
+}
+
+@include sp {
+	.content-box {
+		box-shadow: 0 0 vw(2) $primary04;
+		padding: vw(#{$spacing-3});
+		border-radius: vw(#{$spacing-2});
+	}
+}

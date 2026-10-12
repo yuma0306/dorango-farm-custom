@@ -34,4 +34,4 @@
 	<!-- /inquiry -->
 </div>
 
-[submit class:btn-link01 "送信"]
+[submit class:button "送信"]
