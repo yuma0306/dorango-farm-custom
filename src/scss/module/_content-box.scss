@@ -8,7 +8,7 @@
 @include pc {
 	.content-box {
 		box-shadow: 0 0 2px $primary04;
-		padding: #{$spacing-3}px;
+		padding: #{$spacing-3} #{$spacing-2}px;
 		border-radius: #{$spacing-2}px;
 	}
 }
@@ -16,7 +16,7 @@
 @include sp {
 	.content-box {
 		box-shadow: 0 0 vw(2) $primary04;
-		padding: vw(#{$spacing-3});
+		padding: vw(#{$spacing-3}) vw(#{$spacing-2});
 		border-radius: vw(#{$spacing-2});
 	}
 }

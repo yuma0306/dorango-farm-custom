@@ -4,7 +4,14 @@ function is_ball_python_post(): bool {
 	return is_singular('breed') && has_term('ball-python', 'species');
 }
 
-const BALL_PYTHON_HUB_ID = 4942;
+const BALL_PYTHON_HUB_RECOMMENDED_POST_IDS = [
+	4942,
+	5571,
+];
+
+function ball_python_hub_is_recommended(int $post_id): bool {
+	return in_array($post_id, BALL_PYTHON_HUB_RECOMMENDED_POST_IDS, true);
+}
 
 function ball_python_hub_sections(): array {
 	return [
@@ -22,8 +29,14 @@ function ball_python_hub_sections(): array {
 
 function ball_python_hub_data(int $exclude_id): ?array {
 	$sections = ball_python_hub_sections();
-	$hub_id = BALL_PYTHON_HUB_ID !== $exclude_id ? BALL_PYTHON_HUB_ID : 0;
-	$post_ids = [];
+	$recommended_post_ids = [];
+	foreach (BALL_PYTHON_HUB_RECOMMENDED_POST_IDS as $post_id) {
+		$post_id = absint($post_id);
+		if ($post_id && $post_id !== $exclude_id) {
+			$recommended_post_ids[] = $post_id;
+		}
+	}
+	$post_ids = $recommended_post_ids;
 	foreach ($sections as $section) {
 		foreach ($section['post_ids'] ?? [] as $post_id) {
 			$post_id = absint($post_id);
@@ -32,11 +45,13 @@ function ball_python_hub_data(int $exclude_id): ?array {
 			}
 		}
 	}
-	if ($hub_id) {
-		$post_ids[] = $hub_id;
-	}
 	$posts_by_id = ball_python_hub_posts_by_id($post_ids);
-	$hub_visible = (bool) ($hub_id && isset($posts_by_id[$hub_id]));
+	$recommended_visible = [];
+	foreach ($recommended_post_ids as $post_id) {
+		if (isset($posts_by_id[$post_id])) {
+			$recommended_visible[] = $post_id;
+		}
+	}
 	$visible = [];
 	foreach ($sections as $section) {
 		$title = (string) ($section['title'] ?? '');
@@ -58,12 +73,11 @@ function ball_python_hub_data(int $exclude_id): ?array {
 			'post_ids' => $ids,
 		];
 	}
-	if ($visible === [] && !$hub_visible) {
+	if ($visible === [] && $recommended_visible === []) {
 		return null;
 	}
 	return [
-		'hub_id' => $hub_id,
-		'hub_visible' => $hub_visible,
+		'recommended_post_ids' => $recommended_visible,
 		'visible' => $visible,
 	];
 }
@@ -75,7 +89,7 @@ function ball_python_hub_posts_by_id(array $post_ids): array {
 	}
 	$posts = get_posts([
 		'post__in' => $post_ids,
-		'post_type' => 'breed',
+		'post_type' => ['breed', 'page'],
 		'post_status' => 'publish',
 		'numberposts' => count($post_ids),
 		'orderby' => 'post__in',

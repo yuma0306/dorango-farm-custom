@@ -13,6 +13,10 @@
 	transition: $transition;
 	text-align: center;
 	border: 1px solid $brown01;
+	&:not(#_) {
+		text-decoration: none;
+		color: $brown01;
+	}
 	&--end {
 		align-self: end;
 	}
@@ -38,7 +42,7 @@
 	.button {
 		min-width: 250px;
 		min-height: #{$spacing-7}px;
-		padding-inline: #{$spacing-5}px;
+		padding:#{$spacing-1}px #{$spacing-5}px;
 		&::after {
 			right: #{$spacing-2}px;
 			width: #{$spacing-2}px;
@@ -51,7 +55,7 @@
 	.button {
 		min-width: vw(250);
 		min-height: vw($spacing-7);
-		padding-inline: vw($spacing-5);
+		padding: vw($spacing-1) vw($spacing-5);
 		&::after {
 			right: vw($spacing-2);
 			width: vw($spacing-2);

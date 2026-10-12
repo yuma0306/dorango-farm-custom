@@ -7,7 +7,7 @@
 			display: block;
 			width: min(100%, 640px);
 		}
-		a {
+		:where(a:not(.text-link)) {
 			@include incLinkTextPC();
 		}
 		iframe {
@@ -120,7 +120,7 @@
 
 @include sp {
 	.wysiwyg-v2 {
-		a {
+		:where(a:not(.text-link)) {
 			@include incLinkTextSP();
 		}
 		.wp-block-image {

@@ -36,7 +36,6 @@ function getUiElements(root: HTMLElement) {
 	const resultEl = root.querySelector<HTMLElement>('[data-js-shindan-result]');
 	const outcomesEl = root.querySelector<HTMLElement>('[data-js-shindan-outcomes]');
 	const outcomePanels = root.querySelectorAll<HTMLElement>('[data-js-shindan-outcome]');
-	const retryBtn = root.querySelector<HTMLButtonElement>('[data-js-shindan-retry]');
 	const questionTemplate = root.querySelector<HTMLTemplateElement>(
 		'[data-js-shindan-question-template]',
 	);
@@ -48,7 +47,6 @@ function getUiElements(root: HTMLElement) {
 		!quizEl ||
 		!resultEl ||
 		!outcomesEl ||
-		!retryBtn ||
 		!questionTemplate ||
 		!optionTemplate ||
 		outcomePanels.length !== outcomeIds.length
@@ -61,7 +59,6 @@ function getUiElements(root: HTMLElement) {
 		resultEl,
 		outcomesEl,
 		outcomePanels,
-		retryBtn,
 		questionTemplate,
 		optionTemplate,
 	};
@@ -96,14 +93,6 @@ function bindShindanUi(ui: Ui): void {
 			return;
 		}
 		renderQuestion(ui, nextId);
-	});
-
-	ui.retryBtn.addEventListener('click', () => {
-		answers = {};
-		renderQuestion(ui, firstQuestionId);
-		ui.resultEl.hidden = true;
-		ui.quizEl.hidden = false;
-		hideAllOutcomes(ui);
 	});
 }
 
