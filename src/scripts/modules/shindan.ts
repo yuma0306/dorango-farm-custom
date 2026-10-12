@@ -1,3 +1,4 @@
+import { pushBallPythonShindan } from './ball-python-shindan-gtm';
 import { questions } from './shindan-questions';
 
 const outcomeIds = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'] as const;
@@ -144,6 +145,10 @@ function showResult(ui: Ui, answers: Answers): void {
 		return;
 	}
 	panel.hidden = false;
+	pushBallPythonShindan({
+		outcomeId,
+		answers: pruneAnswers(answers),
+	});
 }
 
 function hideAllOutcomes(ui: Ui): void {

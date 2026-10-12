@@ -1,4 +1,5 @@
 <?php
+
 function gtm_event(string $key) {
 	static $events = [
 		'floating_favorite' => 'floating-favorite',
@@ -10,6 +11,7 @@ function gtm_event(string $key) {
 		'article_toc' => 'article-toc',
 		'btn_top' => 'btn-top',
 		'search_submit' => 'search-submit',
+		'ball_python_shindan_retry' => 'ball_python_shindan_retry',
 	];
 	return $events[$key] ?? '';
 }
