@@ -6,7 +6,7 @@ function shindan_outcomes(): array {
 		// A: 繁殖「はい」→ エアコン「はい」（性別はどちらでも。以降の質問なし）
 		'A' => [
 			'intro' => sprintf(
-				'繁殖を目的としていて、部屋をエアコンで温度管理できる方向けの飼育セットです。ケージは<a class="text-link" target="_blank" href="%s">無印良品の衣装ケースを改造</a>して使います。',
+				'繁殖を目的としていて、部屋をエアコンで温度管理できる方向けの飼育セットです。ケージは<a class="text-link" target="_blank" href="%s">無印良品の衣装ケースを改造</a>し、マルチパネルヒーターをセットできるようにして使います。',
 				esc_url(home_url('/breed/ballpython-cage/'))
 			),
 			'article_ids' => [4926, 4931, 4936],
