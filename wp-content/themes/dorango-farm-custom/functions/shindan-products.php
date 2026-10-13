@@ -19,6 +19,8 @@ function shindan_product(string $id): ?string {
 		'water_dish_tapper_medium' => 'water-dish-tapper-medium',
 		'water_dish_tapper_large' => 'water-dish-tapper-large',
 		'hypochlorous_acid_water' => 'hypochlorous-acid-water',
+		'pressure_sprayer' => 'pressure-sprayer',
+		'feeding_tweezers' => 'feeding-tweezers',
 	];
 
 	return $affiliates[$id] ?? null;

@@ -6,7 +6,6 @@ function is_ball_python_post(): bool {
 
 const BALL_PYTHON_HUB_RECOMMENDED_POST_IDS = [
 	4942,
-	5571,
 ];
 
 function ball_python_hub_is_recommended(int $post_id): bool {
