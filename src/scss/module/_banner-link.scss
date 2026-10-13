@@ -1,0 +1,11 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+.banner-link {
+	display: block;
+	@include hoverOpacity();
+	border: 1px solid $primary03;
+	&__img {
+		display: block;
+	}
+}

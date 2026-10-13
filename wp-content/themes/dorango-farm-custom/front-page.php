@@ -27,7 +27,14 @@
 				<div class="validate-err js-search-err">
 					<div class="validate-err__elm js-search-child">キーワードを入力してください</div>
 				</div>
-				<p class="u-pt2-pc u-pt2-sp">ヘビ牧場どらんごファームでは、実際に飼育・繁殖した経験をもとに、<span class="u-primary02 u-bold">ボールパイソン</span>を中心に<span class="u-primary02 u-bold">爬虫類の飼育・繁殖、飼育用品、動物園、野生観察</span>について発信するメディアです。</p>
+				<div class="stack u-mt3-pc u-mt3-sp">
+					<p>ヘビ牧場どらんごファームでは、実際に飼育・繁殖した経験をもとに、<span class="u-primary02 u-bold">ボールパイソン</span>を中心に<span class="u-primary02 u-bold">爬虫類の飼育・繁殖、飼育用品、動物園、野生観察</span>について発信するメディアです。</p>
+					<div class="grid-block grid-block--col2">
+						<a href="/ballpython-setup-shindan/" class="banner-link">
+							<img class="banner-link__img" src="<?php echo get_template_directory_uri() ?>/assets/img/banner-ball-python-setup.webp" alt="ボールパイソン">
+						</a>
+					</div>
+				</div>
 				<?php get_template_part('include/ball-python-hub'); ?>
 				<a class="button u-mt3-pc u-mt3-sp" href="<?php echo esc_url($ballPythonArchiveUrl); ?>">ボールパイソンの記事</a>
 			</div>

@@ -65,6 +65,11 @@
 					<?php the_content(); ?>
 				</section>
 				<?php if (is_ball_python_post()) : ?>
+					<div class="grid-block grid-block--col2 u-mt3-pc u-mt3-sp">
+						<a href="/ballpython-setup-shindan/" class="banner-link">
+							<img class="banner-link__img" src="<?php echo get_template_directory_uri() ?>/assets/img/banner-ball-python-setup.webp" alt="ボールパイソン">
+						</a>
+					</div>
 					<?php get_template_part('include/ball-python-hub', null, ['exclude_id' => get_the_ID()]); ?>
 				<?php endif; ?>
 				<?php get_template_part('include/recent-posts', null, ['post_id' => get_the_ID()]); ?>

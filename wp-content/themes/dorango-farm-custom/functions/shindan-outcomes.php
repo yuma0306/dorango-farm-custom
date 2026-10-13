@@ -27,10 +27,6 @@ function shindan_outcomes(): array {
 					'label' => '水入れ',
 					'product_id' => 'water_dish_natural',
 				],
-				[
-					'label' => '次亜塩素酸水',
-					'product_id' => 'hypochlorous_acid_water',
-				],
 			],
 		],
 		// B: オス → 繁殖「はい」→ エアコン「いいえ」→ レイアウト「掃除・管理のしやすさ」
@@ -65,10 +61,6 @@ function shindan_outcomes(): array {
 				[
 					'label' => '温湿度計',
 					'product_id' => 'ad_5648a',
-				],
-				[
-					'label' => '次亜塩素酸水',
-					'product_id' => 'hypochlorous_acid_water',
 				],
 			],
 		],
@@ -105,10 +97,6 @@ function shindan_outcomes(): array {
 					'label' => '温湿度計',
 					'product_id' => 'ad_5648a',
 				],
-				[
-					'label' => '次亜塩素酸水',
-					'product_id' => 'hypochlorous_acid_water',
-				],
 			],
 		],
 		// D: メス → 繁殖「はい」→ エアコン「いいえ」→ レイアウト「掃除・管理のしやすさ」
@@ -143,10 +131,6 @@ function shindan_outcomes(): array {
 				[
 					'label' => '温湿度計',
 					'product_id' => 'ad_5648a',
-				],
-				[
-					'label' => '次亜塩素酸水',
-					'product_id' => 'hypochlorous_acid_water',
 				],
 			],
 		],
@@ -183,10 +167,6 @@ function shindan_outcomes(): array {
 					'label' => '温湿度計',
 					'product_id' => 'ad_5648a',
 				],
-				[
-					'label' => '次亜塩素酸水',
-					'product_id' => 'hypochlorous_acid_water',
-				],
 			],
 		],
 		// F: オス → 繁殖「いいえ」→ レイアウト「掃除・管理のしやすさ」→ 温湿度「費用を抑えたい」
@@ -221,10 +201,6 @@ function shindan_outcomes(): array {
 				[
 					'label' => '温湿度計',
 					'product_id' => 'vivaria_twin_meter_neo',
-				],
-				[
-					'label' => '次亜塩素酸水',
-					'product_id' => 'hypochlorous_acid_water',
 				],
 			],
 		],
@@ -261,10 +237,6 @@ function shindan_outcomes(): array {
 					'label' => '温湿度計',
 					'product_id' => 'ad_5648a',
 				],
-				[
-					'label' => '次亜塩素酸水',
-					'product_id' => 'hypochlorous_acid_water',
-				],
 			],
 		],
 		// H: オス → 繁殖「いいえ」→ レイアウト「自然な見た目を再現したい」→ 温湿度「費用を抑えたい」
@@ -299,10 +271,6 @@ function shindan_outcomes(): array {
 				[
 					'label' => '温湿度計',
 					'product_id' => 'vivaria_twin_meter_neo',
-				],
-				[
-					'label' => '次亜塩素酸水',
-					'product_id' => 'hypochlorous_acid_water',
 				],
 			],
 		],
@@ -339,10 +307,6 @@ function shindan_outcomes(): array {
 					'label' => '温湿度計',
 					'product_id' => 'ad_5648a',
 				],
-				[
-					'label' => '次亜塩素酸水',
-					'product_id' => 'hypochlorous_acid_water',
-				],
 			],
 		],
 		// J: メス → 繁殖「いいえ」→ レイアウト「掃除・管理のしやすさ」→ 温湿度「費用を抑えたい」
@@ -377,10 +341,6 @@ function shindan_outcomes(): array {
 				[
 					'label' => '温湿度計',
 					'product_id' => 'vivaria_twin_meter_neo',
-				],
-				[
-					'label' => '次亜塩素酸水',
-					'product_id' => 'hypochlorous_acid_water',
 				],
 			],
 		],
@@ -417,10 +377,6 @@ function shindan_outcomes(): array {
 					'label' => '温湿度計',
 					'product_id' => 'ad_5648a',
 				],
-				[
-					'label' => '次亜塩素酸水',
-					'product_id' => 'hypochlorous_acid_water',
-				],
 			],
 		],
 		// L: メス → 繁殖「いいえ」→ レイアウト「自然な見た目を再現したい」→ 温湿度「費用を抑えたい」
@@ -455,10 +411,6 @@ function shindan_outcomes(): array {
 				[
 					'label' => '温湿度計',
 					'product_id' => 'vivaria_twin_meter_neo',
-				],
-				[
-					'label' => '次亜塩素酸水',
-					'product_id' => 'hypochlorous_acid_water',
 				],
 			],
 		],
@@ -495,10 +447,6 @@ function shindan_outcomes(): array {
 					'label' => '温湿度計',
 					'product_id' => 'ad_5648a',
 				],
-				[
-					'label' => '次亜塩素酸水',
-					'product_id' => 'hypochlorous_acid_water',
-				],
 			],
 		],
 	];
@@ -513,10 +461,12 @@ function shindan_outcome(string $id): ?array {
 		return null;
 	}
 
+	$items = isset($raw['items']) && is_array($raw['items']) ? $raw['items'] : [];
+
 	return [
 		'intro' => isset($raw['intro']) ? (string) $raw['intro'] : '',
 		'article_ids' => isset($raw['article_ids']) && is_array($raw['article_ids']) ? $raw['article_ids'] : [],
-		'items' => isset($raw['items']) && is_array($raw['items']) ? $raw['items'] : [],
+		'items' => [...$items, ...shindan_common_items()],
 	];
 }
 
@@ -524,4 +474,21 @@ function shindan_outcome_items(string $id): array {
 	$outcome = shindan_outcome($id);
 
 	return $outcome !== null ? $outcome['items'] : [];
+}
+
+function shindan_common_items(): array {
+	return [
+		[
+			'label' => '次亜塩素酸水',
+			'product_id' => 'hypochlorous_acid_water',
+		],
+		[
+			'label' => '蓄圧式霧吹き',
+			'product_id' => 'pressure_sprayer',
+		],
+		[
+			'label' => '給餌用ピンセット',
+			'product_id' => 'feeding_tweezers',
+		],
+	];
 }
