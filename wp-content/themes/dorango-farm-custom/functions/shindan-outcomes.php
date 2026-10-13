@@ -14,18 +14,22 @@ function shindan_outcomes(): array {
 				[
 					'label' => 'ケージ',
 					'product_id' => 'muji_costume_case',
+					'description' => '',
 				],
 				[
 					'label' => 'パネルヒーター',
 					'product_id' => 'multi_panel_heater_16w',
+					'description' => '',
 				],
 				[
 					'label' => '床材',
 					'product_id' => 'pet_sheet_medium',
+					'description' => '',
 				],
 				[
 					'label' => '水入れ',
 					'product_id' => 'water_dish_natural',
+					'description' => '',
 				],
 			],
 		],
@@ -37,30 +41,37 @@ function shindan_outcomes(): array {
 				[
 					'label' => 'ケージ',
 					'product_id' => 'pantheon_6030',
+					'description' => '',
 				],
 				[
 					'label' => '保温',
 					'product_id' => 'heating_top_m',
+					'description' => '',
 				],
 				[
 					'label' => 'パネルヒーター',
 					'product_id' => 'multi_panel_heater_16w',
+					'description' => '',
 				],
 				[
 					'label' => '床材',
 					'product_id' => 'pet_sheet_medium',
+					'description' => '',
 				],
 				[
 					'label' => '水入れ',
 					'product_id' => 'water_dish_tapper_medium',
+					'description' => '',
 				],
 				[
 					'label' => 'サーモスタット',
 					'product_id' => 'thermostat_advanced',
+					'description' => '',
 				],
 				[
 					'label' => '温湿度計',
 					'product_id' => 'ad_5648a',
+					'description' => '',
 				],
 			],
 		],
@@ -72,30 +83,37 @@ function shindan_outcomes(): array {
 				[
 					'label' => 'ケージ',
 					'product_id' => 'pantheon_6030',
+					'description' => '',
 				],
 				[
 					'label' => '保温',
 					'product_id' => 'heating_top_m',
+					'description' => '',
 				],
 				[
 					'label' => 'パネルヒーター',
 					'product_id' => 'multi_panel_heater_16w',
+					'description' => '',
 				],
 				[
 					'label' => '床材',
 					'product_id' => 'husk_chip',
+					'description' => '',
 				],
 				[
 					'label' => '水入れ',
 					'product_id' => 'water_dish_natural',
+					'description' => '',
 				],
 				[
 					'label' => 'サーモスタット',
 					'product_id' => 'thermostat_advanced',
+					'description' => '',
 				],
 				[
 					'label' => '温湿度計',
 					'product_id' => 'ad_5648a',
+					'description' => '',
 				],
 			],
 		],
@@ -107,30 +125,37 @@ function shindan_outcomes(): array {
 				[
 					'label' => 'ケージ',
 					'product_id' => 'pantheon_9045',
+					'description' => '',
 				],
 				[
 					'label' => '保温',
 					'product_id' => 'heating_top_m',
+					'description' => '',
 				],
 				[
 					'label' => 'パネルヒーター',
 					'product_id' => 'multi_panel_heater_32w',
+					'description' => '',
 				],
 				[
 					'label' => '床材',
 					'product_id' => 'pet_sheet_large',
+					'description' => '',
 				],
 				[
 					'label' => '水入れ',
 					'product_id' => 'water_dish_tapper_large',
+					'description' => '',
 				],
 				[
 					'label' => 'サーモスタット',
 					'product_id' => 'thermostat_advanced',
+					'description' => '',
 				],
 				[
 					'label' => '温湿度計',
 					'product_id' => 'ad_5648a',
+					'description' => '',
 				],
 			],
 		],
@@ -142,30 +167,37 @@ function shindan_outcomes(): array {
 				[
 					'label' => 'ケージ',
 					'product_id' => 'pantheon_9045',
+					'description' => '',
 				],
 				[
 					'label' => '保温',
 					'product_id' => 'heating_top_m',
+					'description' => '',
 				],
 				[
 					'label' => 'パネルヒーター',
 					'product_id' => 'multi_panel_heater_32w',
+					'description' => '',
 				],
 				[
 					'label' => '床材',
 					'product_id' => 'husk_chip',
+					'description' => '',
 				],
 				[
 					'label' => '水入れ',
 					'product_id' => 'water_dish_natural',
+					'description' => '',
 				],
 				[
 					'label' => 'サーモスタット',
 					'product_id' => 'thermostat_advanced',
+					'description' => '',
 				],
 				[
 					'label' => '温湿度計',
 					'product_id' => 'ad_5648a',
+					'description' => '',
 				],
 			],
 		],
@@ -177,30 +209,37 @@ function shindan_outcomes(): array {
 				[
 					'label' => 'ケージ',
 					'product_id' => 'pantheon_6030',
+					'description' => '',
 				],
 				[
 					'label' => '保温',
 					'product_id' => 'heating_top_m',
+					'description' => '',
 				],
 				[
 					'label' => 'パネルヒーター',
 					'product_id' => 'multi_panel_heater_16w',
+					'description' => '',
 				],
 				[
 					'label' => '床材',
 					'product_id' => 'pet_sheet_medium',
+					'description' => '',
 				],
 				[
 					'label' => '水入れ',
 					'product_id' => 'water_dish_tapper_medium',
+					'description' => '',
 				],
 				[
 					'label' => 'サーモスタット',
 					'product_id' => 'thermostat_basic',
+					'description' => '',
 				],
 				[
 					'label' => '温湿度計',
 					'product_id' => 'vivaria_twin_meter_neo',
+					'description' => '',
 				],
 			],
 		],
@@ -212,30 +251,37 @@ function shindan_outcomes(): array {
 				[
 					'label' => 'ケージ',
 					'product_id' => 'pantheon_6030',
+					'description' => '',
 				],
 				[
 					'label' => '保温',
 					'product_id' => 'heating_top_m',
+					'description' => '',
 				],
 				[
 					'label' => 'パネルヒーター',
 					'product_id' => 'multi_panel_heater_16w',
+					'description' => '',
 				],
 				[
 					'label' => '床材',
 					'product_id' => 'pet_sheet_medium',
+					'description' => '',
 				],
 				[
 					'label' => '水入れ',
 					'product_id' => 'water_dish_tapper_medium',
+					'description' => '',
 				],
 				[
 					'label' => 'サーモスタット',
 					'product_id' => 'thermostat_advanced',
+					'description' => '',
 				],
 				[
 					'label' => '温湿度計',
 					'product_id' => 'ad_5648a',
+					'description' => '',
 				],
 			],
 		],
@@ -247,30 +293,37 @@ function shindan_outcomes(): array {
 				[
 					'label' => 'ケージ',
 					'product_id' => 'pantheon_6030',
+					'description' => '',
 				],
 				[
 					'label' => '保温',
 					'product_id' => 'heating_top_m',
+					'description' => '',
 				],
 				[
 					'label' => 'パネルヒーター',
 					'product_id' => 'multi_panel_heater_16w',
+					'description' => '',
 				],
 				[
 					'label' => '床材',
 					'product_id' => 'husk_chip',
+					'description' => '',
 				],
 				[
 					'label' => '水入れ',
 					'product_id' => 'water_dish_natural',
+					'description' => '',
 				],
 				[
 					'label' => 'サーモスタット',
 					'product_id' => 'thermostat_basic',
+					'description' => '',
 				],
 				[
 					'label' => '温湿度計',
 					'product_id' => 'vivaria_twin_meter_neo',
+					'description' => '',
 				],
 			],
 		],
@@ -282,30 +335,37 @@ function shindan_outcomes(): array {
 				[
 					'label' => 'ケージ',
 					'product_id' => 'pantheon_6030',
+					'description' => '',
 				],
 				[
 					'label' => '保温',
 					'product_id' => 'heating_top_m',
+					'description' => '',
 				],
 				[
 					'label' => 'パネルヒーター',
 					'product_id' => 'multi_panel_heater_16w',
+					'description' => '',
 				],
 				[
 					'label' => '床材',
 					'product_id' => 'husk_chip',
+					'description' => '',
 				],
 				[
 					'label' => '水入れ',
 					'product_id' => 'water_dish_natural',
+					'description' => '',
 				],
 				[
 					'label' => 'サーモスタット',
 					'product_id' => 'thermostat_advanced',
+					'description' => '',
 				],
 				[
 					'label' => '温湿度計',
 					'product_id' => 'ad_5648a',
+					'description' => '',
 				],
 			],
 		],
@@ -317,30 +377,37 @@ function shindan_outcomes(): array {
 				[
 					'label' => 'ケージ',
 					'product_id' => 'pantheon_9045',
+					'description' => '',
 				],
 				[
 					'label' => '保温',
 					'product_id' => 'heating_top_m',
+					'description' => '',
 				],
 				[
 					'label' => 'パネルヒーター',
 					'product_id' => 'multi_panel_heater_32w',
+					'description' => '',
 				],
 				[
 					'label' => '床材',
 					'product_id' => 'pet_sheet_large',
+					'description' => '',
 				],
 				[
 					'label' => '水入れ',
 					'product_id' => 'water_dish_tapper_large',
+					'description' => '',
 				],
 				[
 					'label' => 'サーモスタット',
 					'product_id' => 'thermostat_basic',
+					'description' => '',
 				],
 				[
 					'label' => '温湿度計',
 					'product_id' => 'vivaria_twin_meter_neo',
+					'description' => '',
 				],
 			],
 		],
@@ -352,30 +419,37 @@ function shindan_outcomes(): array {
 				[
 					'label' => 'ケージ',
 					'product_id' => 'pantheon_9045',
+					'description' => '',
 				],
 				[
 					'label' => '保温',
 					'product_id' => 'heating_top_m',
+					'description' => '',
 				],
 				[
 					'label' => 'パネルヒーター',
 					'product_id' => 'multi_panel_heater_32w',
+					'description' => '',
 				],
 				[
 					'label' => '床材',
 					'product_id' => 'pet_sheet_large',
+					'description' => '',
 				],
 				[
 					'label' => '水入れ',
 					'product_id' => 'water_dish_tapper_large',
+					'description' => '',
 				],
 				[
 					'label' => 'サーモスタット',
 					'product_id' => 'thermostat_advanced',
+					'description' => '',
 				],
 				[
 					'label' => '温湿度計',
 					'product_id' => 'ad_5648a',
+					'description' => '',
 				],
 			],
 		],
@@ -387,30 +461,37 @@ function shindan_outcomes(): array {
 				[
 					'label' => 'ケージ',
 					'product_id' => 'pantheon_9045',
+					'description' => '',
 				],
 				[
 					'label' => '保温',
 					'product_id' => 'heating_top_m',
+					'description' => '',
 				],
 				[
 					'label' => 'パネルヒーター',
 					'product_id' => 'multi_panel_heater_32w',
+					'description' => '',
 				],
 				[
 					'label' => '床材',
 					'product_id' => 'husk_chip',
+					'description' => '',
 				],
 				[
 					'label' => '水入れ',
 					'product_id' => 'water_dish_natural',
+					'description' => '',
 				],
 				[
 					'label' => 'サーモスタット',
 					'product_id' => 'thermostat_basic',
+					'description' => '',
 				],
 				[
 					'label' => '温湿度計',
 					'product_id' => 'vivaria_twin_meter_neo',
+					'description' => '',
 				],
 			],
 		],
@@ -422,30 +503,37 @@ function shindan_outcomes(): array {
 				[
 					'label' => 'ケージ',
 					'product_id' => 'pantheon_9045',
+					'description' => '',
 				],
 				[
 					'label' => '保温',
 					'product_id' => 'heating_top_m',
+					'description' => '',
 				],
 				[
 					'label' => 'パネルヒーター',
 					'product_id' => 'multi_panel_heater_32w',
+					'description' => '',
 				],
 				[
 					'label' => '床材',
 					'product_id' => 'husk_chip',
+					'description' => '',
 				],
 				[
 					'label' => '水入れ',
 					'product_id' => 'water_dish_natural',
+					'description' => '',
 				],
 				[
 					'label' => 'サーモスタット',
 					'product_id' => 'thermostat_advanced',
+					'description' => '',
 				],
 				[
 					'label' => '温湿度計',
 					'product_id' => 'ad_5648a',
+					'description' => '',
 				],
 			],
 		],
@@ -472,7 +560,6 @@ function shindan_outcome(string $id): ?array {
 
 function shindan_outcome_items(string $id): array {
 	$outcome = shindan_outcome($id);
-
 	return $outcome !== null ? $outcome['items'] : [];
 }
 
@@ -481,14 +568,17 @@ function shindan_common_items(): array {
 		[
 			'label' => '次亜塩素酸水',
 			'product_id' => 'hypochlorous_acid_water',
+			'description' => '',
 		],
 		[
 			'label' => '蓄圧式霧吹き',
 			'product_id' => 'pressure_sprayer',
+			'description' => '',
 		],
 		[
 			'label' => '給餌用ピンセット',
 			'product_id' => 'feeding_tweezers',
+			'description' => '',
 		],
 	];
 }

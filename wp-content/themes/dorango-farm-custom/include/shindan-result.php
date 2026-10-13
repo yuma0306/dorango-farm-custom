@@ -18,19 +18,21 @@ $article_ids = isset($lead['article_ids']) && is_array($lead['article_ids']) ? $
 				<h3 class="heading-lv3-01">あなたにおすすめの飼育用品</h3>
 				<?php foreach ($items as $item) : ?>
 					<?php
-					$item = is_array($item) ? $item : [];
-					$label = isset($item['label']) ? (string) $item['label'] : '';
-					$product_id = isset($item['product_id']) ? (string) $item['product_id'] : '';
-					$affiliate_slug = $product_id !== ''
-						? (shindan_product($product_id) ?? '')
-						: '';
-					if ($affiliate_slug === '') {
-						continue;
-					}
+						$item = is_array($item) ? $item : [];
+						$label = $item['label'] ?? '';
+						$description = $item['description'] ?? '';
+						$product_id = $item['product_id'] ?? '';
+						$affiliate_slug = shindan_product($product_id);
+						if ($affiliate_slug === null) {
+							continue;
+						}
 					?>
 					<dl class="stack">
 						<dt class="heading-lv4-01"><?php echo esc_html($label); ?></dt>
 						<dd>
+							<?php if ($description !== '') : ?>
+								<p><?php echo esc_html($description); ?></p>
+							<?php endif; ?>
 							<?php get_template_part('include/shindan-affiliate/' . $affiliate_slug); ?>
 						</dd>
 					</dl>
