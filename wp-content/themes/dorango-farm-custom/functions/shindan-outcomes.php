@@ -16,6 +16,10 @@ function shindan_outcomes(): array {
 					'product_id' => 'muji_costume_case',
 				],
 				[
+					'label' => 'パネルヒーター',
+					'product_id' => 'multi_panel_heater_16w',
+				],
+				[
 					'label' => '床材',
 					'product_id' => 'pet_sheet_medium',
 				],
