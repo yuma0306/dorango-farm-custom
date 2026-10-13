@@ -35,7 +35,7 @@ $article_ids = isset($lead['article_ids']) && is_array($lead['article_ids']) ? $
 					?>
 					<dl class="stack">
 						<dt class="heading-lv4-01"><?php echo esc_html($label); ?></dt>
-						<dd>
+						<dd class="stack stack--gap1">
 							<?php if ($description !== '') : ?>
 								<p><?php echo esc_html($description); ?></p>
 							<?php endif; ?>

@@ -15,23 +15,19 @@ function shindan_outcomes(): array {
 				[
 					'label' => 'ケージ',
 					'product_id' => 'muji_costume_case',
-					'description' => '',
+					'description' => '無印良品のポリプロピレン衣装ケース（大）です。積み上げ可能で、積み上げた隙間にマルチパネルヒーターをセットできるように改造して使えます。',
 				],
 				[
 					'label' => 'パネルヒーター',
 					'product_id' => 'multi_panel_heater_16w',
-					'description' => '',
+					'description' => '無印の衣装ケースを改造し、マルチパネルヒーター16wをセットできるようにして使います。パネルヒーターに温度調節機能が付いている優れものです。',
 				],
 				[
 					'label' => '床材',
 					'product_id' => 'pet_sheet_medium',
-					'description' => '',
+					'description' => '無印良品のポリプロピレン衣装ケース（大）にピッタリです。白いペットシーツで見栄えも良く、排泄物の状態が確認しやすいです。',
 				],
-				[
-					'label' => '水入れ',
-					'product_id' => 'water_dish_natural',
-					'description' => '',
-				],
+				...shindan_water_dish_natural_item(),
 			],
 		],
 		// B: オス → 繁殖「はい」→ エアコン「いいえ」→ レイアウト「掃除・管理のしやすさ」
@@ -577,22 +573,32 @@ function shindan_outcome_items(string $id): array {
 	return $outcome !== null ? $outcome['items'] : [];
 }
 
+function shindan_water_dish_natural_item(): array {
+	return [
+		[
+			'label' => '水入れ',
+			'product_id' => 'water_dish_natural',
+			'description' => 'ケージのコーナーに設置できる自然な見た目の水入れです。',
+		]
+	];
+}
+
 function shindan_common_items(): array {
 	return [
 		[
 			'label' => '次亜塩素酸水',
 			'product_id' => 'hypochlorous_acid_water',
-			'description' => '',
+			'description' => '掃除に使用する次亜塩素酸水です。消毒もできて、使用後水に戻るので生体にも安全に使える優れものです！',
 		],
 		[
 			'label' => '蓄圧式霧吹き',
 			'product_id' => 'pressure_sprayer',
-			'description' => '',
+			'description' => '手が疲れない蓄圧式の霧吹きです。簡単に霧吹きできます。100均とは違うのだよ。100均とは。',
 		],
 		[
 			'label' => '給餌用ピンセット',
 			'product_id' => 'feeding_tweezers',
-			'description' => '',
+			'description' => '竹で出来ており、生体に安全に給餌ができます。ピンセットはこれ一強です！',
 		],
 	];
 }
