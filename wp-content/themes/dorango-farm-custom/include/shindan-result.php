@@ -1,6 +1,7 @@
 <?php
 $view = is_array($args ?? null) ? $args : [];
 $outcome_id = isset($view['outcome_id']) ? (string) $view['outcome_id'] : '';
+$type = $view['type'] ?? '';
 $lead = isset($view['lead']) && is_array($view['lead']) ? $view['lead'] : [];
 $items = isset($view['items']) && is_array($view['items']) ? $view['items'] : [];
 $intro = isset($lead['intro']) ? (string) $lead['intro'] : '';
@@ -10,7 +11,12 @@ $article_ids = isset($lead['article_ids']) && is_array($lead['article_ids']) ? $
 <section>
 	<?php if ($items !== []) : ?>
 		<dl class="stack">
-			<dt class="heading-lv3-02 u-tc"><span class="u-bold u-primary02">診断結果</span></dt>
+			<dt class="u-tc stack stack--gap1">
+				<p class="heading-lv3-02 u-bold">診断結果</p>
+				<?php if ($type !== '') : ?>
+					<p class="heading-lv3-02 u-primary02 u-bold"><?php echo esc_html($type); ?></p>
+				<?php endif; ?>
+			</dt>
 			<dd class="stack">
 				<?php if ($intro !== '') : ?>
 					<p><?php echo wp_kses_post(nl2br($intro)); ?></p>
