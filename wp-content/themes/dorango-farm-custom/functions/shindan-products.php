@@ -67,6 +67,7 @@ function shindan_render_outcome(string $outcome_id): void {
 
 	get_template_part('include/shindan-result', null, [
 		'outcome_id' => $outcome_id,
+		'type' => $outcome['type'],
 		'lead' => shindan_outcome_lead_context($outcome, $outcome_id),
 		'items' => $outcome['items'],
 	]);
