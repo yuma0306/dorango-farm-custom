@@ -36,11 +36,7 @@ function shindan_outcomes(): array {
 			'intro' => 'オスのボールパイソンの飼育・繁殖をする方向けの飼育セット。メンテナンス性を重視したレイアウトと、繁殖に向けた細かい温度管理ができる飼育用品セットです。',
 			'article_ids' => [4931, 4936, 4942],
 			'items' => [
-				[
-					'label' => 'ケージ',
-					'product_id' => 'pantheon_6030',
-					'description' => '',
-				],
+				...shindan_pantheon_6030_item(),
 				[
 					'label' => '保温',
 					'product_id' => 'heating_top_m',
@@ -79,11 +75,7 @@ function shindan_outcomes(): array {
 			'intro' => 'オスのボールパイソンの飼育・繁殖をする方向けの飼育セット。自然な見た目のレイアウトと、繁殖に向けた細かい温度管理を両立した飼育セットです。',
 			'article_ids' => [4931, 4936, 4942],
 			'items' => [
-				[
-					'label' => 'ケージ',
-					'product_id' => 'pantheon_6030',
-					'description' => '',
-				],
+				...shindan_pantheon_6030_item(),
 				[
 					'label' => '保温',
 					'product_id' => 'heating_top_m',
@@ -122,11 +114,7 @@ function shindan_outcomes(): array {
 			'intro' => 'メスのボールパイソンの飼育・繁殖をする方向けの飼育セット。広めのケージに、掃除のしやすさと繁殖に向けた細かい温度管理ができる飼育用品セットです。',
 			'article_ids' => [4931, 4936, 4942],
 			'items' => [
-				[
-					'label' => 'ケージ',
-					'product_id' => 'pantheon_9045',
-					'description' => '',
-				],
+				...shindan_pantheon_9045_item(),
 				[
 					'label' => '保温',
 					'product_id' => 'heating_top_m',
@@ -165,11 +153,7 @@ function shindan_outcomes(): array {
 			'intro' => 'メスのボールパイソンの飼育・繁殖をする方向けの飼育セット。広めのケージに、自然な見た目のレイアウトと、繁殖に向けた細かい温度管理を両立した飼育セットです。',
 			'article_ids' => [4931, 4936, 4942],
 			'items' => [
-				[
-					'label' => 'ケージ',
-					'product_id' => 'pantheon_9045',
-					'description' => '',
-				],
+				...shindan_pantheon_9045_item(),
 				[
 					'label' => '保温',
 					'product_id' => 'heating_top_m',
@@ -573,16 +557,6 @@ function shindan_outcome_items(string $id): array {
 	return $outcome !== null ? $outcome['items'] : [];
 }
 
-function shindan_water_dish_natural_item(): array {
-	return [
-		[
-			'label' => '水入れ',
-			'product_id' => 'water_dish_natural',
-			'description' => 'ケージのコーナーに設置できる自然な見た目の水入れです。',
-		]
-	];
-}
-
 function shindan_common_items(): array {
 	return [
 		[
@@ -600,5 +574,127 @@ function shindan_common_items(): array {
 			'product_id' => 'feeding_tweezers',
 			'description' => '竹で出来ており、生体に安全に給餌ができます。ピンセットはこれ一強です！',
 		],
+	];
+}
+
+function shindan_water_dish_natural_item(): array {
+	return [
+		[
+			'label' => '水入れ',
+			'product_id' => 'water_dish_natural',
+			'description' => 'ケージのコーナーに設置できる自然な見た目の水入れです。',
+		]
+	];
+}
+
+function shindan_water_dish_tapper_medium_item(): array {
+	return [
+		'label' => '水入れ',
+		'product_id' => 'water_dish_tapper_medium',
+		'description' => 'パンテオン6030に最適な全身浸かれるタイプの大きめタッパー。',
+	];
+}
+
+function shindan_water_dish_tapper_large_item(): array {
+	return [
+		'label' => '水入れ',
+		'product_id' => 'water_dish_tapper_large',
+		'description' => 'パンテオン9045に最適な全身浸かれるタイプの大きめタッパー。',
+	];
+}
+
+function shindan_pantheon_6030_item(): array {
+	return [
+		'label' => 'ケージ',
+		'product_id' => 'pantheon_6030',
+		'description' => 'オスのボールパイソン飼育におすすめの飼育ケージ。脱走できるような隙間がなく、天板と扉の締め忘れに注意すれば、ベビー個体でも問題無し。スライド式の扉で、給餌時の飛び出しを防ぎやすい設計。ヒーティングトップMを載せられ、底面の足を利用してマルチパネルヒーターも設置可能。',
+	];
+}
+
+function shindan_pantheon_9045_item(): array {
+	return [
+		'label' => 'ケージ',
+		'product_id' => 'pantheon_9045',
+		'description' => 'メスのボールパイソン飼育におすすめの飼育ケージ。脱走できるような隙間がなく、天板と扉の締め忘れに注意すれば、ベビー個体でも問題無し。スライド式の扉で、給餌時の飛び出しを防ぎやすい設計。ヒーティングトップMを載せられ、底面の足を利用してマルチパネルヒーターも設置可能。',
+	];
+}
+
+function shindan_heatingtop_m_item(): array {
+	return [
+		'label' => '保温',
+		'product_id' => 'heating_top_m',
+		'description' => '天板に置くだけで設置可能なケージの全体温度を保温するためのミニエアコン。サーモスタットと接続して温度を自動調整しながら使用します。',
+	];
+}
+
+function shindan_thermostat_basic_item(): array {
+	return [
+		'label' => 'サーモスタット',
+		'product_id' => 'thermostat_basic',
+		'description' => 'ケージ内の温度の上がりすぎを防ぐためのサーモスタット。ヒーティングトップに接続して、設定した温度になるようにON・OFFを自動で切り替えるお値打ちのおすすめ商品。夜間に設定温度を下げる場合や照明のONとOFFには別途切り替えが必要。',
+	];
+}
+
+function shindan_thermostat_advanced_item(): array {
+	return [
+		'label' => 'サーモスタット',
+		'product_id' => 'thermostat_advanced',
+		'description' => 'ケージ内の温度の上がりすぎを防ぐためのサーモスタット。ヒーティングトップに接続して、設定した温度になるようにON・OFFを自動で切り替えます。夜間と日中で温度を切り替えることも可能。タイマー機能もあり、照明の自動ON・OFFも可能。',
+	];
+}
+
+function shindan_multipanelheater_16w_item(): array {
+	return [
+		'label' => 'パネルヒーター',
+		'product_id' => 'multi_panel_heater_16w',
+		'description' => 'パンテオン6030に合う16wサイズ。パネルヒーターに温度調節機能が付いている優れもの。',
+	];
+}
+
+function shindan_multipanelheater_32w_item(): array {
+	return [
+		'label' => 'パネルヒーター',
+		'product_id' => 'multi_panel_heater_32w',
+		'description' => 'パンテオン9045に合う32wサイズ。パネルヒーターに温度調節機能が付いている優れもの。',
+	];
+}
+
+function shindan_ad_5648a_item(): array {
+	return [
+		'label' => '温湿度計',
+		'product_id' => 'ad_5648a',
+		'description' => '1日の最高最低温度・湿度を継続する機能があり、夜間の温度の下がりすぎ、日中の温度の上がりすぎにいち早く気付ける。センサーでケージ内の温湿度を測定し、同時に本体を設置している部屋の温度も測れます。',
+	];
+}
+
+function shindan_vivaria_twin_meter_neo_item(): array {
+	return [
+		'label' => '温湿度計',
+		'product_id' => 'vivaria_twin_meter_neo',
+		'description' => 'ケージ内に吸盤で貼り付けられ、温度と湿度を同時に測ることができるお値打ち温度計。1日の最高最低温度・湿度を測る昨日は無いので夜間の温度の下がりすぎなどはチェックが必要。',
+	];
+}
+
+function shindan_shiroiwan_medium_item(): array {
+	return [
+		'label' => '床材',
+		'product_id' => 'pet_sheet_medium',
+		'description' => 'パンテオン6030にぴったりのワイドサイズ。白いペットシーツで見栄えも良く、排泄物の状態が確認しやすい。',
+	];
+}
+
+function shindan_shiroiwan_large_item(): array {
+	return [
+		'label' => '床材',
+		'product_id' => 'pet_sheet_large',
+		'description' => 'パンテオン9045にぴったりのスーパーワイドサイズ。白いペットシーツで見栄えも良く、排泄物の状態が確認しやすい。',
+	];
+}
+
+function shindan_haskchip_item(): array {
+	return [
+		'label' => '床材',
+		'product_id' => 'husk_chip',
+		'description' => '大きめに砕かれたヤシガラ（ハスクチップ）。保湿性が高く、粒も大きいので誤飲のリスクが少ない。1〜2ヶ月に1回交換が必要。',
 	];
 }
