@@ -28,8 +28,7 @@ $article_ids = isset($lead['article_ids']) && is_array($lead['article_ids']) ? $
 						$label = $item['label'] ?? '';
 						$description = $item['description'] ?? '';
 						$product_id = $item['product_id'] ?? '';
-						$affiliate_slug = shindan_product($product_id);
-						if ($affiliate_slug === null) {
+						if ($product_id === '') {
 							continue;
 						}
 					?>
@@ -39,7 +38,7 @@ $article_ids = isset($lead['article_ids']) && is_array($lead['article_ids']) ? $
 							<?php if ($description !== '') : ?>
 								<p><?php echo esc_html($description); ?></p>
 							<?php endif; ?>
-							<?php get_template_part('include/shindan-affiliate/' . $affiliate_slug); ?>
+							<?php get_template_part('include/shindan-affiliate/' . $product_id); ?>
 						</dd>
 					</dl>
 				<?php endforeach; ?>

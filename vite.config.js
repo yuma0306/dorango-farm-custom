@@ -12,8 +12,6 @@ const themeDir = path.resolve(
 const assetsDir = path.join(themeDir, 'assets');
 const imgSrcDir = path.resolve(__dirname, 'src/img');
 const imgOutDir = path.join(assetsDir, 'img');
-const dataSrcDir = path.resolve(__dirname, 'src/data');
-const dataOutDir = path.join(themeDir, 'data');
 
 async function isNewer(src, dest) {
 	try {
@@ -31,20 +29,6 @@ function themeImages() {
 	return {
 		name: 'theme-images',
 		async buildStart() {
-			await fs.mkdir(dataOutDir, { recursive: true });
-			const dataFiles = await fs.readdir(dataSrcDir);
-			for (const file of dataFiles) {
-				if (!file.endsWith('.json')) {
-					continue;
-				}
-				const src = path.join(dataSrcDir, file);
-				const dest = path.join(dataOutDir, file);
-				this.addWatchFile(src);
-				if (await isNewer(src, dest)) {
-					await fs.copyFile(src, dest);
-				}
-			}
-
 			await fs.mkdir(imgOutDir, { recursive: true });
 			const entries = await fs.readdir(imgSrcDir, { withFileTypes: true });
 			for (const entry of entries) {
@@ -90,10 +74,7 @@ export default defineConfig({
 		assetsInlineLimit: 0,
 		watch: {
 			include: ['src/**'],
-			exclude: [
-				'**/wp-content/themes/dorango-farm-custom/assets/**',
-				'**/wp-content/themes/dorango-farm-custom/data/**',
-			],
+			exclude: ['**/wp-content/themes/dorango-farm-custom/assets/**'],
 		},
 		rollupOptions: {
 			input: {

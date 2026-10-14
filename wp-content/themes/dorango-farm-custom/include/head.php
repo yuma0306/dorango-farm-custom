@@ -17,6 +17,8 @@
 	<meta property="og:description" content="<?php echo $meta_desc; ?>">
 	<meta property="og:url" content="<?php getOgUrl(); ?>">
 	<meta property="og:image" content="<?php getOgImage(); ?>">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
 	<meta property="og:site_name" content="<?php echo bloginfo('name'); ?>">
 	<meta property="og:type" content="website">
 	<meta property="og:locale" content="ja_JP">
