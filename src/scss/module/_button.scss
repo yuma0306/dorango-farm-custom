@@ -29,9 +29,33 @@
 		position: absolute;
 		top: 50%;
 		transform: translate(0%, -50%);
-		background: url(#{$imgPath}/arrow-brown.svg) no-repeat center / contain;
+		background-color: $brown01;
+		-webkit-mask-image: url(#{$imgPath}/arrow-brown.svg);
+		mask-image: url(#{$imgPath}/arrow-brown.svg);
+		-webkit-mask-repeat: no-repeat;
+		mask-repeat: no-repeat;
+		-webkit-mask-position: center;
+		mask-position: center;
+		-webkit-mask-size: contain;
+		mask-size: contain;
 		transition: $transition;
 		content: "";
+	}
+	&--x,
+	&--line {
+		border-color: $white01;
+		&:not(#_) {
+			color: $white01;
+		}
+		&::after {
+			background-color: $white01;
+		}
+	}
+	&--x {
+		background-color: $x01;
+	}
+	&--line {
+		background-color: $line01;
 	}
 	&:hover {
 		@include hoverOpacity();

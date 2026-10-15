@@ -11,17 +11,37 @@
 				<div
 					class="shindan__outcome"
 					data-js-shindan-outcome="<?php echo esc_attr($outcome_id); ?>"
+					data-shindan-share-url="<?php echo esc_attr(shindan_share_url($outcome_id)); ?>"
+					data-shindan-line-share-url="<?php echo esc_attr(shindan_line_share_url($outcome_id)); ?>"
 					style="display: none"
 				>
 					<?php shindan_render_outcome($outcome_id); ?>
 				</div>
 			<?php endforeach; ?>
 		</div>
-		<a
-			class="button u-mt3-pc u-mt3-sp"
-			href="<?php echo esc_url(home_url('/ballpython-setup-shindan/')); ?>"
-			data-gtm-event="<?php echo esc_attr(gtm_event('ball_python_shindan_retry')); ?>"
-		>もう一度診断する</a>
+		<div class="flex flex--fit-center u-mt3-pc u-mt3-sp">
+			<a
+				class="button flex-child-1"
+				href="<?php echo esc_url(home_url('/ballpython-setup-shindan/')); ?>"
+				data-gtm-event="<?php echo esc_attr(gtm_event('ball_python_shindan_retry')); ?>"
+			>もう一度診断する</a>
+			<a
+				class="button button--x flex-child-1"
+				href="https://twitter.com/intent/tweet"
+				target="_blank"
+				rel="noopener noreferrer"
+				data-js-shindan-share
+				data-gtm-event="<?php echo esc_attr(gtm_event('ball_python_shindan_share_x')); ?>"
+			>Xで診断結果を共有</a>
+			<a
+				class="button button--line flex-child-1"
+				href="https://line.me/R/share"
+				target="_blank"
+				rel="noopener noreferrer"
+				data-js-shindan-share-line
+				data-gtm-event="<?php echo esc_attr(gtm_event('ball_python_shindan_share_line')); ?>"
+			>LINEで診断結果を共有</a>
+		</div>
 	</div>
 	<template data-js-shindan-question-template>
 		<dl class="box stack stack--gap3" data-js-shindan-question>
