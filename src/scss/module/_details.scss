@@ -1,0 +1,44 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+.details {
+	display: block;
+	background-color: $primary03;
+	margin-inline: auto;
+	&__summary {
+		text-align: center;
+		cursor: pointer;
+		@include hoverOpacity();
+	}
+	&__content {
+		font-weight: $fwMedium;
+	}
+}
+
+@include pc {
+	.details {
+		width: min(500px, 100%);
+		border: 1px solid $primary04;
+		&__summary {
+			padding: #{$spacing-2}px;
+		}
+		&__content {
+			padding: #{$spacing-2}px;
+			border-top: 1px dashed $primary04;
+		}
+	}
+}
+
+@include sp {
+	.details {
+		width: 100%;
+		border: vw(1) solid $primary04;
+		&__summary {
+			padding: vw($spacing-2);
+		}
+		&__content {
+			padding: vw($spacing-2);
+			border-top: vw(1) dashed $primary04;
+		}
+	}
+}

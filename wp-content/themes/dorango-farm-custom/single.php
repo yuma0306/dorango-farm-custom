@@ -52,9 +52,9 @@
 						<span class="article-date__item"><span class="article-date__icon article-date__icon--update" role="img" aria-label="更新日"></span><time class="article-date__text" datetime="<?php echo esc_html($modifiedDate); ?>"><?php echo esc_html($modifiedDate); ?></time></span>
 					</div>
 					<?php if (str_contains($tocHtml, 'toc__link')) : ?>
-						<details class="toc">
-							<summary class="toc__summary" data-gtm-event="<?php echo esc_attr(gtm_event('article_toc')); ?>">目次</summary>
-							<div class="toc__content">
+						<details class="details">
+							<summary class="details__summary" data-gtm-event="<?php echo esc_attr(gtm_event('article_toc')); ?>">目次</summary>
+							<div class="details__content">
 								<?php echo $tocHtml; ?>
 							</div>
 						</details>

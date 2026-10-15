@@ -2,46 +2,31 @@
 @use '../config/import' as *;
 
 .toc {
-	margin-inline: auto;
+	display: grid;
+	&__link {
+		position: relative;
+		text-decoration: underline;
+		@include hoverOpacity();
+		&::before {
+			position: absolute;
+			top: 0.75em;
+			left: -1.2em;
+			transform: translate(0, -50%);
+			border-radius: 50%;
+			background-color: $primary04;
+			content: "";
+		}
+	}
 }
 
 @include pc {
 	.toc {
-		display: block;
-		width: min(500px, 100%);
-		border: 1px solid $primary04;
-		background-color: $primary03;
-		&__summary {
-			padding: 20px;
-			text-align: center;
-			cursor: pointer;
-			@include hoverOpacity();
-		}
-		&__content {
-			padding: 20px 20px 30px;
-			border-top: 1px dashed $primary04;
-			font-weight: $fwMedium;
-		}
-		&__list {
-			padding-left: 20px;
-		}
-		&__item {
-			margin-top: 10px;
-		}
+		gap: #{$spacing-1}px;
+		padding-left: #{$spacing-2}px;
 		&__link {
-			text-decoration: underline;
-			position: relative;
-			@include hoverOpacity;
 			&::before {
-				position: absolute;
-				top: 0.75em;
-				left: -1.2em;
-				transform: translate(0, -50%);
-				width: 10px;
-				height: 10px;
-				border-radius: 50%;
-				background-color: $primary04;
-				content: "";
+				width: #{$spacing-1}px;
+				height: #{$spacing-1}px;
 			}
 		}
 	}
@@ -49,41 +34,12 @@
 
 @include sp {
 	.toc {
-		display: block;
-		width: 100%;
-		border: vw(1) solid $primary04;
-		background-color: $primary03;
-		&__summary {
-			padding: vw(20);
-			text-align: center;
-			cursor: pointer;
-			@include hoverOpacity();
-		}
-		&__content {
-			padding: vw(20) vw(20) vw(30);
-			border-top: vw(1) dashed $primary04;
-			font-weight: $fwMedium;
-		}
-		&__list {
-			padding-left: vw(20);
-		}
-		&__item {
-			margin-top: vw(10);
-		}
+		gap: vw($spacing-1);
+		padding-left: vw($spacing-2);
 		&__link {
-			text-decoration: underline;
-			position: relative;
-			@include hoverOpacity;
 			&::before {
-				position: absolute;
-				top: 0.75em;
-				left: -1.2em;
-				transform: translate(0, -50%);
-				width: vw(10);
-				height: vw(10);
-				border-radius: 50%;
-				background-color: $primary04;
-				content: "";
+				width: vw(#{$spacing-1});
+				height: vw(#{$spacing-1});
 			}
 		}
 	}

@@ -215,11 +215,13 @@ function shindan_outcome(string $id): ?array {
 		return null;
 	}
 	$items = isset($raw['items']) && is_array($raw['items']) ? $raw['items'] : [];
+	$all_items = [...$items, ...shindan_common_items()];
 	return [
 		'type' => $raw['type'] ?? '',
 		'intro' => isset($raw['intro']) ? (string) $raw['intro'] : '',
 		'article_ids' => isset($raw['article_ids']) && is_array($raw['article_ids']) ? $raw['article_ids'] : [],
-		'items' => [...$items, ...shindan_common_items()],
+		'items' => $all_items,
+		'total_price' => array_sum(array_column($all_items, 'price')),
 	];
 }
 
@@ -240,90 +242,112 @@ function shindan_item(string $product_id, ?string $custom_description = null): a
 	static $catalog = [
 		'muji-costume-case' => [
 			'label' => 'ケージ',
+			'price' => 3000,
 			'description' => '無印良品のポリプロピレン衣装ケース（大）です。積み上げ可能で、積み上げた隙間にマルチパネルヒーターをセットできるように改造して使えます。',
 		],
 		'pantheon-6030' => [
 			'label' => 'ケージ',
+			'price' => 16000,
 			'description' => 'オスのボールパイソン飼育におすすめのケージ。脱走できるような隙間がなく、天板と扉の締め忘れに注意すれば、ベビー個体でも問題無し。スライド式の扉で、給餌時の飛び出しを防ぎやすい設計。ヒーティングトップMを載せられ、底面の足を利用してマルチパネルヒーターも設置可能。',
 		],
 		'pantheon-9045' => [
 			'label' => 'ケージ',
+			'price' => 27000,
 			'description' => 'メスのボールパイソン飼育におすすめのケージ。脱走できるような隙間がなく、天板と扉の締め忘れに注意すれば、ベビー個体でも問題無し。スライド式の扉で、給餌時の飛び出しを防ぎやすい設計。ヒーティングトップMを載せられ、底面の足を利用してマルチパネルヒーターも設置可能。',
 		],
 		'heating-top-m' => [
 			'label' => '保温',
+			'price' => 4200,
 			'description' => 'パンテオンの天板に置くだけで設置可能なケージの全体温度を保温するためのミニエアコン。サーモスタットと接続して温度を自動調整しながら使用します。',
 		],
 		'heating-top-m-9045' => [
 			'label' => '保温',
 			'product_id' => 'heating-top-m',
+			'price' => 4200,
 			'description' => 'パンテオンの天板に置くだけで設置可能なケージの全体温度を保温するためのミニエアコン。サーモスタットと接続して温度を自動調整しながら使用します。保温が足りない場合はサーモスタットとヒーティングトップMをもう1つずつ用意して、両天板に設置可能。',
 		],
 		'multi-panel-heater-16w' => [
 			'label' => 'パネルヒーター',
+			'price' => 4000,
 			'description' => 'パンテオン6030に合う16wサイズ。パネルヒーターに温度調節機能が付いている優れもの。',
 		],
 		'multi-panel-heater-32w' => [
 			'label' => 'パネルヒーター',
+			'price' => 6000,
 			'description' => 'パンテオン9045に合う32wサイズ。パネルヒーターに温度調節機能が付いている優れもの。',
 		],
 		'pet-sheet-medium' => [
 			'label' => '床材',
+			'price' => 2000,
 			'description' => 'パンテオン6030にぴったりのワイドサイズ。白いペットシーツで見栄えも良く、排泄物の状態が確認しやすい。',
 		],
 		'pet-sheet-large' => [
 			'label' => '床材',
+			'price' => 2000,
 			'description' => 'パンテオン9045にぴったりのスーパーワイドサイズ。白いペットシーツで見栄えも良く、排泄物の状態が確認しやすい。',
 		],
 		'husk-chip' => [
 			'label' => '床材',
+			'price' => 1400,
 			'description' => '大きめに砕かれたヤシガラ（ハスクチップ）。保湿性が高く、粒も大きいので誤飲のリスクが少ない。1〜2ヶ月に1回交換が必要。',
 		],
 		'water-dish-natural' => [
 			'label' => '水入れ',
+			'price' => 2200,
 			'description' => 'ケージのコーナーに設置できる自然な見た目の水入れです。',
 		],
 		'water-dish-tapper-s' => [
 			'label' => '水入れ',
+			'price' => 600,
 			'description' => 'パンテオン6030に最適な全身浸かれるタイプの大きめタッパー。',
 		],
 		'water-dish-tapper-m' => [
 			'label' => '水入れ',
+			'price' => 800,
 			'description' => 'パンテオン9045に最適な全身浸かれるタイプの大きめタッパー。',
 		],
 		'thermostat-basic' => [
 			'label' => 'サーモスタット',
+			'price' => 3300,
 			'description' => 'ケージ内の温度の上がりすぎを防ぐためのサーモスタット。ヒーティングトップに接続して、設定した温度になるようにON・OFFを自動で切り替えるお値打ちのおすすめ商品。夜間に設定温度を下げる場合や照明のONとOFFには別途切り替えが必要。',
 		],
 		'thermostat-advanced' => [
 			'label' => 'サーモスタット',
+			'price' => 9000,
 			'description' => 'ケージ内の温度の上がりすぎを防ぐためのサーモスタット。ヒーティングトップに接続して、設定した温度になるようにON・OFFを自動で切り替えます。夜間と日中で温度を切り替えることも可能。タイマー機能もあり、照明の自動ON・OFFも可能。',
 		],
 		'ad-5648a' => [
 			'label' => '温湿度計',
+			'price' => 4700,
 			'description' => '1日の最高最低温度・湿度を継続する機能があり、夜間の温度の下がりすぎ、日中の温度の上がりすぎにいち早く気付ける。センサーでケージ内の温湿度を測定し、同時に本体を設置している部屋の温度も測れます。',
 		],
 		'vivaria-twin-meter-neo' => [
 			'label' => '温湿度計',
+			'price' => 800,
 			'description' => 'ケージ内に吸盤で貼り付けられ、温度と湿度を同時に測ることができるお値打ち温度計。1日の最高最低温度・湿度を測る機能は無いので夜間の温度の下がりすぎなどはチェックが必要。',
 		],
 		'hypochlorous-acid-water' => [
 			'label' => '次亜塩素酸水',
+			'price' => 500,
 			'description' => '掃除に使用する次亜塩素酸水です。消毒もできて、使用後水に戻るので生体にも安全に使える優れものです！',
 		],
 		'pressure-sprayer' => [
 			'label' => '蓄圧式霧吹き',
+			'price' => 1200,
 			'description' => '手が疲れない蓄圧式の霧吹きです。簡単に霧吹きできます。100均とは違うのだよ。100均とは。',
 		],
 		'feeding-tweezers' => [
 			'label' => '給餌用ピンセット',
+			'price' => 500,
 			'description' => '竹で出来ており、生体に安全に給餌ができます。ピンセットはこれ一強です！',
 		],
 	];
-	$item = $catalog[$product_id] ?? ['label' => '', 'description' => ''];
+	$item = $catalog[$product_id] ?? ['label' => '', 'price' => 0, 'description' => ''];
+
 	return [
 		'label' => $item['label'],
 		'product_id' => $item['product_id'] ?? $product_id,
+		'price' => $item['price'],
 		'description' => $custom_description ?? $item['description'],
 	];
 }

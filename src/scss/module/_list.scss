@@ -1,0 +1,20 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+@include pc {
+	.list {
+		@include incListPC();
+		&--no-padding {
+			padding: 0;
+		}
+	}
+}
+
+@include sp {
+	.list {
+		@include incListSP();
+		&--no-padding {
+			padding: 0;
+		}
+	}
+}
