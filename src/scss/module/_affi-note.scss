@@ -3,5 +3,15 @@
 
 .affi-note {
 	font-weight: $fwMedium;
-	text-decoration: underline;
+	text-align: center;
+	@include pc {
+		font-size: 14px;
+		border-block: 1px solid $primary04;
+		padding-block: #{$spacing-1}px;
+	}
+	@include sp {
+		font-size: vw(14);
+		border-block: vw(1) solid $primary04;
+		padding-block: vw(8);
+	}
 }
