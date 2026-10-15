@@ -440,7 +440,7 @@ function createToc() {
 			$headingLv = (int) $match[1];
 			$headingText = wp_strip_all_tags($match[2]);
 			while ($headingLv > $currentLv) {
-				$tocs[] = "<li class=\"toc__item\"><ol class=\"toc__list toc__list--lower\">\n";
+				$tocs[] = "<li class=\"toc__item\"><ol class=\"toc toc--lower\">\n";
 				$currentLv++;
 			}
 			while ($headingLv < $currentLv) {
@@ -455,7 +455,7 @@ function createToc() {
 		$tocs[] = "</ol></li>\n";
 		$currentLv--;
 	}
-	array_unshift($tocs, '<ol class="toc__list">');
+	array_unshift($tocs, '<ol class="toc">');
 	$tocs[] = '</ol>';
 	foreach ($tocs as $toc) {
 		echo $toc;

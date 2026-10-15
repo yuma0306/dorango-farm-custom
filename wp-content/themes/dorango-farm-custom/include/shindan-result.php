@@ -4,6 +4,7 @@ $outcome_id = isset($view['outcome_id']) ? (string) $view['outcome_id'] : '';
 $type = $view['type'] ?? '';
 $lead = isset($view['lead']) && is_array($view['lead']) ? $view['lead'] : [];
 $items = isset($view['items']) && is_array($view['items']) ? $view['items'] : [];
+$total_price = (int) ($view['total_price'] ?? 0);
 $intro = isset($lead['intro']) ? (string) $lead['intro'] : '';
 $article_ids = isset($lead['article_ids']) && is_array($lead['article_ids']) ? $lead['article_ids'] : [];
 ?>
@@ -42,6 +43,24 @@ $article_ids = isset($lead['article_ids']) && is_array($lead['article_ids']) ? $
 						</dd>
 					</dl>
 				<?php endforeach; ?>
+				<details class="details">
+					<summary class="details__summary">合計金額目安：約<?php echo esc_html(number_format($total_price)); ?>円</summary>
+					<div class="details__content">
+						<ul class="overwrite list list--no-padding">
+							<?php foreach ($items as $item) : ?>
+								<?php
+									$item = is_array($item) ? $item : [];
+									$label = $item['label'] ?? '';
+									$price = (int) ($item['price'] ?? 0);
+									if ($label === '') {
+										continue;
+									}
+								?>
+								<li class="list__item"><?php echo esc_html($label); ?>：<?php echo esc_html(number_format($price)); ?>円</li>
+							<?php endforeach; ?>
+						</ul>
+					</div>
+				</details>
 				<?php if ($article_ids !== []) : ?>
 					<h3
 						class="heading-lv3-01"

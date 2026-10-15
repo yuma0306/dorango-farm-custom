@@ -1,0 +1,34 @@
+@use '../../config/import' as *;
+@use '../function/vw' as *;
+
+@mixin _incListBase($gap, $padding, $dotSize) {
+	position: relative;
+	display: grid;
+	gap: $gap;
+	padding: $padding;
+	background-color: $primary03;
+	li {
+		position: relative;
+		font-weight: $fwMedium;
+		padding-left: 1em;
+		&::before {
+			position: absolute;
+			top: .1em;
+			left: 0;
+			transform: translateY(50%);
+			width: $dotSize;
+			height: $dotSize;
+			background: $brown01;
+			border-radius: 50%;
+			content: "";
+		}
+	}
+}
+
+@mixin incListPC() {
+	@include _incListBase(#{$spacing-1}px, #{$spacing-3}px #{$spacing-4}px, #{$spacing-1}px);
+}
+
+@mixin incListSP() {
+	@include _incListBase(vw($spacing-1), vw($spacing-3) vw($spacing-4), vw($spacing-1));
+}
