@@ -6,9 +6,8 @@
 	position: relative;
 	display: grid;
 	place-items: center;
-	aspect-ratio: 1200 / 630;
+	aspect-ratio: 16 / 9;
 	overflow: hidden;
-	text-decoration: none;
 	&::after {
 		position: absolute;
 		inset: 0;
@@ -31,7 +30,6 @@
 		text-align: center;
 		color: $white01;
 		font-weight: $fwBold;
-		line-height: $lhBase;
 	}
 	&__en {
 		letter-spacing: $lsMedium;
