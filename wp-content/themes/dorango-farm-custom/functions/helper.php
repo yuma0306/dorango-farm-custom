@@ -419,8 +419,6 @@ function dorango_render_heading_block($block_content, $block) {
 	}
 	if (isset($class_map[$level])) {
 		$processor->add_class($class_map[$level]);
-	}
-	if ($level === 2 || $level === 3) {
 		$counts[$post_id]++;
 		$processor->set_attribute('id', 'anchor-' . $counts[$post_id]);
 	}
@@ -429,7 +427,7 @@ function dorango_render_heading_block($block_content, $block) {
 add_filter('render_block', 'dorango_render_heading_block', 10, 2);
 
 /**
- * 目次自動生成（Gutenberg 本文の h2 / h3）
+ * 目次自動生成（Gutenberg 本文の h2 / h3 / h4）
  */
 function createToc() {
 	$content = (string) get_post_field('post_content', get_the_ID());
@@ -437,17 +435,19 @@ function createToc() {
 	$tocs = [];
 	$startHeadingLv = 2;
 	$currentLv = $startHeadingLv;
-	if (preg_match_all('/<h([23])\b[^>]*>(.*?)<\/h\1>/is', $content, $matches, PREG_SET_ORDER)) {
+	if (preg_match_all('/<h([234])\b[^>]*>(.*?)<\/h\1>/is', $content, $matches, PREG_SET_ORDER)) {
 		foreach ($matches as $match) {
 			$headingLv = (int) $match[1];
 			$headingText = wp_strip_all_tags($match[2]);
-			if ($headingLv > $currentLv) {
+			while ($headingLv > $currentLv) {
 				$tocs[] = "<li class=\"toc__item\"><ol class=\"toc__list toc__list--lower\">\n";
-			} elseif ($headingLv < $currentLv) {
+				$currentLv++;
+			}
+			while ($headingLv < $currentLv) {
 				$tocs[] = "</ol></li>\n";
+				$currentLv--;
 			}
 			$tocs[] = "<li class=\"toc__item toc__item--lv{$headingLv}\"><a href=\"#anchor-{$count}\" class=\"toc__link\">" . esc_html($headingText) . "</a></li>";
-			$currentLv = $headingLv;
 			$count++;
 		}
 	}
