@@ -8,6 +8,9 @@
 		&--col2 {
 			grid-template-columns: repeat(2, 1fr);
 		}
+		&--col3 {
+			grid-template-columns: repeat(3, 1fr);
+		}
 	}
 }
 
@@ -15,5 +18,8 @@
 	.grid-block {
 		display: grid;
 		gap: #{$spacing-2}px;
+		&--col2-sp {
+			grid-template-columns: repeat(2, 1fr);
+		}
 	}
 }

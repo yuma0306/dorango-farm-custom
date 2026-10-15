@@ -1,0 +1,74 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+.panel-link {
+	$this: &;
+	position: relative;
+	display: grid;
+	place-items: center;
+	aspect-ratio: 1200 / 630;
+	overflow: hidden;
+	text-decoration: none;
+	&::after {
+		position: absolute;
+		inset: 0;
+		background-color: rgb(0 0 0 / 50%);
+		transition: background-color $transition;
+		content: "";
+	}
+	&__img {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: scale $transition;
+	}
+	&__body {
+		position: relative;
+		z-index: $aboveZIndex;
+		display: grid;
+		text-align: center;
+		color: $white01;
+		font-weight: $fwBold;
+		line-height: $lhBase;
+	}
+	&__en {
+		letter-spacing: $lsMedium;
+	}
+	&:hover {
+		#{$this}__img {
+			scale: $scale;
+		}
+	}
+}
+
+@include pc {
+	.panel-link {
+		padding: #{$spacing-1}px;
+		&__body {
+			gap: #{$spacing-6}px;
+		}
+		&__en {
+			font-size: $fzSmallPC;
+		}
+		&__ja {
+			font-size: $fzBasePC;
+		}
+	}
+}
+
+@include sp {
+	.panel-link {
+		padding: vw($spacing-1);
+		&__body {
+			gap: vw($spacing-6);
+		}
+		&__en {
+			font-size: $fzSmallSP;
+		}
+		&__ja {
+			font-size: $fzBaseSP;
+		}
+	}
+}
