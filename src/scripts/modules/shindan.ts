@@ -21,14 +21,21 @@ const outcomeMatchers: { id: OutcomeId; when: Partial<Record<QuestionId, string>
 ];
 
 const firstQuestionId: QuestionId = 'sex';
+const RESULT_PARAM_KEY = 'result';
 
 export function initShindan(): void {
+	const initialOutcomeId = getOutcomeIdFromUrl();
+
 	document.querySelectorAll<HTMLElement>('[data-js-shindan]').forEach((root) => {
 		const ui = getUiElements(root);
 		if (!ui) {
 			return;
 		}
 		bindShindanUi(ui);
+		if (initialOutcomeId) {
+			displayOutcome(ui, initialOutcomeId, { pushGtm: false, syncUrl: false });
+			return;
+		}
 		renderQuestion(ui, firstQuestionId);
 	});
 }
@@ -39,6 +46,8 @@ function getUiElements(root: HTMLElement) {
 	const resultEl = root.querySelector<HTMLElement>('[data-js-shindan-result]');
 	const outcomesEl = root.querySelector<HTMLElement>('[data-js-shindan-outcomes]');
 	const outcomePanels = root.querySelectorAll<HTMLElement>('[data-js-shindan-outcome]');
+	const shareLink = root.querySelector<HTMLAnchorElement>('[data-js-shindan-share]');
+	const lineShareLink = root.querySelector<HTMLAnchorElement>('[data-js-shindan-share-line]');
 	const questionTemplate = root.querySelector<HTMLTemplateElement>(
 		'[data-js-shindan-question-template]',
 	);
@@ -64,6 +73,8 @@ function getUiElements(root: HTMLElement) {
 		resultEl,
 		outcomesEl,
 		outcomePanels,
+		shareLink,
+		lineShareLink,
 		questionTemplate,
 		optionTemplate,
 	};
@@ -135,28 +146,61 @@ function showResult(ui: Ui, answers: Answers): void {
 	if (!isCompleteAnswers(answers)) {
 		return;
 	}
-	hideElement(ui.leadEl);
-	hideElement(ui.quizEl);
-	showElement(ui.resultEl);
-	hideAllOutcomes(ui);
 	const outcomeId = resolveOutcomeId(answers);
 	if (!outcomeId) {
 		return;
 	}
+	displayOutcome(ui, outcomeId, { pushGtm: true, syncUrl: true });
+}
+
+function displayOutcome(
+	ui: Ui,
+	outcomeId: OutcomeId,
+	options: { pushGtm: boolean; syncUrl: boolean },
+): void {
 	const panel = ui.outcomesEl.querySelector<HTMLElement>(
 		`[data-js-shindan-outcome="${outcomeId}"]`,
 	);
 	if (!panel) {
 		return;
 	}
+	hideElement(ui.leadEl);
+	hideElement(ui.quizEl);
+	showElement(ui.resultEl);
+	hideAllOutcomes(ui);
 	showElement(panel);
-	pushBallPythonShindan(outcomeId);
+
+	if (ui.shareLink && panel.dataset.shindanShareUrl) {
+		ui.shareLink.href = panel.dataset.shindanShareUrl;
+	}
+
+	if (ui.lineShareLink && panel.dataset.shindanLineShareUrl) {
+		ui.lineShareLink.href = panel.dataset.shindanLineShareUrl;
+	}
+
+	if (options.syncUrl) {
+		const url = new URL(window.location.href);
+		url.searchParams.set(RESULT_PARAM_KEY, outcomeId);
+		window.history.replaceState(null, '', url.toString());
+	}
+
+	if (options.pushGtm) {
+		pushBallPythonShindan(outcomeId);
+	}
 }
 
 function hideAllOutcomes(ui: Ui): void {
 	for (const panel of ui.outcomePanels) {
 		hideElement(panel);
 	}
+}
+
+function getOutcomeIdFromUrl(): OutcomeId | null {
+	const raw = new URLSearchParams(window.location.search).get(RESULT_PARAM_KEY)?.toUpperCase();
+	if (!raw || !isOutcomeId(raw)) {
+		return null;
+	}
+	return raw;
 }
 
 function resolveOutcomeId(answers: Answers): OutcomeId | null {
@@ -224,6 +268,10 @@ function isMujiBreedingRoute(answers: Answers): boolean {
 
 function isQuestionId(id: string): id is QuestionId {
 	return Object.hasOwn(questions, id);
+}
+
+function isOutcomeId(id: string): id is OutcomeId {
+	return outcomeIds.some((outcomeId) => outcomeId === id);
 }
 
 type QuestionId = keyof typeof questions;

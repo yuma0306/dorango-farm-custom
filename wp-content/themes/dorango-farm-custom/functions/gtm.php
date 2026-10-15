@@ -12,6 +12,8 @@ function gtm_event(string $key) {
 		'btn_top' => 'btn-top',
 		'search_submit' => 'search-submit',
 		'ball_python_shindan_retry' => 'ball_python_shindan_retry',
+		'ball_python_shindan_share_x' => 'ball_python_shindan_share_x',
+		'ball_python_shindan_share_line' => 'ball_python_shindan_share_line',
 		'banner_ball_python_shindan' => 'banner_ball_python_shindan',
 	];
 	return $events[$key] ?? '';

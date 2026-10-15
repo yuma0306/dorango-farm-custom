@@ -33,6 +33,34 @@ function shindan_outcome_lead_context(array $outcome, string $outcome_id): ?arra
 	];
 }
 
+function shindan_share_text(string $outcome_id): string {
+	$share_page_url = add_query_arg('result', strtoupper($outcome_id), home_url('/ballpython-setup-shindan/'));
+	$outcome = shindan_outcome($outcome_id);
+	$type = $outcome['type'] ?? '';
+	$lines = [
+		sprintf('診断結果は【%s】でした', $type),
+		'',
+		'目的にあった飼育用品一覧がわかる🐍',
+		'',
+		'#ボールパイソン飼育セット診断',
+		'',
+		$share_page_url,
+	];
+	return implode("\n", $lines);
+}
+
+function shindan_share_url(string $outcome_id): string {
+	return 'https://twitter.com/intent/tweet?' . http_build_query([
+		'text' => shindan_share_text($outcome_id),
+	], '', '&', PHP_QUERY_RFC3986);
+}
+
+function shindan_line_share_url(string $outcome_id): string {
+	return 'https://line.me/R/share?' . http_build_query([
+		'text' => shindan_share_text($outcome_id),
+	], '', '&', PHP_QUERY_RFC3986);
+}
+
 function shindan_render_outcome(string $outcome_id): void {
 	$outcome = shindan_outcome($outcome_id);
 	if ($outcome === null) {
@@ -45,5 +73,6 @@ function shindan_render_outcome(string $outcome_id): void {
 		'lead' => shindan_outcome_lead_context($outcome, $outcome_id),
 		'items' => $outcome['items'],
 		'total_price' => $outcome['total_price'],
+		'share_url' => shindan_share_url($outcome_id),
 	]);
 }
