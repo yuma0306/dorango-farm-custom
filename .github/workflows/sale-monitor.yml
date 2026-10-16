@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       asin:
-        description: '監視対象のAmazon ASIN（デフォルト: B08KQTJ8CN = ヒーティングトップ M）'
+        description: '単発テスト用のASIN（空欄の場合はWordPressのpet_product全件をチェックして自動更新）'
         required: false
-        default: 'B08KQTJ8CN'
+        default: ''
         type: string
 
 permissions:
@@ -15,7 +15,7 @@ permissions:
 jobs:
   monitor:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
 
     steps:
       - uses: actions/checkout@v4
@@ -31,5 +31,8 @@ jobs:
 
       - name: Run Sale Monitor
         env:
-          ASIN: ${{ inputs.asin || 'B08KQTJ8CN' }}
+          ASIN: ${{ inputs.asin }}
+          WP_URL: ${{ secrets.WP_URL }}
+          WP_USERNAME: ${{ secrets.WP_USERNAME }}
+          WP_APPLICATION_PASSWORD: ${{ secrets.WP_APPLICATION_PASSWORD }}
         run: npm run sale-monitor
