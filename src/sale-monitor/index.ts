@@ -150,9 +150,9 @@ async function updateWpProductAcf(
 
 	const acfPayload = {
 		is_on_sale: scraped.is_on_sale,
-		original_price: scraped.original_price ?? '',
-		sale_price: scraped.is_on_sale ? (scraped.sale_price ?? '') : '',
-		discount_percent: scraped.is_on_sale ? (scraped.discount_percent ?? '') : '',
+		original_price: scraped.original_price ?? null,
+		sale_price: scraped.is_on_sale ? (scraped.sale_price ?? null) : null,
+		discount_percent: scraped.is_on_sale ? (scraped.discount_percent ?? null) : null,
 		first_sale_detected_at: firstSaleDetectedAt,
 		sale_ends_at: '',
 		last_checked_at: scraped.checked_at,
