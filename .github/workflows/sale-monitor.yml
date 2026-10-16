@@ -1,6 +1,9 @@
 name: Sale Monitor
 
 on:
+  schedule:
+    # 毎日 日本時間 0:30 (UTC 15:30) と 9:30 (UTC 0:30) に自動実行
+    - cron: '30 0,15 * * *'
   workflow_dispatch:
     inputs:
       asin:
