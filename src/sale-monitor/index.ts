@@ -242,13 +242,11 @@ async function scrapeAmazonByAsin(page: Page, asin: string): Promise<ScrapedProd
 
 	await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30_000 });
 
-	// 「ショッピングを続ける」が出た場合はクリックして商品ページへ進む
+	// 「ショッピングを続ける」ボタンが表示されている場合のみクリックして商品ページへ進む
 	const continueBtn = page
-		.locator(
-			'button:has-text("ショッピングを続ける"), input[value*="ショッピングを続ける"], a:has-text("ショッピングを続ける")',
-		)
+		.locator('button:has-text("ショッピングを続ける"), input[value*="ショッピングを続ける"]')
 		.first();
-	if ((await continueBtn.count()) > 0) {
+	if (await continueBtn.isVisible()) {
 		await Promise.all([
 			page.waitForNavigation({ waitUntil: 'domcontentloaded' }).catch(() => null),
 			continueBtn.click(),
