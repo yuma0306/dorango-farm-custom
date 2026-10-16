@@ -1,152 +1,90 @@
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
-import { chromium } from 'playwright';
-import {
-	createErrorResult,
-	DEFAULT_ASIN,
-	fetchAmazonProduct,
-	formatJstIsoTimestamp,
-	MOCK_PRODUCT_HTML,
-	parseAmazonProductDom,
-	verifyPublicTestPageDom,
-} from './amazon.ts';
-import type { SaleMonitorResult } from './types.ts';
+import { chromium, type Page } from 'playwright';
 
-interface CliOptions {
-	asin: string;
-	mode: 'live' | 'mock-sale' | 'mock-regular' | 'mock-blocked' | 'html';
-	htmlPath: string | null;
-	outputPath: string;
-	skipTestPage: boolean;
+const TARGET_URL =
+	'https://www.amazon.co.jp/%E3%83%92%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%83%88%E3%83%83%E3%83%97-%E7%88%AC%E8%99%AB%E9%A1%9E%E3%83%BB%E4%B8%A1%E7%94%9F%E9%A1%9E%E9%A3%BC%E8%82%B2-%E3%82%B1%E3%83%BC%E3%82%B8%E4%B8%8A%E9%83%A8%E8%A8%AD%E7%BD%AE%E5%9E%8B%E3%83%92%E3%83%BC%E3%82%BF%E3%83%BC-%E7%BD%AE%E3%81%8F%E3%81%A0%E3%81%91%E7%B0%A1%E5%8D%98%E8%A8%AD%E7%BD%AE-W25-6%C3%97D16%C3%97H2-8cm/dp/B0DZCV9TYG';
+
+async function getText(page: Page, selector: string): Promise<string | null> {
+	const locator = page.locator(selector).first();
+	if ((await locator.count()) === 0) return null;
+	const raw = await locator.textContent();
+	const trimmed = raw?.replace(/\s+/g, ' ').trim() ?? '';
+	return trimmed.length > 0 ? trimmed : null;
 }
 
-function parseMode(val: string | undefined): CliOptions['mode'] {
-	if (
-		val === 'live' ||
-		val === 'mock-sale' ||
-		val === 'mock-regular' ||
-		val === 'mock-blocked' ||
-		val === 'html'
-	) {
-		return val;
-	}
-	return 'live';
-}
-
-function parseCliOptions(argv: string[]): CliOptions {
-	let asin = process.env.ASIN?.trim() || DEFAULT_ASIN;
-	let mode: CliOptions['mode'] = parseMode(process.env.SALE_MONITOR_MODE?.trim());
-	let htmlPath: string | null = process.env.SALE_MONITOR_HTML_PATH?.trim() || null;
-	let outputPath =
-		process.env.SALE_MONITOR_OUTPUT?.trim() ||
-		resolve(process.cwd(), 'tmp/sale-monitor/result.json');
-	let skipTestPage = false;
-
-	for (let i = 0; i < argv.length; i++) {
-		const arg = argv[i];
-		if (arg === '--asin' && argv[i + 1]) {
-			asin = argv[++i].trim();
-		} else if (arg.startsWith('--asin=')) {
-			asin = arg.slice('--asin='.length).trim();
-		} else if (arg === '--mode' && argv[i + 1]) {
-			const val = argv[++i].trim();
-			if (
-				val === 'live' ||
-				val === 'mock-sale' ||
-				val === 'mock-regular' ||
-				val === 'mock-blocked' ||
-				val === 'html'
-			) {
-				mode = val;
-			}
-		} else if (arg.startsWith('--mode=')) {
-			const val = arg.slice('--mode='.length).trim();
-			if (
-				val === 'live' ||
-				val === 'mock-sale' ||
-				val === 'mock-regular' ||
-				val === 'mock-blocked' ||
-				val === 'html'
-			) {
-				mode = val;
-			}
-		} else if (arg === '--html' && argv[i + 1]) {
-			htmlPath = argv[++i].trim();
-			mode = 'html';
-		} else if (arg === '--output' && argv[i + 1]) {
-			outputPath = resolve(process.cwd(), argv[++i].trim());
-		} else if (arg === '--skip-test-page') {
-			skipTestPage = true;
-		} else if (!arg.startsWith('--') && /^[A-Z0-9]{10}$/i.test(arg)) {
-			asin = arg.toUpperCase();
-		}
-	}
-
-	return { asin, mode, htmlPath, outputPath, skipTestPage };
-}
-
-async function saveResultJson(outputPath: string, result: SaleMonitorResult): Promise<void> {
-	await mkdir(dirname(outputPath), { recursive: true });
-	await writeFile(outputPath, `${JSON.stringify(result, null, 2)}\n`, 'utf-8');
+function parsePrice(text: string | null): number | null {
+	if (!text) return null;
+	const match = text.replace(/[,，]/g, '').match(/(\d+)/);
+	return match ? Number.parseInt(match[1], 10) : null;
 }
 
 async function run(): Promise<void> {
-	const options = parseCliOptions(process.argv.slice(2));
-	const checkedAt = formatJstIsoTimestamp();
-	let result: SaleMonitorResult;
-
+	const outputPath = resolve(process.cwd(), 'tmp/sale-monitor/result.json');
 	const browser = await chromium.launch({ headless: true });
+
 	try {
-		const context = await browser.newContext({
+		const page = await browser.newPage({
 			locale: 'ja-JP',
 			timezoneId: 'Asia/Tokyo',
 			userAgent:
 				'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
 		});
-		const page = await context.newPage();
 
-		if (!options.skipTestPage) {
-			const domCheck = await verifyPublicTestPageDom(page);
-			console.log('[1/2] Test page DOM check:', JSON.stringify(domCheck));
-			if (!domCheck.ok) {
-				throw new Error(`Test page DOM check failed for ${domCheck.url}`);
-			}
+		await page.goto(TARGET_URL, { waitUntil: 'domcontentloaded', timeout: 30_000 });
+
+		// 「ショッピングを続ける」が出た場合だけクリックして商品ページへ進む
+		const continueBtn = page
+			.locator('button:has-text("ショッピングを続ける"), input[value*="ショッピングを続ける"]')
+			.first();
+		if ((await continueBtn.count()) > 0) {
+			await Promise.all([
+				page.waitForNavigation({ waitUntil: 'domcontentloaded' }).catch(() => null),
+				continueBtn.click(),
+			]);
 		}
 
-		if (options.mode === 'mock-sale') {
-			await page.setContent(MOCK_PRODUCT_HTML.on_sale, { waitUntil: 'domcontentloaded' });
-			result = await parseAmazonProductDom(page, options.asin, checkedAt, 200);
-		} else if (options.mode === 'mock-regular') {
-			await page.setContent(MOCK_PRODUCT_HTML.reference_discount_only, {
-				waitUntil: 'domcontentloaded',
-			});
-			result = await parseAmazonProductDom(page, options.asin, checkedAt, 200);
-		} else if (options.mode === 'mock-blocked') {
-			await page.setContent(MOCK_PRODUCT_HTML.access_denied, {
-				waitUntil: 'domcontentloaded',
-			});
-			result = await parseAmazonProductDom(page, options.asin, checkedAt, 200);
-		} else if (options.mode === 'html' && options.htmlPath) {
-			const html = await readFile(resolve(process.cwd(), options.htmlPath), 'utf-8');
-			await page.setContent(html, { waitUntil: 'domcontentloaded' });
-			result = await parseAmazonProductDom(page, options.asin, checkedAt, 200);
-		} else {
-			result = await fetchAmazonProduct(page, options.asin);
-		}
-	} catch (error) {
-		const message = error instanceof Error ? error.message : String(error);
-		result = createErrorResult(options.asin, checkedAt, 'fetch_error', message);
+		const name = await getText(page, '#productTitle');
+		const priceText = await getText(
+			page,
+			'#corePriceDisplay_desktop_feature_div .priceToPay .a-offscreen, #corePrice_feature_div .a-price .a-offscreen',
+		);
+		const basisPriceText = await getText(
+			page,
+			'#corePriceDisplay_desktop_feature_div .basisPrice .a-offscreen',
+		);
+		const discountText = await getText(
+			page,
+			'#corePriceDisplay_desktop_feature_div .savingsPercentage',
+		);
+		const dealBadge = await getText(
+			page,
+			'#dealBadge_feature_div, #dealBadgeSupportingText, .dealBadge',
+		);
+
+		const currentPrice = parsePrice(priceText);
+		const basisPrice = parsePrice(basisPriceText);
+		const discountPercent = parsePrice(discountText);
+		const isOnSale = dealBadge !== null;
+
+		const result = {
+			asin: 'B0DZCV9TYG',
+			name,
+			is_on_sale: name ? isOnSale : null,
+			original_price: isOnSale ? basisPrice : currentPrice,
+			sale_price: isOnSale ? currentPrice : null,
+			discount_percent: isOnSale ? discountPercent : null,
+			deal_badge: dealBadge,
+			checked_at: new Date().toISOString(),
+			page_title: await page.title(),
+		};
+
+		await mkdir(dirname(outputPath), { recursive: true });
+		await writeFile(outputPath, `${JSON.stringify(result, null, 2)}\n`, 'utf-8');
+		console.log(JSON.stringify(result, null, 2));
 	} finally {
 		await browser.close();
 	}
-
-	await saveResultJson(options.outputPath, result);
-	console.log('[2/2] Sale Monitor Result:');
-	console.log(JSON.stringify(result, null, 2));
-	console.log(`Saved JSON to: ${options.outputPath}`);
 }
 
-run().catch((error) => {
-	console.error('Fatal error in sale-monitor:', error);
-	process.exitCode = 1;
-});
+run();
