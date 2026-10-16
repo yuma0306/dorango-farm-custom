@@ -2,6 +2,12 @@ name: Sale Monitor
 
 on:
   workflow_dispatch:
+    inputs:
+      asin:
+        description: '監視対象のAmazon ASIN（デフォルト: B08KQTJ8CN = ヒーティングトップ M）'
+        required: false
+        default: 'B08KQTJ8CN'
+        type: string
 
 permissions:
   contents: read
@@ -24,12 +30,6 @@ jobs:
       - run: npx playwright install --with-deps chromium
 
       - name: Run Sale Monitor
+        env:
+          ASIN: ${{ inputs.asin || 'B08KQTJ8CN' }}
         run: npm run sale-monitor
-
-      - name: Upload result JSON
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: sale-monitor-result
-          path: tmp/sale-monitor/result.json
-          retention-days: 7
