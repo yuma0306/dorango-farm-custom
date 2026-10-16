@@ -90,6 +90,22 @@ function add_custom_post_type() {
 		'show_in_rest' => true,
 		'menu_position' => 5,
 	]);
+	register_post_type('pet_product', [
+		'label' => '飼育用品',
+		'hierarchical' => false,
+		'public' => false,
+		'show_ui' => true,
+		'has_archive' => false,
+		'rewrite' => false,
+		'supports' => [
+			'title',
+			'editor',
+			'thumbnail',
+			'revisions',
+		],
+		'show_in_rest' => true,
+		'menu_position' => 5,
+	]);
 }
 
 add_action('init', 'add_custom_post_type');

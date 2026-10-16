@@ -8,10 +8,13 @@
 		"build": "vite build",
 		"typecheck": "tsc --noEmit",
 		"lint": "biome check .",
-		"lint:fix": "biome check --write ."
+		"lint:fix": "biome check --write .",
+		"sale-monitor": "node --experimental-strip-types src/sale-monitor/index.ts"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.5.15",
+		"@types/node": "^26.6.5",
+		"playwright": "^1.64.1",
 		"sass": "^1.103.1",
 		"sharp": "^0.35.5",
 		"typescript": "^7.0.2",

@@ -6,7 +6,7 @@
 		"useIgnoreFile": true
 	},
 	"files": {
-		"includes": ["src/scripts/**/*.ts"]
+		"includes": ["src/scripts/**/*.ts", "src/sale-monitor/**/*.ts"]
 	},
 	"formatter": {
 		"enabled": true,
