@@ -4,20 +4,10 @@ on:
   workflow_dispatch:
     inputs:
       asin:
-        description: '監視対象のAmazon ASIN（例: B08KQTJ8CN = ヒーティングトップ M）'
+        description: '監視対象のAmazon ASIN（デフォルト: B08KQTJ8CN = ヒーティングトップ M）'
         required: false
         default: 'B08KQTJ8CN'
         type: string
-      mode:
-        description: '実行モード（live: 実ページ取得 / mock-sale: セールモック / mock-regular: 通常モック / mock-blocked: 制限モック）'
-        required: false
-        default: 'live'
-        type: choice
-        options:
-          - live
-          - mock-sale
-          - mock-regular
-          - mock-blocked
 
 permissions:
   contents: read
@@ -25,36 +15,21 @@ permissions:
 jobs:
   monitor:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
+      - run: npm ci
 
-      - name: Install Playwright Chromium
-        run: npx playwright install --with-deps chromium
+      - run: npx playwright install --with-deps chromium
 
       - name: Run Sale Monitor
         env:
           ASIN: ${{ inputs.asin || 'B08KQTJ8CN' }}
-          SALE_MONITOR_MODE: ${{ inputs.mode || 'live' }}
-          SALE_MONITOR_OUTPUT: tmp/sale-monitor/result.json
         run: npm run sale-monitor
-
-      - name: Upload result JSON artifact
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: sale-monitor-result
-          path: tmp/sale-monitor/result.json
-          retention-days: 7
-          if-no-files-found: error
