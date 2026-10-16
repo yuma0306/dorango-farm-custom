@@ -16,3 +16,4 @@
     get_template_part('functions/shindan');
     get_template_part('functions/shindan-products');
     get_template_part('functions/shindan-outcomes');
+    get_template_part('functions/pet-product');
