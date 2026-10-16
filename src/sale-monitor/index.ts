@@ -22,12 +22,16 @@ function parsePrice(text: string | null): number | null {
  * 海外IP（GitHub Actionsや海外滞在時）からアクセスした際、
  * Amazonの配送先を日本（100-0001）に切り替えて日本国内向けの価格UIを表示させる
  */
-async function ensureJapanDeliveryLocation(page: Page): Promise<string | null> {
+async function ensureJapanDeliveryLocation(page: Page, productUrl: string): Promise<string | null> {
 	const glowText = await getText(page, '#glow-ingress-block');
 	if (
 		glowText &&
 		(glowText.includes('100-') || glowText.includes('153-') || /〒|\d{3}-\d{4}/.test(glowText))
 	) {
+		// トップページに飛ばされていた場合は商品ページへ遷移し直す
+		if (!page.url().includes('/dp/')) {
+			await page.goto(productUrl, { waitUntil: 'domcontentloaded', timeout: 30_000 });
+		}
 		return glowText;
 	}
 
@@ -51,9 +55,12 @@ async function ensureJapanDeliveryLocation(page: Page): Promise<string | null> {
 
 		await page.locator('#GLUXZipUpdate input[type="submit"], #GLUXZipUpdate').first().click();
 		await page.waitForTimeout(1500);
-		await page.reload({ waitUntil: 'domcontentloaded', timeout: 30_000 });
+		await page.goto(productUrl, { waitUntil: 'domcontentloaded', timeout: 30_000 });
 	} catch {
-		// ポップオーバー操作に失敗した場合はそのまま続行
+		// ポップオーバー操作に失敗した場合は商品ページへ遷移し直す
+		if (!page.url().includes('/dp/')) {
+			await page.goto(productUrl, { waitUntil: 'domcontentloaded', timeout: 30_000 });
+		}
 	}
 
 	return await getText(page, '#glow-ingress-block');
@@ -61,7 +68,7 @@ async function ensureJapanDeliveryLocation(page: Page): Promise<string | null> {
 
 async function run(): Promise<void> {
 	const asin = process.env.ASIN?.trim() || DEFAULT_ASIN;
-	const url = `https://www.amazon.co.jp/dp/${encodeURIComponent(asin)}?th=1&psc=1`;
+	const url = `https://www.amazon.co.jp/dp/${encodeURIComponent(asin)}?th=1&psc=1&language=ja_JP&currency=JPY`;
 	const outputPath = resolve(process.cwd(), 'tmp/sale-monitor/result.json');
 	const isHeaded = process.argv.includes('--ui') || process.env.HEADLESS === 'false';
 
@@ -80,6 +87,20 @@ async function run(): Promise<void> {
 			userAgent:
 				'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
 		});
+		await context.addCookies([
+			{
+				name: 'i18n-prefs',
+				value: 'JPY',
+				domain: '.amazon.co.jp',
+				path: '/',
+			},
+			{
+				name: 'lc-acbjp',
+				value: 'ja_JP',
+				domain: '.amazon.co.jp',
+				path: '/',
+			},
+		]);
 		const page = await context.newPage();
 
 		await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30_000 });
@@ -97,8 +118,8 @@ async function run(): Promise<void> {
 			]);
 		}
 
-		// 海外IPからのアクセス時に配送先を日本に設定してリロード
-		const deliveryLocation = await ensureJapanDeliveryLocation(page);
+		// 海外IPからのアクセス時に配送先を日本に設定して商品ページを開き直す
+		const deliveryLocation = await ensureJapanDeliveryLocation(page, url);
 
 		const name = await getText(page, '#productTitle');
 
