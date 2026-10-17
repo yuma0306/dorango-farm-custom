@@ -16,7 +16,7 @@
 		position: fixed;
 		inset: 0;
 		z-index: $hamburgerZIndex;
-		background-color: rgb(0 0 0 / 50%);
+		background-color: $blackBg;
 		opacity: 0;
 		pointer-events: none;
 		visibility: hidden;
@@ -78,6 +78,10 @@
 			-webkit-mask-image: url(#{$imgPath}/icon-update.svg);
 			mask-image: url(#{$imgPath}/icon-update.svg);
 		}
+		&--sale {
+			-webkit-mask-image: url(#{$imgPath}/icon-sale.svg);
+			mask-image: url(#{$imgPath}/icon-sale.svg);
+		}
 	}
 	&.js-open {
 		.hamburger-btn--open {
@@ -112,7 +116,7 @@
 	.hamburger {
 		&__panel {
 			width: 500px;
-			padding: 0 #{$spacing-4}px #{$spacing-4}px;
+			padding: 0 #{$spacing-3}px #{$spacing-3}px;
 		}
 		&__list {
 			padding-top: #{$headerBarHeightPC}px;
@@ -133,7 +137,7 @@
 	.hamburger {
 		&__panel {
 			width: 85vw;
-			padding: 0 vw($spacing-4) vw($spacing-4);
+			padding: 0 vw($spacing-3) vw($spacing-3);
 		}
 		&__list {
 			padding-top: vw($headerBarHeightSP);

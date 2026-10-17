@@ -1,0 +1,19 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+.grid-panel {
+	display: grid;
+	gap: #{$spacing-2}px;
+}
+
+@include pc {
+	.grid-panel {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@include sp {
+	.grid-panel {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}

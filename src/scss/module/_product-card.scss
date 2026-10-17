@@ -1,0 +1,51 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+.product-card {
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	background-color: $white01;
+	color: $black01;
+	font-weight: $fwBold;
+	text-align: left;
+	cursor: pointer;
+	@include hoverOpacity();
+	&__icon {
+		object-fit: contain;
+	}
+	&__label {
+		flex: 1;
+	}
+}
+
+@include pc {
+	.product-card {
+		gap: #{$spacing-1}px;
+		padding: #{$spacing-2}px #{$spacing-3}px;
+		border: 1px solid $gray01;
+		border-radius: #{$spacing-1}px;
+		font-size: $fzBasePC;
+		&__icon {
+			width: #{$spacing-7}px;
+			height: #{$spacing-7}px;
+		}
+	}
+}
+
+@include sp {
+	.product-card {
+		flex-direction: column;
+		gap: vw($spacing-1);
+		padding: vw($spacing-2);
+		border: vw(1) solid $gray01;
+		border-radius: vw($spacing-1);
+		font-size: $fzBaseSP;
+		&__icon {
+			width: vw($spacing-7);
+			height: vw($spacing-7);
+		}
+	}
+}

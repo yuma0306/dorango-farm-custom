@@ -11,8 +11,6 @@
 	}
 	&__icon {
 		display: block;
-		width: 14px;
-		height: 14px;
 		flex-shrink: 0;
 		background-color: $brown01;
 		-webkit-mask-repeat: no-repeat;
@@ -34,22 +32,28 @@
 
 @include pc {
 	.article-date {
-		gap: #{$spacing-2}px;
+		gap: #{$spacing-1}px;
 		&__item {
-			gap: #{$spacing-6}px;
+			gap: #{$spacing-1}px;
+			font-size: $fzSmallPC;
+		}
+		&__icon {
+			width: #{$spacing-2}px;
+			height: #{$spacing-2}px;
 		}
 	}
 }
 
 @include sp {
 	.article-date {
-		gap: vw($spacing-2);
+		gap: vw($spacing-1);
 		&__item {
-			gap: vw($spacing-6);
+			gap: vw($spacing-1);
+			font-size: $fzSmallSP;
 		}
 		&__icon {
-			width: vw(22);
-			height: vw(22);
+			width: vw($spacing-2);
+			height: vw($spacing-2);
 		}
 	}
 }

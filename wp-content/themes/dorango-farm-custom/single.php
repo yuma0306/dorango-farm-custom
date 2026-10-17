@@ -67,6 +67,7 @@
 				<?php if (is_ball_python_post()) : ?>
 					<div class="grid-block grid-block--col2 u-mt3-pc u-mt3-sp">
 						<?php get_template_part('include/banner-ball-python-shindan'); ?>
+						<?php get_template_part('include/banner-pet-products'); ?>
 					</div>
 					<?php get_template_part('include/ball-python-hub', null, ['exclude_id' => get_the_ID()]); ?>
 				<?php endif; ?>

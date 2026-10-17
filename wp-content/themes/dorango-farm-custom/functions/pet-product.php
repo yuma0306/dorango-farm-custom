@@ -1,5 +1,117 @@
 <?php
 /**
+ * 飼育用品（pet_product）のカテゴリ定義（表示順・関連記事ID）
+ */
+function pet_product_categories(): array {
+	return [
+		'cage' => [
+			'title' => 'ケージ',
+			'icon' => 'icon-product-cage.svg',
+			'post_ids' => [4994],
+		],
+		'thermostat' => [
+			'title' => 'サーモスタット',
+			'icon' => 'icon-product-thermostat.svg',
+			'post_ids' => [4920],
+		],
+		'top_heater' => [
+			'title' => '上部ヒーター',
+			'icon' => 'icon-product-top-heater.svg',
+			'post_ids' => [4893, 4920],
+		],
+		'panel_heater' => [
+			'title' => 'パネルヒーター',
+			'icon' => 'icon-product-panel-heater.svg',
+			'post_ids' => [4990],
+		],
+		'substrate' => [
+			'title' => '床材',
+			'icon' => 'icon-product-substrate.svg',
+			'post_ids' => [5517],
+		],
+		'maintenance' => [
+			'title' => 'メンテナンス・掃除用品',
+			'icon' => 'icon-product-maintenance.svg',
+			'post_ids' => [5475],
+		],
+		'thermometer' => [
+			'title' => '温湿度計',
+			'icon' => 'icon-product-thermometer.svg',
+			'post_ids' => [4999],
+		],
+		'water_dish' => [
+			'title' => '水入れ',
+			'icon' => 'icon-product-water-dish.svg',
+			'post_ids' => [],
+		],
+		'feeding' => [
+			'title' => '給餌',
+			'icon' => 'icon-product-feeding.svg',
+			'post_ids' => [4911, 4907],
+		],
+	];
+}
+
+/**
+ * ACF select 用の [slug => title] 連想配列を返す
+ */
+function pet_product_category_choices(): array {
+	$choices = [];
+	foreach (pet_product_categories() as $slug => $config) {
+		$choices[$slug] = (string) ($config['title'] ?? '');
+	}
+	return $choices;
+}
+
+/**
+ * 飼育用品の投稿配列を定義順カテゴリにグルーピングする（カテゴリ未設定は除外）
+ *
+ * @param WP_Post[] $posts
+ * @return array<string, array{label: string, posts: WP_Post[], post_ids: int[]}>
+ */
+function group_pet_products_by_category(array $posts): array {
+	$category_map = pet_product_categories();
+	$choices = pet_product_category_choices();
+	$categories = [];
+
+	foreach ($category_map as $slug => $config) {
+		$post_ids = [];
+		foreach ($config['post_ids'] ?? [] as $post_id) {
+			$post_id = absint($post_id);
+			if ($post_id && get_post_status($post_id) === 'publish') {
+				$post_ids[] = $post_id;
+			}
+		}
+
+		$categories[$slug] = [
+			'label' => (string) ($config['title'] ?? ''),
+			'icon' => (string) ($config['icon'] ?? ''),
+			'posts' => [],
+			'post_ids' => $post_ids,
+		];
+	}
+
+	foreach ($posts as $post) {
+		$raw_cat = trim((string) get_field('category', $post->ID));
+		if ($raw_cat !== '' && isset($categories[$raw_cat])) {
+			$categories[$raw_cat]['posts'][] = $post;
+			continue;
+		}
+		// ラベル名で保存されている場合にも対応
+		$matched_slug = array_search($raw_cat, $choices, true);
+		if ($matched_slug !== false && isset($categories[$matched_slug])) {
+			$categories[$matched_slug]['posts'][] = $post;
+		}
+	}
+
+	// 商品が0件のカテゴリを除外
+	return array_filter(
+		$categories,
+		static fn(array $group): bool => $group['posts'] !== []
+	);
+}
+
+/**
  * 飼育用品（pet_product）のACFフィールド定義
  */
 function register_pet_product_acf_fields() {
@@ -11,6 +123,20 @@ function register_pet_product_acf_fields() {
 		'key' => 'group_pet_product_details',
 		'title' => '飼育用品情報・セール監視設定',
 		'fields' => [
+			[
+				'key' => 'field_pet_product_category',
+				'label' => 'カテゴリ',
+				'name' => 'category',
+				'type' => 'select',
+				'instructions' => '一覧ページでの表示グループを選択してください（未選択の場合は一覧に表示されません）。',
+				'required' => 0,
+				'choices' => pet_product_category_choices(),
+				'default_value' => '',
+				'allow_null' => 1,
+				'multiple' => 0,
+				'ui' => 0,
+				'return_format' => 'value',
+			],
 			[
 				'key' => 'field_pet_product_asin',
 				'label' => 'ASIN',
@@ -29,28 +155,6 @@ function register_pet_product_acf_fields() {
 				'required' => 0,
 				'rows' => 6,
 				'new_lines' => '',
-			],
-			[
-				'key' => 'field_pet_product_related_posts',
-				'label' => '関連記事',
-				'name' => 'related_posts',
-				'type' => 'relationship',
-				'instructions' => 'この商品に関連する飼育記事・解説記事を選択してください。',
-				'required' => 0,
-				'post_type' => [
-					'post',
-					'breed',
-					'zoo',
-					'shop',
-					'food',
-					'trivia',
-				],
-				'filters' => [
-					'search',
-					'post_type',
-					'taxonomy',
-				],
-				'return_format' => 'id',
 			],
 			[
 				'key' => 'field_pet_product_is_on_sale',
@@ -134,4 +238,3 @@ function register_pet_product_acf_fields() {
 	]);
 }
 add_action('acf/init', 'register_pet_product_acf_fields');
-
