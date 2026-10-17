@@ -15,10 +15,13 @@
 		top: 50%;
 		left: 50%;
 		box-sizing: border-box;
-		overflow-y: auto;
+		overflow: hidden;
 		background: $white01;
 		transform: translate(-50%, -50%);
 		pointer-events: auto;
+	}
+	&__inner {
+		overflow-y: auto;
 	}
 	&__close {
 		position: absolute;
@@ -48,9 +51,11 @@
 	.product-modal {
 		&__panel {
 			width: min(calc(100% - #{$spacing-7}px), #{$innerWidthPC}px);
+			border-radius: #{$spacing-1}px;
+		}
+		&__inner {
 			max-height: calc(100dvh - #{$spacing-7}px);
 			padding: #{$spacing-3}px;
-			border-radius: #{$spacing-1}px;
 		}
 		&__close {
 			width: #{$headerBarHeightPC}px;
@@ -68,9 +73,11 @@
 	.product-modal {
 		&__panel {
 			width: calc(100% - #{vw($innerWidthSP)} * 2);
+			border-radius: vw($spacing-1);
+		}
+		&__inner {
 			max-height: calc(100dvh - #{vw($spacing-7)});
 			padding: vw($spacing-3) vw($spacing-2);
-			border-radius: vw($spacing-1);
 		}
 		&__close {
 			width: vw($headerBarHeightSP);

@@ -3,6 +3,7 @@ import { hideElement, isElementHidden, showElement } from './element-display';
 export function initProductModal(): void {
 	const root = document.querySelector<HTMLElement>('[data-js-product-modal]');
 	const panel = root?.querySelector<HTMLElement>('[data-js-product-modal-panel]');
+	const inner = root?.querySelector<HTMLElement>('[data-js-product-modal-inner]');
 	const backdrop = root?.querySelector<HTMLButtonElement>('[data-js-product-modal-backdrop]');
 	const closeBtn = root?.querySelector<HTMLButtonElement>('[data-js-product-modal-close]');
 	const sections = root?.querySelectorAll<HTMLElement>('[data-js-product-modal-section]');
@@ -41,7 +42,9 @@ export function initProductModal(): void {
 		lastFocused = trigger;
 		showElement(backdrop);
 		showElement(panel);
-		panel.scrollTop = 0;
+		if (inner) {
+			inner.scrollTop = 0;
+		}
 		document.body.style.overflow = 'hidden';
 		closeBtn?.focus();
 	};
