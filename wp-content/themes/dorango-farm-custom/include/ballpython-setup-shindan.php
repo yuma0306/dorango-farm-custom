@@ -26,7 +26,7 @@
 				data-gtm-event="<?php echo esc_attr(gtm_event('ball_python_shindan_retry')); ?>"
 			>もう一度診断する</a>
 			<a
-				class="button button--x flex-child-1"
+				class="button button--no-arrow button--x flex-child-1"
 				href="https://twitter.com/intent/tweet"
 				target="_blank"
 				rel="noopener noreferrer"
@@ -34,7 +34,7 @@
 				data-gtm-event="<?php echo esc_attr(gtm_event('ball_python_shindan_share_x')); ?>"
 			>Xで診断結果を共有</a>
 			<a
-				class="button button--line flex-child-1"
+				class="button button--no-arrow button--line flex-child-1"
 				href="https://line.me/R/share"
 				target="_blank"
 				rel="noopener noreferrer"

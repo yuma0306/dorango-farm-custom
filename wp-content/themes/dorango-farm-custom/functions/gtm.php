@@ -15,6 +15,7 @@ function gtm_event(string $key) {
 		'ball_python_shindan_share_x' => 'ball_python_shindan_share_x',
 		'ball_python_shindan_share_line' => 'ball_python_shindan_share_line',
 		'banner_ball_python_shindan' => 'banner_ball_python_shindan',
+		'banner_pet_products' => 'banner_pet_products',
 	];
 	return $events[$key] ?? '';
 }

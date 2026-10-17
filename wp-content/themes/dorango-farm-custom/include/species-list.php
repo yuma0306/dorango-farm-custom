@@ -34,7 +34,7 @@ $species_items = [
 ?>
 <section>
 	<h2 class="heading-lv2-02">種類から探す</h2>
-	<div class="grid-block grid-block--col3 grid-block--col2-sp u-mt3-pc u-mt3-sp">
+	<div class="grid-panel u-mt3-pc u-mt3-sp">
 		<?php foreach ($species_items as $item) : ?>
 			<a class="panel-link" href="<?php echo esc_url(home_url($item['href'])); ?>">
 				<img

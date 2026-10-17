@@ -5,6 +5,11 @@
         @content;
     }
 }
+@mixin tablet {
+    @media screen and (min-width: $mediaPc) and (max-width: $mediaTb) {
+        @content;
+    }
+}
 @mixin sp {
     @media screen and (max-width: $mediaSp) {
         @content;

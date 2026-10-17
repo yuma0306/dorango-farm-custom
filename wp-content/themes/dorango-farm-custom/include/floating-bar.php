@@ -25,17 +25,6 @@ $history_href = NAV_LINKS['history']['href'];
 			<span class="floating-bar__icon floating-bar__icon--favorite" aria-hidden="true"></span>
 			<span class="floating-bar__label">お気に入り</span>
 		</button>
-		<?php if ($has_toc) : ?>
-			<button
-				type="button"
-				class="floating-bar__item"
-				data-js-floating-bar-toc
-				data-gtm-event="<?php echo esc_attr(gtm_event('floating_toc')); ?>"
-			>
-				<span class="floating-bar__icon floating-bar__icon--toc" aria-hidden="true"></span>
-				<span class="floating-bar__label">目次</span>
-			</button>
-		<?php endif; ?>
 		<button
 			type="button"
 			class="floating-bar__item"
@@ -53,5 +42,16 @@ $history_href = NAV_LINKS['history']['href'];
 			<span class="floating-bar__icon floating-bar__icon--history" aria-hidden="true"></span>
 			<span class="floating-bar__label">履歴</span>
 		</a>
+		<?php if ($has_toc) : ?>
+			<button
+				type="button"
+				class="floating-bar__item"
+				data-js-floating-bar-toc
+				data-gtm-event="<?php echo esc_attr(gtm_event('floating_toc')); ?>"
+			>
+				<span class="floating-bar__icon floating-bar__icon--toc" aria-hidden="true"></span>
+				<span class="floating-bar__label">目次</span>
+			</button>
+		<?php endif; ?>
 	</div>
 </nav>
