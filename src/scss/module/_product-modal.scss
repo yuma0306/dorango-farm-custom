@@ -1,0 +1,85 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+.product-modal {
+	position: fixed;
+	inset: 0;
+	z-index: $tocFloatZIndex;
+	pointer-events: none;
+	&__backdrop {
+		@include overlay-backdrop;
+		pointer-events: auto;
+	}
+	&__panel {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		box-sizing: border-box;
+		overflow-y: auto;
+		background: $white01;
+		transform: translate(-50%, -50%);
+		pointer-events: auto;
+	}
+	&__close {
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: $aboveZIndex;
+		box-sizing: border-box;
+		background-color: $primary01;
+		cursor: pointer;
+	}
+	&__close-bar {
+		position: absolute;
+		left: 50%;
+		display: block;
+		background-color: $white01;
+		translate: -50% 0;
+		&:nth-child(1) {
+			rotate: 45deg;
+		}
+		&:nth-child(2) {
+			rotate: -45deg;
+		}
+	}
+}
+
+@include pc {
+	.product-modal {
+		&__panel {
+			width: min(calc(100% - #{$spacing-7}px), #{$innerWidthPC}px);
+			max-height: calc(100dvh - #{$spacing-7}px);
+			padding: #{$spacing-3}px;
+			border-radius: #{$spacing-1}px;
+		}
+		&__close {
+			width: #{$headerBarHeightPC}px;
+			height: #{$headerBarHeightPC}px;
+		}
+		&__close-bar {
+			top: calc(50% - 1px);
+			width: 22px;
+			height: 2px;
+		}
+	}
+}
+
+@include sp {
+	.product-modal {
+		&__panel {
+			width: calc(100% - #{vw($innerWidthSP)} * 2);
+			max-height: calc(100dvh - #{vw($spacing-7)});
+			padding: vw($spacing-3) vw($spacing-2);
+			border-radius: vw($spacing-1);
+		}
+		&__close {
+			width: vw($headerBarHeightSP);
+			height: vw($headerBarHeightSP);
+		}
+		&__close-bar {
+			top: calc(50% - #{vw(1)});
+			width: vw(22);
+			height: vw(2);
+		}
+	}
+}

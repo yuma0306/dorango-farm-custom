@@ -6,38 +6,47 @@ function pet_product_categories(): array {
 	return [
 		'cage' => [
 			'title' => 'ケージ',
+			'icon' => 'icon-product-cage.svg',
 			'post_ids' => [4994],
 		],
 		'thermostat' => [
 			'title' => 'サーモスタット',
+			'icon' => 'icon-product-thermostat.svg',
 			'post_ids' => [4920],
 		],
 		'top_heater' => [
 			'title' => '上部ヒーター',
+			'icon' => 'icon-product-top-heater.svg',
 			'post_ids' => [4893, 4920],
 		],
 		'panel_heater' => [
 			'title' => 'パネルヒーター',
+			'icon' => 'icon-product-panel-heater.svg',
 			'post_ids' => [4990],
 		],
 		'substrate' => [
 			'title' => '床材',
+			'icon' => 'icon-product-substrate.svg',
 			'post_ids' => [5517],
 		],
 		'maintenance' => [
 			'title' => 'メンテナンス・掃除用品',
+			'icon' => 'icon-product-maintenance.svg',
 			'post_ids' => [5475],
 		],
 		'thermometer' => [
 			'title' => '温湿度計',
+			'icon' => 'icon-product-thermometer.svg',
 			'post_ids' => [4999],
 		],
 		'water_dish' => [
 			'title' => '水入れ',
+			'icon' => 'icon-product-water-dish.svg',
 			'post_ids' => [],
 		],
 		'feeding' => [
 			'title' => '給餌',
+			'icon' => 'icon-product-feeding.svg',
 			'post_ids' => [4911, 4907],
 		],
 	];
@@ -76,6 +85,7 @@ function group_pet_products_by_category(array $posts): array {
 
 		$categories[$slug] = [
 			'label' => (string) ($config['title'] ?? ''),
+			'icon' => (string) ($config['icon'] ?? ''),
 			'posts' => [],
 			'post_ids' => $post_ids,
 		];

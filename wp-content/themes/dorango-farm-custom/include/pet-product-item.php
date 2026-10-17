@@ -13,7 +13,7 @@
 	$sale_ends_at = (string) get_field('sale_ends_at', $product_id);
 	$moshimo_html = (string) get_field('moshimo_html', $product_id);
 ?>
-<section class="stack stack--gap1">
+<section class="stack">
 	<h4 class="heading-lv4-01"><?php echo esc_html($title); ?></h4>
 	<?php if (trim(wp_strip_all_tags($content)) !== '') : ?>
 		<div class="wysiwyg-v2">

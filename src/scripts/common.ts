@@ -2,6 +2,7 @@ import { initFavorites } from './modules/favorite';
 import { initFloatingBar } from './modules/floating-bar';
 import { initHamburger } from './modules/hamburger';
 import { initHistoryPage } from './modules/history';
+import { initProductModal } from './modules/product-modal';
 import { initRecentPosts } from './modules/recent-posts';
 import { initSearchFloat } from './modules/search-float';
 import { initSearchValidation } from './modules/search-validation';
@@ -18,4 +19,5 @@ document.addEventListener('DOMContentLoaded', () => {
 	initFloatingBar();
 	initHamburger();
 	initShindan();
+	initProductModal();
 });

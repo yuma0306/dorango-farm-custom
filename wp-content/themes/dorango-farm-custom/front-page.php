@@ -39,6 +39,7 @@
 						<?php get_template_part('include/ball-python-hub'); ?>
 						<a class="button u-mt3-pc u-mt3-sp" href="<?php echo esc_url($ballPythonArchiveUrl); ?>">ボールパイソンの記事</a>
 					</div>
+					<?php get_template_part('include/pet-product-cards'); ?>
 					<?php get_template_part('include/species-list'); ?>
 					<?php get_template_part('include/category-list'); ?>
 				</div>

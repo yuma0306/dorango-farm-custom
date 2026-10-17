@@ -1,40 +1,39 @@
 @use '../global/import' as *;
 @use '../config/import' as *;
 
+.heading-lv3-01 {
+	position: relative;
+	font-weight: $fwMedium;
+	&::before {
+		position: absolute;
+		left: 0;
+		background-color: $primary02;
+		content: "";
+	}
+}
+
 @include pc {
 	.heading-lv3-01 {
-		position: relative;
 		padding-left: 20px;
-		padding-top: calc(#{$spacing-2} * 1px);
+		padding-top: #{$spacing-2}px;
 		font-size: $fzLargePC;
-		font-weight: $fwMedium;
 		&::before {
-			position: absolute;
-			top: calc(#{$spacing-2} * 1px + (1em * #{$lhBase} - 25px) / 2);
-			left: 0;
+			bottom: calc((1em * #{$lhBase} - 25px) / 2);
 			width: 5px;
 			height: 25px;
-			background-color: $primary02;
-			content: "";
 		}
 	}
 }
 
 @include sp {
 	.heading-lv3-01 {
-		position: relative;
 		padding-left: vw(20);
 		padding-top: vw($spacing-2);
 		font-size: $fzLargeSP;
-		font-weight: $fwMedium;
 		&::before {
-			position: absolute;
-			top: calc(#{vw($spacing-2)} + (1em * #{$lhBase} - #{vw(25)}) / 2);
-			left: 0;
+			bottom: calc((1em * #{$lhBase} - #{vw(25)}) / 2);
 			width: vw(5);
 			height: vw(25);
-			background-color: $primary02;
-			content: "";
 		}
 	}
 }
