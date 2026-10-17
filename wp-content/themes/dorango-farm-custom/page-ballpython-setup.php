@@ -28,7 +28,7 @@ $thumb = get_article_thumb();
 					<?php get_template_part('include/aff-text'); ?>
 					<div class="content-box">
 						<div class="stack" data-js-favorite-setup-detail-content style="display: none">
-							<h2 class="heading-lv2-02 u-pt0">あなたにぴったりのボールパイソン飼育セット</h2>
+							<h2 class="heading-lv2-02 u-pt0">ボールパイソン飼育セット診断</h2>
 							<div class="box">
 								<?php foreach (DORANGO_SHINDAN_OUTCOME_IDS as $outcome_id) : ?>
 									<div
