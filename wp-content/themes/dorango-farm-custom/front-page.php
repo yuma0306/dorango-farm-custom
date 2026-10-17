@@ -29,6 +29,7 @@
 				</div>
 				<div class="stack u-mt3-pc u-mt3-sp">
 					<div class="stack">
+						<?php get_template_part('include/aff-text'); ?>
 						<p>ヘビ牧場どらんごファームでは、実際に飼育・繁殖した経験をもとに、<span class="u-primary02 u-bold">ボールパイソン</span>を中心に<span class="u-primary02 u-bold">爬虫類の飼育・繁殖、飼育用品、動物園、野生観察</span>について発信するメディアです。</p>
 						<div class="grid-block grid-block--col2">
 							<?php get_template_part('include/banner-ball-python-shindan'); ?>

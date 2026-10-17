@@ -1,0 +1,19 @@
+@use 'sass:map';
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+.u-width100:not(#_) {
+	width: 100%;
+}
+
+@include pc {
+	.u-width100-pc:not(#_) {
+    width: 100%;
+	}
+}
+
+@include sp {
+	.u-width100-sp:not(#_) {
+    width: 100%;
+	}
+}

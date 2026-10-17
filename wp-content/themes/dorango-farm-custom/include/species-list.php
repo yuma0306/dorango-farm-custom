@@ -2,7 +2,7 @@
 $species_items = [
 	[
 		'href' => '/tag/species/ball-python/',
-		'img' => 'img-ballpython-front.webp',
+		'img' => 'img-ballpython-panel.webp',
 		'en' => 'BALL PYTHON',
 		'ja' => 'ボールパイソン',
 	],

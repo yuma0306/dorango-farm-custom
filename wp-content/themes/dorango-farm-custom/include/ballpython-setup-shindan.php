@@ -19,7 +19,16 @@
 				</div>
 			<?php endforeach; ?>
 		</div>
-		<div class="flex flex--fit-center u-mt3-pc u-mt3-sp">
+		<div class="stack stack--gap1 u-mt3-pc u-mt3-sp u-tc">
+			<p>お気に入り飼育セットに登録すると、いつでも診断結果やおすすめ飼育用品を確認できます。</p>
+			<button
+				type="button"
+				class="button u-width100-sp"
+				data-js-shindan-favorite-btn
+				data-setup-key="ballpython-setup"
+			>お気に入り飼育セットに登録</button>
+		</div>
+		<div class="flex flex--fit-center flex--gap1 u-mt3-pc u-mt3-sp">
 			<a
 				class="button flex-child-1"
 				href="<?php echo esc_url(home_url('/ballpython-setup-shindan/')); ?>"

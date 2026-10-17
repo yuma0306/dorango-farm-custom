@@ -1,5 +1,6 @@
 import { pushBallPythonShindan } from './ball-python-shindan-gtm';
 import { hideElement, showElement } from './element-display';
+import { syncShindanFavoriteButton } from './favorite-setup';
 import { questions } from './shindan-questions';
 
 const outcomeIds = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'] as const;
@@ -48,6 +49,7 @@ function getUiElements(root: HTMLElement) {
 	const outcomePanels = root.querySelectorAll<HTMLElement>('[data-js-shindan-outcome]');
 	const shareLink = root.querySelector<HTMLAnchorElement>('[data-js-shindan-share]');
 	const lineShareLink = root.querySelector<HTMLAnchorElement>('[data-js-shindan-share-line]');
+	const favoriteBtn = root.querySelector<HTMLButtonElement>('[data-js-shindan-favorite-btn]');
 	const questionTemplate = root.querySelector<HTMLTemplateElement>(
 		'[data-js-shindan-question-template]',
 	);
@@ -75,6 +77,7 @@ function getUiElements(root: HTMLElement) {
 		outcomePanels,
 		shareLink,
 		lineShareLink,
+		favoriteBtn,
 		questionTemplate,
 		optionTemplate,
 	};
@@ -169,6 +172,7 @@ function displayOutcome(
 	showElement(ui.resultEl);
 	hideAllOutcomes(ui);
 	showElement(panel);
+	syncShindanFavoriteButton(ui.favoriteBtn, outcomeId);
 
 	if (ui.shareLink && panel.dataset.shindanShareUrl) {
 		ui.shareLink.href = panel.dataset.shindanShareUrl;

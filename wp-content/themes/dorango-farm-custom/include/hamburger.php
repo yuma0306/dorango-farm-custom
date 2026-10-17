@@ -39,7 +39,27 @@
 			<span class="hamburger-btn__bar" aria-hidden="true"></span>
 			<span class="hamburger-btn__bar" aria-hidden="true"></span>
 		</button>
-		<div class="hamburger__head">
+		<div class="hamburger__search">
+			<form class="search-form js-search-form" action="<?php echo esc_url(home_url('/')); ?>" method="get">
+				<input
+					class="search-form__input js-search-input"
+					type="search"
+					name="s"
+					value="<?php echo esc_attr(get_search_query()); ?>"
+					placeholder="キーワード"
+					autocomplete="off"
+				>
+				<button
+					type="button"
+					class="search-form__btn js-search-btn"
+					data-gtm-event="<?php echo esc_attr(gtm_event('search_submit')); ?>"
+				>
+					<span class="search-form__icon" role="img" aria-label="検索"></span>
+				</button>
+			</form>
+			<div class="validate-err js-search-err">
+				<div class="validate-err__elm js-search-child">キーワードを入力してください</div>
+			</div>
 		</div>
 		<ul class="hamburger__list">
 			<?php foreach (get_nav_links(HAMBURGER_LINK_KEYS) as $link) : ?>
@@ -56,25 +76,5 @@
 				</li>
 			<?php endforeach; ?>
 		</ul>
-		<form class="search-form js-search-form u-mt3-pc u-mt3-sp" action="<?php echo esc_url(home_url('/')); ?>" method="get">
-			<input
-				class="search-form__input js-search-input"
-				type="search"
-				name="s"
-				value="<?php echo esc_attr(get_search_query()); ?>"
-				placeholder="キーワード"
-				autocomplete="off"
-			>
-			<button
-				type="button"
-				class="search-form__btn js-search-btn"
-				data-gtm-event="<?php echo esc_attr(gtm_event('search_submit')); ?>"
-			>
-				<span class="search-form__icon" role="img" aria-label="検索"></span>
-			</button>
-		</form>
-		<div class="validate-err js-search-err">
-			<div class="validate-err__elm js-search-child">キーワードを入力してください</div>
-		</div>
 	</nav>
 </div>
