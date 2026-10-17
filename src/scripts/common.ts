@@ -1,4 +1,5 @@
 import { initFavorites } from './modules/favorite';
+import { initFavoriteSetups } from './modules/favorite-setup';
 import { initFloatingBar } from './modules/floating-bar';
 import { initHamburger } from './modules/hamburger';
 import { initHistoryPage } from './modules/history';
@@ -14,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	initSearchFloat();
 	initTocFloat();
 	initFavorites();
+	initFavoriteSetups();
 	initRecentPosts();
 	initHistoryPage();
 	initFloatingBar();
