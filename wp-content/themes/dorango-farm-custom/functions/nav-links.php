@@ -54,6 +54,11 @@ const NAV_LINKS = [
 		'label' => 'お気に入り記事',
 		'icon' => 'heart',
 	],
+	'favoriteSetup' => [
+		'href' => '/favorite-setup/',
+		'label' => 'お気に入り飼育セット',
+		'icon' => 'heart',
+	],
 	'history' => [
 		'href' => '/history/',
 		'label' => '最近チェックした記事',
@@ -76,6 +81,7 @@ const NAV_LINKS = [
 const HAMBURGER_LINK_KEYS = [
 	'home',
 	'favorite',
+	'favoriteSetup',
 	'history',
 	'petProducts',
 	'ballPython',
@@ -97,6 +103,7 @@ const FOOTER_LINK_KEYS = [
 	'food',
 	'trivia',
 	'favorite',
+	'favoriteSetup',
 	'history',
 	'tags',
 	'privacy',

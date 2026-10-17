@@ -25,6 +25,7 @@ $thumb = get_article_thumb();
 							<img class="article-thumb__img" src="<?php echo esc_url($thumb['url']); ?>" alt="<?php echo esc_html($thumb['alt']); ?>" width="<?php echo esc_html($thumb['width']); ?>" height="<?php echo esc_html($thumb['height']); ?>">
 						</picture>
 					<?php endif; ?>
+					<?php get_template_part('include/aff-text'); ?>
 					<p>お気に入り登録した飼育セット一覧が確認できます。</p>
 					<p>シークレットモード（プライベートブラウズ）では、ブラウザを閉じるとお気に入りが消えてしまいます。通常のブラウザでのご利用をおすすめします。</p>
 					<div class="grid-panel" data-js-favorite-setup-index-list style="display: none">

@@ -29,6 +29,7 @@
 		box-sizing: border-box;
 		display: flex;
 		flex-direction: column;
+		overflow-x: hidden;
 		overflow-y: auto;
 		background-color: $white01;
 		visibility: hidden;
@@ -41,10 +42,8 @@
 			z-index: $aboveZIndex;
 		}
 	}
-	&__head {
-		display: flex;
+	&__search {
 		flex-shrink: 0;
-		justify-content: flex-end;
 	}
 	&__item {
 		border-bottom: 1px solid $gray01;
@@ -116,10 +115,10 @@
 	.hamburger {
 		&__panel {
 			width: 500px;
-			padding: 0 #{$spacing-3}px #{$spacing-3}px;
+			padding: calc(#{$headerBarHeightPC}px + #{$spacing-2}px) #{$spacing-3}px #{$spacing-3}px;
 		}
 		&__list {
-			padding-top: #{$headerBarHeightPC}px;
+			margin-top: #{$spacing-2}px;
 		}
 		&__link {
 			gap: #{$spacing-1}px;
@@ -137,10 +136,10 @@
 	.hamburger {
 		&__panel {
 			width: 85vw;
-			padding: 0 vw($spacing-3) vw($spacing-3);
+			padding: calc(#{vw($headerBarHeightSP)} + #{vw($spacing-2)}) vw($spacing-3) vw($spacing-3);
 		}
 		&__list {
-			padding-top: vw($headerBarHeightSP);
+			margin-top: vw($spacing-2);
 		}
 		&__link {
 			gap: vw($spacing-1);

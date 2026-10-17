@@ -6,8 +6,9 @@
 		$this: &;
 		position: relative;
 		display: flex;
+		flex-shrink: 0;
 		align-items: center;
-		width: 500px;
+		width: min(100%, 500px);
 		height: 45px;
 		box-shadow: 0 0 1px 0 $brown01;
 		&__input {
