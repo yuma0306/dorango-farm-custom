@@ -18,7 +18,7 @@ function ball_python_hub_sections(): array {
 		['title' => 'ケージ', 'post_ids' => [4994, 4926]],
 		['title' => '温度・湿度', 'post_ids' => [4999]],
 		['title' => '床材', 'post_ids' => [5517]],
-		['title' => 'メンテナンス・掃除', 'post_ids' => [5475]],
+		['title' => 'メンテ・掃除', 'post_ids' => [5475]],
 		['title' => '餌', 'post_ids' => [4911, 4907]],
 		['title' => '拒食', 'post_ids' => [4949]],
 		['title' => '繁殖', 'post_ids' => [4931, 4936]],

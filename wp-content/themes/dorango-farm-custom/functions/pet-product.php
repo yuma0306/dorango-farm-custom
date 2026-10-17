@@ -30,7 +30,7 @@ function pet_product_categories(): array {
 			'post_ids' => [5517],
 		],
 		'maintenance' => [
-			'title' => 'メンテナンス・掃除用品',
+			'title' => 'メンテ・掃除用品',
 			'icon' => 'icon-product-maintenance.svg',
 			'post_ids' => [5475],
 		],
