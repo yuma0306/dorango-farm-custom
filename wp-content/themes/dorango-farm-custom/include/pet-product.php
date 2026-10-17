@@ -1,21 +1,19 @@
 <?php
-$all_products = get_posts([
-	'post_type' => 'pet_product',
-	'post_status' => 'publish',
-	'posts_per_page' => -1,
-	'orderby' => ['menu_order' => 'ASC', 'ID' => 'ASC'],
-]);
-
-$sale_posts = [];
-$recommended_posts = [];
-
-foreach ($all_products as $product_post) {
-	if ((bool) get_field('is_on_sale', $product_post->ID)) {
-		$sale_posts[] = $product_post;
-	} else {
-		$recommended_posts[] = $product_post;
+	$all_products = get_posts([
+		'post_type' => 'pet_product',
+		'post_status' => 'publish',
+		'posts_per_page' => -1,
+		'orderby' => ['menu_order' => 'ASC', 'ID' => 'ASC'],
+	]);
+	$sale_posts = [];
+	$recommended_posts = [];
+	foreach ($all_products as $product_post) {
+		if ((bool) get_field('is_on_sale', $product_post->ID)) {
+			$sale_posts[] = $product_post;
+		} else {
+			$recommended_posts[] = $product_post;
+		}
 	}
-}
 ?>
 
 <section class="stack">
@@ -30,7 +28,6 @@ foreach ($all_products as $product_post) {
 		</div>
 	<?php endif; ?>
 </section>
-
 <section class="stack">
 	<h2 class="heading-lv2-02">おすすめ飼育用品</h2>
 	<?php if ($recommended_posts === []) : ?>

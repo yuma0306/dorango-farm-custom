@@ -18,31 +18,24 @@
 ?>
 <section class="stack stack--gap1">
 	<h3 class="heading-lv3-01"><?php echo esc_html($title); ?></h3>
-	<?php if ($is_on_sale && !empty($sale_price)) : ?>
-		<p class="u-bold">
-			<?php if (!empty($discount_percent)) : ?>
-				<span class="u-primary02">-<?php echo esc_html((string) (int) $discount_percent); ?>% OFF </span>
-			<?php endif; ?>
-			<span>セール価格：¥<?php echo esc_html(number_format((int) $sale_price)); ?></span>
-			<?php if (!empty($original_price)) : ?>
-				<span>（参考価格：<s>¥<?php echo esc_html(number_format((int) $original_price)); ?></s>）</span>
-			<?php endif; ?>
-		</p>
-		<?php if ($sale_ends_at !== '') : ?>
-			<p>セール終了予定：<?php echo esc_html($sale_ends_at); ?></p>
-		<?php endif; ?>
-	<?php elseif (!empty($original_price)) : ?>
-		<p>参考価格：¥<?php echo esc_html(number_format((int) $original_price)); ?></p>
-	<?php endif; ?>
-	<?php if ($thumb_url && $moshimo_html === '') : ?>
-		<figure class="article-img">
-			<img src="<?php echo esc_url($thumb_url); ?>" alt="<?php echo esc_attr($title); ?>" loading="lazy">
-		</figure>
-	<?php endif; ?>
 	<?php if (trim(wp_strip_all_tags($content)) !== '') : ?>
 		<div class="wysiwyg-v2">
 			<?php echo $content; ?>
 		</div>
+	<?php endif; ?>
+	<?php if ($is_on_sale && !empty($sale_price)) : ?>
+		<p class="flex flex--gap1 u-bold u-primary02">
+			<?php if (!empty($discount_percent)) : ?>
+				<span>-<?php echo esc_html((string) (int) $discount_percent); ?>% OFF</span>
+			<?php endif; ?>
+			<span>Amazonセール価格：¥<?php echo esc_html(number_format((int) $sale_price)); ?></span>
+		</p>
+		<?php if (!empty($original_price)) : ?>
+			<p>通常価格：<s>¥<?php echo esc_html(number_format((int) $original_price)); ?></s></p>
+		<?php endif; ?>
+		<?php if ($sale_ends_at !== '') : ?>
+			<p>セール終了予定：<?php echo esc_html($sale_ends_at); ?></p>
+		<?php endif; ?>
 	<?php endif; ?>
 	<?php if ($moshimo_html !== '') : ?>
 		<div>
@@ -50,13 +43,13 @@
 		</div>
 	<?php endif; ?>
 	<?php if ($related_ids !== []) : ?>
-		<div class="stack stack--gap1">
-			<p class="u-bold">関連する解説記事</p>
-			<div class="grid-block grid-block--col2">
+		<dl class="stack stack--gap1">
+			<dt class="u-bold">関連記事</dt>
+			<dd class="grid-block grid-block--col2">
 				<?php foreach ($related_ids as $related_id) : ?>
 					<?php echo do_shortcode('[article id="' . absint($related_id) . '"]'); ?>
 				<?php endforeach; ?>
-			</div>
-		</div>
+			</dd>
+		</dl>
 	<?php endif; ?>
 </section>

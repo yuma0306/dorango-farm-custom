@@ -1,8 +1,10 @@
+@use '../../config/import' as *;
+
 @mixin overlay-backdrop {
 	position: fixed;
 	inset: 0;
 	border: 0;
 	padding: 0;
-	background: rgb(0 0 0 / 45%);
+	background: $blackBg;
 	cursor: pointer;
 }
