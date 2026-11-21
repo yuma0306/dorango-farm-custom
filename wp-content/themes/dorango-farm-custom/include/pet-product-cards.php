@@ -67,11 +67,6 @@ if ($groups === []) {
 					style="display: none"
 				>
 					<h3 class="heading-lv3-01 u-pt0"><?php echo esc_html($group['label']); ?></h3>
-					<div class="stack">
-						<?php foreach ($group['posts'] as $product_post) : ?>
-							<?php get_template_part('include/pet-product-item', null, ['product_post' => $product_post]); ?>
-						<?php endforeach; ?>
-					</div>
 					<?php if ($group['post_ids'] !== []) : ?>
 						<section class="stack">
 							<h4 class="heading-lv4-01"><?php echo esc_html($group['label']); ?>の関連記事</h4>
@@ -82,6 +77,11 @@ if ($groups === []) {
 							</div>
 						</section>
 					<?php endif; ?>
+					<div class="stack">
+						<?php foreach ($group['posts'] as $product_post) : ?>
+							<?php get_template_part('include/pet-product-item', null, ['product_post' => $product_post]); ?>
+						<?php endforeach; ?>
+					</div>
 				</div>
 			<?php endforeach; ?>
 		</div>
